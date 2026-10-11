@@ -8,7 +8,12 @@
 
 ## Profil
 
-Formée à l'atelier (perceuse, tour, fraiseuse, rectifieuse, métrologie) et titulaire du certificat SST, je conçois des pièces et des assemblages sous SolidWorks et je programme en Python et en C/C++ (Arduino). Habituée au travail en équipe : projets de conception en binôme et en groupe de 3. Trilingue : espagnol, français (C1), anglais (B2).
+Formée en atelier à l'ENIM (usinage, métrologie, produits bruts, soudage) et titulaire du certificat SST, je conçois des pièces et des assemblages sous SolidWorks et je programme en Python et en C/C++ (Arduino). Habituée au travail en équipe : projets de conception en binôme et en groupe de 3. Trilingue : espagnol, français (C1), anglais (B2).
+
+## Formation pratique en atelier (ENIM)
+
+- **1er semestre :** métrologie et usinage sur perceuse, tour, fraiseuse et rectifieuse.
+- **2e semestre :** élaboration des produits bruts et soudage.
 
 ## Projets
 
@@ -44,7 +49,7 @@ Spécialités Mathématiques (option Mathématiques expertes) et Physique-Chimie
 
 ## Compétences
 
-- **Atelier et mesure :** usinage sur perceuse, tour, fraiseuse et rectifieuse ; métrologie
+- **Atelier et mesure :** usinage sur perceuse, tour, fraiseuse et rectifieuse ; métrologie ; soudage ; produits bruts
 - **Sécurité :** certificat SST (Sauveteur Secouriste du Travail)
 - **Conception et CAO :** SolidWorks (intermédiaire) : pièces, assemblages, mises en plan
 - **Analyse de données :** Excel (intermédiaire) : traitements statistiques en travaux pratiques
