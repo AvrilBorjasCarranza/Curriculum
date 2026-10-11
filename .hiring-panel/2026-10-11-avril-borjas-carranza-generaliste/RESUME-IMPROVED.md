@@ -1,0 +1,79 @@
+# Avril BORJAS CARRANZA
+
+**Élève ingénieure généraliste (ENIM, 2ᵉ année). Recherche un stage ingénieur de 4 mois à partir de mars 2027.**
+
+07 44 99 85 38 · avrilborjas228@gmail.com · Metz (57070), France · linkedin.com/in/avril-borjas-carranza
+
+---
+
+## Profil
+
+Élève ingénieure généraliste à l'ENIM, avec une base pratique en conception mécanique (plus de 30 pièces et 4 mécanismes sous SolidWorks), en atelier (usinage, métrologie, certificat SST) et en programmation (Python, C/C++ sur Arduino). J'ai l'habitude du travail en groupe, en cours comme en projet. Trilingue : espagnol, français (C1) et anglais (B2).
+
+## Projets et formations pratiques
+
+**Conception mécanique, SolidWorks.** ENIM, travaux pratiques, depuis 2024
+- Modélisation de plus de 30 pièces mécaniques et de 4 mécanismes simples.
+- Mise en plan, relations d'assemblage et gestion des contraintes.
+
+**Montages Arduino, programmation C/C++.** Formations certifiantes niveaux basique et intermédiaire, Universidad Pedagógica Nacional Francisco Morazán (Honduras), 2023
+- Conception et montage de plusieurs circuits Arduino ; code écrit moi-même en C/C++.
+- Réalisation en groupe de montages avec capteur de mouvement et capteur sonore.
+
+**Travail en équipe.** ENIM
+- Cours « Introduction au travail collaboratif » : projets réalisés en groupe.
+- Travaux de groupe réguliers en mathématiques.
+
+**Modélisation 3D sous Blender pour un jeu vidéo.** Projet personnel, jeu en cours de développement
+- Création des modèles 3D du jeu (designs disponibles sur demande).
+
+## Formation
+
+**Cycle ingénieur généraliste**, École Nationale d'Ingénieurs de Metz (ENIM), Metz
+2024 – 2030 (diplôme prévu en 2030) · en 2ᵉ année en 2026-2027
+
+**Baccalauréat général**, spécialités Mathématiques (option Mathématiques expertes) et Physique-Chimie
+Liceo Franco Hondureño, Tegucigalpa (Honduras) · 2024
+
+**Diplôme national hondurien de fin d'études secondaires**
+Liceo Franco Hondureño, Tegucigalpa (Honduras) · 2023
+
+## Compétences
+
+- **Conception et CAO :** SolidWorks (intermédiaire) : pièces, assemblages, mises en plan ; Blender (modélisation 3D)
+- **Atelier et mesure :** usinage, métrologie
+- **Sécurité :** certificat SST (Sauveteur Secouriste du Travail)
+- **Programmation :** Python (certification Santander Open Academy, 2026), C/C++ (Arduino), HTML/CSS (bases)
+- **Électronique :** microcontrôleurs Arduino, capteurs (certifications niveaux basique et intermédiaire, UPNFM)
+- **Bureautique :** Excel (intermédiaire)
+
+## Langues
+
+- Espagnol : langue maternelle
+- Français : C1
+- Anglais : B2
+
+## Disponibilité
+
+Stage de 4 mois à partir de mars 2027.
+
+---
+
+### Ce qui a changé par rapport à la version « informatique / robotique »
+
+- **L'objectif devient « stage ingénieur ».** Il ne cite plus trois domaines et ne dit plus « ouverte à tout domaine ».
+- **La mécanique, l'atelier et le SST passent en premier.** Pour un poste généraliste en industrie, c'est ce qui compte le plus.
+- **Blender est ajouté** au projet de jeu vidéo et aux compétences.
+- **La phrase « Je n'ai pas encore d'expérience professionnelle » est supprimée.** Le CV d'un élève de 2ᵉ année le montre déjà, inutile de l'écrire.
+
+### Questions (facultatives) pour renforcer encore le CV
+
+1. **Usinage :** qu'avez-vous usiné, sur quelle machine (tour, fraiseuse…) et avec quelle précision ? Le responsable du recrutement vous le demandera. Une ligne de détail transformerait « usinage » en preuve.
+2. **Excel :** avez-vous déjà fait un tableau de mesures, des graphiques ou des calculs pour un TP ? « Analyse de données » est un mot-clé fréquent dans les offres généralistes.
+3. **Projet de groupe ENIM :** dans le cours de travail collaboratif, sur quel sujet avez-vous travaillé, à combien, et quel était votre rôle ? Pouvez-vous citer une tâche que vous avez planifiée ou coordonnée ? Cela ajouterait le mot-clé « gestion de projet », qui manque toujours.
+
+### Notes de mise en page (pour la version PDF)
+
+- Une seule colonne, sans encadré latéral : les logiciels de tri ont mélangé les deux colonnes, rangé la formation dans « Centre d'intérêt » et cassé l'e-mail (« avrilbor jas228 »).
+- Police standard (Arial, Calibri…) sans espacement de lettres élargi.
+- La photo est facultative en France. Si vous la gardez, réduisez-la pour que l'objectif et la disponibilité restent en haut.
