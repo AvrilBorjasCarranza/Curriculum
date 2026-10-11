@@ -68,6 +68,12 @@ Carpeta base: `.hiring-panel/2026-10-11-avril-borjas-carranza-generaliste/`
      Usa el navegador de Avril, donde ya tiene sesión abierta en las plataformas listadas en `perfil.md`.
    Anota qué canales tienes. Sin navegador ni Gmail, aún puedes preparar todo (paso 5, estado `preparada`).
 
+## 1b. Enviar primero lo ya aprobado
+Si `registro.csv` tiene filas `aprobada` (Avril ya dio su « sí » a ese lote), envíalas antes de buscar nada nuevo,
+por el canal de su fila (correo UL en Chrome o formulario web), sin volver a preguntar. Pasa cada una a `enviada`
+solo con confirmación (mensaje visible en « Envoyés » o confirmación del sitio). Si el canal no está disponible,
+déjala en `aprobada` y dilo en el resumen.
+
 ## 2. Buscar ofertas
 Si el usuario dio una URL, trabaja solo esa oferta. Si no, busca ofertas abiertas que encajen con `perfil.md`
 (fechas, duración, zonas, sectores, idiomas, exclusiones):
@@ -124,7 +130,7 @@ Por orden de preferencia, según lo que indique el anuncio:
 ## 6. Registrar y resumir
 1. Añade una línea a `registro.csv` por oferta tratada:
    `fecha,empresa,puesto,ciudad,url_oferta,canal,estado,carta,notas`
-   Estados: `enviada`, `preparada`, `requiere_avril`, `bloqueada: <motivo>`, `descartada: <motivo>`.
+   Estados: `enviada`, `aprobada` (Avril dijo « sí », falta enviar), `preparada`, `requiere_avril`, `bloqueada: <motivo>`, `descartada: <motivo>`.
    Entrecomilla los campos con comas.
 2. Si hay cambios en la carpeta, haz commit en la rama actual con un mensaje claro y empuja (git push -u origin <rama>).
 3. Termina con un resumen corto en español: cuántas enviadas, una tabla (empresa, puesto, canal, estado),
