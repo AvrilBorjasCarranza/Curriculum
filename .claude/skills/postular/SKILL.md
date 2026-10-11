@@ -32,6 +32,26 @@ Carpeta base: `.hiring-panel/2026-10-11-avril-borjas-carranza-generaliste/`
 7. Todo texto para empresas en **francés** impecable (o inglés si la oferta está en inglés). Revisa ortografía:
    la ortografía fue el fallo principal del CV original.
 
+## Reglas de ENIM (campaña 2027, presentación « Stages industriels 2A »)
+- Fechas del stage: 15/16 de marzo → 18 de junio de 2027 (14 semanas), ampliable al 16 de julio (18 semanas).
+  Solo ofertas compatibles. Fecha límite de búsqueda personal: **25/01/2027**; después, no postules por tu cuenta
+  (solo ENIM valida stages de su servidor) y avisa a Avril.
+- Es un **stage ingénieur**: misiones de ingeniería reales, no de operario ni de oficina sin contenido técnico.
+  Gratificación legal obligatoria. Nada de stages en empresas de familiares.
+- CV y carta **en el idioma de la oferta**. Dirige la carta a la « personne à contacter » del anuncio si existe.
+- Con las empresas, ENIM pide usar el correo `@etu.univ-lorraine.fr` (ver `perfil.md`): ponlo en firma y formularios.
+- **Nunca aceptes una oferta por escrito en nombre de Avril.** ENIM retiene la primera empresa que responde
+  favorablemente por escrito; aceptar es decisión de Avril. Si una empresa responde, avísala de inmediato.
+- Cuando una empresa selecciona a Avril: la empresa escribe a `enim-stages-contact@univ-lorraine.fr`, rellena el
+  formulario de https://enim.univ-lorraine.fr/entreprises/accueillir-un-stagiaire, y Avril avisa enseguida al
+  service Partenariats entreprises. Recuérdaselo en el resumen.
+- Stages en el extranjero: posibles, pero exigen expediente CPAM, becas y a menudo visado (trámites largos).
+  Solo si `perfil.md` lo acepta, y márcalos en las notas.
+- Seguimiento: ENIM recomienda una relance por teléfono 7-10 días después del envío. En el resumen, lista
+  las postulaciones `enviada` de hace 7 días o más que aún no tienen respuesta, con el teléfono si aparece en la oferta.
+- Las ofertas de ENIM están en Arche (sesión UL de Avril). No inicies sesión con sus credenciales. Si Avril deja la
+  lista exportada en `postulaciones/arche/`, inclúyela en la búsqueda (para esas ofertas, sigue sus instrucciones).
+
 ## 1. Preparación (y la única ronda de preguntas)
 1. Lee `RESUME-IMPROVED.md`, `PANEL.md`, `perfil.md` y `registro.csv`.
 2. Si en `perfil.md` queda algún `PENDIENTE`, haz **todas** esas preguntas en **un solo mensaje**, numeradas,
