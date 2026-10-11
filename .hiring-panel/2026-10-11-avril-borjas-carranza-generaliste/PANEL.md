@@ -44,3 +44,11 @@ Compared with the software/robotics target, the panel is a little softer: four M
 ## Honest summary
 
 The rebuilt version gets past the automated screen. With a human it is a borderline candidate: credible for a 2nd-year student, not yet distinctive. The reviewer who came closest to an interview was the hiring manager, who said NO only narrowly. It valued the SST, machining and metrology and was put off by the spelling and the unfocused target, both now fixed. Most reviewers were split between MAYBE and PASS because she has no work experience, which is normal for a Stage 2A. Three facts could still be added: what she machined, how she has used Excel, and her role in an ENIM group project.
+
+## Update after the candidate's answers
+
+New facts: machining on a drill press (perceuse), lathe (tour), milling machine (fraiseuse) and grinder (rectifieuse); Excel used for statistics in lab work; in the collaborative-work course she modelled the parts in SolidWorks for the group; in a pair project she modelled half of the parts and the assembly mates (liaisons), while her partner did the other parts and the drawings.
+
+- **Automated screen, after these facts: PASS**, now about 7 of 11 assumed key terms (newly matched: analyse de données, and travail en équipe backed by a concrete role).
+- **Still missing:** gestion de projet, amélioration continue, production/industrialisation, rigueur. None of these can be added without new facts.
+- **Still flagged:** the 2024 → 2ᵉ année in 2026-27 gap (prepare one interview sentence); the team design projects have no year; the Blender project is off-target for an industrial role (keep it or drop it, it no longer contains errors).

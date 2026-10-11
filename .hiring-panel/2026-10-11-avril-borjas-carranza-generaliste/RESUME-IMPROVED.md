@@ -8,7 +8,7 @@
 
 ## Profil
 
-Élève ingénieure généraliste à l'ENIM, avec une base pratique en conception mécanique (plus de 30 pièces et 4 mécanismes sous SolidWorks), en atelier (usinage, métrologie, certificat SST) et en programmation (Python, C/C++ sur Arduino). J'ai l'habitude du travail en groupe, en cours comme en projet. Trilingue : espagnol, français (C1) et anglais (B2).
+Élève ingénieure généraliste à l'ENIM, avec une base pratique en conception mécanique (plus de 30 pièces et 4 mécanismes sous SolidWorks), en atelier (perceuse, tour, fraiseuse, rectifieuse ; métrologie ; certificat SST) et en programmation (Python, C/C++ sur Arduino). J'ai travaillé en binôme et en groupe sur des projets de conception, en me chargeant de la modélisation des pièces. Trilingue : espagnol, français (C1) et anglais (B2).
 
 ## Projets et formations pratiques
 
@@ -20,9 +20,9 @@
 - Conception et montage de plusieurs circuits Arduino ; code écrit moi-même en C/C++.
 - Réalisation en groupe de montages avec capteur de mouvement et capteur sonore.
 
-**Travail en équipe.** ENIM
-- Cours « Introduction au travail collaboratif » : projets réalisés en groupe.
-- Travaux de groupe réguliers en mathématiques.
+**Projets de conception en équipe, SolidWorks.** ENIM
+- Projet en binôme : modélisation de la moitié des pièces et des liaisons de l'assemblage ; mon binôme réalisait les autres pièces et les mises en plan.
+- Cours « Introduction au travail collaboratif » : chargée de la modélisation des pièces sous SolidWorks pour le groupe.
 
 **Modélisation 3D sous Blender pour un jeu vidéo.** Projet personnel, jeu en cours de développement
 - Création des modèles 3D du jeu (designs disponibles sur demande).
@@ -41,11 +41,11 @@ Liceo Franco Hondureño, Tegucigalpa (Honduras) · 2023
 ## Compétences
 
 - **Conception et CAO :** SolidWorks (intermédiaire) : pièces, assemblages, mises en plan ; Blender (modélisation 3D)
-- **Atelier et mesure :** usinage, métrologie
+- **Atelier et mesure :** usinage sur perceuse, tour, fraiseuse et rectifieuse ; métrologie
 - **Sécurité :** certificat SST (Sauveteur Secouriste du Travail)
 - **Programmation :** Python (certification Santander Open Academy, 2026), C/C++ (Arduino), HTML/CSS (bases)
 - **Électronique :** microcontrôleurs Arduino, capteurs (certifications niveaux basique et intermédiaire, UPNFM)
-- **Bureautique :** Excel (intermédiaire)
+- **Analyse de données :** Excel (intermédiaire) : traitements statistiques en travaux pratiques
 
 ## Langues
 
@@ -66,11 +66,13 @@ Stage de 4 mois à partir de mars 2027.
 - **Blender est ajouté** au projet de jeu vidéo et aux compétences.
 - **La phrase « Je n'ai pas encore d'expérience professionnelle » est supprimée.** Le CV d'un élève de 2ᵉ année le montre déjà, inutile de l'écrire.
 
-### Questions (facultatives) pour renforcer encore le CV
+### Préparer l'entretien
 
-1. **Usinage :** qu'avez-vous usiné, sur quelle machine (tour, fraiseuse…) et avec quelle précision ? Le responsable du recrutement vous le demandera. Une ligne de détail transformerait « usinage » en preuve.
-2. **Excel :** avez-vous déjà fait un tableau de mesures, des graphiques ou des calculs pour un TP ? « Analyse de données » est un mot-clé fréquent dans les offres généralistes.
-3. **Projet de groupe ENIM :** dans le cours de travail collaboratif, sur quel sujet avez-vous travaillé, à combien, et quel était votre rôle ? Pouvez-vous citer une tâche que vous avez planifiée ou coordonnée ? Cela ajouterait le mot-clé « gestion de projet », qui manque toujours.
+Le responsable du recrutement a prévu ces questions. Préparez une réponse de deux phrases pour chacune :
+1. **Usinage :** quelle pièce avez-vous réalisée sur le tour ou la fraiseuse, et avec quelle tolérance ou quel contrôle (pied à coulisse, micromètre…) ?
+2. **SolidWorks :** quel mécanisme a été le plus difficile à contraindre, et pourquoi ? Dans le projet en binôme, comment vous êtes-vous réparti les pièces ?
+3. **Arduino :** que déclenchaient le capteur de mouvement et le capteur sonore, et quel était votre rôle dans le groupe ?
+4. **Le redoublement :** une phrase honnête sur ce qui s'est passé et ce que vous avez changé.
 
 ### Notes de mise en page (pour la version PDF)
 
