@@ -48,3 +48,10 @@
 ## Preparing the year-gap answer
 
 Have one honest sentence ready, for example: « J'ai redoublé une année ; j'ai changé [méthode de travail] et cette année [résultat concret]. » Say it calmly and move on. Interviewers mostly check that you are open about it and that it is behind you.
+
+## Final version after the candidate's answers
+
+New facts: the pair project was submitted and validated (no grade given); the collaborative-work project is in progress in 2026-2027 with a team of 3; the Arduino builds were **individual** (correcting the earlier assumption "en groupe") and the sensors drove an LED; work experience: childcare at a painting workshop, October to December 2021 (3 months), two children aged 3 and 5, fine-motor activities (circles, lines) and hand-eye coordination (modelling clay).
+
+- **Automated screen on the final PDF (`Avril_Borjas_Carranza_CV.pdf`): PASS**, 7 of 11 assumed key terms. Still missing: gestion de projet, amélioration continue, production/industrialisation, rigueur. Still flagged: the 2024 → 2e année gap. The screen called the childcare job off-target. It stays anyway because three human reviewers asked for any experience outside school, and it shows responsibility.
+- The repeated "travail en équipe… en binôme et en groupe" wording in the profile was tightened after this screen.

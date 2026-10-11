@@ -8,24 +8,29 @@
 
 ## Profil
 
-Formée à l'atelier (perceuse, tour, fraiseuse, rectifieuse, métrologie) et titulaire du certificat SST, je conçois des pièces et des assemblages sous SolidWorks et je programme en Python et en C/C++ (Arduino). Travail en équipe en binôme et en groupe sur des projets de conception. Trilingue : espagnol, français (C1), anglais (B2).
+Formée à l'atelier (perceuse, tour, fraiseuse, rectifieuse, métrologie) et titulaire du certificat SST, je conçois des pièces et des assemblages sous SolidWorks et je programme en Python et en C/C++ (Arduino). Habituée au travail en équipe : projets de conception en binôme et en groupe de 3. Trilingue : espagnol, français (C1), anglais (B2).
 
 ## Projets
 
 **Projet de conception en binôme, SolidWorks (ENIM, 2024-2025)**
 - Modélisation de la moitié des pièces et réalisation des liaisons de l'assemblage.
-- [ADD : ce que fait l'assemblage (ex. « un étau », « un réducteur ») et le résultat (ex. « assemblage validé et rendu en 2025 », note obtenue si elle est bonne)]
+- Projet rendu et validé par l'enseignant en 2025.
 
-**Projet de groupe, cours « Introduction au travail collaboratif » (ENIM, [ADD : année])**
-- Responsable de la modélisation des pièces sous SolidWorks pour le groupe.
-- [ADD : objet conçu par le groupe, nombre de personnes, et comment le travail était réparti ou coordonné]
+**Projet de groupe, cours « Introduction au travail collaboratif » (ENIM, 2026-2027, en cours)**
+- Équipe de 3 personnes ; responsable de la modélisation des pièces sous SolidWorks.
 
 **Conception mécanique, SolidWorks (ENIM, travaux pratiques, depuis 2024)**
 - Modélisation de plus de 30 pièces et de 4 mécanismes simples : mise en plan, relations d'assemblage, gestion des contraintes.
 
 **Montages Arduino, programmation C/C++ (UPNFM, Honduras, 2023)**
-- Formations certifiantes niveaux basique et intermédiaire : plusieurs montages, code écrit moi-même en C/C++.
-- Montages réalisés en groupe avec capteur de mouvement et capteur sonore : [ADD : ce que déclenchait chaque capteur (LED, alarme, moteur…) et votre rôle dans le groupe].
+- Formations certifiantes niveaux basique et intermédiaire.
+- Montages individuels : détection de mouvement et détection sonore commandant une LED ; code écrit moi-même en C/C++.
+
+## Expérience
+
+**Encadrement d'enfants, atelier de peinture (octobre – décembre 2021, 3 mois)**
+- Prise en charge de deux enfants de 3 et 5 ans.
+- Activités de motricité fine (tracés de cercles et de lignes) et de coordination œil-main (pâte à modeler).
 
 ## Formation
 
@@ -50,23 +55,18 @@ Spécialités Mathématiques (option Mathématiques expertes) et Physique-Chimie
 
 Espagnol : langue maternelle · Français : C1 · Anglais : B2
 
-## [ADD : Expérience ou engagement hors école, si vous en avez : job d'été, association, bénévolat, sport en club… sinon supprimez cette section]
-
 ---
 
-### Questions avant de régénérer le PDF
+### Corrections faites avec vos réponses
 
-1. **Projet en binôme :** qu'est-ce que vous avez conçu (quel objet ou mécanisme) ? Comment s'est terminé le projet (rendu, validé, note) ?
-2. **Projet du cours collaboratif :** en quelle année, sur quel objet, à combien de personnes ? Comment vous êtes-vous réparti le travail ?
-3. **Arduino :** que déclenchaient le capteur de mouvement et le capteur sonore ? Quel était votre rôle dans le groupe ?
-4. **Hors école :** avez-vous déjà eu un job (même court), une activité associative, du bénévolat ou du sport en club ? Le panel l'a demandé quatre fois.
+- **Arduino :** j'avais écrit « en groupe » parce que vous aviez dit « hicimos ». C'était faux, c'étaient des travaux individuels, et c'est corrigé.
+- **Projet en binôme :** « rendu et validé » ajouté. L'objet conçu n'est pas indiqué ; vous pouvez l'ajouter si vous vous en souvenez (« un étau », « un réducteur »…).
+- **Cours collaboratif :** « en cours, équipe de 3 ». Quand le projet sera terminé, ajoutez l'objet conçu et le résultat.
+- **Nouvelle section « Expérience » :** la garde d'enfants dans l'atelier de peinture (2021). Le nom de l'atelier n'est pas indiqué ; ajoutez-le avec la ville si vous voulez.
 
-### Ce qui a changé par rapport au PDF
+### Préparer l'entretien
 
-- **Ligne du binôme :** elle ne cite plus le travail de votre binôme (« mon binôme réalisait les autres pièces… ») et décrit seulement ce que vous avez fait.
-- **Profil plus court :** il commence par l'atelier et le SST, que le responsable du recrutement a remarqués en premier, et ne répète plus « 30 pièces ».
-- **Projets d'équipe en premier :** le projet SolidWorks en binôme passe avant les travaux pratiques individuels.
-- **Dates sur la même ligne que le titre :** le logiciel de tri pouvait rattacher « depuis 2024 », « 2023 » etc. à la mauvaise entrée.
-- **Compétences allégées :** HTML/CSS (bases) et Blender sont retirés. Pour un poste industriel, ils passaient pour du remplissage.
-- **Titre :** « stage de 4 mois » au lieu de « stage ingénieur », pour ne pas paraître viser un niveau au-dessus d'une 2ᵉ année.
-- **Les dates 2024 – 2030 restent :** elles sont exactes. Un CV ne doit pas cacher un redoublement, mais vous devez avoir une réponse prête (voir PANEL.md).
+1. **Le redoublement :** une phrase honnête : ce qui s'est passé, ce que vous avez changé, où vous en êtes.
+2. **Usinage :** une pièce faite au tour ou à la fraiseuse, et comment vous l'avez mesurée.
+3. **SolidWorks :** quel mécanisme a été le plus difficile à contraindre, et pourquoi.
+4. **L'atelier de peinture :** ce que la garde de jeunes enfants vous a appris (patience, responsabilité, expliquer simplement).
