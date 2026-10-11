@@ -12,8 +12,7 @@ Formée en atelier à l'ENIM (usinage, métrologie, produits bruts, soudage) et 
 
 ## Formation pratique en atelier (ENIM)
 
-- **1er semestre :** métrologie et usinage sur perceuse, tour, fraiseuse et rectifieuse ; pièce en acier inoxydable réalisée au tour, cotes contrôlées au micromètre et au pied à coulisse.
-- **2e semestre :** procédés et contrôles : élaboration de produits bruts (EPB) ; soudage à l'électrode enrobée, TIG, MIG, au chalumeau et par points.
+- **Procédés et contrôles :** élaboration de produits bruts (EPB) ; soudage à l'électrode enrobée, TIG, MIG, au chalumeau et par points.
 
 ## Projets
 
@@ -26,10 +25,6 @@ Formée en atelier à l'ENIM (usinage, métrologie, produits bruts, soudage) et 
 
 **Conception mécanique, SolidWorks (ENIM, travaux pratiques, depuis 2024)**
 - Modélisation de plus de 30 pièces et de 4 mécanismes simples, dont une pince : mise en plan, relations d'assemblage, gestion des contraintes.
-
-**Montages Arduino, programmation C/C++ (UPNFM, Honduras, 2023)**
-- Formations certifiantes niveaux basique et intermédiaire.
-- Montages individuels, code écrit moi-même en C/C++ : détecteur de mouvement allumant une LED ; capteur sonore allumant une LED d'alerte quand le bruit dépasse un niveau sain.
 
 ## Expérience
 
@@ -64,7 +59,7 @@ Espagnol : langue maternelle · Français : C1 · Anglais : B2
 
 ### Corrections faites avec vos réponses
 
-- **Arduino :** j'avais écrit « en groupe » parce que vous aviez dit « hicimos ». C'était faux, c'étaient des travaux individuels, et c'est corrigé.
+- **Retirés à votre demande :** la ligne « 1er semestre » de l'atelier (l'usinage figure déjà dans les compétences) et le projet Arduino. C/C++ et Arduino restent dans les compétences.
 - **Projet en binôme :** « rendu et validé » ajouté. L'objet conçu n'est pas indiqué ; vous pouvez l'ajouter si vous vous en souvenez (« un étau », « un réducteur »…).
 - **Cours collaboratif :** « en cours, équipe de 3 ». Quand le projet sera terminé, ajoutez l'objet conçu et le résultat.
 - **Nouvelle section « Expérience » :** la garde d'enfants dans l'atelier de peinture (2021). Le nom de l'atelier n'est pas indiqué ; ajoutez-le avec la ville si vous voulez.
