@@ -18,7 +18,7 @@
 
 **Montages Arduino, programmation C/C++.** Formations certifiantes niveaux basique et intermédiaire, Universidad Pedagógica Nacional Francisco Morazán (Honduras), 2023
 - Conception et montage de plusieurs circuits Arduino ; code écrit moi-même en C/C++.
-- Réalisation en groupe de montages avec capteur de mouvement et capteur sonore.
+- Réalisation individuelle de deux montages : une LED s'allume lorsqu'un capteur de mouvement détecte un mouvement, ou lorsqu'un capteur sonore détecte un bruit trop fort.
 
 **Projets de conception en équipe, SolidWorks.** ENIM
 - Projet en binôme (2024-2025) : modélisation de la moitié des pièces et des liaisons de l'assemblage ; mon binôme réalisait les autres pièces et les mises en plan.
@@ -68,7 +68,7 @@ Stage de 4 mois à partir de mars 2027.
 Le responsable du recrutement a prévu ces questions. Préparez une réponse de deux phrases pour chacune :
 1. **Usinage :** quelle pièce avez-vous réalisée sur le tour ou la fraiseuse, et avec quelle tolérance ou quel contrôle (pied à coulisse, micromètre…) ?
 2. **SolidWorks :** quel mécanisme a été le plus difficile à contraindre, et pourquoi ? Dans le projet en binôme, comment vous êtes-vous réparti les pièces ?
-3. **Arduino :** que déclenchaient le capteur de mouvement et le capteur sonore, et quel était votre rôle dans le groupe ?
+3. **Arduino :** comment avez-vous réglé le seuil du capteur sonore, et quelles difficultés avez-vous rencontrées en écrivant le code ?
 4. **Le redoublement :** une phrase honnête sur ce qui s'est passé et ce que vous avez changé.
 
 ### Notes de mise en page (pour la version PDF)

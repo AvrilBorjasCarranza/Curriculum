@@ -39,7 +39,7 @@ Fuente del CV (no se repite aquí): `../RESUME-IMPROVED.md` y `../Avril_Borjas_C
 - Proyecto profesional a medio plazo: aprender más idiomas para que nunca sean un obstáculo (perfil internacional).
 - Una pieza que mecanizaste: en el torno, en acero inoxidable (inox), con control de cotas al micromètre y al pied à coulisse. Tolerancia: no indicada → no la menciones.
 - El mecanismo SolidWorks más difícil: una pinza (pince). Por qué: no indicado.
-- Montajes Arduino: el sensor de movimiento encendía un LED al detectar movimiento; el sensor sonoro encendía un LED cuando el ruido superaba un nivel saludable. Papel: trabajo en grupo; el CV dice que escribió el código C/C++ ella misma.
+- Montajes Arduino: el sensor de movimiento encendía un LED al detectar movimiento; el sensor sonoro encendía un LED cuando el ruido superaba un nivel saludable. Papel: trabajo INDIVIDUAL (montaje y código C/C++ hechos por ella sola).
 - Año repetido (solo si lo preguntan): no validó el primer semestre de su primer año por la adaptación (cultura, horarios, vivir sola en un país nuevo sin familia). En el segundo semestre repasó por su cuenta todo lo del primero para validarlo; el año repetido le sirvió para perfeccionar y profundizar, no para reaprender.
 - Una dificultad superada en trabajo en equipo: en los proyectos de matemáticas en grupo, problemas de comunicación (cada uno creía que otro había hecho lo que faltaba). Crearon un chat de grupo y repartieron tareas claras a cada persona para que todo se hiciera a tiempo sin suponer nada.
 - Actividades, voluntariado, deportes o centros de interés: —
