@@ -2,7 +2,7 @@
 
 **Élève ingénieure généraliste en 2ᵉ année à l'ENIM. Recherche un stage de 4 mois à partir de mars 2027.**
 
-07 44 99 85 38 · avrilborjas228@gmail.com · Metz (57070), France · linkedin.com/in/avril-borjas-carranza
+07 44 99 85 38 · avril.borjas-carranza9@etu.univ-lorraine.fr · Metz (57070), France · linkedin.com/in/avril-borjas-carranza
 
 ---
 
