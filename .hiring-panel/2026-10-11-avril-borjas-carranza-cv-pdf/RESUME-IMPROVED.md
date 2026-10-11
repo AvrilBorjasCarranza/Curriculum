@@ -13,7 +13,7 @@ Formée en atelier à l'ENIM (usinage, métrologie, produits bruts, soudage) et 
 ## Formation pratique en atelier (ENIM)
 
 - **1er semestre :** métrologie et usinage sur perceuse, tour, fraiseuse et rectifieuse.
-- **2e semestre :** élaboration des produits bruts et soudage.
+- **2e semestre :** procédés et contrôles : élaboration de produits bruts (EPB) ; soudage à l'électrode enrobée, TIG, MIG, au chalumeau et par points.
 
 ## Projets
 
@@ -49,7 +49,7 @@ Spécialités Mathématiques (option Mathématiques expertes) et Physique-Chimie
 
 ## Compétences
 
-- **Atelier et mesure :** usinage sur perceuse, tour, fraiseuse et rectifieuse ; métrologie ; soudage ; produits bruts
+- **Atelier et mesure :** usinage sur perceuse, tour, fraiseuse et rectifieuse ; métrologie ; soudage (électrode enrobée, TIG, MIG, chalumeau, par points) ; élaboration de produits bruts
 - **Sécurité :** certificat SST (Sauveteur Secouriste du Travail)
 - **Conception et CAO :** SolidWorks (intermédiaire) : pièces, assemblages, mises en plan
 - **Analyse de données :** Excel (intermédiaire) : traitements statistiques en travaux pratiques
