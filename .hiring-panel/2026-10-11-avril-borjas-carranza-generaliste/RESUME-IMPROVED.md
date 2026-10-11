@@ -21,11 +21,8 @@
 - Réalisation en groupe de montages avec capteur de mouvement et capteur sonore.
 
 **Projets de conception en équipe, SolidWorks.** ENIM
-- Projet en binôme : modélisation de la moitié des pièces et des liaisons de l'assemblage ; mon binôme réalisait les autres pièces et les mises en plan.
+- Projet en binôme (2024-2025) : modélisation de la moitié des pièces et des liaisons de l'assemblage ; mon binôme réalisait les autres pièces et les mises en plan.
 - Cours « Introduction au travail collaboratif » : chargée de la modélisation des pièces sous SolidWorks pour le groupe.
-
-**Modélisation 3D sous Blender pour un jeu vidéo.** Projet personnel, jeu en cours de développement
-- Création des modèles 3D du jeu (designs disponibles sur demande).
 
 ## Formation
 
@@ -63,7 +60,7 @@ Stage de 4 mois à partir de mars 2027.
 
 - **L'objectif devient « stage ingénieur ».** Il ne cite plus trois domaines et ne dit plus « ouverte à tout domaine ».
 - **La mécanique, l'atelier et le SST passent en premier.** Pour un poste généraliste en industrie, c'est ce qui compte le plus.
-- **Blender est ajouté** au projet de jeu vidéo et aux compétences.
+- **Le projet de jeu vidéo est retiré** : il n'apportait rien pour un poste industriel. Blender reste dans les compétences.
 - **La phrase « Je n'ai pas encore d'expérience professionnelle » est supprimée.** Le CV d'un élève de 2ᵉ année le montre déjà, inutile de l'écrire.
 
 ### Préparer l'entretien

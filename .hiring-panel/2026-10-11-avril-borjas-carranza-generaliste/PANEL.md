@@ -52,3 +52,8 @@ New facts: machining on a drill press (perceuse), lathe (tour), milling machine 
 - **Automated screen, after these facts: PASS**, now about 7 of 11 assumed key terms (newly matched: analyse de données, and travail en équipe backed by a concrete role).
 - **Still missing:** gestion de projet, amélioration continue, production/industrialisation, rigueur. None of these can be added without new facts.
 - **Still flagged:** the 2024 → 2ᵉ année in 2026-27 gap (prepare one interview sentence); the team design projects have no year; the Blender project is off-target for an industrial role (keep it or drop it, it no longer contains errors).
+
+## Final edits (candidate's request)
+
+- Removed the Blender video-game project (off-target for an industrial role). Blender stays in the skills line as a true skill.
+- The SolidWorks pair project is dated 2024-2025 (started 2024, submitted 2025).
