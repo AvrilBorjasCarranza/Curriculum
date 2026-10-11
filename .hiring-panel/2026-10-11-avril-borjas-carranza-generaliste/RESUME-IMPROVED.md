@@ -1,8 +1,8 @@
 # Avril BORJAS CARRANZA
 
-**Élève ingénieure généraliste (ENIM, 2ᵉ année). Recherche un stage ingénieur de 4 mois à partir de mars 2027.**
+**Élève ingénieure généraliste (ENIM, 2ᵉ année). Recherche un stage ingénieur du 15 mars au 18 juin 2027 (prolongeable jusqu'au 16 juillet).**
 
-07 44 99 85 38 · avrilborjas228@gmail.com · Metz (57070), France · linkedin.com/in/avril-borjas-carranza
+07 44 99 85 38 · avril.borjas-carranza9@etu.univ-lorraine.fr · Metz (57070), France · linkedin.com/in/avril-borjas-carranza
 
 ---
 
@@ -52,7 +52,7 @@ Liceo Franco Hondureño, Tegucigalpa (Honduras) · 2023
 
 ## Disponibilité
 
-Stage de 4 mois à partir de mars 2027.
+Stage ingénieur 2A du 15 mars au 18 juin 2027, prolongeable jusqu'au 16 juillet 2027.
 
 ---
 
