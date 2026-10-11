@@ -55,3 +55,23 @@ New facts: the pair project was submitted and validated (no grade given); the co
 
 - **Automated screen on the final PDF (`Avril_Borjas_Carranza_CV.pdf`): PASS**, 7 of 11 assumed key terms. Still missing: gestion de projet, amélioration continue, production/industrialisation, rigueur. Still flagged: the 2024 → 2e année gap. The screen called the childcare job off-target. It stays anyway because three human reviewers asked for any experience outside school, and it shows responsibility.
 - The repeated "travail en équipe… en binôme et en groupe" wording in the profile was tightened after this screen.
+
+## Panel round 2 on the final PDF (candidate's request)
+
+| # | Reviewer | Verdict | The line that hurt most |
+|---|---|---|---|
+| 1 | Automated screen | **PASS** | "2024 – 2030" with "En 2e année en 2026-2027"; childcare listed as filler |
+| 2 | Hiring manager (interview decision) | **INTERVIEW** (borderline) | "Projet rendu et validé par l'enseignant en 2025." |
+| 3 | Reader: hiring manager (day one) | **MAYBE** | "Prise en charge de deux enfants de 3 et 5 ans." |
+| 4 | Reader: another applicant | **MAYBE** | "Encadrement d'enfants, atelier de peinture — octobre – décembre 2021 (3 mois)" |
+| 5 | Reader: CEO | **MAYBE** | "Projet rendu et validé par l'enseignant en 2025." |
+| 6 | Reader: recruiter (top third only) | **MAYBE**, leaning PASS (up from PASS) | "Projet rendu et validé par l'enseignant en 2025." |
+| 7 | Reader: teammate | **MAYBE** | "Projet de groupe, cours « Introduction au travail collaboratif » — ENIM, 2026-2027, en cours" |
+
+**Reading:** the resume has stopped improving through rewriting. No reviewer flagged spelling, layout, contact details or unclear writing. Every remaining objection is about facts that don't exist yet: no project result beyond "validated", no industrial work experience, a team project still in progress, and the year gap.
+
+**What still held:** the workshop machines, metrology and the SST certificate. The hiring manager, the day-one reader and the CEO all named these as usable on day one.
+
+**Hiring manager's interview questions:** (1) ENIM 2024–2030 and 2nd year in 2026-27: what happened in 2025-26? (2) Pick one of the "plus de 30 pièces" and walk me through the tolerances, how you dimensioned the drawing, and how you would machine and measure it. (3) On the pair project, which joints did you set up, and what didn't work the first time?
+
+**New point raised:** the rival noted that the CV doesn't say whether a work permit or visa is needed. Not added: no fact given.
