@@ -54,13 +54,15 @@ Carpeta base: `.hiring-panel/2026-10-11-avril-borjas-carranza-generaliste/`
 
 ## 1. Preparación (y la única ronda de preguntas)
 1. Lee `RESUME-IMPROVED.md`, `PANEL.md`, `perfil.md` y `registro.csv`.
-2. Si en `perfil.md` queda algún `PENDIENTE`, haz **todas** esas preguntas en **un solo mensaje**, numeradas,
+2. Un `PENDIENTE desde AAAA-MM-DD` solo se pregunta a partir de esa fecha; antes, trátalo como vacío.
+   Si en `perfil.md` queda algún `PENDIENTE` que ya toca preguntar, haz **todas** esas preguntas en **un solo mensaje**, numeradas,
    en español, agrupadas por sección, cortas, con un ejemplo de respuesta cuando ayude. Di que puede responder
    « no sé » u « omitir » a cualquiera. Espera la respuesta, escríbela en `perfil.md` (sustituye cada `PENDIENTE`;
    « omitir » → `—`) y no vuelvas a preguntar.
 3. Comprueba las herramientas disponibles (carga con ToolSearch las que estén diferidas):
    - Búsqueda: `WebSearch`, `WebFetch`.
-   - Correo: conector Gmail (`mcp__Gmail__send_message`, `mcp__Gmail__create_draft`).
+   - Correo: el canal que diga `perfil.md`. Por defecto, el **webmail de la UL abierto en Chrome**
+     (avril.borjas-carranza9@etu.univ-lorraine.fr). El conector Gmail solo si `perfil.md` lo permite.
    - Formularios web: Claude in Chrome (`mcp__claude-in-chrome__*`) o el navegador integrado
      (`mcp__Claude_Browser__*` / `mcp__remote-devices__Claude_Browser__*`). Lee la skill del navegador antes de usarlo.
      Usa el navegador de Avril, donde ya tiene sesión abierta en las plataformas listadas en `perfil.md`.
@@ -77,6 +79,12 @@ Si el usuario dio una URL, trabaja solo esa oferta. Si no, busca ofertas abierta
 - Excluye: ofertas cerradas, de más de ~2 meses de antigüedad sin fecha de cierre, de alternance/CDI,
   que exijan un nivel de estudios que no tiene (p. ej. « fin d'études », « Bac+5 » como único perfil), ya en `registro.csv`.
 
+### Candidaturas espontáneas (si `perfil.md` lo permite)
+Empresas de las zonas aceptadas, sobre todo de energía y robótica, sin oferta publicada para el periodo.
+Busca en su web una dirección RH / stages o la persona responsable (nunca adivines direcciones de correo).
+La carta explica el periodo ENIM (stage ingénieur 2A, desde el 15 de marzo de 2027) y propone
+2 o 3 tipos de misión que encajan con la empresa y con el CV. Cuentan dentro del máximo por ejecución.
+
 ## 3. Elegir
 Para cada oferta, lee el anuncio completo y puntúa de 0 a 10: encaje de fechas y duración (obligatorio),
 encaje de misiones con el CV (SolidWorks, taller y mecanizado, metrología, SST, Python, Arduino, Excel),
@@ -92,7 +100,8 @@ idioma, zona, sector. Quédate con las de 6 o más, hasta el máximo por ejecuci
    - Firma: nombre, teléfono, correo, LinkedIn del CV.
    - Nada de « je n'ai pas encore d'expérience », nada de frases genéricas (« curieuse et polyvalente »).
    Guárdala en `postulaciones/cartas/`.
-2. **Respuestas de formulario**: toma cada campo del CV o de `perfil.md`. Preguntas abiertas → respuestas cortas,
+2. **Respuestas de formulario**: toma cada campo del CV o de `perfil.md`. Si piden **referencias**, no envíes:
+   estado `requiere_avril: referencias` y pregúntale en el resumen qué profesor quiere dar para ese puesto. Preguntas abiertas → respuestas cortas,
    específicas para esa empresa, basadas solo en hechos reales.
 3. **Relectura**: comprueba ortografía, nombre de la empresa y del puesto, fechas, y que nada fue inventado.
 
@@ -102,11 +111,14 @@ Por orden de preferencia, según lo que indique el anuncio:
   `Avril_Borjas_Carranza_CV.pdf`, pega la carta. Antes del botón final, haz captura o relee los campos.
   Envía (o, en modo `revision`, detente aquí y añádela al lote). CAPTCHA, inicio de sesión sin sesión abierta,
   creación de cuenta o prueba en línea → estado `requiere_avril`.
-- **Por correo** (Gmail), solo si el anuncio da una dirección de candidatura:
-  asunto « Candidature – Stage <puesto> – Avril Borjas Carranza », cuerpo = versión corta de la carta (texto plano),
-  adjunto = el PDF del CV (codifícalo con `base64 -w0` y pásalo en `attachments` con `mimeType: application/pdf`
-  y `filename: Avril_Borjas_Carranza_CV.pdf`) y la carta en PDF si la piden. En modo `revision`, usa
-  `create_draft` y envíalos tras el « sí ».
+- **Por correo**, cuando el anuncio da una dirección de candidatura (y en candidaturas espontáneas):
+  asunto « Candidature – Stage ingénieur 2A (mars 2027) – <puesto> – Avril Borjas Carranza », cuerpo = versión
+  corta de la carta (texto plano), adjunto = `Avril_Borjas_Carranza_CV.pdf` (y la carta en PDF si la piden).
+  - Webmail UL en Chrome (canal por defecto): redacta el mensaje, adjunta el PDF, y en modo `revision` guárdalo
+    como **borrador** sin enviarlo. Tras el « sí » de Avril, abre cada borrador y envíalo.
+    Sin sesión abierta en el webmail → `preparada` (nunca escribas la contraseña).
+  - Gmail, solo si `perfil.md` lo permite: adjunto con `base64 -w0` en `attachments`
+    (`mimeType: application/pdf`, `filename: Avril_Borjas_Carranza_CV.pdf`); `create_draft` en modo `revision`.
 - **Ninguno disponible** → estado `preparada` con el enlace y la carta lista para que Avril la envíe.
 
 ## 6. Registrar y resumir
@@ -117,4 +129,4 @@ Por orden de preferencia, según lo que indique el anuncio:
 2. Si hay cambios en la carpeta, haz commit en la rama actual con un mensaje claro y empuja (git push -u origin <rama>).
 3. Termina con un resumen corto en español: cuántas enviadas, una tabla (empresa, puesto, canal, estado),
    lo que requiere a Avril (con enlaces) y, si las hay, las preguntas pendientes que se harán la próxima vez.
-   Nunca digas « enviada » si no recibiste la confirmación del sitio o el id del mensaje de Gmail.
+   Nunca digas « enviada » si no recibiste la confirmación del sitio o viste el mensaje en « Envoyés ».
