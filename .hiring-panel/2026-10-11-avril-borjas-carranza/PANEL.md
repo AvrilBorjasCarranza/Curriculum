@@ -50,3 +50,10 @@ New facts from Avril: several Arduino builds with C/C++ code she wrote herself, 
 
 - **Automated screen, third run:** still **REJECT**. C/C++, Arduino and teamwork now count. The remaining reasons are the `[ADD: …]` placeholders being parsed as text, the 3D game project with no content, the one-year gap between "2024 – 2030" and "2ᵉ année", and no concrete Arduino build (sensors, outputs, result).
 - **What's left to do:** describe one Arduino build in one line, explain the date gap, then fill in or delete the 3D game project. With those done and no placeholders left, nothing structural remains for the screen to reject.
+
+## Final version (2026-10-11, second round of answers)
+
+Avril's answers: the Arduino certificates are from 2023; the builds she remembers used a motion sensor and a sound sensor and were done in a group ("hicimos"); she repeated a year at ENIM; the course name « Introduction au travail collaboratif » is confirmed; for the game she made the 3D models, the game is still in development, and she can share the designs. No `[ADD: …]` placeholders remain.
+
+- **Automated screen, fourth run: PASS.** Clean parse, key terms present (C/C++, Arduino, microcontrôleurs, capteurs, Python, SolidWorks, travail en équipe, English B2).
+- **What still weakens it:** "gestion de projet" is missing; robotics and embedded systems appear as goals, not proven projects; a human will notice the 2024 → 2ᵉ année in 2026-27 gap (prepare one honest interview sentence about the repeated year); there is no professional experience, which is normal for a Stage 2A.

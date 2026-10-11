@@ -12,26 +12,25 @@
 
 ## Projets et formations pratiques
 
-**Montages Arduino, programmation C/C++.** Formations certifiantes niveaux basique et intermédiaire, Universidad Pedagógica Nacional Francisco Morazán (Honduras), [ADD : année(s)]
+**Montages Arduino, programmation C/C++.** Formations certifiantes niveaux basique et intermédiaire, Universidad Pedagógica Nacional Francisco Morazán (Honduras), 2023
 - Conception et montage de plusieurs circuits Arduino ; code écrit moi-même en C/C++.
-- [ADD : un montage que vous vous rappelez bien, en une ligne : ce qu'il faisait, quels capteurs ou actionneurs vous avez utilisés]
+- Réalisation en groupe de montages avec capteur de mouvement et capteur sonore.
 
 **Conception mécanique, SolidWorks.** ENIM, travaux pratiques, depuis 2024
 - Modélisation individuelle de plus de 30 pièces mécaniques et de 4 mécanismes simples.
 - Mise en plan, relations d'assemblage et gestion des contraintes.
 
 **Travail en équipe.** ENIM
-- Cours « Introduction au travail collaboratif » [ADD : vérifier le nom exact du cours] : projets réalisés en groupe.
+- Cours « Introduction au travail collaboratif » : projets réalisés en groupe.
 - Travaux de groupe réguliers en mathématiques.
 
-**Création de la partie visuelle d'un jeu vidéo 3D.** Projet personnel, [ADD : année]
-- [ADD : outil ou logiciel utilisé, ex. Blender, Unity…]
-- [ADD : ce que vous avez créé, ex. nombre de modèles, décors, personnages]
+**Modélisation 3D pour un jeu vidéo.** Projet personnel, jeu en cours de développement
+- Création des modèles 3D du jeu (designs disponibles sur demande).
 
 ## Formation
 
 **Cycle ingénieur généraliste**, École Nationale d'Ingénieurs de Metz (ENIM), Metz
-2024 – 2030 (diplôme prévu en 2030) · actuellement en 2ᵉ année
+2024 – 2030 (diplôme prévu en 2030) · en 2ᵉ année en 2026-2027
 
 **Baccalauréat général**, spécialités Mathématiques (option Mathématiques expertes) et Physique-Chimie
 Liceo Franco Hondureño, Tegucigalpa (Honduras) · 2024
@@ -59,14 +58,11 @@ Stage de 4 mois à partir de mars 2027.
 
 ---
 
-### Questions à compléter avant d'envoyer
+### Avant d'envoyer (facultatif, mais utile)
 
-1. **Arduino :** de quel montage vous souvenez-vous le mieux ? Une ligne suffit, ex. « feu tricolore avec bouton piéton » ou « capteur de distance à ultrasons qui allume une LED ». C'est la question qu'un recruteur posera en entretien.
-2. **Certificats Arduino :** en quelle(s) année(s) les avez-vous obtenus ?
-3. **Cours ENIM :** quel est le nom exact du cours en français ? J'ai mis « Introduction au travail collaboratif ».
-4. **Jeu vidéo 3D :** avec quel outil, quand, et qu'avez-vous produit ? Sinon, supprimez ce projet.
-5. **Dates ENIM :** vous avez commencé en 2024 et vous serez en 2ᵉ année en 2026-2027, avec un diplôme en 2030. Un relecteur va remarquer cet écart d'un an. Pourquoi ? (année préparatoire, redoublement, réorientation…) Une courte précision suffit, par exemple « 2024-2025 : [ADD : …] ».
-6. **Lien :** avez-vous un GitHub ou un portfolio ?
+1. **Logiciel 3D :** ajoutez le nom du logiciel (ex. « sous Blender ») à la ligne du jeu vidéo, et si possible un lien vers vos modèles. Des modèles simples valent mieux que pas de lien du tout.
+2. **Le redoublement :** il n'a pas à figurer sur le CV, mais l'écart entre 2024 et la 2ᵉ année se voit. Préparez une phrase courte et honnête pour l'entretien, par exemple : « J'ai redoublé une année ; ça m'a appris à [ce que vous avez changé] et cette année je [résultat]. »
+3. **L'entretien Arduino :** vous serez interrogée sur le capteur de mouvement et le capteur sonore. Révisez : que déclenchait chaque capteur (LED, buzzer, moteur…), comment vous lisiez le signal dans le code, et votre rôle dans le groupe.
 
 ### Conseil : refaire un projet Arduino avant mars 2027
 
