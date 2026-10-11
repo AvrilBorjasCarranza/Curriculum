@@ -12,13 +12,13 @@ Formée en atelier à l'ENIM (usinage, métrologie, produits bruts, soudage) et 
 
 ## Formation pratique en atelier (ENIM)
 
-- **Procédés et contrôles :** élaboration de produits bruts (EPB) ; soudage à l'électrode enrobée, TIG, MIG, au chalumeau et par points.
+- **Module « Procédés et contrôles » :** élaboration de produits bruts (EPB) ; soudage à l'électrode enrobée, TIG, MIG, au chalumeau et par points.
 
 ## Projets
 
 **Projet de conception en binôme, SolidWorks (ENIM, 2024-2025)**
 - Modélisation de la moitié des pièces et réalisation des liaisons de l'assemblage.
-- Projet rendu et validé par l'enseignant en 2025.
+- Assemblage rendu et validé en 2025.
 
 **Projet de groupe, cours « Introduction au travail collaboratif » (ENIM, 2026-2027, en cours)**
 - Équipe de 3 personnes ; responsable de la modélisation des pièces sous SolidWorks.
@@ -29,8 +29,7 @@ Formée en atelier à l'ENIM (usinage, métrologie, produits bruts, soudage) et 
 ## Expérience
 
 **Encadrement d'enfants, atelier de peinture (octobre – décembre 2021, 3 mois)**
-- Prise en charge de deux enfants de 3 et 5 ans.
-- Activités de motricité fine (tracés de cercles et de lignes) et de coordination œil-main (pâte à modeler).
+- Prise en charge de deux enfants de 3 et 5 ans : animation d'activités de motricité fine et de coordination œil-main.
 
 ## Formation
 
@@ -40,11 +39,9 @@ En 2ᵉ année en 2026-2027 · diplôme prévu en 2030
 **Baccalauréat général, Liceo Franco Hondureño, Tegucigalpa (Honduras)** — 2024
 Spécialités Mathématiques (option Mathématiques expertes) et Physique-Chimie
 
-**Diplôme national hondurien de fin d'études secondaires, Liceo Franco Hondureño** — 2023
-
 ## Compétences
 
-- **Atelier et mesure :** usinage sur perceuse, tour, fraiseuse et rectifieuse ; métrologie ; soudage (électrode enrobée, TIG, MIG, chalumeau, par points) ; élaboration de produits bruts
+- **Atelier et mesure :** usinage (perceuse, tour, fraiseuse, rectifieuse) ; métrologie (micromètre, pied à coulisse) ; soudage ; élaboration de produits bruts
 - **Sécurité :** certificat SST (Sauveteur Secouriste du Travail)
 - **Conception et CAO :** SolidWorks (intermédiaire) : pièces, assemblages, mises en plan
 - **Analyse de données :** Excel (intermédiaire) : traitements statistiques en travaux pratiques
