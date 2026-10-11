@@ -8,30 +8,30 @@
 
 ## Profil
 
-Élève ingénieure en 2ᵉ année à l'ENIM. Je programme en Python (certifiée Santander Open Academy 2026), j'ai une certification Arduino (niveaux basique et intermédiaire) et j'ai modélisé plus de 30 pièces mécaniques et 4 mécanismes sous SolidWorks. Je cherche un stage où je pourrai appliquer ces bases à un système réel, en informatique, en robotique ou en électronique embarquée. Trilingue : espagnol, français (C1) et anglais (B2).
+Élève ingénieure en 2ᵉ année à l'ENIM. J'ai réalisé plusieurs montages Arduino dont j'ai écrit moi-même le code en C/C++, au cours de deux formations certifiantes (niveaux basique et intermédiaire). Je programme aussi en Python (certifiée Santander Open Academy 2026) et j'ai modélisé plus de 30 pièces mécaniques et 4 mécanismes sous SolidWorks. Je cherche un stage où je pourrai appliquer ces bases à un système réel, en informatique, en robotique ou en électronique embarquée. Trilingue : espagnol, français (C1) et anglais (B2).
 
-## Projets
+## Projets et formations pratiques
 
-**[ADD : nom d'un montage Arduino que vous avez réalisé vous-même], Arduino** ([ADD : année])
-- [ADD : ce que fait le montage, ex. capteurs et actionneurs utilisés]
-- [ADD : un résultat ou une difficulté résolue, ex. ce que vous avez débogué]
-- [ADD : lien GitHub ou vidéo, si disponible]
+**Montages Arduino, programmation C/C++.** Formations certifiantes niveaux basique et intermédiaire, Universidad Pedagógica Nacional Francisco Morazán (Honduras), [ADD : année(s)]
+- Conception et montage de plusieurs circuits Arduino ; code écrit moi-même en C/C++.
+- [ADD : un montage que vous vous rappelez bien, en une ligne : ce qu'il faisait, quels capteurs ou actionneurs vous avez utilisés]
 
-**Conception mécanique, SolidWorks** (ENIM, travaux pratiques, [ADD : années exactes, ex. 2024–2026])
+**Conception mécanique, SolidWorks.** ENIM, travaux pratiques, depuis 2024
 - Modélisation individuelle de plus de 30 pièces mécaniques et de 4 mécanismes simples.
 - Mise en plan, relations d'assemblage et gestion des contraintes.
 
-**Création de la partie visuelle d'un jeu vidéo 3D** (projet personnel, [ADD : année])
+**Travail en équipe.** ENIM
+- Cours « Introduction au travail collaboratif » [ADD : vérifier le nom exact du cours] : projets réalisés en groupe.
+- Travaux de groupe réguliers en mathématiques.
+
+**Création de la partie visuelle d'un jeu vidéo 3D.** Projet personnel, [ADD : année]
 - [ADD : outil ou logiciel utilisé, ex. Blender, Unity…]
 - [ADD : ce que vous avez créé, ex. nombre de modèles, décors, personnages]
-- [ADD : seule ou en équipe ? si en équipe, taille de l'équipe et votre rôle]
-
-**[ADD : un projet en équipe à l'ENIM, s'il en existe un : sujet, taille de l'équipe, votre rôle, résultat]**
 
 ## Formation
 
 **Cycle ingénieur généraliste**, École Nationale d'Ingénieurs de Metz (ENIM), Metz
-2024 – [ADD : année de fin prévue] · actuellement en 2ᵉ année
+2024 – 2030 (diplôme prévu en 2030) · actuellement en 2ᵉ année
 
 **Baccalauréat général**, spécialités Mathématiques (option Mathématiques expertes) et Physique-Chimie
 Liceo Franco Hondureño, Tegucigalpa (Honduras) · 2024
@@ -41,8 +41,8 @@ Liceo Franco Hondureño, Tegucigalpa (Honduras) · 2023
 
 ## Compétences
 
-- **Programmation :** Python (certification Santander Open Academy, 2026), HTML/CSS (bases), Excel (intermédiaire)
-- **Électronique :** Arduino (certification niveaux basique et intermédiaire)
+- **Programmation :** C/C++ (Arduino), Python (certification Santander Open Academy, 2026), HTML/CSS (bases), Excel (intermédiaire)
+- **Électronique embarquée :** microcontrôleurs Arduino : montages et programmation (certifications niveaux basique et intermédiaire, UPNFM)
 - **Conception mécanique :** SolidWorks (intermédiaire) : pièces, assemblages, mises en plan
 - **Atelier :** usinage, métrologie
 - **Sécurité :** certificat SST (Sauveteur Secouriste du Travail)
@@ -61,13 +61,16 @@ Stage de 4 mois à partir de mars 2027.
 
 ### Questions à compléter avant d'envoyer
 
-1. **Dates ENIM :** en quelle année obtiendrez-vous votre diplôme ? L'original indique « 2024-2026 », ce qui laisse penser que vos études se terminent avant le stage. Et vous êtes bien en 2ᵉ année pendant 2026-2027 ?
-2. **Arduino :** quel montage avez-vous construit vous-même (capteurs, actionneurs, ce que faisait le programme) ? C'est la preuve la plus importante pour un stage en embarqué ou en robotique.
-3. **Jeu vidéo 3D :** avec quel outil, quand, seule ou en équipe, et qu'avez-vous produit concrètement ?
-4. **Projet en équipe :** avez-vous fait à l'ENIM un projet à plusieurs ? Avec combien de personnes, et quel était votre rôle ?
-5. **Python :** avez-vous écrit un programme en dehors du cours Santander ? Si oui, il devient un projet.
-6. **C/C++ :** les programmes Arduino s'écrivent en C/C++. Avez-vous écrit le code vous-même ? Si oui, ajoutez « C/C++ (Arduino) » aux compétences : c'est le mot-clé qui manque le plus pour un stage en embarqué.
-7. **Lien :** avez-vous un GitHub ou un portfolio à ajouter dans l'en-tête ?
+1. **Arduino :** de quel montage vous souvenez-vous le mieux ? Une ligne suffit, ex. « feu tricolore avec bouton piéton » ou « capteur de distance à ultrasons qui allume une LED ». C'est la question qu'un recruteur posera en entretien.
+2. **Certificats Arduino :** en quelle(s) année(s) les avez-vous obtenus ?
+3. **Cours ENIM :** quel est le nom exact du cours en français ? J'ai mis « Introduction au travail collaboratif ».
+4. **Jeu vidéo 3D :** avec quel outil, quand, et qu'avez-vous produit ? Sinon, supprimez ce projet.
+5. **Dates ENIM :** vous avez commencé en 2024 et vous serez en 2ᵉ année en 2026-2027, avec un diplôme en 2030. Un relecteur va remarquer cet écart d'un an. Pourquoi ? (année préparatoire, redoublement, réorientation…) Une courte précision suffit, par exemple « 2024-2025 : [ADD : …] ».
+6. **Lien :** avez-vous un GitHub ou un portfolio ?
+
+### Conseil : refaire un projet Arduino avant mars 2027
+
+Votre code a été perdu et les montages démontés, donc vous n'avez rien à montrer. Refaire un petit montage, même simple, et le publier sur GitHub avec deux photos donnerait au CV la preuve que tous les relecteurs ont réclamée. Ce n'est pas obligatoire, mais c'est l'amélioration la plus efficace qui vous reste.
 
 ### Notes de mise en page (pour la version PDF)
 

@@ -43,3 +43,10 @@
 ## Honest summary
 
 No reviewer would have hired from this version. Even the most lenient reviewers (the recruiter and the teammate) only gave MAYBE, because of the school and the matching target, not because of anything she had shown. The background is fine: an ENIM engineering student, a strong maths baccalauréat, three languages, real certificates. What fails is the evidence: the page promises embedded and programming work and then shows only mechanical coursework. The biggest single improvement is one Arduino project described in three concrete lines.
+
+## Update after the candidate's answers (2026-10-11)
+
+New facts from Avril: several Arduino builds with C/C++ code she wrote herself, at the Universidad Pedagógica Nacional Francisco Morazán (UPNFM), basic and intermediate certificates (the code was lost and the builds were taken apart); ENIM graduation expected in 2030; regular group work in maths and an ENIM course on collaborative work (Spanish name given: "introducción al trabajo colaborativo"; exact French name to confirm).
+
+- **Automated screen, third run:** still **REJECT**. C/C++, Arduino and teamwork now count. The remaining reasons are the `[ADD: …]` placeholders being parsed as text, the 3D game project with no content, the one-year gap between "2024 – 2030" and "2ᵉ année", and no concrete Arduino build (sensors, outputs, result).
+- **What's left to do:** describe one Arduino build in one line, explain the date gap, then fill in or delete the 3D game project. With those done and no placeholders left, nothing structural remains for the screen to reject.
