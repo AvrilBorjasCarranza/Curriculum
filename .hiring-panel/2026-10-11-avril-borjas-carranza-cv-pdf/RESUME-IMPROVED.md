@@ -12,7 +12,7 @@ Formée en atelier à l'ENIM (usinage, métrologie, produits bruts, soudage) et 
 
 ## Formation pratique en atelier (ENIM)
 
-- **1er semestre :** métrologie et usinage sur perceuse, tour, fraiseuse et rectifieuse.
+- **1er semestre :** métrologie et usinage sur perceuse, tour, fraiseuse et rectifieuse ; pièce en acier inoxydable réalisée au tour, cotes contrôlées au micromètre et au pied à coulisse.
 - **2e semestre :** procédés et contrôles : élaboration de produits bruts (EPB) ; soudage à l'électrode enrobée, TIG, MIG, au chalumeau et par points.
 
 ## Projets
@@ -25,11 +25,11 @@ Formée en atelier à l'ENIM (usinage, métrologie, produits bruts, soudage) et 
 - Équipe de 3 personnes ; responsable de la modélisation des pièces sous SolidWorks.
 
 **Conception mécanique, SolidWorks (ENIM, travaux pratiques, depuis 2024)**
-- Modélisation de plus de 30 pièces et de 4 mécanismes simples : mise en plan, relations d'assemblage, gestion des contraintes.
+- Modélisation de plus de 30 pièces et de 4 mécanismes simples, dont une pince : mise en plan, relations d'assemblage, gestion des contraintes.
 
 **Montages Arduino, programmation C/C++ (UPNFM, Honduras, 2023)**
 - Formations certifiantes niveaux basique et intermédiaire.
-- Montages individuels : détection de mouvement et détection sonore commandant une LED ; code écrit moi-même en C/C++.
+- Montages individuels, code écrit moi-même en C/C++ : détecteur de mouvement allumant une LED ; capteur sonore allumant une LED d'alerte quand le bruit dépasse un niveau sain.
 
 ## Expérience
 
@@ -71,7 +71,7 @@ Espagnol : langue maternelle · Français : C1 · Anglais : B2
 
 ### Préparer l'entretien
 
-1. **Le redoublement :** une phrase honnête : ce qui s'est passé, ce que vous avez changé, où vous en êtes.
+1. **Le redoublement (seulement si on vous le demande) :** « À mon arrivée en France, il m'a fallu du temps pour m'adapter : une nouvelle culture, de nouveaux rythmes et vivre seule, loin de ma famille. Je n'ai pas validé mon premier semestre. Au second semestre, j'ai repris seule tout le programme du premier pour le valider. Ce redoublement m'a permis d'approfondir mes bases plutôt que de les réapprendre, et j'aborde ma 2ᵉ année avec des bases solides. » Environ 20 secondes, puis passez à autre chose.
 2. **Usinage :** une pièce faite au tour ou à la fraiseuse, et comment vous l'avez mesurée.
 3. **SolidWorks :** quel mécanisme a été le plus difficile à contraindre, et pourquoi.
 4. **L'atelier de peinture :** ce que la garde de jeunes enfants vous a appris (patience, responsabilité, expliquer simplement).
