@@ -73,6 +73,32 @@ def tighten(y):
     parts.append(fade(y[int(last * SR):].copy()))
     return np.concatenate(parts)
 
+def remove_breaths(y, quiet_db=-33.0, min_len=0.0):
+    """Blocks of sound far below the voice (breaths, sighs, whispered counting) become silence."""
+    db = env_db(y); on = db > SIL_DB; k = 0; n = len(on); removed = []
+    while k < n:
+        if on[k]:
+            j = k
+            while j < n and (on[j] or on[j:j + 8].any()): j += 1
+            if db[k:j].max() < quiet_db and (j - k) * 0.01 >= min_len:
+                y[k * HOP:j * HOP] = 0.0; removed.append((round(k * 0.01, 2), round(j * 0.01, 2)))
+            k = j
+        else:
+            k += 1
+    return y, removed
+
+def trim_edges(y, core_db=-33.0, lead=0.25, tail=0.40):
+    """Start just before the first voiced sound, end just after the last one."""
+    db = env_db(y); core = np.where(db > core_db)[0]
+    if len(core) == 0: return y
+    a = core[0]; b = core[-1]
+    k = a
+    while k > 0 and db[k - 1] > SIL_DB and (a - k) < lead * 100: k -= 1
+    j = b
+    while j < len(db) - 1 and db[j + 1] > SIL_DB and (j - b) < tail * 100: j += 1
+    s0 = max(0, (k - 3) * HOP); s1 = min(len(y), (j + 6) * HOP)
+    return fade(y[s0:s1].copy())
+
 def add_pauses(t, a, b, at, dur=0.2):
     """Line from take t [a,b] with silence inserted at the quietest frame near each time in `at`."""
     pts = [quietest(ENV[t], x - 0.08, x + 0.06) for x in at]
@@ -83,30 +109,32 @@ def add_pauses(t, a, b, at, dur=0.2):
     return np.concatenate(out)
 
 # line: (take, first word start, start of the word after the line, [times to add a pause before])
+# word times from faster-whisper (word_timestamps) on each take, checked against the energy envelope
 LINES = {
-    "s1": (3, 6.0, 10.4, []),
-    "s2": (4, 4.8, 7.5, []),
-    "s3": (3, 15.0, 20.0, []),
-    "s4a": (3, 20.0, 21.4, []),
-    "s4b": (3, 21.4, 22.8, []),
-    "s4c": (3, 22.8, 24.2, []),
-    "s5": (3, 24.2, 28.0, []),
-    "s6": (2, 24.5, 32.0, []),
-    "s7": (3, 38.0, 47.0, [42.1]),
-    "s8": (3, 47.0, 51.0, []),
-    "s9": (1, 75.6, 79.7, [77.1, 78.9]),
-    "s10": (2, 52.9, 56.4, []),
-    "s11": (2, 56.4, 61.5, []),
+    "s1": (3, 8.42, 10.66, []),
+    "s2": (4, 6.00, 8.02, []),
+    "s3": (3, 15.18, 20.48, []),
+    "s4a": (3, 20.48, 22.04, []),
+    "s4b": (3, 22.04, 23.36, []),
+    "s4c": (3, 23.36, 24.60, []),
+    "s5": (3, 24.50, 27.40, []),
+    "s6": (2, 24.84, 32.24, []),
+    "s7": (3, 38.64, 47.02, []),
+    "s8": (3, 47.02, 51.15, []),
+    "s9": (1, 75.96, 79.76, [77.10, 78.54]),
+    "s10": (1, 79.76, 81.80, []),
+    "s11": (2, 57.30, 60.70, []),
 }
-START_FIX = {"s2": 4.69}   # take 4: the tail of "idées" ends at 4.68 s, "Si" starts at 4.71 s
+START_FIX = {}
 report = {}
 for k, (t, a, b, extra) in LINES.items():
     a2, b2 = refine_start(t, a), refine_end(t, b)
     a2 = START_FIX.get(k, a2)
     y = add_pauses(t, a2, b2, extra) if extra else cut(t, a2, b2)
-    y = tighten(y)
+    y, br = remove_breaths(y)
+    y = trim_edges(tighten(y))
     sf.write(f"{OUT}/{k}.wav", y.astype(np.float32), SR)
-    report[k] = {"take": t, "from": round(a2, 2), "to": round(b2, 2), "dur": round(len(y) / SR, 2)}
+    report[k] = {"take": t, "from": round(a2, 2), "to": round(b2, 2), "dur": round(len(y) / SR, 2), "breaths_removed": br}
 
 GAP = {"s1": 0.5, "s4a": 0.32, "s4b": 0.32, "s4c": 0.45}
 order = ["s1", "s2", "s3", "s4a", "s4b", "s4c", "s5", "s6", "s7", "s8", "s9", "s10", "s11"]
