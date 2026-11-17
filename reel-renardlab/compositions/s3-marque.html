@@ -11,10 +11,10 @@
   <div id="root" data-composition-id="s3-marque" data-width="1080" data-height="1920">
     <div id="s3-marque-stage">
       <div id="s3-marque-ground"></div>
-      <div id="s3-word" style="position:absolute;left:0;top:300px;width:1080px;text-align:center;font-size:118px;color:#FFF3E3;letter-spacing:-0.02em;">
-        <span class="s3-ch" style="display:inline-block">R</span><span class="s3-ch" style="display:inline-block">e</span><span class="s3-ch" style="display:inline-block">n</span><span class="s3-ch" style="display:inline-block">a</span><span class="s3-ch" style="display:inline-block">r</span><span class="s3-ch" style="display:inline-block">d</span><span class="s3-ch" style="display:inline-block">L</span><span class="s3-ch" style="display:inline-block">a</span><span class="s3-ch" style="display:inline-block">b</span><span class="s3-ch" style="display:inline-block;color:#1A1410">3D</span>
+      <div id="s3-word" style="position:absolute;left:0;top:290px;width:1080px;height:150px;display:flex;align-items:center;justify-content:center;gap:22px;font-size:96px;color:#FFF3E3;letter-spacing:-0.02em;">
+        <img id="s3-logo" src="assets/logo-renardlab.png" alt="" style="width:150px;height:150px;" /><span><span class="s3-ch" style="display:inline-block">R</span><span class="s3-ch" style="display:inline-block">e</span><span class="s3-ch" style="display:inline-block">n</span><span class="s3-ch" style="display:inline-block">a</span><span class="s3-ch" style="display:inline-block">r</span><span class="s3-ch" style="display:inline-block">d</span><span class="s3-ch" style="display:inline-block">L</span><span class="s3-ch" style="display:inline-block">a</span><span class="s3-ch" style="display:inline-block">b</span><span class="s3-ch" style="display:inline-block;color:#1A1410">3D</span></span>
       </div>
-      <div id="s3-sub" style="position:absolute;left:0;top:445px;width:1080px;text-align:center;font-family:Inter;font-weight:900;font-size:36px;letter-spacing:0.18em;color:#1A1410;">IMPRESSION 3D · METZ</div>
+      <div id="s3-sub" style="position:absolute;left:0;top:462px;width:1080px;text-align:center;font-family:Inter;font-weight:900;font-size:32px;letter-spacing:0.18em;color:#1A1410;">IMPRESSION 3D · METZ</div>
       <svg class="s3-marque-svg" viewBox="0 0 1080 1920">
         <rect x="200" y="520" width="34" height="520" rx="8" fill="#1A1410"/><rect x="846" y="520" width="34" height="520" rx="8" fill="#1A1410"/>
         <rect x="190" y="1002" width="700" height="40" rx="10" fill="#1A1410"/>
@@ -35,11 +35,12 @@
     (function () {
 
       const tl = gsap.timeline({ paused: true });
-      const D = 5.539;
+      const D = 5.792;
       const ST = "#s3-marque-stage";
 
 
       tl.fromTo(".s3-ch", { opacity: 0, y: 40, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.25, stagger: 0.04, ease: "power4.out" }, 0.1);
+      tl.fromTo("#s3-logo", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.7)" }, 0.0);
       tl.fromTo("#s3-sub", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 0.6);
       tl.fromTo("#s3-gantry", { y: 340 }, { y: 340, duration: 0.04, ease: "none" }, 0.900);
       tl.fromTo("#s3-head", { x: -150 }, { x: 150, duration: 0.180, ease: "none" }, 0.900);

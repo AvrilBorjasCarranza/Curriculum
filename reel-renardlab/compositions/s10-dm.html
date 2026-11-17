@@ -16,7 +16,7 @@
       <div id="s10-typing" style="position:absolute;left:600px;top:520px;width:200px;height:100px;border-radius:50px;background:#FF6B1A;display:flex;align-items:center;justify-content:center;gap:16px;">
         <span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:#FFF3E3;display:block"></span><span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:#FFF3E3;display:block"></span><span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:#FFF3E3;display:block"></span>
       </div>
-      <div id="s10-msg" style="position:absolute;left:330px;top:500px;width:590px;padding:30px 40px;border-radius:44px 44px 10px 44px;background:#FF6B1A;color:#FFF3E3;font-family:Inter;font-weight:900;font-size:46px;line-height:1.2;">Salut ! J’ai une idée pour ma boutique…</div>
+      <div id="s10-msg" style="position:absolute;left:330px;top:500px;width:590px;padding:30px 40px;border-radius:44px 44px 10px 44px;background:#FF6B1A;color:#FFF3E3;font-family:Inter;font-weight:900;font-size:46px;line-height:1.2;">Salut ! J’ai une idée…</div>
       <div id="s10-input" style="position:absolute;left:150px;top:930px;width:640px;height:90px;border-radius:45px;background:#fff;border:5px solid #1A1410;"></div>
       <svg class="s10-dm-svg" viewBox="0 0 1080 1920">
         <g id="s10-send"><circle cx="870" cy="975" r="56" fill="#1A1410"/>
@@ -29,17 +29,17 @@
     (function () {
 
       const tl = gsap.timeline({ paused: true });
-      const D = 3.692;
+      const D = 2.524;
       const ST = "#s10-dm-stage";
 
 
       tl.fromTo("#s10-card", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power4.out" }, 0.05);
       tl.fromTo("#s10-head, #s10-input, #s10-send", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.25);
-      tl.fromTo("#s10-typing", { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }, 0.5);
-      [0, 1, 2].forEach((i) => tl.fromTo(document.querySelectorAll(".s10-dot")[i], { y: 0 }, { y: -14, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.6 + i * 0.1));
-      tl.to("#s10-typing", { opacity: 0, duration: 0.08 }, 1.6);
-      tl.fromTo("#s10-msg", { opacity: 0, scale: 0.75, transformOrigin: "100% 100%" }, { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }, 1.62);
-      tl.fromTo("#s10-send", { scale: 1, svgOrigin: "870 975" }, { scale: 0.82, svgOrigin: "870 975", duration: 0.08, yoyo: true, repeat: 1 }, 2.6);
+      tl.fromTo("#s10-typing", { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }, 0.3);
+      [0, 1, 2].forEach((i) => tl.fromTo(document.querySelectorAll(".s10-dot")[i], { y: 0 }, { y: -14, duration: 0.15, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.38 + i * 0.1));
+      tl.to("#s10-typing", { opacity: 0, duration: 0.08 }, 0.9);
+      tl.fromTo("#s10-msg", { opacity: 0, scale: 0.75, transformOrigin: "100% 100%" }, { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }, 0.92);
+      tl.fromTo("#s10-send", { scale: 1, svgOrigin: "870 975" }, { scale: 0.82, svgOrigin: "870 975", duration: 0.08, yoyo: true, repeat: 1 }, D - 0.5);
 
       window.__timelines["s10-dm"] = tl;
     })();

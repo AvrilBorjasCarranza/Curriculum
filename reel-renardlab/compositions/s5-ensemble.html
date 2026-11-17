@@ -34,7 +34,7 @@
     (function () {
 
       const tl = gsap.timeline({ paused: true });
-      const D = 5.539;
+      const D = 4.227;
       const ST = "#s5-ensemble-stage";
       const whipIn = () => tl.fromTo(ST, { x: 760, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
       const blurOut = () => tl.fromTo(ST, { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", immediateRender: false }, D - 0.18);

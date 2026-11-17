@@ -1,0 +1,186 @@
+[
+ {
+  "t": 0.15,
+  "type": "pop",
+  "g": 0.7,
+  "note": "idea bulb"
+ },
+ {
+  "t": 0.75,
+  "type": "whoosh",
+  "len": 0.55,
+  "g": 0.6,
+  "note": "copy arc"
+ },
+ {
+  "t": 2.0,
+  "type": "hit",
+  "g": 0.8,
+  "note": "COPIÉ stamp"
+ },
+ {
+  "t": 2.5,
+  "type": "wipe",
+  "note": "whip to s2"
+ },
+ {
+  "t": 3.979,
+  "type": "thump",
+  "g": 0.9,
+  "note": "RESTE"
+ },
+ {
+  "t": 4.361,
+  "type": "whoosh",
+  "len": 0.45,
+  "g": 0.7,
+  "note": "colour flood"
+ },
+ {
+  "t": 4.811,
+  "type": "pop",
+  "g": 0.8,
+  "note": "logo"
+ },
+ {
+  "t": 10.203,
+  "type": "whoosh",
+  "len": 0.4,
+  "g": 0.8,
+  "note": "zoom through printed object"
+ },
+ {
+  "t": 10.573,
+  "type": "pop",
+  "note": "figurine"
+ },
+ {
+  "t": 12.431,
+  "type": "pop",
+  "g": 0.9,
+  "note": "keychain"
+ },
+ {
+  "t": 14.185,
+  "type": "pop",
+  "note": "characters"
+ },
+ {
+  "t": 16.029,
+  "type": "wipe",
+  "note": "whip to s5"
+ },
+ {
+  "t": 18.899,
+  "type": "magic",
+  "g": 0.7,
+  "note": "sketch becomes product"
+ },
+ {
+  "t": 20.376,
+  "type": "wipe",
+  "g": 0.5,
+  "note": "blur swap to s6"
+ },
+ {
+  "t": 20.876,
+  "type": "pop",
+  "g": 0.6,
+  "note": "question mark"
+ },
+ {
+  "t": 24.796,
+  "type": "hit",
+  "g": 0.8,
+  "note": "EXCLUSIF stamp"
+ },
+ {
+  "t": 26.436,
+  "type": "click",
+  "g": 0.9,
+  "note": "padlock shackle closes"
+ },
+ {
+  "t": 28.257,
+  "type": "whoosh",
+  "len": 0.35,
+  "g": 0.6,
+  "note": "iris"
+ },
+ {
+  "t": 28.507,
+  "type": "pop",
+  "g": 0.6,
+  "note": "big question mark"
+ },
+ {
+  "t": 30.566,
+  "type": "success",
+  "note": "green check"
+ },
+ {
+  "t": 34.388,
+  "type": "wipe",
+  "g": 0.6,
+  "note": "iris to s8"
+ },
+ {
+  "t": 33.208,
+  "type": "pop",
+  "g": 0.8,
+  "note": "gift check"
+ },
+ {
+  "t": 35.788,
+  "type": "pop",
+  "g": 0.8,
+  "note": "gift lands"
+ },
+ {
+  "t": 38.673,
+  "type": "wipe",
+  "note": "whip to s9"
+ },
+ {
+  "t": 39.643,
+  "type": "thump",
+  "g": 0.6,
+  "note": "Metz pin lands"
+ },
+ {
+  "t": 42.976,
+  "type": "whoosh",
+  "len": 0.4,
+  "g": 0.8,
+  "note": "zoom through pin"
+ },
+ {
+  "t": 44.246,
+  "type": "pop",
+  "g": 0.8,
+  "note": "message bubble"
+ },
+ {
+  "t": 45.35,
+  "type": "click",
+  "note": "send"
+ },
+ {
+  "t": 45.85,
+  "type": "wipe",
+  "g": 0.6,
+  "note": "iris to s11"
+ },
+ {
+  "t": 46.35,
+  "type": "whoosh",
+  "len": 1.1,
+  "g": 0.6,
+  "note": "paper plane"
+ },
+ {
+  "t": 49.822,
+  "type": "magic",
+  "note": "logo end card"
+ }
+]

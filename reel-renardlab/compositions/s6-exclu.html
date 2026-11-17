@@ -45,7 +45,7 @@
     (function () {
 
       const tl = gsap.timeline({ paused: true });
-      const D = 9.231;
+      const D = 7.881;
       const ST = "#s6-exclu-stage";
       const blurIn = (d = 0.2) => tl.fromTo(ST, { opacity: 0, filter: "blur(10px)", scale: 1.04 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: d, ease: "power2.out" }, 0);
       const blurOut = () => tl.fromTo(ST, { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", immediateRender: false }, D - 0.18);
@@ -54,14 +54,14 @@
       blurIn(0.18);
       tl.fromTo("#s6-shop", { x: 420, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power4.out" }, 0.1);
       tl.fromTo("#s6-q", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 0.5);
-      tl.to("#s6-q", { opacity: 0, scale: 0.6, duration: 0.15, ease: "power2.in" }, 1.667);
-      tl.fromTo("#s6-box", { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.4)" }, 1.767);
-      tl.fromTo("#s6-route", { strokeDashoffset: 2000 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 2.467);
-      tl.fromTo("#s6-x", { scale: 0, svgOrigin: "570 580" }, { scale: 1, svgOrigin: "570 580", duration: 0.35, ease: "back.out(2.2)" }, 4.969);
-      tl.fromTo("#s6-stamp", { scale: 2.2, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.24, ease: "power4.in" }, 5.219);
-      tl.fromTo("#s6-shop", { filter: "grayscale(0) brightness(1)" }, { filter: "grayscale(1) brightness(0.55)", duration: 0.5, ease: "power2.out" }, 6.276);
-      tl.fromTo("#s6-lock", { y: -200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 6.376);
-      tl.fromTo("#s6-shackle", { y: -26 }, { y: 0, duration: 0.14, ease: "power3.in" }, 7.176);
+      tl.to("#s6-q", { opacity: 0, scale: 0.6, duration: 0.15, ease: "power2.in" }, 1.210);
+      tl.fromTo("#s6-box", { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.4)" }, 1.310);
+      tl.fromTo("#s6-route", { strokeDashoffset: 2000 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 2.010);
+      tl.fromTo("#s6-x", { scale: 0, svgOrigin: "570 580" }, { scale: 1, svgOrigin: "570 580", duration: 0.35, ease: "back.out(2.2)" }, 3.970);
+      tl.fromTo("#s6-stamp", { scale: 2.2, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.24, ease: "power4.in" }, 4.220);
+      tl.fromTo("#s6-shop", { filter: "grayscale(0) brightness(1)" }, { filter: "grayscale(1) brightness(0.55)", duration: 0.5, ease: "power2.out" }, 5.160);
+      tl.fromTo("#s6-lock", { y: -200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 5.260);
+      tl.fromTo("#s6-shackle", { y: -26 }, { y: 0, duration: 0.14, ease: "power3.in" }, 6.060);
       blurOut();
 
       window.__timelines["s6-exclu"] = tl;

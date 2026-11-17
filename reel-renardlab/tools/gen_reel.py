@@ -18,7 +18,35 @@ SCENES = [
     ("s7-facile", 17, 20, CREAM), ("s8-noel", 20, 23, XMAS), ("s9-france", 23, 26, NAVY),
     ("s10-dm", 26, 28, ORANGE), ("s11-partage", 28, 30.5, INK),
 ]
-TOTAL = bar(30.5)  # 56.308 s
+# ---------------------------------------------------------------- voice-driven timing
+VOICE = json.load(open(os.path.join(OUT, "assets/voice/words.json")))
+VKEYS = {"s1-hook": "s1", "s2-reste": "s2", "s3-marque": "s3", "s5-ensemble": "s5", "s6-exclu": "s6",
+         "s7-facile": "s7", "s8-noel": "s8", "s9-france": "s9", "s10-dm": "s10", "s11-partage": "s11"}
+PADS = {"s1": (0.1, 0.3), "s2": (0.25, 0.35), "s3": (0.35, 0.4), "s5": (0.3, 0.4), "s6": (0.3, 0.45),
+        "s7": (0.35, 0.4), "s8": (0.35, 0.45), "s9": (0.3, 0.55), "s10": (0.3, 0.5), "s11": (0.25, 0)}
+END_CARD = 2.6
+dur, start, VSTART, VEND = {}, {}, {}, {}
+t = 0.0
+S4_BEATS = []
+for sid, *_ in SCENES:
+    start[sid] = round(t, 3)
+    if sid == "s4-produits":
+        bt = 0.0
+        for k in ("s4a", "s4b", "s4c"):
+            S4_BEATS.append(round(bt, 3))
+            VSTART[k] = round(t + bt + 0.2, 3)
+            bt += 0.2 + VOICE[k]["dur"] + 0.3
+            VEND[k] = round(t + bt, 3)
+        d = bt + 0.1
+    else:
+        k = VKEYS[sid]; pin, pout = PADS[k]
+        VSTART[k] = round(t + pin, 3)
+        d = pin + VOICE[k]["dur"] + (pout if k != "s11" else 0.3 + END_CARD)
+        VEND[k] = round(t + d, 3)
+    dur[sid] = round(d, 3)
+    t += d
+TOTAL = round(t, 3)
+S11_END = round(0.25 + VOICE["s11"]["dur"] + 0.3, 3)
 
 # ---------------------------------------------------------------- captions (the script, verbatim)
 CAPS = {
@@ -26,12 +54,12 @@ CAPS = {
     "s2-reste": ["Si tu as", "un commerce,", "reste."],
     "s3-marque": ["Chez RenardLab3D,", "on crée des produits", "personnalisés", "en impression 3D", "pour les commerces."],
     "s4a": ["Ta mascotte", "en figurine ?"], "s4b": ["Ton logo", "en porte-clés ?"], "s4c": ["Tes propres", "personnages ?"],
-    "s5-ensemble": ["On imagine", "tes produits", "avec toi", "et on les réalise", "selon tes envies."],
+    "s5-ensemble": ["On imagine", "tes produits avec toi", "et on les réalise", "selon tes envies."],
     "s6-exclu": ["Et le magasin", "d’en face ?", "Tu peux nous demander", "de ne pas vendre", "tes créations", "à un concurrent précis.", "Tes produits,", "il ne les aura pas", "chez nous."],
-    "s7-facile": ["Tu n’y connais rien", "en impression 3D ?", "Pas de problème.", "Tu nous donnes", "ton idée,", "on s’occupe du reste."],
+    "s7-facile": ["Tu n’y connais rien", "en impression 3D ?", "Pas de problème.", "Tu nous donnes ton idée,", "on s’occupe du reste."],
     "s8-noel": ["Et pour Noël,", "pourquoi ne pas proposer", "tes propres créations", "à tes clients ?"],
-    "s9-france": ["Remise en main propre", "à Metz", "et livraison", "partout en France,", "toute l’année."],
-    "s10-dm": ["Écris-nous", "en DM", "pour commencer."],
+    "s9-france": ["Remise en main propre", "à Metz et livraison", "partout en France,", "toute l’année."],
+    "s10-dm": ["Écris-nous en DM", "pour commencer."],
     "s11-partage": ["Et envoie cette vidéo", "à un commerçant", "qui pourrait", "en avoir besoin !"],
 }
 # emphasis words (highlighted yellow and slightly larger)
@@ -65,7 +93,55 @@ def time_groups(groups, w0, w1, gap=0.06):
         t += d + gap
     return out
 
-CAPTION_TIMES = {k: time_groups(v, *WINDOWS[k]) for k, v in CAPS.items()}
+import difflib, unicodedata
+def norm(x):
+    x = unicodedata.normalize("NFD", x.lower())
+    return "".join(c for c in x if c.isalnum() and not unicodedata.combining(c))
+
+def align(groups, vk):
+    words, vd, off = VOICE[vk]["words"], VOICE[vk]["dur"], VSTART[vk]
+    sc, st = [], []
+    for w in words:
+        n = norm(w["text"]); e = min(w["end"], vd); s0 = min(w["start"], e)
+        for i, c in enumerate(n):
+            sc.append(c); st.append(s0 + (e - s0) * i / max(1, len(n)))
+    toks_by_group = []
+    for g in groups:
+        toks = []
+        for x in g.split(" "):
+            if not norm(x) and toks: toks[-1] += "\u00a0" + x
+            else: toks.append(x)
+        toks_by_group.append(toks)
+    flat = [x for tg in toks_by_group for x in tg]
+    cc, owner = [], []
+    for i, x in enumerate(flat):
+        for c in norm(x): cc.append(c); owner.append(i)
+    m = {}
+    for a, b, size in difflib.SequenceMatcher(None, cc, sc, autojunk=False).get_matching_blocks():
+        for j in range(size): m[a + j] = b + j
+    times = [None] * len(flat)
+    for ci, wi in enumerate(owner):
+        if times[wi] is None and ci in m: times[wi] = st[m[ci]]
+    known = [i for i, v in enumerate(times) if v is not None]
+    for i in range(len(times)):
+        if times[i] is None:
+            prev = max([k for k in known if k < i], default=None); nxt = min([k for k in known if k > i], default=None)
+            a = times[prev] if prev is not None else 0.0; b = times[nxt] if nxt is not None else vd
+            times[i] = (a + b) / 2
+    for i in range(1, len(times)): times[i] = max(times[i], times[i - 1] + 0.03)
+    out, k = [], 0
+    for g, tg in zip(groups, toks_by_group):
+        wl = [(x, round(off + times[k + j], 3)) for j, x in enumerate(tg)]
+        k += len(tg)
+        out.append({"text": g, "start": round(wl[0][1] - 0.08, 3), "words": wl})
+    for i, g in enumerate(out):
+        g["end"] = round(out[i + 1]["start"] - 0.04, 3) if i + 1 < len(out) else round(min(off + vd + 0.3, VEND[vk] - 0.1), 3)
+    return out
+
+CAP_V = {"s1-hook": "s1", "s2-reste": "s2", "s3-marque": "s3", "s4a": "s4a", "s4b": "s4b", "s4c": "s4c",
+         "s5-ensemble": "s5", "s6-exclu": "s6", "s7-facile": "s7", "s8-noel": "s8", "s9-france": "s9",
+         "s10-dm": "s10", "s11-partage": "s11"}
+CAPTION_TIMES = {k: align(v, CAP_V[k]) for k, v in CAPS.items()}
 
 # ---------------------------------------------------------------- shared scene scaffolding
 PRELUDE = """
@@ -211,10 +287,10 @@ def s3(d):
     for i, w in enumerate(LAYERS):
         y = 976 - i * 26
         lay.append(f'<rect class="s3-layer" id="s3-l{i}" x="{540 - w / 2}" y="{y}" width="{w}" height="26" rx="6" fill="{CREAM}" stroke="{ORANGE_D}" stroke-width="3"/>')
-    html = f'''      <div id="s3-word" style="position:absolute;left:0;top:300px;width:1080px;text-align:center;font-size:118px;color:{CREAM};letter-spacing:-0.02em;">
-        {"".join(f'<span class="s3-ch" style="display:inline-block">{c}</span>' for c in "RenardLab")}<span class="s3-ch" style="display:inline-block;color:{INK}">3D</span>
+    html = f'''      <div id="s3-word" style="position:absolute;left:0;top:290px;width:1080px;height:150px;display:flex;align-items:center;justify-content:center;gap:22px;font-size:96px;color:{CREAM};letter-spacing:-0.02em;">
+        <img id="s3-logo" src="assets/logo-renardlab.png" alt="" style="width:150px;height:150px;" /><span>{"".join(f'<span class="s3-ch" style="display:inline-block">{c}</span>' for c in "RenardLab")}<span class="s3-ch" style="display:inline-block;color:{INK}">3D</span></span>
       </div>
-      <div id="s3-sub" style="position:absolute;left:0;top:445px;width:1080px;text-align:center;font-family:Inter;font-weight:900;font-size:36px;letter-spacing:0.18em;color:{INK};">IMPRESSION 3D · METZ</div>
+      <div id="s3-sub" style="position:absolute;left:0;top:462px;width:1080px;text-align:center;font-family:Inter;font-weight:900;font-size:32px;letter-spacing:0.18em;color:{INK};">IMPRESSION 3D · METZ</div>
       <svg class="{sid}-svg" viewBox="0 0 1080 1920">
         <rect x="200" y="520" width="34" height="520" rx="8" fill="{INK}"/><rect x="846" y="520" width="34" height="520" rx="8" fill="{INK}"/>
         <rect x="190" y="1002" width="700" height="40" rx="10" fill="{INK}"/>
@@ -232,6 +308,7 @@ def s3(d):
     # gantry: head tip at y 640 when gantry y=0; layer i top at 976-26i -> gantry offset = (976-26i) - 640
     js_lines = ['''
       tl.fromTo(".s3-ch", { opacity: 0, y: 40, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.25, stagger: 0.04, ease: "power4.out" }, 0.1);
+      tl.fromTo("#s3-logo", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.7)" }, 0.0);
       tl.fromTo("#s3-sub", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 0.6);''']
     t0, step = 0.9, 0.2
     for i, w in enumerate(LAYERS):
@@ -252,7 +329,7 @@ def s3(d):
     return scene_file(sid, d, ORANGE, ORANGE, "", html, "\n".join(js_lines)), end_print
 
 # ---------------------------------------------------------------- S4 products (3 beats)
-def s4(d):
+def s4(d, b1, b2):
     sid = "s4-produits"
     fig = f'''<g id="s4-fig">
         <ellipse cx="540" cy="960" rx="230" ry="46" fill="{INK}"/><ellipse cx="540" cy="944" rx="230" ry="46" fill="#3A2C22"/>
@@ -298,7 +375,6 @@ def s4(d):
       </svg>
 '''
     css = f"#s4-label span {{ position: absolute; left: 0; width: 1080px; text-align: center; }}"
-    B = BAR
     js = f'''
       blurIn(0.15);
       ["#s4-b0", "#s4-b1", "#s4-b2", "#s4-lab0", "#s4-lab1", "#s4-lab2"].forEach((s) => tl.set(s, {{ opacity: 0 }}, 0));
@@ -306,17 +382,17 @@ def s4(d):
       tl.set("#s4-b0, #s4-lab0", {{ opacity: 1 }}, 0.0);
       tl.fromTo("#s4-fig", {{ scale: 1.3, svgOrigin: "540 960" }}, {{ scale: 1, svgOrigin: "540 960", duration: 0.45, ease: "expo.out" }}, 0.0);
       tl.fromTo("#s4-lab0", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.16 }}, 0.05);
-      tl.set("#s4-b0, #s4-lab0", {{ opacity: 0 }}, {B:.3f});
+      tl.set("#s4-b0, #s4-lab0", {{ opacity: 0 }}, {b1:.3f});
       // beat 2: keychain
-      tl.set("#s4-b1, #s4-lab1", {{ opacity: 1 }}, {B:.3f});
-      tl.fromTo("#s4-key", {{ scale: 1.3, svgOrigin: "540 420" }}, {{ scale: 1, svgOrigin: "540 420", duration: 0.4, ease: "expo.out" }}, {B:.3f});
-      tl.fromTo("#s4-tag", {{ rotation: 24, svgOrigin: "540 480" }}, {{ rotation: 0, svgOrigin: "540 480", duration: 1.2, ease: "elastic.out(1, 0.4)" }}, {B:.3f});
-      tl.fromTo("#s4-lab1", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.16 }}, {B + 0.05:.3f});
-      tl.set("#s4-b1, #s4-lab1", {{ opacity: 0 }}, {2 * B:.3f});
+      tl.set("#s4-b1, #s4-lab1", {{ opacity: 1 }}, {b1:.3f});
+      tl.fromTo("#s4-key", {{ scale: 1.3, svgOrigin: "540 420" }}, {{ scale: 1, svgOrigin: "540 420", duration: 0.4, ease: "expo.out" }}, {b1:.3f});
+      tl.fromTo("#s4-tag", {{ rotation: 24, svgOrigin: "540 480" }}, {{ rotation: 0, svgOrigin: "540 480", duration: 1.2, ease: "elastic.out(1, 0.4)" }}, {b1:.3f});
+      tl.fromTo("#s4-lab1", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.16 }}, {b1 + 0.05:.3f});
+      tl.set("#s4-b1, #s4-lab1", {{ opacity: 0 }}, {b2:.3f});
       // beat 3: characters
-      tl.set("#s4-b2, #s4-lab2", {{ opacity: 1 }}, {2 * B:.3f});
-      [0, 1, 2].forEach((i) => tl.fromTo("#s4-c" + i, {{ y: 260, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }}, {2 * B:.3f} + i * 0.09));
-      tl.fromTo("#s4-lab2", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.16 }}, {2 * B + 0.05:.3f});
+      tl.set("#s4-b2, #s4-lab2", {{ opacity: 1 }}, {b2:.3f});
+      [0, 1, 2].forEach((i) => tl.fromTo("#s4-c" + i, {{ y: 260, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.6)" }}, {b2:.3f} + i * 0.09));
+      tl.fromTo("#s4-lab2", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.16 }}, {b2 + 0.05:.3f});
       whipOut();
 '''
     return scene_file(sid, d, CREAM, CREAM, css, html, js)
@@ -357,7 +433,7 @@ def s5(d):
 # ---------------------------------------------------------------- S6 exclusivity
 def s6(d, caps):
     sid = "s6-exclu"
-    g = {c["text"]: c["start"] - bar(12) for c in caps}
+    g = {c["text"]: c["start"] - start["s6-exclu"] for c in caps}
     t_ask, t_conc, t_prod = g["Tu peux nous demander"], g["à un concurrent précis."], g["Tes produits,"]
     html = f'''      <svg class="{sid}-svg" viewBox="0 0 1080 1920">
         <g id="s6-shop">{shop("s6-shop-in", 600, 560, 400, "#5E6068", "EN FACE", body="#C9C9CF")}</g>
@@ -397,8 +473,8 @@ def s6(d, caps):
 # ---------------------------------------------------------------- S7 easy
 def s7(d, caps):
     sid = "s7-facile"
-    g = {c["text"]: c["start"] - bar(17) for c in caps}
-    t_ok, t_give, t_rest = g["Pas de problème."], g["Tu nous donnes"], g["on s’occupe du reste."]
+    g = {c["text"]: c["start"] - start["s7-facile"] for c in caps}
+    t_ok, t_give, t_rest = g["Pas de problème."], g["Tu nous donnes ton idée,"], g["on s’occupe du reste."]
     html = f'''      <div id="s7-q" style="position:absolute;left:0;top:330px;width:1080px;text-align:center;font-size:520px;line-height:1;color:{INK};">?</div>
       <svg class="{sid}-svg" viewBox="0 0 1080 1920">
         <g id="s7-ok"><circle cx="540" cy="620" r="230" fill="{GREEN}" stroke="{INK}" stroke-width="10"/>
@@ -486,8 +562,9 @@ def proj(lon, lat):
     s = 660 / (x1 - x0)
     return 200 + (lon * k - x0) * s, 330 + (51.1 - lat) * s
 
-def s9(d):
+def s9(d, caps):
     sid = "s9-france"
+    g = {c["text"]: c["start"] - start["s9-france"] for c in caps}
     poly = " ".join(f"{proj(*p)[0]:.1f},{proj(*p)[1]:.1f}" for p in FR)
     mx, my = proj(*METZ)
     routes, dots = [], []
@@ -509,10 +586,10 @@ def s9(d):
       whipIn();
       tl.fromTo("#s9-fr", {{ opacity: 0, scale: 0.92, svgOrigin: "540 700" }}, {{ opacity: 1, scale: 1, svgOrigin: "540 700", duration: 0.5, ease: "power4.out" }}, 0.05);
       tl.fromTo("#s9-pin", {{ y: -300, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }}, 0.4);
-      pop("#s9-metz", 0.8);
-      tl.fromTo(".s9-route", {{ strokeDashoffset: 2000 }}, {{ strokeDashoffset: 1300, duration: 0.6, stagger: 0.12, ease: "power2.out" }}, 2.0);
-      tl.fromTo(".s9-dot", {{ scale: 0, transformOrigin: "50% 50%" }}, {{ scale: 1, duration: 0.3, stagger: 0.12, ease: "back.out(2.5)" }}, 2.4);
-      tl.fromTo("#s9-year", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.18 }}, 3.3);
+      pop("#s9-metz", {g["à Metz et livraison"]:.3f});
+      tl.fromTo(".s9-route", {{ strokeDashoffset: 2000 }}, {{ strokeDashoffset: 1300, duration: 0.6, stagger: 0.1, ease: "power2.out" }}, {g["à Metz et livraison"] + 0.45:.3f});
+      tl.fromTo(".s9-dot", {{ scale: 0, transformOrigin: "50% 50%" }}, {{ scale: 1, duration: 0.3, stagger: 0.1, ease: "back.out(2.5)" }}, {g["à Metz et livraison"] + 0.85:.3f});
+      tl.fromTo("#s9-year", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.18 }}, {g["partout en France,"]:.3f});
       tl.fromTo("#s9-pin", {{ scale: 1, svgOrigin: "{mx:.1f} {my - 92:.1f}" }}, {{ scale: 34, svgOrigin: "{mx:.1f} {my - 92:.1f}", duration: 0.4, ease: "power3.in", immediateRender: false }}, D - 0.4);
       tl.fromTo("#s9-metz, #s9-year", {{ opacity: 1 }}, {{ opacity: 0, duration: 0.15, immediateRender: false }}, D - 0.4);
 '''
@@ -526,7 +603,7 @@ def s10(d):
       <div id="s10-typing" style="position:absolute;left:600px;top:520px;width:200px;height:100px;border-radius:50px;background:{ORANGE};display:flex;align-items:center;justify-content:center;gap:16px;">
         <span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:{CREAM};display:block"></span><span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:{CREAM};display:block"></span><span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:{CREAM};display:block"></span>
       </div>
-      <div id="s10-msg" style="position:absolute;left:330px;top:500px;width:590px;padding:30px 40px;border-radius:44px 44px 10px 44px;background:{ORANGE};color:{CREAM};font-family:Inter;font-weight:900;font-size:46px;line-height:1.2;">Salut ! J’ai une idée pour ma boutique…</div>
+      <div id="s10-msg" style="position:absolute;left:330px;top:500px;width:590px;padding:30px 40px;border-radius:44px 44px 10px 44px;background:{ORANGE};color:{CREAM};font-family:Inter;font-weight:900;font-size:46px;line-height:1.2;">Salut ! J’ai une idée…</div>
       <div id="s10-input" style="position:absolute;left:150px;top:930px;width:640px;height:90px;border-radius:45px;background:#fff;border:5px solid {INK};"></div>
       <svg class="{sid}-svg" viewBox="0 0 1080 1920">
         <g id="s10-send"><circle cx="870" cy="975" r="56" fill="{INK}"/>
@@ -536,11 +613,11 @@ def s10(d):
     js = f'''
       tl.fromTo("#s10-card", {{ y: 200, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.45, ease: "power4.out" }}, 0.05);
       tl.fromTo("#s10-head, #s10-input, #s10-send", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.2 }}, 0.25);
-      tl.fromTo("#s10-typing", {{ opacity: 0, scale: 0.75 }}, {{ opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }}, 0.5);
-      [0, 1, 2].forEach((i) => tl.fromTo(document.querySelectorAll(".s10-dot")[i], {{ y: 0 }}, {{ y: -14, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut" }}, 0.6 + i * 0.1));
-      tl.to("#s10-typing", {{ opacity: 0, duration: 0.08 }}, 1.6);
-      tl.fromTo("#s10-msg", {{ opacity: 0, scale: 0.75, transformOrigin: "100% 100%" }}, {{ opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }}, 1.62);
-      tl.fromTo("#s10-send", {{ scale: 1, svgOrigin: "870 975" }}, {{ scale: 0.82, svgOrigin: "870 975", duration: 0.08, yoyo: true, repeat: 1 }}, 2.6);
+      tl.fromTo("#s10-typing", {{ opacity: 0, scale: 0.75 }}, {{ opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }}, 0.3);
+      [0, 1, 2].forEach((i) => tl.fromTo(document.querySelectorAll(".s10-dot")[i], {{ y: 0 }}, {{ y: -14, duration: 0.15, yoyo: true, repeat: 1, ease: "sine.inOut" }}, 0.38 + i * 0.1));
+      tl.to("#s10-typing", {{ opacity: 0, duration: 0.08 }}, 0.9);
+      tl.fromTo("#s10-msg", {{ opacity: 0, scale: 0.75, transformOrigin: "100% 100%" }}, {{ opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }}, 0.92);
+      tl.fromTo("#s10-send", {{ scale: 1, svgOrigin: "870 975" }}, {{ scale: 0.82, svgOrigin: "870 975", duration: 0.08, yoyo: true, repeat: 1 }}, D - 0.5);
 '''
     return scene_file(sid, d, ORANGE, NAVY, "", html, js)
 
@@ -555,13 +632,13 @@ def s11(d):
         </g>
       </svg>
       <div id="s11-end" style="position:absolute;left:0;top:0;width:1080px;height:1920px;">
-        <div id="s11-word" style="position:absolute;left:0;top:520px;width:1080px;text-align:center;font-size:124px;color:{CREAM};letter-spacing:-0.02em;">RenardLab<span style="color:{ORANGE}">3D</span></div>
-        <div id="s11-sub" style="position:absolute;left:0;top:690px;width:1080px;text-align:center;font-family:Inter;font-weight:900;font-size:38px;letter-spacing:0.14em;color:{CREAM};opacity:0.85;">IMPRESSION 3D PERSONNALISÉE</div>
-        <div id="s11-loc" style="position:absolute;left:0;top:760px;width:1080px;text-align:center;font-family:Inter;font-weight:700;font-size:36px;color:{CREAM};opacity:0.7;">Metz · livraison partout en France</div>
-        <div id="s11-cta" class="chip" style="left:0;top:900px;width:1080px;text-align:center;background:none;color:{INK};font-size:52px;"><span style="background:{ORANGE};padding:18px 44px;border-radius:999px;border:6px solid {CREAM};">ÉCRIS-NOUS EN DM</span></div>
+        <img id="s11-word" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" style="position:absolute;left:280px;top:290px;width:520px;height:520px;" />
+        <div id="s11-sub" style="position:absolute;left:0;top:850px;width:1080px;text-align:center;font-family:Inter;font-weight:900;font-size:38px;letter-spacing:0.14em;color:{CREAM};opacity:0.85;">IMPRESSION 3D PERSONNALISÉE</div>
+        <div id="s11-loc" style="position:absolute;left:0;top:910px;width:1080px;text-align:center;font-family:Inter;font-weight:700;font-size:36px;color:{CREAM};opacity:0.7;">Metz · livraison partout en France</div>
+        <div id="s11-cta" class="chip" style="left:0;top:990px;width:1080px;text-align:center;background:none;color:{INK};font-size:52px;"><span style="background:{ORANGE};padding:18px 44px;border-radius:999px;border:6px solid {CREAM};">ÉCRIS-NOUS EN DM</span></div>
       </div>
 '''
-    t_end = 2.65
+    t_end = S11_END
     js = f'''
       tl.fromTo(ST, {{ clipPath: "circle(0px at 870px 975px)" }}, {{ clipPath: "circle(2300px at 870px 975px)", duration: 0.38, ease: "power3.in" }}, 0);
       tl.fromTo("#s11-shop", {{ x: 300, opacity: 0 }}, {{ x: 0, opacity: 1, duration: 0.5, ease: "power4.out" }}, 0.15);
@@ -572,22 +649,20 @@ def s11(d):
       tl.to("#s11-share", {{ opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }}, {t_end - 0.2});
       tl.set("#s11-end", {{ opacity: 0 }}, 0);
       tl.set("#s11-end", {{ opacity: 1 }}, {t_end});
-      tl.fromTo("#s11-word", {{ opacity: 0, filter: "blur(10px)", scale: 1.08 }}, {{ opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.2, ease: "power2.out" }}, {t_end});
+      tl.fromTo("#s11-word", {{ opacity: 0, scale: 0.5, rotation: -25 }}, {{ opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }}, {t_end});
       tl.fromTo(["#s11-sub", "#s11-loc"], {{ opacity: 0 }}, {{ opacity: (i) => [0.85, 0.7][i], duration: 0.2, stagger: 0.1 }}, {t_end + 0.2});
       tl.fromTo("#s11-cta", {{ scale: 0.6, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" }}, {t_end + 0.4});
 '''
     return scene_file(sid, d, INK, ORANGE, "", html, js), t_end
 
 # ---------------------------------------------------------------- write scenes
-dur = {sid: round(bar(e) - bar(s), 3) for sid, s, e, _ in SCENES}
-start = {sid: bar(s) for sid, s, e, _ in SCENES}
 files = {}
 files["s1-hook"] = s1(dur["s1-hook"]); files["s2-reste"] = s2(dur["s2-reste"])
 files["s3-marque"], s3_print_end = s3(dur["s3-marque"])
-files["s4-produits"] = s4(dur["s4-produits"]); files["s5-ensemble"] = s5(dur["s5-ensemble"])
+files["s4-produits"] = s4(dur["s4-produits"], S4_BEATS[1], S4_BEATS[2]); files["s5-ensemble"] = s5(dur["s5-ensemble"])
 files["s6-exclu"], s6_stamp, s6_lock = s6(dur["s6-exclu"], CAPTION_TIMES["s6-exclu"])
 files["s7-facile"], s7_ok, s7_check = s7(dur["s7-facile"], CAPTION_TIMES["s7-facile"])
-files["s8-noel"] = s8(dur["s8-noel"]); files["s9-france"] = s9(dur["s9-france"]); files["s10-dm"] = s10(dur["s10-dm"])
+files["s8-noel"] = s8(dur["s8-noel"]); files["s9-france"] = s9(dur["s9-france"], CAPTION_TIMES["s9-france"]); files["s10-dm"] = s10(dur["s10-dm"])
 files["s11-partage"], s11_end = s11(dur["s11-partage"])
 for sid, txt in files.items():
     open(os.path.join(OUT, "compositions", sid + ".html"), "w").write(txt)
@@ -640,21 +715,21 @@ open(os.path.join(OUT, "compositions", "captions.html"), "w").write(captions)
 # ---------------------------------------------------------------- sound placement
 LEN = {"whoosh": 0.575, "pop": 0.72, "impact-bass-1": 2.116, "sparkle": 1.802, "click-soft": 0.366}
 def sfx(name, picture_t, peak, vol, sid):
-    return (sid, name, round(max(0, picture_t - peak + 1 / 30), 3), vol)
+    return (sid, name, round(max(0, picture_t - peak + 1 / 30), 3), round(vol * 0.6, 2))
 P = {"whoosh": 0.162, "pop": 0.12, "impact-bass-1": 0.073, "sparkle": 0.027, "click-soft": 0.073}
 reste_t = [w for g in CAPTION_TIMES["s2-reste"] for w in g["words"] if w[0] == "reste."][0][1]
 SFX = [
     sfx("whoosh", start["s2-reste"], P["whoosh"], 0.8, "sfx-whip-1"),
     sfx("impact-bass-1", reste_t, P["impact-bass-1"], 0.55, "sfx-reste"),
     sfx("pop", start["s4-produits"], P["pop"], 1.0, "sfx-pop-1"),
-    sfx("pop", start["s4-produits"] + BAR, P["pop"], 0.9, "sfx-pop-2"),
-    sfx("pop", start["s4-produits"] + 2 * BAR, P["pop"], 1.0, "sfx-pop-3"),
+    sfx("pop", start["s4-produits"] + S4_BEATS[1], P["pop"], 0.9, "sfx-pop-2"),
+    sfx("pop", start["s4-produits"] + S4_BEATS[2], P["pop"], 1.0, "sfx-pop-3"),
     sfx("whoosh", start["s5-ensemble"], P["whoosh"], 0.65, "sfx-whip-2"),
     sfx("impact-bass-1", start["s6-exclu"] + s6_stamp + 0.24, P["impact-bass-1"], 0.45, "sfx-exclu"),
     sfx("pop", start["s7-facile"] + s7_ok + 0.1, P["pop"], 1.0, "sfx-ok"),
     sfx("whoosh", start["s9-france"], P["whoosh"], 0.75, "sfx-whip-3"),
     sfx("pop", start["s9-france"] + 0.9, P["pop"], 0.9, "sfx-metz"),
-    sfx("click-soft", start["s10-dm"] + 2.6, P["click-soft"], 1.0, "sfx-send"),
+    sfx("click-soft", start["s10-dm"] + dur["s10-dm"] - 0.5, P["click-soft"], 1.0, "sfx-send"),
     sfx("sparkle", start["s11-partage"] + s11_end, P["sparkle"], 0.5, "sfx-end"),
 ]
 
@@ -664,8 +739,17 @@ for i, (sid, s, e, _) in enumerate(SCENES):
     hosts.append(f'''      <div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html" data-start="{start[sid]}" data-duration="{dur[sid]}" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>''')
 hosts.append(f'''      <div id="snow" data-composition-id="snow" data-composition-src="compositions/snow.html" data-start="{start["s8-noel"]}" data-duration="{dur["s8-noel"]}" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" data-variable-values='{{"density":"dense","speed":"calm"}}' style="z-index:2"></div>''')
 hosts.append(f'''      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="{TOTAL}" data-track-index="2" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:3"></div>''')
-audio = [f'''      <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="{TOTAL}" data-track-index="3" data-volume="0.9"></audio>''']
+audio = [f'''      <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="{TOTAL}" data-track-index="3" data-volume="0.16"></audio>''']
+for k in ("s1", "s2", "s3", "s4a", "s4b", "s4c", "s5", "s6", "s7", "s8", "s9", "s10", "s11"):
+    audio.append(f'''      <audio id="vo-{k}" class="clip" src="assets/voice/{k}.mp3" data-start="{VSTART[k]}" data-duration="{VOICE[k]['dur']}" data-track-index="2" data-volume="0.9"></audio>''')
 lane_end = []
+REAL_SFX = os.path.join(OUT, "assets", "sfx", "real-sfx-track.wav")
+if os.path.exists(REAL_SFX):  # real-sfx output (real recordings placed by Clipwing real-sfx) replaces the per-clip effects
+    audio.append(f'''      <audio id="sfx-real" class="clip" src="assets/sfx/real-sfx-track.wav" data-start="0" data-duration="{TOTAL}" data-track-index="4" data-volume="1"></audio>''')
+    SFX = []
+if os.environ.get("NO_SFX"): SFX = []
+else:  # real sleigh bells (Wikimedia Commons, CC0) under the Christmas scene
+    audio.append(f'''      <audio id="sfx-bells" class="clip" src="assets/sfx/sleigh-bells.wav" data-start="{round(start['s8-noel'] + 0.3, 3)}" data-duration="3.4" data-track-index="5" data-volume="0.22" data-fade-in="0.3" data-fade-out="1.2"></audio>''')
 for sid, name, t, vol in SFX:
     L = LEN[name]
     lane = next((i for i, e in enumerate(lane_end) if e <= t), None)
@@ -703,3 +787,45 @@ print("total", TOTAL)
 for k, v in CAPTION_TIMES.items():
     for g in v: print(k, g["start"], g["end"], g["text"])
 print("sfx", SFX)
+
+# ---------------------------------------------------------------- typed cue list for real-sfx (docs/cues.json)
+def cap_t(key, text):
+    return [g for g in CAPTION_TIMES[key] if g["text"] == text][0]["words"][0][1]
+S = start; Dd = dur
+EV = [
+    {"t": 0.15, "type": "pop", "g": 0.7, "note": "idea bulb"},
+    {"t": 0.75, "type": "whoosh", "len": 0.55, "g": 0.6, "note": "copy arc"},
+    {"t": 2.0, "type": "hit", "g": 0.8, "note": "COPIÉ stamp"},
+    {"t": S["s2-reste"] - 0.12, "type": "wipe", "note": "whip to s2"},
+    {"t": reste_t, "type": "thump", "g": 0.9, "note": "RESTE"},
+    {"t": S["s3-marque"] - 0.4, "type": "whoosh", "len": 0.45, "g": 0.7, "note": "colour flood"},
+    {"t": S["s3-marque"] + 0.05, "type": "pop", "g": 0.8, "note": "logo"},
+    {"t": S["s4-produits"] - 0.35, "type": "whoosh", "len": 0.4, "g": 0.8, "note": "zoom through printed object"},
+    {"t": S["s4-produits"] + S4_BEATS[0] + 0.02, "type": "pop", "note": "figurine"},
+    {"t": S["s4-produits"] + S4_BEATS[1] + 0.02, "type": "pop", "g": 0.9, "note": "keychain"},
+    {"t": S["s4-produits"] + S4_BEATS[2] + 0.02, "type": "pop", "note": "characters"},
+    {"t": S["s5-ensemble"] - 0.12, "type": "wipe", "note": "whip to s5"},
+    {"t": S["s5-ensemble"] + 2.75, "type": "magic", "g": 0.7, "note": "sketch becomes product"},
+    {"t": S["s6-exclu"], "type": "wipe", "g": 0.5, "note": "blur swap to s6"},
+    {"t": S["s6-exclu"] + 0.5, "type": "pop", "g": 0.6, "note": "question mark"},
+    {"t": S["s6-exclu"] + s6_stamp + 0.2, "type": "hit", "g": 0.8, "note": "EXCLUSIF stamp"},
+    {"t": S["s6-exclu"] + s6_lock, "type": "click", "g": 0.9, "note": "padlock shackle closes"},
+    {"t": S["s7-facile"] + 0.0, "type": "whoosh", "len": 0.35, "g": 0.6, "note": "iris"},
+    {"t": S["s7-facile"] + 0.25, "type": "pop", "g": 0.6, "note": "big question mark"},
+    {"t": S["s7-facile"] + s7_ok, "type": "success", "note": "green check"},
+    {"t": S["s8-noel"], "type": "wipe", "g": 0.6, "note": "iris to s8"},
+    {"t": S["s7-facile"] + s7_check, "type": "pop", "g": 0.8, "note": "gift check"},
+    {"t": S["s8-noel"] + 1.4, "type": "pop", "g": 0.8, "note": "gift lands"},
+    {"t": S["s9-france"] - 0.12, "type": "wipe", "note": "whip to s9"},
+    {"t": S["s9-france"] + 0.85, "type": "thump", "g": 0.6, "note": "Metz pin lands"},
+    {"t": S["s10-dm"] - 0.35, "type": "whoosh", "len": 0.4, "g": 0.8, "note": "zoom through pin"},
+    {"t": S["s10-dm"] + 0.92, "type": "pop", "g": 0.8, "note": "message bubble"},
+    {"t": S["s10-dm"] + Dd["s10-dm"] - 0.5, "type": "click", "note": "send"},
+    {"t": S["s11-partage"], "type": "wipe", "g": 0.6, "note": "iris to s11"},
+    {"t": S["s11-partage"] + 0.5, "type": "whoosh", "len": 1.1, "g": 0.6, "note": "paper plane"},
+    {"t": S["s11-partage"] + S11_END, "type": "magic", "note": "logo end card"},
+]
+EV = [dict(e, t=round(e["t"], 3)) for e in EV]
+os.makedirs(os.path.join(OUT, "docs"), exist_ok=True)
+json.dump(EV, open(os.path.join(OUT, "docs", "cues.json"), "w"), ensure_ascii=False, indent=1)
+print("cues", len(EV))

@@ -1,0 +1,782 @@
+{
+ "s1": {
+  "dur": 2.22,
+  "words": [
+   {
+    "text": "Le",
+    "start": 0,
+    "end": 0.123
+   },
+   {
+    "text": "magasin",
+    "start": 0.123,
+    "end": 0.555
+   },
+   {
+    "text": "en",
+    "start": 0.555,
+    "end": 0.679
+   },
+   {
+    "text": "face",
+    "start": 0.679,
+    "end": 0.926
+   },
+   {
+    "text": "copie",
+    "start": 0.926,
+    "end": 1.234
+   },
+   {
+    "text": "toutes",
+    "start": 1.234,
+    "end": 1.605
+   },
+   {
+    "text": "tes",
+    "start": 1.605,
+    "end": 1.79
+   },
+   {
+    "text": "idées.",
+    "start": 1.79,
+    "end": 2.16
+   }
+  ]
+ },
+ "s2": {
+  "dur": 1.541,
+  "words": [
+   {
+    "text": "Si",
+    "start": 0,
+    "end": 0.13
+   },
+   {
+    "text": "tu",
+    "start": 0.13,
+    "end": 0.261
+   },
+   {
+    "text": "as",
+    "start": 0.261,
+    "end": 0.391
+   },
+   {
+    "text": "un",
+    "start": 0.391,
+    "end": 0.522
+   },
+   {
+    "text": "commerce,",
+    "start": 0.522,
+    "end": 1.109
+   },
+   {
+    "text": "reste.",
+    "start": 1.109,
+    "end": 1.5
+   }
+  ]
+ },
+ "s3": {
+  "dur": 5.042,
+  "words": [
+   {
+    "text": "Chez",
+    "start": 0,
+    "end": 0.256
+   },
+   {
+    "text": "Renard",
+    "start": 0.256,
+    "end": 0.639
+   },
+   {
+    "text": "Lab",
+    "start": 0.639,
+    "end": 0.831
+   },
+   {
+    "text": "3D",
+    "start": 0.831,
+    "end": 0.958
+   },
+   {
+    "text": "ont",
+    "start": 0.958,
+    "end": 1.15
+   },
+   {
+    "text": "créé",
+    "start": 1.15,
+    "end": 1.406
+   },
+   {
+    "text": "des",
+    "start": 1.406,
+    "end": 1.597
+   },
+   {
+    "text": "produits",
+    "start": 1.597,
+    "end": 2.109
+   },
+   {
+    "text": "personnalisés",
+    "start": 2.109,
+    "end": 2.939
+   },
+   {
+    "text": "en",
+    "start": 2.939,
+    "end": 3.067
+   },
+   {
+    "text": "impression",
+    "start": 3.067,
+    "end": 3.706
+   },
+   {
+    "text": "3D",
+    "start": 3.706,
+    "end": 3.834
+   },
+   {
+    "text": "pour",
+    "start": 3.834,
+    "end": 4.089
+   },
+   {
+    "text": "les",
+    "start": 4.089,
+    "end": 4.281
+   },
+   {
+    "text": "commerces.",
+    "start": 4.281,
+    "end": 4.92
+   }
+  ]
+ },
+ "s4a": {
+  "dur": 1.358,
+  "words": [
+   {
+    "text": "Damaskot",
+    "start": 0,
+    "end": 0.522
+   },
+   {
+    "text": "en",
+    "start": 0.522,
+    "end": 0.653
+   },
+   {
+    "text": "figurine.",
+    "start": 0.653,
+    "end": 1.24
+   }
+  ]
+ },
+ "s4b": {
+  "dur": 1.254,
+  "words": [
+   {
+    "text": "Ton",
+    "start": 0,
+    "end": 0.333
+   },
+   {
+    "text": "logo",
+    "start": 0.333,
+    "end": 0.778
+   },
+   {
+    "text": "en",
+    "start": 0.778,
+    "end": 1
+   },
+   {
+    "text": "porte-clé",
+    "start": 1,
+    "end": 2
+   }
+  ]
+ },
+ "s4c": {
+  "dur": 1.384,
+  "words": [
+   {
+    "text": "des",
+    "start": 0,
+    "end": 0.172
+   },
+   {
+    "text": "propres",
+    "start": 0.172,
+    "end": 0.573
+   },
+   {
+    "text": "personnages.",
+    "start": 0.573,
+    "end": 1.26
+   }
+  ]
+ },
+ "s5": {
+  "dur": 3.527,
+  "words": [
+   {
+    "text": "On",
+    "start": 0,
+    "end": 0.121
+   },
+   {
+    "text": "imagine",
+    "start": 0.121,
+    "end": 0.546
+   },
+   {
+    "text": "tes",
+    "start": 0.546,
+    "end": 0.729
+   },
+   {
+    "text": "produits",
+    "start": 0.729,
+    "end": 1.214
+   },
+   {
+    "text": "avec",
+    "start": 1.214,
+    "end": 1.457
+   },
+   {
+    "text": "toi",
+    "start": 1.457,
+    "end": 1.639
+   },
+   {
+    "text": "et",
+    "start": 1.639,
+    "end": 1.761
+   },
+   {
+    "text": "on",
+    "start": 1.761,
+    "end": 1.882
+   },
+   {
+    "text": "les",
+    "start": 1.882,
+    "end": 2.064
+   },
+   {
+    "text": "réalise",
+    "start": 2.064,
+    "end": 2.489
+   },
+   {
+    "text": "selon",
+    "start": 2.489,
+    "end": 2.793
+   },
+   {
+    "text": "tes",
+    "start": 2.793,
+    "end": 2.975
+   },
+   {
+    "text": "envies.",
+    "start": 2.975,
+    "end": 3.4
+   }
+  ]
+ },
+ "s6": {
+  "dur": 7.131,
+  "words": [
+   {
+    "text": "Et",
+    "start": 0,
+    "end": 0.119
+   },
+   {
+    "text": "le",
+    "start": 0.119,
+    "end": 0.238
+   },
+   {
+    "text": "magasin",
+    "start": 0.238,
+    "end": 0.655
+   },
+   {
+    "text": "d'en",
+    "start": 0.655,
+    "end": 0.893
+   },
+   {
+    "text": "face,",
+    "start": 0.893,
+    "end": 1.19
+   },
+   {
+    "text": "tu",
+    "start": 1.19,
+    "end": 1.309
+   },
+   {
+    "text": "peux",
+    "start": 1.309,
+    "end": 1.547
+   },
+   {
+    "text": "nous",
+    "start": 1.547,
+    "end": 1.786
+   },
+   {
+    "text": "demander",
+    "start": 1.786,
+    "end": 2.262
+   },
+   {
+    "text": "de",
+    "start": 2.262,
+    "end": 2.381
+   },
+   {
+    "text": "ne",
+    "start": 2.381,
+    "end": 2.5
+   },
+   {
+    "text": "pas",
+    "start": 2.5,
+    "end": 2.678
+   },
+   {
+    "text": "vendre",
+    "start": 2.678,
+    "end": 3.035
+   },
+   {
+    "text": "tes",
+    "start": 3.035,
+    "end": 3.214
+   },
+   {
+    "text": "créations",
+    "start": 3.214,
+    "end": 3.75
+   },
+   {
+    "text": "à",
+    "start": 3.75,
+    "end": 3.809
+   },
+   {
+    "text": "un",
+    "start": 3.809,
+    "end": 3.928
+   },
+   {
+    "text": "concurrent",
+    "start": 3.928,
+    "end": 4.523
+   },
+   {
+    "text": "précis.",
+    "start": 4.523,
+    "end": 4.94
+   },
+   {
+    "text": "Tes",
+    "start": 4.94,
+    "end": 5.125
+   },
+   {
+    "text": "produits,",
+    "start": 5.125,
+    "end": 5.681
+   },
+   {
+    "text": "il",
+    "start": 5.681,
+    "end": 5.804
+   },
+   {
+    "text": "ne",
+    "start": 5.804,
+    "end": 5.927
+   },
+   {
+    "text": "les",
+    "start": 5.927,
+    "end": 6.113
+   },
+   {
+    "text": "aura",
+    "start": 6.113,
+    "end": 6.359
+   },
+   {
+    "text": "pas",
+    "start": 6.359,
+    "end": 6.545
+   },
+   {
+    "text": "chez",
+    "start": 6.545,
+    "end": 6.791
+   },
+   {
+    "text": "nous.",
+    "start": 6.791,
+    "end": 7.1
+   }
+  ]
+ },
+ "s7": {
+  "dur": 5.381,
+  "words": [
+   {
+    "text": "Tu",
+    "start": 0,
+    "end": 0.132
+   },
+   {
+    "text": "n'y",
+    "start": 0.132,
+    "end": 0.329
+   },
+   {
+    "text": "connais",
+    "start": 0.329,
+    "end": 0.789
+   },
+   {
+    "text": "rien",
+    "start": 0.789,
+    "end": 1.052
+   },
+   {
+    "text": "en",
+    "start": 1.052,
+    "end": 1.184
+   },
+   {
+    "text": "impression",
+    "start": 1.184,
+    "end": 1.842
+   },
+   {
+    "text": "3D,",
+    "start": 1.842,
+    "end": 2.039
+   },
+   {
+    "text": "pas",
+    "start": 2.039,
+    "end": 2.236
+   },
+   {
+    "text": "de",
+    "start": 2.236,
+    "end": 2.368
+   },
+   {
+    "text": "problème.",
+    "start": 2.368,
+    "end": 2.96
+   },
+   {
+    "text": "Tu",
+    "start": 2.96,
+    "end": 3.082
+   },
+   {
+    "text": "nous",
+    "start": 3.082,
+    "end": 3.326
+   },
+   {
+    "text": "donnes",
+    "start": 3.326,
+    "end": 3.693
+   },
+   {
+    "text": "ton",
+    "start": 3.693,
+    "end": 3.876
+   },
+   {
+    "text": "idée,",
+    "start": 3.876,
+    "end": 4.181
+   },
+   {
+    "text": "on",
+    "start": 4.181,
+    "end": 4.303
+   },
+   {
+    "text": "s'occupe",
+    "start": 4.303,
+    "end": 4.792
+   },
+   {
+    "text": "du",
+    "start": 4.792,
+    "end": 4.914
+   },
+   {
+    "text": "reste.",
+    "start": 4.914,
+    "end": 5.28
+   }
+  ]
+ },
+ "s8": {
+  "dur": 3.605,
+  "words": [
+   {
+    "text": "Et",
+    "start": 0,
+    "end": 0.11
+   },
+   {
+    "text": "pour",
+    "start": 0.11,
+    "end": 0.331
+   },
+   {
+    "text": "Noël,",
+    "start": 0.331,
+    "end": 0.608
+   },
+   {
+    "text": "pourquoi",
+    "start": 0.608,
+    "end": 1.05
+   },
+   {
+    "text": "ne",
+    "start": 1.05,
+    "end": 1.16
+   },
+   {
+    "text": "pas",
+    "start": 1.16,
+    "end": 1.326
+   },
+   {
+    "text": "proposer",
+    "start": 1.326,
+    "end": 1.768
+   },
+   {
+    "text": "tes",
+    "start": 1.768,
+    "end": 1.933
+   },
+   {
+    "text": "propres",
+    "start": 1.933,
+    "end": 2.32
+   },
+   {
+    "text": "créations",
+    "start": 2.32,
+    "end": 2.817
+   },
+   {
+    "text": "à",
+    "start": 2.817,
+    "end": 2.872
+   },
+   {
+    "text": "tes",
+    "start": 2.872,
+    "end": 3.038
+   },
+   {
+    "text": "clients",
+    "start": 3.038,
+    "end": 3.425
+   },
+   {
+    "text": "?",
+    "start": 3.425,
+    "end": 3.48
+   }
+  ]
+ },
+ "s9": {
+  "dur": 3.683,
+  "words": [
+   {
+    "text": "remise",
+    "start": 0,
+    "end": 0.343
+   },
+   {
+    "text": "en",
+    "start": 0.343,
+    "end": 0.457
+   },
+   {
+    "text": "main",
+    "start": 0.457,
+    "end": 0.686
+   },
+   {
+    "text": "propres",
+    "start": 0.686,
+    "end": 1.086
+   },
+   {
+    "text": "à",
+    "start": 1.086,
+    "end": 1.143
+   },
+   {
+    "text": "Metz",
+    "start": 1.143,
+    "end": 1.371
+   },
+   {
+    "text": "et",
+    "start": 1.371,
+    "end": 1.486
+   },
+   {
+    "text": "livraison",
+    "start": 1.486,
+    "end": 2
+   },
+   {
+    "text": "partout",
+    "start": 2,
+    "end": 2.4
+   },
+   {
+    "text": "en",
+    "start": 2.4,
+    "end": 2.514
+   },
+   {
+    "text": "France",
+    "start": 2.514,
+    "end": 2.857
+   },
+   {
+    "text": "toute",
+    "start": 2.857,
+    "end": 3.143
+   },
+   {
+    "text": "l'année.",
+    "start": 3.143,
+    "end": 3.6
+   }
+  ]
+ },
+ "s10": {
+  "dur": 1.724,
+  "words": [
+   {
+    "text": "Écriz-nous",
+    "start": 0,
+    "end": 0.579
+   },
+   {
+    "text": "en",
+    "start": 0.579,
+    "end": 0.694
+   },
+   {
+    "text": "DM",
+    "start": 0.694,
+    "end": 0.81
+   },
+   {
+    "text": "pour",
+    "start": 0.81,
+    "end": 1.041
+   },
+   {
+    "text": "commencer.",
+    "start": 1.041,
+    "end": 1.62
+   }
+  ]
+ },
+ "s11": {
+  "dur": 3.422,
+  "words": [
+   {
+    "text": "et",
+    "start": 0,
+    "end": 0.117
+   },
+   {
+    "text": "envoie",
+    "start": 0.117,
+    "end": 0.469
+   },
+   {
+    "text": "cette",
+    "start": 0.469,
+    "end": 0.761
+   },
+   {
+    "text": "vidéo",
+    "start": 0.761,
+    "end": 1.054
+   },
+   {
+    "text": "à",
+    "start": 1.054,
+    "end": 1.113
+   },
+   {
+    "text": "un",
+    "start": 1.113,
+    "end": 1.23
+   },
+   {
+    "text": "commerçant",
+    "start": 1.23,
+    "end": 1.816
+   },
+   {
+    "text": "qui",
+    "start": 1.816,
+    "end": 1.991
+   },
+   {
+    "text": "pourrait",
+    "start": 1.991,
+    "end": 2.46
+   },
+   {
+    "text": "en",
+    "start": 2.46,
+    "end": 2.577
+   },
+   {
+    "text": "avoir",
+    "start": 2.577,
+    "end": 2.87
+   },
+   {
+    "text": "besoin.",
+    "start": 2.87,
+    "end": 3.28
+   }
+  ]
+ }
+}
