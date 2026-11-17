@@ -34,7 +34,7 @@
     (function () {
 
       const tl = gsap.timeline({ paused: true });
-      const D = 4.227;
+      const D = 3.843;
       const ST = "#s5-ensemble-stage";
       const whipIn = () => tl.fromTo(ST, { x: 760, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
       const blurOut = () => tl.fromTo(ST, { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", immediateRender: false }, D - 0.18);
@@ -46,9 +46,9 @@
       pop("#s5-chip-a", 0.5);
       tl.fromTo("#s5-sketch", { strokeDashoffset: 2000 }, { strokeDashoffset: 0, duration: 1.4, ease: "power1.inOut" }, 0.6);
       tl.fromTo(["#s5-toi", "#s5-pl", "#s5-nous"], { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.12 }, 1.0);
-      tl.fromTo("#s5-arrow", { strokeDashoffset: 2000 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 2.4);
-      tl.fromTo("#s5-prod", { scale: 0.3, opacity: 0, rotation: -30, svgOrigin: "800 680" }, { scale: 1, opacity: 1, rotation: 0, svgOrigin: "800 680", duration: 0.6, ease: "back.out(1.5)" }, 2.75);
-      pop("#s5-chip-b", 3.0);
+      tl.fromTo("#s5-arrow", { strokeDashoffset: 2000 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, D * 0.5);
+      tl.fromTo("#s5-prod", { scale: 0.3, opacity: 0, rotation: -30, svgOrigin: "800 680" }, { scale: 1, opacity: 1, rotation: 0, svgOrigin: "800 680", duration: 0.6, ease: "back.out(1.5)" }, D * 0.58);
+      pop("#s5-chip-b", D * 0.64);
       blurOut();
 
       window.__timelines["s5-ensemble"] = tl;

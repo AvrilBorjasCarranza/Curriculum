@@ -26,7 +26,7 @@
     (function () {
 
       const tl = gsap.timeline({ paused: true });
-      const D = 4.533;
+      const D = 4.429;
       const ST = "#s9-france-stage";
       const whipIn = () => tl.fromTo(ST, { x: 760, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
       const pop = (sel, at, from = 0.4) => tl.fromTo(sel, { scale: from, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, at);
@@ -35,10 +35,10 @@
       whipIn();
       tl.fromTo("#s9-fr", { opacity: 0, scale: 0.92, svgOrigin: "540 700" }, { opacity: 1, scale: 1, svgOrigin: "540 700", duration: 0.5, ease: "power4.out" }, 0.05);
       tl.fromTo("#s9-pin", { y: -300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }, 0.4);
-      pop("#s9-metz", 1.306);
-      tl.fromTo(".s9-route", { strokeDashoffset: 2000 }, { strokeDashoffset: 1300, duration: 0.6, stagger: 0.1, ease: "power2.out" }, 1.756);
-      tl.fromTo(".s9-dot", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, stagger: 0.1, ease: "back.out(2.5)" }, 2.156);
-      tl.fromTo("#s9-year", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 2.220);
+      pop("#s9-metz", 1.080);
+      tl.fromTo(".s9-route", { strokeDashoffset: 2000 }, { strokeDashoffset: 1300, duration: 0.6, stagger: 0.1, ease: "power2.out" }, 1.530);
+      tl.fromTo(".s9-dot", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, stagger: 0.1, ease: "back.out(2.5)" }, 1.930);
+      tl.fromTo("#s9-year", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 2.280);
       tl.fromTo("#s9-pin", { scale: 1, svgOrigin: "757.1 384.6" }, { scale: 34, svgOrigin: "757.1 384.6", duration: 0.4, ease: "power3.in", immediateRender: false }, D - 0.4);
       tl.fromTo("#s9-metz, #s9-year", { opacity: 1 }, { opacity: 0, duration: 0.15, immediateRender: false }, D - 0.4);
 

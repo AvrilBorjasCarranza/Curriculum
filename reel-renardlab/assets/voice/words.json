@@ -1,541 +1,591 @@
 {
  "s1": {
-  "dur": 2.22,
+  "dur": 1.881,
   "words": [
    {
     "text": "Le",
-    "start": 0,
-    "end": 0.123
+    "start": 0.0,
+    "end": 0.28
    },
    {
     "text": "magasin",
-    "start": 0.123,
-    "end": 0.555
+    "start": 0.28,
+    "end": 0.62
    },
    {
-    "text": "en",
-    "start": 0.555,
-    "end": 0.679
+    "text": "d",
+    "start": 0.62,
+    "end": 0.68
+   },
+   {
+    "text": "'en",
+    "start": 0.68,
+    "end": 0.82
    },
    {
     "text": "face",
-    "start": 0.679,
-    "end": 0.926
+    "start": 0.82,
+    "end": 0.96
    },
    {
     "text": "copie",
-    "start": 0.926,
-    "end": 1.234
+    "start": 0.96,
+    "end": 1.28
    },
    {
     "text": "toutes",
-    "start": 1.234,
-    "end": 1.605
+    "start": 1.28,
+    "end": 1.38
    },
    {
-    "text": "tes",
-    "start": 1.605,
-    "end": 1.79
+    "text": "des",
+    "start": 1.38,
+    "end": 1.62
    },
    {
     "text": "idées.",
-    "start": 1.79,
-    "end": 2.16
+    "start": 1.62,
+    "end": 1.78
    }
   ]
  },
  "s2": {
-  "dur": 1.541,
+  "dur": 1.907,
   "words": [
    {
     "text": "Si",
-    "start": 0,
-    "end": 0.13
+    "start": 0.0,
+    "end": 0.3
    },
    {
     "text": "tu",
-    "start": 0.13,
-    "end": 0.261
+    "start": 0.3,
+    "end": 0.42
    },
    {
     "text": "as",
-    "start": 0.261,
-    "end": 0.391
+    "start": 0.42,
+    "end": 0.5
    },
    {
     "text": "un",
-    "start": 0.391,
-    "end": 0.522
+    "start": 0.5,
+    "end": 0.6
    },
    {
     "text": "commerce,",
-    "start": 0.522,
-    "end": 1.109
+    "start": 0.6,
+    "end": 0.98
    },
    {
-    "text": "reste.",
-    "start": 1.109,
-    "end": 1.5
+    "text": "geste.",
+    "start": 1.38,
+    "end": 1.62
    }
   ]
  },
  "s3": {
-  "dur": 5.042,
+  "dur": 4.31,
   "words": [
    {
     "text": "Chez",
-    "start": 0,
-    "end": 0.256
+    "start": 0.0,
+    "end": 0.32
    },
    {
     "text": "Renard",
-    "start": 0.256,
-    "end": 0.639
+    "start": 0.32,
+    "end": 0.58
    },
    {
     "text": "Lab",
-    "start": 0.639,
-    "end": 0.831
+    "start": 0.58,
+    "end": 0.72
    },
    {
-    "text": "3D",
-    "start": 0.831,
-    "end": 0.958
+    "text": "3D,",
+    "start": 0.72,
+    "end": 1.26
    },
    {
-    "text": "ont",
-    "start": 0.958,
-    "end": 1.15
+    "text": "on",
+    "start": 1.4,
+    "end": 1.46
    },
    {
-    "text": "créé",
-    "start": 1.15,
-    "end": 1.406
+    "text": "crée",
+    "start": 1.46,
+    "end": 1.62
    },
    {
     "text": "des",
-    "start": 1.406,
-    "end": 1.597
+    "start": 1.62,
+    "end": 1.82
    },
    {
     "text": "produits",
-    "start": 1.597,
-    "end": 2.109
+    "start": 1.82,
+    "end": 2.06
    },
    {
-    "text": "personnalisés",
-    "start": 2.109,
-    "end": 2.939
+    "text": "personnels",
+    "start": 2.06,
+    "end": 2.56
+   },
+   {
+    "text": "ici",
+    "start": 2.56,
+    "end": 2.66
    },
    {
     "text": "en",
-    "start": 2.939,
-    "end": 3.067
+    "start": 2.66,
+    "end": 2.78
    },
    {
     "text": "impression",
-    "start": 3.067,
-    "end": 3.706
+    "start": 2.78,
+    "end": 3.06
    },
    {
     "text": "3D",
-    "start": 3.706,
-    "end": 3.834
+    "start": 3.06,
+    "end": 3.48
    },
    {
     "text": "pour",
-    "start": 3.834,
-    "end": 4.089
+    "start": 3.48,
+    "end": 3.68
    },
    {
     "text": "les",
-    "start": 4.089,
-    "end": 4.281
+    "start": 3.68,
+    "end": 3.82
    },
    {
     "text": "commerces.",
-    "start": 4.281,
-    "end": 4.92
+    "start": 3.82,
+    "end": 4.24
    }
   ]
  },
  "s4a": {
-  "dur": 1.358,
+  "dur": 1.306,
   "words": [
    {
-    "text": "Damaskot",
-    "start": 0,
-    "end": 0.522
+    "text": "Tamaskot",
+    "start": 0.0,
+    "end": 0.68
    },
    {
     "text": "en",
-    "start": 0.522,
-    "end": 0.653
+    "start": 0.68,
+    "end": 0.86
    },
    {
     "text": "figurine.",
-    "start": 0.653,
-    "end": 1.24
-   }
-  ]
- },
- "s4b": {
-  "dur": 1.254,
-  "words": [
-   {
-    "text": "Ton",
-    "start": 0,
-    "end": 0.333
-   },
-   {
-    "text": "logo",
-    "start": 0.333,
-    "end": 0.778
-   },
-   {
-    "text": "en",
-    "start": 0.778,
-    "end": 1
-   },
-   {
-    "text": "porte-clé",
-    "start": 1,
-    "end": 2
-   }
-  ]
- },
- "s4c": {
-  "dur": 1.384,
-  "words": [
-   {
-    "text": "des",
-    "start": 0,
-    "end": 0.172
-   },
-   {
-    "text": "propres",
-    "start": 0.172,
-    "end": 0.573
-   },
-   {
-    "text": "personnages.",
-    "start": 0.573,
+    "start": 0.86,
     "end": 1.26
    }
   ]
  },
+ "s4b": {
+  "dur": 1.149,
+  "words": [
+   {
+    "text": "T",
+    "start": 0.0,
+    "end": 0.18
+   },
+   {
+    "text": "'as",
+    "start": 0.18,
+    "end": 0.26
+   },
+   {
+    "text": "le",
+    "start": 0.26,
+    "end": 0.32
+   },
+   {
+    "text": "logo",
+    "start": 0.32,
+    "end": 0.54
+   },
+   {
+    "text": "en",
+    "start": 0.54,
+    "end": 0.7
+   },
+   {
+    "text": "porte",
+    "start": 0.7,
+    "end": 0.82
+   },
+   {
+    "text": "-clés?",
+    "start": 0.82,
+    "end": 1.04
+   }
+  ]
+ },
+ "s4c": {
+  "dur": 1.019,
+  "words": [
+   {
+    "text": "Tes",
+    "start": 0.05,
+    "end": 0.2
+   },
+   {
+    "text": "propres",
+    "start": 0.2,
+    "end": 0.4
+   },
+   {
+    "text": "personnages ?",
+    "start": 0.41,
+    "end": 0.97
+   }
+  ]
+ },
  "s5": {
-  "dur": 3.527,
+  "dur": 2.743,
   "words": [
    {
     "text": "On",
-    "start": 0,
-    "end": 0.121
+    "start": 0.0,
+    "end": 0.26
    },
    {
     "text": "imagine",
-    "start": 0.121,
-    "end": 0.546
+    "start": 0.26,
+    "end": 0.54
    },
    {
     "text": "tes",
-    "start": 0.546,
-    "end": 0.729
+    "start": 0.54,
+    "end": 0.7
    },
    {
     "text": "produits",
-    "start": 0.729,
-    "end": 1.214
+    "start": 0.7,
+    "end": 0.94
    },
    {
     "text": "avec",
-    "start": 1.214,
-    "end": 1.457
+    "start": 0.94,
+    "end": 1.2
    },
    {
     "text": "toi",
-    "start": 1.457,
-    "end": 1.639
+    "start": 1.2,
+    "end": 1.38
    },
    {
     "text": "et",
-    "start": 1.639,
-    "end": 1.761
+    "start": 1.38,
+    "end": 1.54
    },
    {
     "text": "on",
-    "start": 1.761,
-    "end": 1.882
+    "start": 1.54,
+    "end": 1.68
    },
    {
     "text": "les",
-    "start": 1.882,
-    "end": 2.064
+    "start": 1.68,
+    "end": 1.74
    },
    {
     "text": "réalise",
-    "start": 2.064,
-    "end": 2.489
+    "start": 1.74,
+    "end": 2.1
    },
    {
     "text": "selon",
-    "start": 2.489,
-    "end": 2.793
+    "start": 2.1,
+    "end": 2.24
    },
    {
     "text": "tes",
-    "start": 2.793,
-    "end": 2.975
+    "start": 2.24,
+    "end": 2.46
    },
    {
     "text": "envies.",
-    "start": 2.975,
-    "end": 3.4
+    "start": 2.46,
+    "end": 2.68
    }
   ]
  },
  "s6": {
-  "dur": 7.131,
+  "dur": 6.269,
   "words": [
    {
-    "text": "Et",
-    "start": 0,
-    "end": 0.119
+    "text": "et",
+    "start": 0.0,
+    "end": 0.18
    },
    {
     "text": "le",
-    "start": 0.119,
-    "end": 0.238
+    "start": 0.18,
+    "end": 0.34
    },
    {
     "text": "magasin",
-    "start": 0.238,
-    "end": 0.655
+    "start": 0.34,
+    "end": 0.64
    },
    {
-    "text": "d'en",
-    "start": 0.655,
-    "end": 0.893
+    "text": "d",
+    "start": 0.64,
+    "end": 0.72
    },
    {
-    "text": "face,",
-    "start": 0.893,
-    "end": 1.19
+    "text": "'en",
+    "start": 0.72,
+    "end": 0.9
    },
    {
-    "text": "tu",
-    "start": 1.19,
-    "end": 1.309
+    "text": "face.",
+    "start": 0.9,
+    "end": 1.1
+   },
+   {
+    "text": "Tu",
+    "start": 1.38,
+    "end": 1.46
    },
    {
     "text": "peux",
-    "start": 1.309,
-    "end": 1.547
+    "start": 1.46,
+    "end": 1.64
    },
    {
     "text": "nous",
-    "start": 1.547,
-    "end": 1.786
+    "start": 1.64,
+    "end": 1.78
    },
    {
     "text": "demander",
-    "start": 1.786,
-    "end": 2.262
+    "start": 1.78,
+    "end": 2.08
    },
    {
     "text": "de",
-    "start": 2.262,
-    "end": 2.381
+    "start": 2.08,
+    "end": 2.3
    },
    {
     "text": "ne",
-    "start": 2.381,
-    "end": 2.5
+    "start": 2.3,
+    "end": 2.4
    },
    {
     "text": "pas",
-    "start": 2.5,
-    "end": 2.678
+    "start": 2.4,
+    "end": 2.52
    },
    {
     "text": "vendre",
-    "start": 2.678,
-    "end": 3.035
+    "start": 2.52,
+    "end": 2.82
    },
    {
-    "text": "tes",
-    "start": 3.035,
-    "end": 3.214
+    "text": "des",
+    "start": 2.82,
+    "end": 2.96
    },
    {
-    "text": "créations",
-    "start": 3.214,
-    "end": 3.75
+    "text": "crassiens",
+    "start": 2.96,
+    "end": 3.28
    },
    {
     "text": "à",
-    "start": 3.75,
-    "end": 3.809
+    "start": 3.28,
+    "end": 3.42
    },
    {
     "text": "un",
-    "start": 3.809,
-    "end": 3.928
+    "start": 3.42,
+    "end": 3.58
    },
    {
-    "text": "concurrent",
-    "start": 3.928,
-    "end": 4.523
+    "text": "concourant",
+    "start": 3.58,
+    "end": 4.02
    },
    {
     "text": "précis.",
-    "start": 4.523,
-    "end": 4.94
+    "start": 4.02,
+    "end": 4.34
    },
    {
     "text": "Tes",
-    "start": 4.94,
-    "end": 5.125
+    "start": 4.56,
+    "end": 4.78
    },
    {
     "text": "produits,",
-    "start": 5.125,
-    "end": 5.681
+    "start": 4.78,
+    "end": 5.04
    },
    {
     "text": "il",
-    "start": 5.681,
-    "end": 5.804
+    "start": 5.12,
+    "end": 5.38
    },
    {
     "text": "ne",
-    "start": 5.804,
-    "end": 5.927
+    "start": 5.38,
+    "end": 5.46
    },
    {
     "text": "les",
-    "start": 5.927,
-    "end": 6.113
+    "start": 5.46,
+    "end": 5.62
    },
    {
     "text": "aura",
-    "start": 6.113,
-    "end": 6.359
+    "start": 5.62,
+    "end": 5.76
    },
    {
     "text": "pas",
-    "start": 6.359,
-    "end": 6.545
+    "start": 5.76,
+    "end": 5.98
    },
    {
     "text": "chez",
-    "start": 6.545,
-    "end": 6.791
+    "start": 5.98,
+    "end": 6.1
    },
    {
     "text": "nous.",
-    "start": 6.791,
-    "end": 7.1
+    "start": 6.1,
+    "end": 6.22
    }
   ]
  },
  "s7": {
-  "dur": 5.381,
+  "dur": 5.251,
   "words": [
    {
     "text": "Tu",
-    "start": 0,
-    "end": 0.132
+    "start": 0.0,
+    "end": 0.2
    },
    {
-    "text": "n'y",
-    "start": 0.132,
-    "end": 0.329
+    "text": "n",
+    "start": 0.2,
+    "end": 0.22
+   },
+   {
+    "text": "'y",
+    "start": 0.22,
+    "end": 0.34
    },
    {
     "text": "connais",
-    "start": 0.329,
-    "end": 0.789
+    "start": 0.34,
+    "end": 0.5
    },
    {
     "text": "rien",
-    "start": 0.789,
-    "end": 1.052
+    "start": 0.5,
+    "end": 0.7
    },
    {
     "text": "en",
-    "start": 1.052,
-    "end": 1.184
+    "start": 0.7,
+    "end": 0.86
    },
    {
     "text": "impression",
-    "start": 1.184,
-    "end": 1.842
+    "start": 0.86,
+    "end": 1.16
    },
    {
-    "text": "3D,",
-    "start": 1.842,
-    "end": 2.039
+    "text": "3D",
+    "start": 1.16,
+    "end": 1.7
    },
    {
-    "text": "pas",
-    "start": 2.039,
-    "end": 2.236
+    "text": "?",
+    "start": 1.7,
+    "end": 1.86
+   },
+   {
+    "text": "Pas",
+    "start": 1.86,
+    "end": 1.94
    },
    {
     "text": "de",
-    "start": 2.236,
-    "end": 2.368
+    "start": 1.94,
+    "end": 2.18
    },
    {
-    "text": "problème.",
-    "start": 2.368,
-    "end": 2.96
+    "text": "problème,",
+    "start": 2.18,
+    "end": 2.44
    },
    {
-    "text": "Tu",
-    "start": 2.96,
-    "end": 3.082
+    "text": "tu",
+    "start": 2.8,
+    "end": 2.9
    },
    {
     "text": "nous",
-    "start": 3.082,
-    "end": 3.326
+    "start": 2.9,
+    "end": 3.14
    },
    {
     "text": "donnes",
-    "start": 3.326,
-    "end": 3.693
+    "start": 3.14,
+    "end": 3.66
    },
    {
-    "text": "ton",
-    "start": 3.693,
-    "end": 3.876
+    "text": "des",
+    "start": 3.66,
+    "end": 3.66
    },
    {
-    "text": "idée,",
-    "start": 3.876,
-    "end": 4.181
+    "text": "idées",
+    "start": 3.66,
+    "end": 4.2
+   },
+   {
+    "text": "et",
+    "start": 4.2,
+    "end": 4.36
    },
    {
     "text": "on",
-    "start": 4.181,
-    "end": 4.303
+    "start": 4.36,
+    "end": 4.46
    },
    {
-    "text": "s'occupe",
-    "start": 4.303,
-    "end": 4.792
+    "text": "s",
+    "start": 4.46,
+    "end": 4.58
+   },
+   {
+    "text": "'occupe",
+    "start": 4.58,
+    "end": 4.86
    },
    {
     "text": "du",
-    "start": 4.792,
-    "end": 4.914
+    "start": 4.86,
+    "end": 4.98
    },
    {
     "text": "reste.",
-    "start": 4.914,
-    "end": 5.28
+    "start": 4.98,
+    "end": 5.2
    }
   ]
  },
@@ -544,238 +594,248 @@
   "words": [
    {
     "text": "Et",
-    "start": 0,
-    "end": 0.11
+    "start": 0.0,
+    "end": 0.22
    },
    {
     "text": "pour",
-    "start": 0.11,
-    "end": 0.331
+    "start": 0.22,
+    "end": 0.42
    },
    {
     "text": "Noël,",
-    "start": 0.331,
-    "end": 0.608
+    "start": 0.42,
+    "end": 0.84
    },
    {
     "text": "pourquoi",
-    "start": 0.608,
-    "end": 1.05
+    "start": 1.1,
+    "end": 1.24
    },
    {
     "text": "ne",
-    "start": 1.05,
-    "end": 1.16
+    "start": 1.24,
+    "end": 1.46
    },
    {
     "text": "pas",
-    "start": 1.16,
-    "end": 1.326
+    "start": 1.46,
+    "end": 1.7
    },
    {
     "text": "proposer",
-    "start": 1.326,
-    "end": 1.768
+    "start": 1.7,
+    "end": 2.1
    },
    {
     "text": "tes",
-    "start": 1.768,
-    "end": 1.933
+    "start": 2.1,
+    "end": 2.3
    },
    {
     "text": "propres",
-    "start": 1.933,
-    "end": 2.32
+    "start": 2.3,
+    "end": 2.68
    },
    {
     "text": "créations",
-    "start": 2.32,
-    "end": 2.817
+    "start": 2.68,
+    "end": 3.02
    },
    {
     "text": "à",
-    "start": 2.817,
-    "end": 2.872
+    "start": 3.02,
+    "end": 3.14
    },
    {
     "text": "tes",
-    "start": 2.872,
-    "end": 3.038
+    "start": 3.14,
+    "end": 3.26
    },
    {
     "text": "clients",
-    "start": 3.038,
-    "end": 3.425
+    "start": 3.26,
+    "end": 3.46
    },
    {
     "text": "?",
-    "start": 3.425,
-    "end": 3.48
+    "start": 3.46,
+    "end": 3.54
    }
   ]
  },
  "s9": {
-  "dur": 3.683,
+  "dur": 3.579,
   "words": [
    {
     "text": "remise",
-    "start": 0,
-    "end": 0.343
+    "start": 0.0,
+    "end": 0.38
    },
    {
     "text": "en",
-    "start": 0.343,
-    "end": 0.457
+    "start": 0.38,
+    "end": 0.46
    },
    {
     "text": "main",
-    "start": 0.457,
-    "end": 0.686
+    "start": 0.46,
+    "end": 0.66
    },
    {
-    "text": "propres",
-    "start": 0.686,
-    "end": 1.086
+    "text": "propre",
+    "start": 0.66,
+    "end": 0.86
    },
    {
     "text": "à",
-    "start": 1.086,
-    "end": 1.143
+    "start": 0.86,
+    "end": 1.04
    },
    {
     "text": "Metz",
-    "start": 1.143,
-    "end": 1.371
+    "start": 1.04,
+    "end": 1.48
    },
    {
     "text": "et",
-    "start": 1.371,
-    "end": 1.486
+    "start": 1.48,
+    "end": 1.66
    },
    {
     "text": "livraison",
-    "start": 1.486,
-    "end": 2
+    "start": 1.66,
+    "end": 2.06
    },
    {
     "text": "partout",
-    "start": 2,
-    "end": 2.4
+    "start": 2.06,
+    "end": 2.36
    },
    {
     "text": "en",
-    "start": 2.4,
-    "end": 2.514
+    "start": 2.36,
+    "end": 2.66
    },
    {
     "text": "France",
-    "start": 2.514,
-    "end": 2.857
+    "start": 2.66,
+    "end": 2.94
    },
    {
     "text": "toute",
-    "start": 2.857,
-    "end": 3.143
+    "start": 2.94,
+    "end": 3.3
    },
    {
-    "text": "l'année.",
-    "start": 3.143,
-    "end": 3.6
+    "text": "l",
+    "start": 3.3,
+    "end": 3.42
+   },
+   {
+    "text": "'année.",
+    "start": 3.42,
+    "end": 3.52
    }
   ]
  },
  "s10": {
-  "dur": 1.724,
+  "dur": 1.698,
   "words": [
    {
-    "text": "Écriz-nous",
-    "start": 0,
-    "end": 0.579
+    "text": "Créez",
+    "start": 0.0,
+    "end": 0.46
    },
    {
-    "text": "en",
-    "start": 0.579,
-    "end": 0.694
+    "text": "-nous",
+    "start": 0.46,
+    "end": 0.48
+   },
+   {
+    "text": "un",
+    "start": 0.48,
+    "end": 0.72
    },
    {
     "text": "DM",
-    "start": 0.694,
-    "end": 0.81
+    "start": 0.72,
+    "end": 0.94
    },
    {
     "text": "pour",
-    "start": 0.81,
-    "end": 1.041
+    "start": 0.94,
+    "end": 1.26
    },
    {
     "text": "commencer.",
-    "start": 1.041,
+    "start": 1.26,
     "end": 1.62
    }
   ]
  },
  "s11": {
-  "dur": 3.422,
+  "dur": 3.109,
   "words": [
    {
-    "text": "et",
-    "start": 0,
-    "end": 0.117
+    "text": "Et",
+    "start": 0.0,
+    "end": 0.3
    },
    {
-    "text": "envoie",
-    "start": 0.117,
-    "end": 0.469
+    "text": "on",
+    "start": 0.3,
+    "end": 0.46
+   },
+   {
+    "text": "voit",
+    "start": 0.46,
+    "end": 0.56
    },
    {
     "text": "cette",
-    "start": 0.469,
-    "end": 0.761
+    "start": 0.56,
+    "end": 0.76
    },
    {
     "text": "vidéo",
-    "start": 0.761,
-    "end": 1.054
-   },
-   {
-    "text": "à",
-    "start": 1.054,
-    "end": 1.113
-   },
-   {
-    "text": "un",
-    "start": 1.113,
-    "end": 1.23
-   },
-   {
-    "text": "commerçant",
-    "start": 1.23,
-    "end": 1.816
-   },
-   {
-    "text": "qui",
-    "start": 1.816,
-    "end": 1.991
-   },
-   {
-    "text": "pourrait",
-    "start": 1.991,
-    "end": 2.46
+    "start": 0.76,
+    "end": 1.1
    },
    {
     "text": "en",
-    "start": 2.46,
-    "end": 2.577
+    "start": 1.1,
+    "end": 1.36
+   },
+   {
+    "text": "commençant",
+    "start": 1.36,
+    "end": 1.82
+   },
+   {
+    "text": "qui",
+    "start": 1.82,
+    "end": 2.02
+   },
+   {
+    "text": "pourrait",
+    "start": 2.02,
+    "end": 2.28
+   },
+   {
+    "text": "en",
+    "start": 2.28,
+    "end": 2.54
    },
    {
     "text": "avoir",
-    "start": 2.577,
-    "end": 2.87
+    "start": 2.54,
+    "end": 2.74
    },
    {
     "text": "besoin.",
-    "start": 2.87,
-    "end": 3.28
+    "start": 2.74,
+    "end": 2.94
    }
   ]
  }

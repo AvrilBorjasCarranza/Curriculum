@@ -19,167 +19,167 @@
   "note": "COPIÉ stamp"
  },
  {
-  "t": 2.5,
+  "t": 2.461,
   "type": "wipe",
   "note": "whip to s2"
  },
  {
-  "t": 3.979,
+  "t": 4.259,
   "type": "thump",
   "g": 0.9,
   "note": "RESTE"
  },
  {
-  "t": 4.361,
+  "t": 4.688,
   "type": "whoosh",
   "len": 0.45,
   "g": 0.7,
   "note": "colour flood"
  },
  {
-  "t": 4.811,
+  "t": 5.138,
   "type": "pop",
   "g": 0.8,
   "note": "logo"
  },
  {
-  "t": 10.203,
+  "t": 9.798,
   "type": "whoosh",
   "len": 0.4,
   "g": 0.8,
   "note": "zoom through printed object"
  },
  {
-  "t": 10.573,
+  "t": 10.168,
   "type": "pop",
   "note": "figurine"
  },
  {
-  "t": 12.431,
+  "t": 11.974,
   "type": "pop",
   "g": 0.9,
   "note": "keychain"
  },
  {
-  "t": 14.185,
+  "t": 13.623,
   "type": "pop",
   "note": "characters"
  },
  {
-  "t": 16.029,
+  "t": 15.102,
   "type": "wipe",
   "note": "whip to s5"
  },
  {
-  "t": 18.899,
+  "t": 17.451,
   "type": "magic",
   "g": 0.7,
   "note": "sketch becomes product"
  },
  {
-  "t": 20.376,
+  "t": 19.065,
   "type": "wipe",
   "g": 0.5,
   "note": "blur swap to s6"
  },
  {
-  "t": 20.876,
+  "t": 19.565,
   "type": "pop",
   "g": 0.6,
   "note": "question mark"
  },
  {
-  "t": 24.796,
+  "t": 23.015,
   "type": "hit",
   "g": 0.8,
   "note": "EXCLUSIF stamp"
  },
  {
-  "t": 26.436,
+  "t": 24.745,
   "type": "click",
   "g": 0.9,
   "note": "padlock shackle closes"
  },
  {
-  "t": 28.257,
+  "t": 26.084,
   "type": "whoosh",
   "len": 0.35,
   "g": 0.6,
   "note": "iris"
  },
  {
-  "t": 28.507,
+  "t": 26.334,
   "type": "pop",
   "g": 0.6,
   "note": "big question mark"
  },
  {
-  "t": 30.566,
+  "t": 28.214,
   "type": "success",
   "note": "green check"
  },
  {
-  "t": 34.388,
+  "t": 32.085,
   "type": "wipe",
   "g": 0.6,
   "note": "iris to s8"
  },
  {
-  "t": 33.208,
+  "t": 31.214,
   "type": "pop",
   "g": 0.8,
   "note": "gift check"
  },
  {
-  "t": 35.788,
+  "t": 33.485,
   "type": "pop",
   "g": 0.8,
   "note": "gift lands"
  },
  {
-  "t": 38.673,
+  "t": 36.37,
   "type": "wipe",
   "note": "whip to s9"
  },
  {
-  "t": 39.643,
+  "t": 37.34,
   "type": "thump",
   "g": 0.6,
   "note": "Metz pin lands"
  },
  {
-  "t": 42.976,
+  "t": 40.569,
   "type": "whoosh",
   "len": 0.4,
   "g": 0.8,
   "note": "zoom through pin"
  },
  {
-  "t": 44.246,
+  "t": 41.839,
   "type": "pop",
   "g": 0.8,
   "note": "message bubble"
  },
  {
-  "t": 45.35,
+  "t": 43.317,
   "type": "click",
   "note": "send"
  },
  {
-  "t": 45.85,
+  "t": 43.817,
   "type": "wipe",
   "g": 0.6,
   "note": "iris to s11"
  },
  {
-  "t": 46.35,
+  "t": 44.317,
   "type": "whoosh",
   "len": 1.1,
   "g": 0.6,
   "note": "paper plane"
  },
  {
-  "t": 49.822,
+  "t": 47.476,
   "type": "magic",
   "note": "logo end card"
  }

@@ -1,6 +1,6 @@
 {
  "video": "/home/user/Curriculum/reel-renardlab/renders/base-voix-musique.mp4",
- "duration": 52.433333,
+ "duration": 50.1,
  "keep_audio": true,
  "beats_used": false,
  "beat_check": null,
@@ -20,14 +20,14 @@
  "sfx_ducked": "/tmp/claude-0/rsfx/result/reel_sfx_sfx_ducked.wav",
  "loudness": {
   "sfx": {
-   "lufs": -25.7,
-   "lra": 8.3,
+   "lufs": -27.0,
+   "lra": 7.9,
    "true_peak": -1.9
   },
   "final": {
-   "lufs": -12.7,
-   "lra": 2.5,
-   "true_peak": -1.2
+   "lufs": -14.7,
+   "lra": 2.8,
+   "true_peak": -1.6
   },
   "gain_db": 0.0,
   "note": ""
@@ -56,28 +56,34 @@
   "sync": {
    "verdict": "mismatch",
    "total": 10,
-   "matched": 7,
-   "median_offset_s": 0.024,
-   "within_tol": 0.4,
+   "matched": 8,
+   "median_offset_s": 0.016,
+   "within_tol": 0.5,
    "within_after_shift": 0.7,
    "quarters": [
     {
      "from": 2.5,
-     "to": 16.0,
-     "median_offset_s": 0.138,
+     "to": 4.3,
+     "median_offset_s": 0.139,
      "n": 2
     },
     {
-     "from": 20.4,
-     "to": 24.8,
-     "median_offset_s": 0.024,
+     "from": 15.1,
+     "to": 19.1,
+     "median_offset_s": 0.131,
      "n": 2
     },
     {
-     "from": 34.4,
-     "to": 45.9,
-     "median_offset_s": 0.016,
-     "n": 3
+     "from": 23.0,
+     "to": 32.1,
+     "median_offset_s": 0.015,
+     "n": 2
+    },
+    {
+     "from": 36.4,
+     "to": 43.8,
+     "median_offset_s": 0.13,
+     "n": 2
     }
    ],
    "drift": true
@@ -86,10 +92,10 @@
   "voice": null,
   "retimed": null,
   "baked": {
-   "share": 0.06,
+   "share": 0.1,
    "chance": 0.06,
-   "at_db": -3.87,
-   "shifted_db": 9.77,
+   "at_db": -3.63,
+   "shifted_db": 8.75,
    "quiet": 0.01
   },
   "baked_strong": false,
@@ -234,7 +240,7 @@
    "snapped_ms": null
   },
   {
-   "t": 2.5,
+   "t": 2.461,
    "label": "wipe",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_thump-airy.wav",
    "role": "whoosh",
@@ -244,7 +250,7 @@
    "peak_time": 0.15,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 2.35,
+   "start": 2.311,
    "seg": 0.72,
    "source": "library",
    "fx": "",
@@ -271,7 +277,7 @@
    "snapped_ms": null
   },
   {
-   "t": 3.979,
+   "t": 4.259,
    "label": "thump x0.90",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/hit_wood-tap.wav",
    "role": "hit",
@@ -281,7 +287,7 @@
    "peak_time": 0.01,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 3.969,
+   "start": 4.249,
    "seg": 0.339,
    "source": "library",
    "fx": "hp220",
@@ -308,7 +314,7 @@
    "snapped_ms": null
   },
   {
-   "t": 4.361,
+   "t": 4.688,
    "label": "whoosh x0.70",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_sleeve.wav",
    "role": "whoosh",
@@ -318,7 +324,7 @@
    "peak_time": 0.15,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 4.211,
+   "start": 4.538,
    "seg": 0.55,
    "source": "library",
    "fx": "-2st",
@@ -345,7 +351,7 @@
    "snapped_ms": null
   },
   {
-   "t": 4.811,
+   "t": 5.138,
    "label": "pop x0.80",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_wide.wav",
    "role": "pop",
@@ -355,7 +361,7 @@
    "peak_time": 0.05,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 4.811,
+   "start": 5.138,
    "seg": 0.19,
    "source": "library",
    "fx": "-2st",
@@ -382,7 +388,7 @@
    "snapped_ms": null
   },
   {
-   "t": 10.203,
+   "t": 9.798,
    "label": "whoosh x0.80",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_bamboo.wav",
    "role": "whoosh",
@@ -392,7 +398,7 @@
    "peak_time": 0.13,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 10.073,
+   "start": 9.668,
    "seg": 0.477,
    "source": "library",
    "fx": "+2st",
@@ -419,7 +425,7 @@
    "snapped_ms": null
   },
   {
-   "t": 10.573,
+   "t": 10.168,
    "label": "pop",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_lip.wav",
    "role": "pop",
@@ -429,7 +435,7 @@
    "peak_time": 0.01,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 10.573,
+   "start": 10.168,
    "seg": 0.221,
    "source": "library",
    "fx": "+2st",
@@ -456,17 +462,17 @@
    "snapped_ms": null
   },
   {
-   "t": 12.431,
+   "t": 11.974,
    "label": "pop x0.90",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_round.wav",
    "role": "pop",
    "anchor": "start",
-   "gain_db": 2.1,
-   "gain_applied_db": -14.09,
+   "gain_db": -6.9,
+   "gain_applied_db": -23.09,
    "peak_time": 0.01,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 12.431,
+   "start": 11.974,
    "seg": 0.25,
    "source": "library",
    "fx": "-3st",
@@ -482,8 +488,8 @@
    "source_file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_round.wav",
    "capped_db": 0.0,
    "comp_db": 0.0,
-   "peak_after_db": -15.1,
-   "loud_after_db": -28.1,
+   "peak_after_db": -24.1,
+   "loud_after_db": -37.1,
    "level_adj_db": -3.2,
    "onset_shift_ms": 0,
    "pan": null,
@@ -493,7 +499,7 @@
    "snapped_ms": null
   },
   {
-   "t": 14.185,
+   "t": 13.623,
    "label": "pop",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_soft.wav",
    "role": "pop",
@@ -503,7 +509,7 @@
    "peak_time": 0.03,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 14.172,
+   "start": 13.61,
    "seg": 0.18,
    "source": "library",
    "fx": "+1st",
@@ -530,7 +536,7 @@
    "snapped_ms": null
   },
   {
-   "t": 16.029,
+   "t": 15.102,
    "label": "wipe",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_swish-soft.wav",
    "role": "whoosh",
@@ -540,7 +546,7 @@
    "peak_time": 0.11,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 15.919,
+   "start": 14.992,
    "seg": 0.64,
    "source": "library",
    "fx": "-2st",
@@ -567,7 +573,7 @@
    "snapped_ms": null
   },
   {
-   "t": 18.899,
+   "t": 17.451,
    "label": "magic x0.70",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library/sparkle/sparkle.mp3",
    "role": "chime",
@@ -577,7 +583,7 @@
    "peak_time": 0.09,
    "peak_db": 0.0,
    "arrive_time": null,
-   "start": 18.809,
+   "start": 17.361,
    "seg": 1.36,
    "source": "library",
    "fx": "",
@@ -604,7 +610,7 @@
    "snapped_ms": null
   },
   {
-   "t": 20.376,
+   "t": 19.065,
    "label": "wipe x0.50",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_crisp.wav",
    "role": "whoosh",
@@ -614,7 +620,7 @@
    "peak_time": 0.13,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 20.246,
+   "start": 18.935,
    "seg": 0.59,
    "source": "library",
    "fx": "+2st",
@@ -641,7 +647,7 @@
    "snapped_ms": null
   },
   {
-   "t": 20.876,
+   "t": 19.565,
    "label": "pop x0.60",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_plop.wav",
    "role": "pop",
@@ -651,7 +657,7 @@
    "peak_time": 0.01,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 20.871,
+   "start": 19.56,
    "seg": 0.16,
    "source": "library",
    "fx": "-1st",
@@ -678,17 +684,17 @@
    "snapped_ms": null
   },
   {
-   "t": 24.796,
+   "t": 23.015,
    "label": "hit x0.80",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/hit_knock-desk.wav",
    "role": "hit",
    "anchor": "peak",
-   "gain_db": 1.1,
-   "gain_applied_db": -0.5,
+   "gain_db": -3.9,
+   "gain_applied_db": -4.51,
    "peak_time": 0.03,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 24.766,
+   "start": 22.985,
    "seg": 0.224,
    "source": "library",
    "fx": "hp220",
@@ -704,9 +710,9 @@
    "source_file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/hit_knock-desk.wav",
    "capped_db": 0.0,
    "comp_db": 0.0,
-   "peak_after_db": -1.5,
-   "loud_after_db": -20.1,
-   "level_adj_db": 1.4,
+   "peak_after_db": -5.5,
+   "loud_after_db": -24.1,
+   "level_adj_db": 2.4,
    "onset_shift_ms": 0,
    "pan": null,
    "g_author": 0.8,
@@ -715,17 +721,17 @@
    "snapped_ms": null
   },
   {
-   "t": 26.436,
+   "t": 24.745,
    "label": "click x0.90",
    "file": "/tmp/claude-0/rsfx/result/_work/_slices/key-press_64_120.wav",
    "role": "click",
    "anchor": "start",
-   "gain_db": 10.1,
-   "gain_applied_db": 1.8,
+   "gain_db": 7.1,
+   "gain_applied_db": -1.2,
    "peak_time": 0.01,
    "peak_db": -5.7,
    "arrive_time": null,
-   "start": 26.43,
+   "start": 24.739,
    "seg": 0.12,
    "source": "library",
    "fx": "",
@@ -744,8 +750,8 @@
    "source_file": "/home/user/Curriculum/reel-renardlab/sfx-library/keyboard/key-press.mp3",
    "capped_db": 0.0,
    "comp_db": 0.0,
-   "peak_after_db": -3.9,
-   "loud_after_db": -35.7,
+   "peak_after_db": -6.9,
+   "loud_after_db": -38.7,
    "level_adj_db": 0.0,
    "onset_shift_ms": 6,
    "pan": null,
@@ -755,7 +761,7 @@
    "snapped_ms": null
   },
   {
-   "t": 28.257,
+   "t": 26.084,
    "label": "whoosh x0.60",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_tight.wav",
    "role": "whoosh",
@@ -765,7 +771,7 @@
    "peak_time": 0.15,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 28.107,
+   "start": 25.934,
    "seg": 0.36,
    "source": "library",
    "fx": "-3st",
@@ -792,7 +798,7 @@
    "snapped_ms": null
   },
   {
-   "t": 28.507,
+   "t": 26.334,
    "label": "pop x0.60",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_bloop.wav",
    "role": "pop",
@@ -802,7 +808,7 @@
    "peak_time": 0.03,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 28.507,
+   "start": 26.334,
    "seg": 0.373,
    "source": "library",
    "fx": "",
@@ -829,7 +835,7 @@
    "snapped_ms": null
   },
   {
-   "t": 30.566,
+   "t": 28.214,
    "label": "success",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library/chime/ping.mp3",
    "role": "chime",
@@ -839,7 +845,7 @@
    "peak_time": 0.33,
    "peak_db": -6.2,
    "arrive_time": null,
-   "start": 30.236,
+   "start": 27.884,
    "seg": 1.15,
    "source": "library",
    "fx": "",
@@ -866,7 +872,7 @@
    "snapped_ms": null
   },
   {
-   "t": 33.208,
+   "t": 31.214,
    "label": "pop x0.80",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library/pop/pop.mp3",
    "role": "pop",
@@ -876,7 +882,7 @@
    "peak_time": 0.13,
    "peak_db": -3.2,
    "arrive_time": null,
-   "start": 33.096,
+   "start": 31.102,
    "seg": 0.32,
    "source": "library",
    "fx": "-2st",
@@ -903,7 +909,7 @@
    "snapped_ms": null
   },
   {
-   "t": 34.388,
+   "t": 32.085,
    "label": "wipe x0.60",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library/whoosh/whoosh.mp3",
    "role": "whoosh",
@@ -913,7 +919,7 @@
    "peak_time": 0.17,
    "peak_db": -2.1,
    "arrive_time": null,
-   "start": 34.218,
+   "start": 31.915,
    "seg": 0.41,
    "source": "library",
    "fx": "-3st",
@@ -940,7 +946,7 @@
    "snapped_ms": null
   },
   {
-   "t": 35.788,
+   "t": 33.485,
    "label": "pop x0.80",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_wide.wav",
    "role": "pop",
@@ -950,7 +956,7 @@
    "peak_time": 0.05,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 35.788,
+   "start": 33.485,
    "seg": 0.19,
    "source": "library",
    "fx": "+2st",
@@ -977,7 +983,7 @@
    "snapped_ms": null
   },
   {
-   "t": 38.673,
+   "t": 36.37,
    "label": "wipe",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_flick.wav",
    "role": "whoosh",
@@ -987,7 +993,7 @@
    "peak_time": 0.11,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 38.563,
+   "start": 36.26,
    "seg": 0.32,
    "source": "library",
    "fx": "+1st",
@@ -1014,7 +1020,7 @@
    "snapped_ms": null
   },
   {
-   "t": 39.643,
+   "t": 37.34,
    "label": "thump x0.60",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/hit_bamboo-tok.wav",
    "role": "hit",
@@ -1024,7 +1030,7 @@
    "peak_time": 0.01,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 39.633,
+   "start": 37.33,
    "seg": 0.17,
    "source": "library",
    "fx": "hp220",
@@ -1051,7 +1057,7 @@
    "snapped_ms": null
   },
   {
-   "t": 42.976,
+   "t": 40.569,
    "label": "whoosh x0.80",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_bamboo.wav",
    "role": "whoosh",
@@ -1061,7 +1067,7 @@
    "peak_time": 0.13,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 42.846,
+   "start": 40.439,
    "seg": 0.477,
    "source": "library",
    "fx": "+1st",
@@ -1088,7 +1094,7 @@
    "snapped_ms": null
   },
   {
-   "t": 44.246,
+   "t": 41.839,
    "label": "pop x0.80",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/pop_lip.wav",
    "role": "pop",
@@ -1098,7 +1104,7 @@
    "peak_time": 0.01,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 44.246,
+   "start": 41.839,
    "seg": 0.221,
    "source": "library",
    "fx": "-3st",
@@ -1125,17 +1131,17 @@
    "snapped_ms": null
   },
   {
-   "t": 45.35,
+   "t": 43.317,
    "label": "click",
    "file": "/tmp/claude-0/rsfx/result/_work/_slices/click-soft_39_81.wav",
    "role": "click",
    "anchor": "start",
-   "gain_db": 11.0,
-   "gain_applied_db": 2.0,
+   "gain_db": 8.0,
+   "gain_applied_db": -1.0,
    "peak_time": 0.03,
    "peak_db": -5.0,
    "arrive_time": null,
-   "start": 45.345,
+   "start": 43.312,
    "seg": 0.081,
    "source": "library",
    "fx": "",
@@ -1154,8 +1160,8 @@
    "source_file": "/home/user/Curriculum/reel-renardlab/sfx-library/click/click-soft.mp3",
    "capped_db": 0.0,
    "comp_db": 0.0,
-   "peak_after_db": -3.0,
-   "loud_after_db": -29.1,
+   "peak_after_db": -6.0,
+   "loud_after_db": -32.1,
    "level_adj_db": 0.0,
    "onset_shift_ms": 5,
    "pan": null,
@@ -1165,7 +1171,7 @@
    "snapped_ms": null
   },
   {
-   "t": 45.85,
+   "t": 43.817,
    "label": "wipe x0.60",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_thump-airy.wav",
    "role": "whoosh",
@@ -1175,7 +1181,7 @@
    "peak_time": 0.15,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 45.7,
+   "start": 43.667,
    "seg": 0.72,
    "source": "library",
    "fx": "-1st",
@@ -1202,7 +1208,7 @@
    "snapped_ms": null
   },
   {
-   "t": 46.35,
+   "t": 44.317,
    "label": "whoosh x0.60",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library-earshot/whoosh_swish-soft.wav",
    "role": "whoosh",
@@ -1212,7 +1218,7 @@
    "peak_time": 0.11,
    "peak_db": -1.0,
    "arrive_time": null,
-   "start": 46.24,
+   "start": 44.207,
    "seg": 0.64,
    "source": "library",
    "fx": "-1st",
@@ -1239,17 +1245,17 @@
    "snapped_ms": null
   },
   {
-   "t": 49.822,
+   "t": 47.476,
    "label": "magic",
    "file": "/home/user/Curriculum/reel-renardlab/sfx-library/chime/chime.mp3",
    "role": "chime",
    "anchor": "peak",
-   "gain_db": 6.0,
-   "gain_applied_db": 2.3,
+   "gain_db": -9.0,
+   "gain_applied_db": -12.7,
    "peak_time": 0.43,
    "peak_db": -9.3,
    "arrive_time": null,
-   "start": 49.392,
+   "start": 47.046,
    "seg": 2.5,
    "source": "library",
    "fx": "-2st",
@@ -1265,8 +1271,8 @@
    "source_file": "/home/user/Curriculum/reel-renardlab/sfx-library/chime/chime.mp3",
    "capped_db": 0.0,
    "comp_db": 0.0,
-   "peak_after_db": -7.0,
-   "loud_after_db": -30.1,
+   "peak_after_db": -22.0,
+   "loud_after_db": -45.1,
    "level_adj_db": 0.0,
    "onset_shift_ms": 0,
    "pan": null,

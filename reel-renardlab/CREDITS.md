@@ -10,7 +10,7 @@ Extrait à partir de 34,0 s, normalisé.
 Musique : "Hip-Hop Jazz" par Prospect Of Idiots (CC BY 3.0)
 
 ## Voix
-Voix off générée localement (Kokoro-82M, voix française « ff_siwis ») via `hyperframes tts`.
+Voix de la propriétaire de RenardLab3D, enregistrée au téléphone et montée (meilleure prise par phrase, répétitions, souffles et pauses longues retirés) avec tools/edit_voice.py.
 
 ## Logo
 Logo RenardLab Impression 3D fourni par la propriétaire.

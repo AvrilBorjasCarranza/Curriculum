@@ -22,8 +22,8 @@ SCENES = [
 VOICE = json.load(open(os.path.join(OUT, "assets/voice/words.json")))
 VKEYS = {"s1-hook": "s1", "s2-reste": "s2", "s3-marque": "s3", "s5-ensemble": "s5", "s6-exclu": "s6",
          "s7-facile": "s7", "s8-noel": "s8", "s9-france": "s9", "s10-dm": "s10", "s11-partage": "s11"}
-PADS = {"s1": (0.1, 0.3), "s2": (0.25, 0.35), "s3": (0.35, 0.4), "s5": (0.3, 0.4), "s6": (0.3, 0.45),
-        "s7": (0.35, 0.4), "s8": (0.35, 0.45), "s9": (0.3, 0.55), "s10": (0.3, 0.5), "s11": (0.25, 0)}
+PADS = {"s1": (0.1, 0.6), "s2": (0.25, 0.35), "s3": (0.35, 0.4), "s5": (0.3, 0.8), "s6": (0.3, 0.45),
+        "s7": (0.35, 0.4), "s8": (0.35, 0.45), "s9": (0.3, 0.55), "s10": (0.3, 0.9), "s11": (0.25, 0)}
 END_CARD = 2.6
 dur, start, VSTART, VEND = {}, {}, {}, {}
 t = 0.0
@@ -423,9 +423,9 @@ def s5(d):
       pop("#s5-chip-a", 0.5);
       tl.fromTo("#s5-sketch", {{ strokeDashoffset: 2000 }}, {{ strokeDashoffset: 0, duration: 1.4, ease: "power1.inOut" }}, 0.6);
       tl.fromTo(["#s5-toi", "#s5-pl", "#s5-nous"], {{ opacity: 0, filter: "blur(6px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.12 }}, 1.0);
-      tl.fromTo("#s5-arrow", {{ strokeDashoffset: 2000 }}, {{ strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }}, 2.4);
-      tl.fromTo("#s5-prod", {{ scale: 0.3, opacity: 0, rotation: -30, svgOrigin: "800 680" }}, {{ scale: 1, opacity: 1, rotation: 0, svgOrigin: "800 680", duration: 0.6, ease: "back.out(1.5)" }}, 2.75);
-      pop("#s5-chip-b", 3.0);
+      tl.fromTo("#s5-arrow", {{ strokeDashoffset: 2000 }}, {{ strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }}, D * 0.5);
+      tl.fromTo("#s5-prod", {{ scale: 0.3, opacity: 0, rotation: -30, svgOrigin: "800 680" }}, {{ scale: 1, opacity: 1, rotation: 0, svgOrigin: "800 680", duration: 0.6, ease: "back.out(1.5)" }}, D * 0.58);
+      pop("#s5-chip-b", D * 0.64);
       blurOut();
 '''
     return scene_file(sid, d, INK, INK, "", html, js)
@@ -806,7 +806,7 @@ EV = [
     {"t": S["s4-produits"] + S4_BEATS[1] + 0.02, "type": "pop", "g": 0.9, "note": "keychain"},
     {"t": S["s4-produits"] + S4_BEATS[2] + 0.02, "type": "pop", "note": "characters"},
     {"t": S["s5-ensemble"] - 0.12, "type": "wipe", "note": "whip to s5"},
-    {"t": S["s5-ensemble"] + 2.75, "type": "magic", "g": 0.7, "note": "sketch becomes product"},
+    {"t": S["s5-ensemble"] + Dd["s5-ensemble"] * 0.58, "type": "magic", "g": 0.7, "note": "sketch becomes product"},
     {"t": S["s6-exclu"], "type": "wipe", "g": 0.5, "note": "blur swap to s6"},
     {"t": S["s6-exclu"] + 0.5, "type": "pop", "g": 0.6, "note": "question mark"},
     {"t": S["s6-exclu"] + s6_stamp + 0.2, "type": "hit", "g": 0.8, "note": "EXCLUSIF stamp"},
