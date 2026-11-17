@@ -67,9 +67,8 @@ def tighten(y):
     db = env_db(y); parts, last = [], 0.0
     for s0, s1 in silences(db, MAX_PAUSE):
         if s0 < 0.05 or s1 > len(y) / SR - 0.05: continue
-        mid = (s0 + s1) / 2
-        parts.append(fade(y[int(last * SR):int((mid - KEEP_PAUSE / 2) * SR)].copy()))
-        last = mid + KEEP_PAUSE / 2
+        parts.append(fade(y[int(last * SR):int((s0 + KEEP_PAUSE / 2) * SR)].copy()))
+        last = s1 - KEEP_PAUSE / 2
     parts.append(fade(y[int(last * SR):].copy()))
     return np.concatenate(parts)
 
@@ -119,7 +118,7 @@ LINES = {
     "s4c": (3, 23.36, 24.60, []),
     "s5": (3, 24.50, 27.40, []),
     "s6": (2, 24.84, 32.24, []),
-    "s7": (3, 38.64, 47.02, []),
+    "s7": (3, 40.25, 47.02, []),
     "s8": (3, 47.02, 51.15, []),
     "s9": (1, 75.96, 79.76, [77.10, 78.54]),
     "s10": (1, 79.76, 81.80, []),
