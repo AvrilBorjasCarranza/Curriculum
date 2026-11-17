@@ -1,0 +1,47 @@
+earshot critique: renardlab3d-reel-final.mp4 (52.4 s) vs 7 reference films (bundled launch films)
+VERDICT: launch-grade - 21 of 23 scored metrics in range (weighted 95%), 0 critical and 0 major issues.
+FIX FIRST (most important first):
+  1. [minor] nearly mono (side -27.5 dB vs mid; refs -14.5 dB .. -5.0 dB): use stereo music and ambience, pan SFX with the motion
+  2. [minor] thin bottom: add a sub layer (sub drop or kick) under reveals, or pick music with real low end (-27.6 dB share, refs -16.2 dB .. -4.1 dB)
+  tip: 1 of 22 visual events get no sound at all (no onset within 100 ms, no whoosh / riser peak within 300 ms, no level peak within 150 ms; the matcher earshot timeline uses): 0:04.67; give the ones that matter a whoosh into the cut, a hit or a UI click, or keep one as a deliberate stop-down; 3 more are met only by a level peak (a soft swell, or just the bed: check 0:02.63, 0:03.87, 0:47.53 on the sheet)
+  tip: voice detected in 91% of windows: duck music 3-6 dB under the voice and keep SFX out of 1-4 kHz while it speaks
+SCORECARD                                      value   ok range                        ref median  status
+  loudness integrated loudness             -12.7 LUFS   -16.0 LUFS .. -9.0 LUFS (web)   -14.8 LUFS  ok
+  loudness true peak                        -1.0 dBTP   <= 0.0 dBTP (decoded lossy)       0.6 dBTP  ok
+  realness realness (p_real)                     0.95   >= 0.77 (realness model)                    ok
+  music    music presence                        100%   >= 62%                                100%  ok
+  sync     onset on visual events +-100ms         77%   >= 45%                                 81%  ok
+  loudness loudness range                      2.5 LU   0.7 LU .. 13.2 LU                   5.5 LU  ok
+  loudness loudest 3 s above integrated        1.0 LU   0.6 LU .. 4.0 LU                    2.3 LU  ok
+  arc      time to first sound                 0.14 s   <= 0.58 s                           0.13 s  ok
+  ending   dead air at the end                 0.64 s   <= 2.15 s                           0.04 s  ok
+  arc      longest silent gap inside           0.12 s   <= 1.91 s                           0.02 s  ok
+  ending   final moment vs integrated         -0.3 LU   -3.7 LU .. 7.1 LU                   0.2 LU  ok
+  density  onset density                      5.03 /s   2.16 /s .. 8.52 /s                 5.66 /s  ok
+  density  salient hit density                1.64 /s   0.05 /s .. 1.86 /s                 1.25 /s  ok
+  arc      opening level (first 10%)          -0.3 LU   -19.0 LU .. 3.7 LU                 -1.1 LU  ok
+  arc      closing level (last 10%)           -3.7 LU   -15.8 LU .. 1.2 LU                 -3.0 LU  ok
+  ending   final fade / ring-out length        1.60 s   <= 3.04 s                           0.27 s  ok
+  spectrum sub 20-60 Hz share                -27.6 dB   -17.7 dB .. -2.6 dB                -6.6 dB  low (minor)
+  spectrum low 60-250 Hz share                -4.3 dB   -8.2 dB .. -0.6 dB                 -4.2 dB  ok
+  spectrum low-mid 250-1k share               -2.8 dB   -18.3 dB .. -0.2 dB                -5.3 dB  ok
+  spectrum mid 1-4 kHz share                 -13.4 dB   -20.6 dB .. -9.0 dB               -12.4 dB  ok
+  spectrum presence 4-8 kHz share            -17.7 dB   -31.8 dB .. -11.6 dB              -17.8 dB  ok
+  spectrum air 8-16 kHz share                -13.6 dB   -35.7 dB .. -9.7 dB               -23.6 dB  ok
+  stereo   stereo width (side vs mid)        -27.5 dB   -15.5 dB .. -4.0 dB                -8.5 dB  low (minor)
+LOUDNESS ARC (LU vs integrated at 0%, 10% .. 100% of the film; not scored):
+  this film      +0.4   -0.3   -0.4   -0.8   +0.2   -2.0   -0.1   -1.0   -0.2   -1.2  -11.4
+  refs median    -1.3   -0.8   +0.3   -0.3   -0.2   +0.2   +0.0   -0.4   +0.9   -0.3   -7.4
+NOT SCORED (style choices, shown for context):
+  voice / speech presence                                           91%   refs p10-p90 0% .. 100%
+  tempo                                                         120 BPM   refs p10-p90 115 BPM .. 136 BPM
+  position of the loudest 3 s                                      0.43   refs p10-p90 0.10 .. 0.83
+  final hit ring-out                                             2.28 s   refs p10-p90 1.06 s .. 3.58 s
+  stop-downs                                                  11.4 /min   refs p10-p90 0.0 /min .. 9.1 /min
+  visual events (cuts, big changes)                             0.42 /s   refs p10-p90 0.31 /s .. 1.42 /s
+  visual events with a salient hit +-100 ms            27% (chance 37%)   refs p10-p90 8% .. 49%
+  visual events with an onset +-1 frame                45% (chance 36%)   refs p10-p90 34% .. 59%
+  visual events on the beat grid +-70 ms               32% (chance 28%)   refs p10-p90 20% .. 45%
+  brightness (median spectral centroid)                         2063 Hz   refs p10-p90 1183 Hz .. 3030 Hz
+  L/R correlation                                                  1.00   refs p10-p90 0.58 .. 0.86
+realness: renardlab3d-reel-final.mp4: real or pro-produced (p_real 0.95, mean of 14 4 s windows; file thresholds lo 0.4 / hi 0.77, weak calibration): 0 of 14 windows lean synthesized (p_real < 0.5); mean CLAP head score +2.7. No window leans synthesized (lowest p_real 0.89); that does not rule out a code-made layer under a louder real mix (most are missed): judge the source files and stems.

@@ -739,7 +739,8 @@ for i, (sid, s, e, _) in enumerate(SCENES):
     hosts.append(f'''      <div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html" data-start="{start[sid]}" data-duration="{dur[sid]}" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>''')
 hosts.append(f'''      <div id="snow" data-composition-id="snow" data-composition-src="compositions/snow.html" data-start="{start["s8-noel"]}" data-duration="{dur["s8-noel"]}" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" data-variable-values='{{"density":"dense","speed":"calm"}}' style="z-index:2"></div>''')
 hosts.append(f'''      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="{TOTAL}" data-track-index="2" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:3"></div>''')
-audio = [f'''      <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="{TOTAL}" data-track-index="3" data-volume="0.16"></audio>''']
+audio = [f'''      <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="{TOTAL}" data-track-index="3" data-volume="0.2"></audio>''']
+if os.environ.get("NO_MUSIC"): audio = []
 for k in ("s1", "s2", "s3", "s4a", "s4b", "s4c", "s5", "s6", "s7", "s8", "s9", "s10", "s11"):
     audio.append(f'''      <audio id="vo-{k}" class="clip" src="assets/voice/{k}.mp3" data-start="{VSTART[k]}" data-duration="{VOICE[k]['dur']}" data-track-index="2" data-volume="0.9"></audio>''')
 lane_end = []
