@@ -1,0 +1,63 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #FF6B1A; font-family: "Archivo Black", sans-serif; }
+    #s11-partage-stage { position: absolute; inset: 0; }
+    #s11-partage-ground { position: absolute; inset: 0; background: #1A1410; }
+    .s11-partage-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .dash { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+    .chip { position: absolute; font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 999px; padding: 14px 30px 16px; white-space: nowrap; }
+
+  </style>
+  <div id="root" data-composition-id="s11-partage" data-width="1080" data-height="1920">
+    <div id="s11-partage-stage">
+      <div id="s11-partage-ground"></div>
+      <svg class="s11-partage-svg" viewBox="0 0 1080 1920">
+        <g id="s11-share">
+          <g id="s11-shop">
+        <rect x="620" y="700" width="360" height="320" fill="#FFF3E3" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="606" y="570" width="388" height="76" fill="#1F8A4C" stroke="#1A1410" stroke-width="8" rx="10"/>
+        <text x="800.0" y="622" text-anchor="middle" font-family="Archivo Black" font-size="40" fill="#FFF3E3">COMMERÇANT</text>
+        <rect x="620.0" y="640" width="60.5" height="80" fill="#1F8A4C"/><rect x="680.0" y="640" width="60.5" height="80" fill="#FFF3E3"/><rect x="740.0" y="640" width="60.5" height="80" fill="#1F8A4C"/><rect x="800.0" y="640" width="60.5" height="80" fill="#FFF3E3"/><rect x="860.0" y="640" width="60.5" height="80" fill="#1F8A4C"/><rect x="920.0" y="640" width="60.5" height="80" fill="#FFF3E3"/><circle cx="650.0" cy="720" r="30.0" fill="#1F8A4C" stroke="#1A1410" stroke-width="6"/><circle cx="710.0" cy="720" r="30.0" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="770.0" cy="720" r="30.0" fill="#1F8A4C" stroke="#1A1410" stroke-width="6"/><circle cx="830.0" cy="720" r="30.0" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="890.0" cy="720" r="30.0" fill="#1F8A4C" stroke="#1A1410" stroke-width="6"/><circle cx="950.0" cy="720" r="30.0" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/>
+        <rect x="620" y="640" width="360" height="80" fill="none" stroke="#1A1410" stroke-width="8"/>
+        <rect x="650" y="800" width="162" height="160" fill="#BFE3F2" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="843" y="790" width="101" height="230" fill="#1F8A4C" stroke="#1A1410" stroke-width="8" rx="4"/>
+        <circle cx="858" cy="910" r="7" fill="#1A1410"/>
+      </g>
+          <path id="s11-trail" class="dash" d="M120 900 C 260 600, 420 520, 600 560" fill="none" stroke="#FFF3E3" stroke-width="7" stroke-dasharray="18 18" stroke-linecap="round"/>
+          <g id="s11-plane"><path d="M-60 0 L60 -40 L20 50 L0 10 Z" fill="#FF6B1A" stroke="#1A1410" stroke-width="6" stroke-linejoin="round"/></g>
+        </g>
+      </svg>
+      <div id="s11-end" style="position:absolute;left:0;top:0;width:1080px;height:1920px;">
+        <div id="s11-word" style="position:absolute;left:0;top:520px;width:1080px;text-align:center;font-size:124px;color:#FFF3E3;letter-spacing:-0.02em;">RenardLab<span style="color:#FF6B1A">3D</span></div>
+        <div id="s11-sub" style="position:absolute;left:0;top:690px;width:1080px;text-align:center;font-family:Inter;font-weight:900;font-size:38px;letter-spacing:0.14em;color:#FFF3E3;opacity:0.85;">IMPRESSION 3D PERSONNALISÉE</div>
+        <div id="s11-loc" style="position:absolute;left:0;top:760px;width:1080px;text-align:center;font-family:Inter;font-weight:700;font-size:36px;color:#FFF3E3;opacity:0.7;">Metz · livraison partout en France</div>
+        <div id="s11-cta" class="chip" style="left:0;top:900px;width:1080px;text-align:center;background:none;color:#1A1410;font-size:52px;"><span style="background:#FF6B1A;padding:18px 44px;border-radius:999px;border:6px solid #FFF3E3;">ÉCRIS-NOUS EN DM</span></div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+
+      const tl = gsap.timeline({ paused: true });
+      const D = 4.616;
+      const ST = "#s11-partage-stage";
+
+
+      tl.fromTo(ST, { clipPath: "circle(0px at 870px 975px)" }, { clipPath: "circle(2300px at 870px 975px)", duration: 0.38, ease: "power3.in" }, 0);
+      tl.fromTo("#s11-shop", { x: 300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power4.out" }, 0.15);
+      tl.fromTo("#s11-trail", { strokeDashoffset: 2000 }, { strokeDashoffset: 1300, duration: 1.1, ease: "power1.inOut" }, 0.5);
+      tl.fromTo("#s11-plane", { x: 120, y: 900, rotation: -40 }, { x: 610, y: 560, rotation: 10, duration: 1.1, ease: "power1.inOut" }, 0.5);
+      tl.fromTo("#s11-plane", { scale: 1, svgOrigin: "0 0" }, { scale: 0, svgOrigin: "0 0", duration: 0.15, ease: "power3.in" }, 1.6);
+      tl.fromTo("#s11-shop", { scale: 1, svgOrigin: "800 1000" }, { scale: 1.08, svgOrigin: "800 1000", duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out" }, 1.65);
+      tl.to("#s11-share", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, 2.4499999999999997);
+      tl.set("#s11-end", { opacity: 0 }, 0);
+      tl.set("#s11-end", { opacity: 1 }, 2.65);
+      tl.fromTo("#s11-word", { opacity: 0, filter: "blur(10px)", scale: 1.08 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.2, ease: "power2.out" }, 2.65);
+      tl.fromTo(["#s11-sub", "#s11-loc"], { opacity: 0 }, { opacity: (i) => [0.85, 0.7][i], duration: 0.2, stagger: 0.1 }, 2.85);
+      tl.fromTo("#s11-cta", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" }, 3.05);
+
+      window.__timelines["s11-partage"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,76 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #FFF3E3; font-family: "Archivo Black", sans-serif; }
+    #s1-hook-stage { position: absolute; inset: 0; }
+    #s1-hook-ground { position: absolute; inset: 0; background: #FFF3E3; }
+    .s1-hook-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .dash { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+    .chip { position: absolute; font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 999px; padding: 14px 30px 16px; white-space: nowrap; }
+
+  </style>
+  <div id="root" data-composition-id="s1-hook" data-width="1080" data-height="1920">
+    <div id="s1-hook-stage">
+      <div id="s1-hook-ground"></div>
+      <svg class="s1-hook-svg" viewBox="0 0 1080 1920">
+        <rect x="0" y="1010" width="1080" height="16" fill="#1A1410" opacity="0.15"/>
+        <g id="s1-shop-a">
+        <rect x="80" y="660" width="400" height="320" fill="#FFF3E3" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="66" y="530" width="428" height="76" fill="#FF6B1A" stroke="#1A1410" stroke-width="8" rx="10"/>
+        <text x="280.0" y="582" text-anchor="middle" font-family="Archivo Black" font-size="40" fill="#1A1410">TOI</text>
+        <rect x="80.0" y="600" width="67.2" height="80" fill="#FF6B1A"/><rect x="146.7" y="600" width="67.2" height="80" fill="#FFF3E3"/><rect x="213.3" y="600" width="67.2" height="80" fill="#FF6B1A"/><rect x="280.0" y="600" width="67.2" height="80" fill="#FFF3E3"/><rect x="346.7" y="600" width="67.2" height="80" fill="#FF6B1A"/><rect x="413.3" y="600" width="67.2" height="80" fill="#FFF3E3"/><circle cx="113.3" cy="680" r="33.3" fill="#FF6B1A" stroke="#1A1410" stroke-width="6"/><circle cx="180.0" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="246.7" cy="680" r="33.3" fill="#FF6B1A" stroke="#1A1410" stroke-width="6"/><circle cx="313.3" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="380.0" cy="680" r="33.3" fill="#FF6B1A" stroke="#1A1410" stroke-width="6"/><circle cx="446.7" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/>
+        <rect x="80" y="600" width="400" height="80" fill="none" stroke="#1A1410" stroke-width="8"/>
+        <rect x="110" y="760" width="180" height="160" fill="#BFE3F2" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="328" y="750" width="112" height="230" fill="#FF6B1A" stroke="#1A1410" stroke-width="8" rx="4"/>
+        <circle cx="344" cy="870" r="7" fill="#1A1410"/>
+      </g>
+        <g id="s1-shop-b">
+        <rect x="600" y="660" width="400" height="320" fill="#FFF3E3" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="586" y="530" width="428" height="76" fill="#5E6068" stroke="#1A1410" stroke-width="8" rx="10"/>
+        <text x="800.0" y="582" text-anchor="middle" font-family="Archivo Black" font-size="40" fill="#FFF3E3">EN FACE</text>
+        <rect x="600.0" y="600" width="67.2" height="80" fill="#5E6068"/><rect x="666.7" y="600" width="67.2" height="80" fill="#FFF3E3"/><rect x="733.3" y="600" width="67.2" height="80" fill="#5E6068"/><rect x="800.0" y="600" width="67.2" height="80" fill="#FFF3E3"/><rect x="866.7" y="600" width="67.2" height="80" fill="#5E6068"/><rect x="933.3" y="600" width="67.2" height="80" fill="#FFF3E3"/><circle cx="633.3" cy="680" r="33.3" fill="#5E6068" stroke="#1A1410" stroke-width="6"/><circle cx="700.0" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="766.7" cy="680" r="33.3" fill="#5E6068" stroke="#1A1410" stroke-width="6"/><circle cx="833.3" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="900.0" cy="680" r="33.3" fill="#5E6068" stroke="#1A1410" stroke-width="6"/><circle cx="966.7" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/>
+        <rect x="600" y="600" width="400" height="80" fill="none" stroke="#1A1410" stroke-width="8"/>
+        <rect x="630" y="760" width="180" height="160" fill="#BFE3F2" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="848" y="750" width="112" height="230" fill="#5E6068" stroke="#1A1410" stroke-width="8" rx="4"/>
+        <circle cx="864" cy="870" r="7" fill="#1A1410"/>
+      </g>
+        <path id="s1-arc" class="dash" d="M300 400 C 420 250, 660 250, 790 380" fill="none" stroke="#1A1410" stroke-width="10" stroke-linecap="round" stroke-dasharray="22 20"/>
+        <path id="s1-arrowhead" d="M760 330 L800 392 L730 395" fill="none" stroke="#1A1410" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <g transform="translate(280 420) scale(1.0)"><g id="s1-bulb-a">
+        <circle cx="0" cy="0" r="92" fill="#FFD23F" opacity="0.28"/>
+        <path d="M-46 10 A58 58 0 1 1 46 10 C34 28 26 38 24 58 L-24 58 C-26 38 -34 28 -46 10 Z" fill="#FFD23F" stroke="#1A1410" stroke-width="8" stroke-linejoin="round"/>
+        <rect x="-26" y="58" width="52" height="16" rx="4" fill="#1A1410"/><rect x="-20" y="78" width="40" height="12" rx="4" fill="#1A1410"/>
+        <path d="M-14 28 L-6 -6 L6 -6 L14 28" fill="none" stroke="#1A1410" stroke-width="6" stroke-linejoin="round"/>
+      </g></g>
+        <g transform="translate(800 420) scale(1.0)"><g id="s1-bulb-b">
+        <circle cx="0" cy="0" r="92" fill="#E6E6EA" opacity="0.28"/>
+        <path d="M-46 10 A58 58 0 1 1 46 10 C34 28 26 38 24 58 L-24 58 C-26 38 -34 28 -46 10 Z" fill="#E6E6EA" stroke="#1A1410" stroke-width="8" stroke-linejoin="round"/>
+        <rect x="-26" y="58" width="52" height="16" rx="4" fill="#1A1410"/><rect x="-20" y="78" width="40" height="12" rx="4" fill="#1A1410"/>
+        <path d="M-14 28 L-6 -6 L6 -6 L14 28" fill="none" stroke="#1A1410" stroke-width="6" stroke-linejoin="round"/>
+      </g></g>
+      </svg>
+      <div id="s1-stamp" class="chip" style="left:620px;top:780px;background:#E8322F;color:#FFF3E3;font-size:58px;border:6px solid #1A1410;">COPIÉ !</div>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+
+      const tl = gsap.timeline({ paused: true });
+      const D = 3.692;
+      const ST = "#s1-hook-stage";
+      const whipOut = () => tl.fromTo(ST, { x: 0, filter: "blur(0px)" }, { x: -760, filter: "blur(18px)", duration: 0.2, ease: "power3.in", immediateRender: false }, D - 0.2);
+
+
+      tl.fromTo("#s1-bulb-a", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(2)" }, 0.15);
+      tl.fromTo("#s1-arc", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0.75);
+      tl.fromTo("#s1-arc", { strokeDashoffset: 420 }, { strokeDashoffset: 0, duration: 0.55, ease: "power2.inOut" }, 0.75);
+      tl.fromTo("#s1-arrowhead", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 1.25);
+      tl.fromTo("#s1-bulb-b", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, transformOrigin: "50% 50%", duration: 0.45, ease: "back.out(2)" }, 1.3);
+      tl.fromTo("#s1-stamp", { scale: 2.4, rotation: -24, opacity: 0 }, { scale: 1, rotation: -10, opacity: 1, duration: 0.28, ease: "power4.in" }, 1.85);
+      tl.fromTo("#s1-shop-b", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 3, ease: "none" }, 2.13);
+      whipOut();
+
+      window.__timelines["s1-hook"] = tl;
+    })();
+  </script>
+</template>

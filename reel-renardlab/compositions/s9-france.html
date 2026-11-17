@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14304A; font-family: "Archivo Black", sans-serif; }
+    #s9-france-stage { position: absolute; inset: 0; }
+    #s9-france-ground { position: absolute; inset: 0; background: #14304A; }
+    .s9-france-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .dash { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+    .chip { position: absolute; font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 999px; padding: 14px 30px 16px; white-space: nowrap; }
+
+  </style>
+  <div id="root" data-composition-id="s9-france" data-width="1080" data-height="1920">
+    <div id="s9-france-stage">
+      <div id="s9-france-ground"></div>
+      <svg class="s9-france-svg" viewBox="0 0 1080 1920">
+        <polygon id="s9-fr" points="562.9,333.7 589.9,359.6 625.6,374.4 656.1,411.4 689.3,400.3 696.9,426.3 737.7,444.8 768.3,450.7 798.8,474.4 860.0,487.7 839.6,522.5 826.9,589.1 793.7,603.9 753.0,663.2 747.9,696.5 788.6,707.6 798.8,759.4 778.5,796.4 798.8,840.9 824.3,870.5 793.7,892.7 758.1,922.3 712.2,914.9 676.5,900.1 640.8,892.7 600.1,922.3 602.6,970.4 544.0,974.1 493.1,951.9 442.1,948.2 391.1,929.7 351.4,903.1 368.2,885.3 380.9,811.3 383.5,737.2 360.5,685.4 330.0,641.0 314.7,611.3 273.9,581.7 217.8,566.9 200.0,533.6 217.8,511.4 263.7,500.3 309.6,518.8 355.4,511.4 360.5,470.7 347.8,433.7 378.4,433.7 411.5,459.6 447.2,452.2 472.7,422.5 513.4,404.0 523.6,367.0 536.4,341.1" fill="#1F4A6E" stroke="#FFF3E3" stroke-width="8" stroke-linejoin="round"/>
+        <path id="s9-r0" class="dash s9-route" d="M757.1 476.6 Q 659.5 396.2 561.9 495.8" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/><path id="s9-r1" class="dash s9-route" d="M757.1 476.6 Q 677.5 330.7 598.0 364.8" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/><path id="s9-r2" class="dash s9-route" d="M757.1 476.6 Q 560.1 456.9 363.1 617.3" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/><path id="s9-r3" class="dash s9-route" d="M757.1 476.6 Q 584.8 545.0 412.5 793.5" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/><path id="s9-r4" class="dash s9-route" d="M757.1 476.6 Q 636.3 590.9 515.5 885.3" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/><path id="s9-r5" class="dash s9-route" d="M757.1 476.6 Q 736.4 602.1 715.8 907.5" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/><path id="s9-r6" class="dash s9-route" d="M757.1 476.6 Q 722.9 511.0 688.8 725.4" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/><circle id="s9-d0" class="s9-dot" cx="561.9" cy="495.8" r="14" fill="#FFD23F" stroke="#1A1410" stroke-width="5"/><circle id="s9-d1" class="s9-dot" cx="598.0" cy="364.8" r="14" fill="#FFD23F" stroke="#1A1410" stroke-width="5"/><circle id="s9-d2" class="s9-dot" cx="363.1" cy="617.3" r="14" fill="#FFD23F" stroke="#1A1410" stroke-width="5"/><circle id="s9-d3" class="s9-dot" cx="412.5" cy="793.5" r="14" fill="#FFD23F" stroke="#1A1410" stroke-width="5"/><circle id="s9-d4" class="s9-dot" cx="515.5" cy="885.3" r="14" fill="#FFD23F" stroke="#1A1410" stroke-width="5"/><circle id="s9-d5" class="s9-dot" cx="715.8" cy="907.5" r="14" fill="#FFD23F" stroke="#1A1410" stroke-width="5"/><circle id="s9-d6" class="s9-dot" cx="688.8" cy="725.4" r="14" fill="#FFD23F" stroke="#1A1410" stroke-width="5"/>
+        <g id="s9-pin"><path d="M757.1 476.6 C 737.1 436.6, 709.1 416.6, 709.1 384.6 A48 48 0 1 1 805.1 384.6 C 805.1 416.6, 777.1 436.6, 757.1 476.6 Z" fill="#FF6B1A" stroke="#1A1410" stroke-width="7"/>
+          <circle cx="757.1" cy="384.6" r="18" fill="#FFF3E3"/></g>
+      </svg>
+      <div id="s9-metz" class="chip" style="left:70px;top:285px;background:#FF6B1A;color:#FFF3E3;font-size:32px;border:5px solid #1A1410;">METZ · EN MAIN PROPRE</div>
+      <div id="s9-year" class="chip" style="left:0;top:975px;width:1080px;text-align:center;background:none;color:#FFF3E3;font-size:44px;"><span style="background:#1F8A4C;padding:12px 28px;border-radius:999px;">365 JOURS PAR AN</span></div>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+
+      const tl = gsap.timeline({ paused: true });
+      const D = 5.538;
+      const ST = "#s9-france-stage";
+      const whipIn = () => tl.fromTo(ST, { x: 760, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
+      const pop = (sel, at, from = 0.4) => tl.fromTo(sel, { scale: from, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, at);
+
+
+      whipIn();
+      tl.fromTo("#s9-fr", { opacity: 0, scale: 0.92, svgOrigin: "540 700" }, { opacity: 1, scale: 1, svgOrigin: "540 700", duration: 0.5, ease: "power4.out" }, 0.05);
+      tl.fromTo("#s9-pin", { y: -300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "bounce.out" }, 0.4);
+      pop("#s9-metz", 0.8);
+      tl.fromTo(".s9-route", { strokeDashoffset: 2000 }, { strokeDashoffset: 1300, duration: 0.6, stagger: 0.12, ease: "power2.out" }, 2.0);
+      tl.fromTo(".s9-dot", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, stagger: 0.12, ease: "back.out(2.5)" }, 2.4);
+      tl.fromTo("#s9-year", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18 }, 3.3);
+      tl.fromTo("#s9-pin", { scale: 1, svgOrigin: "757.1 384.6" }, { scale: 34, svgOrigin: "757.1 384.6", duration: 0.4, ease: "power3.in", immediateRender: false }, D - 0.4);
+      tl.fromTo("#s9-metz, #s9-year", { opacity: 1 }, { opacity: 0, duration: 0.15, immediateRender: false }, D - 0.4);
+
+      window.__timelines["s9-france"] = tl;
+    })();
+  </script>
+</template>

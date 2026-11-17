@@ -1,0 +1,47 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #14304A; font-family: "Archivo Black", sans-serif; }
+    #s10-dm-stage { position: absolute; inset: 0; }
+    #s10-dm-ground { position: absolute; inset: 0; background: #FF6B1A; }
+    .s10-dm-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .dash { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+    .chip { position: absolute; font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 999px; padding: 14px 30px 16px; white-space: nowrap; }
+
+  </style>
+  <div id="root" data-composition-id="s10-dm" data-width="1080" data-height="1920">
+    <div id="s10-dm-stage">
+      <div id="s10-dm-ground"></div>
+      <div id="s10-card" style="position:absolute;left:110px;top:300px;width:860px;height:760px;border-radius:48px;background:#FFF3E3;border:8px solid #1A1410;"></div>
+      <div id="s10-head" style="position:absolute;left:150px;top:340px;font-size:44px;color:#1A1410;">MESSAGE · RenardLab3D</div>
+      <div id="s10-typing" style="position:absolute;left:600px;top:520px;width:200px;height:100px;border-radius:50px;background:#FF6B1A;display:flex;align-items:center;justify-content:center;gap:16px;">
+        <span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:#FFF3E3;display:block"></span><span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:#FFF3E3;display:block"></span><span class="s10-dot" style="width:22px;height:22px;border-radius:50%;background:#FFF3E3;display:block"></span>
+      </div>
+      <div id="s10-msg" style="position:absolute;left:330px;top:500px;width:590px;padding:30px 40px;border-radius:44px 44px 10px 44px;background:#FF6B1A;color:#FFF3E3;font-family:Inter;font-weight:900;font-size:46px;line-height:1.2;">Salut ! J’ai une idée pour ma boutique…</div>
+      <div id="s10-input" style="position:absolute;left:150px;top:930px;width:640px;height:90px;border-radius:45px;background:#fff;border:5px solid #1A1410;"></div>
+      <svg class="s10-dm-svg" viewBox="0 0 1080 1920">
+        <g id="s10-send"><circle cx="870" cy="975" r="56" fill="#1A1410"/>
+          <path d="M840 975 L905 945 L885 1010 L870 982 Z" fill="#FFF3E3"/></g>
+      </svg>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+
+      const tl = gsap.timeline({ paused: true });
+      const D = 3.692;
+      const ST = "#s10-dm-stage";
+
+
+      tl.fromTo("#s10-card", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power4.out" }, 0.05);
+      tl.fromTo("#s10-head, #s10-input, #s10-send", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.25);
+      tl.fromTo("#s10-typing", { opacity: 0, scale: 0.75 }, { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }, 0.5);
+      [0, 1, 2].forEach((i) => tl.fromTo(document.querySelectorAll(".s10-dot")[i], { y: 0 }, { y: -14, duration: 0.15, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.6 + i * 0.1));
+      tl.to("#s10-typing", { opacity: 0, duration: 0.08 }, 1.6);
+      tl.fromTo("#s10-msg", { opacity: 0, scale: 0.75, transformOrigin: "100% 100%" }, { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }, 1.62);
+      tl.fromTo("#s10-send", { scale: 1, svgOrigin: "870 975" }, { scale: 0.82, svgOrigin: "870 975", duration: 0.08, yoyo: true, repeat: 1 }, 2.6);
+
+      window.__timelines["s10-dm"] = tl;
+    })();
+  </script>
+</template>

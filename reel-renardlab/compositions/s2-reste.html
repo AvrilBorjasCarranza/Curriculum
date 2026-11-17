@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #1A1410; font-family: "Archivo Black", sans-serif; }
+    #s2-reste-stage { position: absolute; inset: 0; }
+    #s2-reste-ground { position: absolute; inset: 0; background: #1A1410; }
+    .s2-reste-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .dash { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+    .chip { position: absolute; font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 999px; padding: 14px 30px 16px; white-space: nowrap; }
+
+  </style>
+  <div id="root" data-composition-id="s2-reste" data-width="1080" data-height="1920">
+    <div id="s2-reste-stage">
+      <div id="s2-reste-ground"></div>
+      <svg class="s2-reste-svg" viewBox="0 0 1080 1920">
+        <g id="s2-shop">
+        <rect x="300" y="660" width="480" height="320" fill="#FFF3E3" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="286" y="530" width="508" height="76" fill="#FF6B1A" stroke="#1A1410" stroke-width="8" rx="10"/>
+        <text x="540.0" y="582" text-anchor="middle" font-family="Archivo Black" font-size="40" fill="#1A1410">TON COMMERCE</text>
+        <rect x="300.0" y="600" width="80.5" height="80" fill="#FF6B1A"/><rect x="380.0" y="600" width="80.5" height="80" fill="#FFF3E3"/><rect x="460.0" y="600" width="80.5" height="80" fill="#FF6B1A"/><rect x="540.0" y="600" width="80.5" height="80" fill="#FFF3E3"/><rect x="620.0" y="600" width="80.5" height="80" fill="#FF6B1A"/><rect x="700.0" y="600" width="80.5" height="80" fill="#FFF3E3"/><circle cx="340.0" cy="680" r="40.0" fill="#FF6B1A" stroke="#1A1410" stroke-width="6"/><circle cx="420.0" cy="680" r="40.0" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="500.0" cy="680" r="40.0" fill="#FF6B1A" stroke="#1A1410" stroke-width="6"/><circle cx="580.0" cy="680" r="40.0" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="660.0" cy="680" r="40.0" fill="#FF6B1A" stroke="#1A1410" stroke-width="6"/><circle cx="740.0" cy="680" r="40.0" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/>
+        <rect x="300" y="600" width="480" height="80" fill="none" stroke="#1A1410" stroke-width="8"/>
+        <rect x="330" y="760" width="216" height="160" fill="#BFE3F2" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="598" y="750" width="134" height="230" fill="#FF6B1A" stroke="#1A1410" stroke-width="8" rx="4"/>
+        <circle cx="617" cy="870" r="7" fill="#1A1410"/>
+      </g>
+        <g id="s2-sign">
+          <line x1="540" y1="700" x2="470" y2="790" stroke="#1A1410" stroke-width="5"/><line x1="540" y1="700" x2="610" y2="790" stroke="#1A1410" stroke-width="5"/>
+          <rect x="420" y="790" width="240" height="96" rx="14" fill="#1F8A4C" stroke="#1A1410" stroke-width="7"/>
+          <text x="540" y="856" text-anchor="middle" font-family="Archivo Black" font-size="44" fill="#FFF3E3">OUVERT</text>
+        </g>
+        <circle id="s2-flood" cx="540" cy="838" r="40" fill="#FF6B1A"/>
+      </svg>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+
+      const tl = gsap.timeline({ paused: true });
+      const D = 1.846;
+      const ST = "#s2-reste-stage";
+      const whipIn = () => tl.fromTo(ST, { x: 760, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
+
+
+      whipIn();
+      tl.fromTo("#s2-sign", { rotation: -38, svgOrigin: "540 700" }, { rotation: 0, svgOrigin: "540 700", duration: 1.0, ease: "elastic.out(1, 0.45)" }, 0.15);
+      tl.fromTo("#s2-flood", { scale: 0, svgOrigin: "540 838" }, { scale: 40, svgOrigin: "540 838", duration: 0.45, ease: "power2.in" }, D - 0.45);
+
+      window.__timelines["s2-reste"] = tl;
+    })();
+  </script>
+</template>

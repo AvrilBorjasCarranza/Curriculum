@@ -1,0 +1,57 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #1A1410; font-family: "Archivo Black", sans-serif; }
+    #s5-ensemble-stage { position: absolute; inset: 0; }
+    #s5-ensemble-ground { position: absolute; inset: 0; background: #1A1410; }
+    .s5-ensemble-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .dash { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+    .chip { position: absolute; font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 999px; padding: 14px 30px 16px; white-space: nowrap; }
+
+  </style>
+  <div id="root" data-composition-id="s5-ensemble" data-width="1080" data-height="1920">
+    <div id="s5-ensemble-stage">
+      <div id="s5-ensemble-ground"></div>
+      <svg class="s5-ensemble-svg" viewBox="0 0 1080 1920">
+        <g id="s5-paper">
+          <rect x="70" y="420" width="420" height="520" rx="14" fill="#FFF3E3" transform="rotate(-5 280 680)"/>
+          <line x1="110" y1="520" x2="450" y2="490" stroke="#9BC4E2" stroke-width="3" opacity="0.6"/><line x1="110" y1="570" x2="450" y2="540" stroke="#9BC4E2" stroke-width="3" opacity="0.6"/><line x1="110" y1="620" x2="450" y2="590" stroke="#9BC4E2" stroke-width="3" opacity="0.6"/><line x1="110" y1="670" x2="450" y2="640" stroke="#9BC4E2" stroke-width="3" opacity="0.6"/><line x1="110" y1="720" x2="450" y2="690" stroke="#9BC4E2" stroke-width="3" opacity="0.6"/><line x1="110" y1="770" x2="450" y2="740" stroke="#9BC4E2" stroke-width="3" opacity="0.6"/><line x1="110" y1="820" x2="450" y2="790" stroke="#9BC4E2" stroke-width="3" opacity="0.6"/><line x1="110" y1="870" x2="450" y2="840" stroke="#9BC4E2" stroke-width="3" opacity="0.6"/>
+          <path id="s5-sketch" class="dash" d="M280.0,520.0 L317.6,618.2 L422.7,623.6 L340.9,689.8 L368.2,791.4 L280.0,734.0 L191.8,791.4 L219.1,689.8 L137.3,623.6 L242.4,618.2 Z" fill="none" stroke="#1A1410" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+        <path id="s5-arrow" class="dash" d="M500 680 C 540 640, 580 640, 610 680" fill="none" stroke="#FFD23F" stroke-width="12" stroke-linecap="round"/>
+        <g id="s5-prod">
+          <path d="M812.0,532.0 L854.3,643.8 L973.7,649.5 L880.5,724.2 L911.9,839.5 L812.0,774.0 L712.1,839.5 L743.5,724.2 L650.3,649.5 L769.7,643.8 Z" fill="#D9500C" stroke="#1A1410" stroke-width="8" stroke-linejoin="round"/>
+          <path d="M800.0,510.0 L842.3,621.8 L961.7,627.5 L868.5,702.2 L899.9,817.5 L800.0,752.0 L700.1,817.5 L731.5,702.2 L638.3,627.5 L757.7,621.8 Z" fill="#FF6B1A" stroke="#1A1410" stroke-width="8" stroke-linejoin="round"/>
+          <line x1="680" y1="560" x2="920" y2="560" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="578" x2="920" y2="578" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="596" x2="920" y2="596" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="614" x2="920" y2="614" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="632" x2="920" y2="632" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="650" x2="920" y2="650" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="668" x2="920" y2="668" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="686" x2="920" y2="686" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="704" x2="920" y2="704" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="722" x2="920" y2="722" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="740" x2="920" y2="740" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="758" x2="920" y2="758" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="776" x2="920" y2="776" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="794" x2="920" y2="794" stroke="#1A1410" stroke-width="2" opacity="0.15"/><line x1="680" y1="812" x2="920" y2="812" stroke="#1A1410" stroke-width="2" opacity="0.15"/>
+        </g>
+      </svg>
+      <div id="s5-chip-a" class="chip" style="left:120px;top:960px;background:#FFF3E3;color:#1A1410;font-size:40px;">TON IDÉE</div>
+      <div id="s5-chip-b" class="chip" style="left:610px;top:960px;background:#FF6B1A;color:#FFF3E3;font-size:40px;">TON PRODUIT</div>
+      <div id="s5-plus" style="position:absolute;left:0;top:290px;width:1080px;text-align:center;font-size:72px;color:#FFF3E3;"><span id="s5-toi" style="display:inline-block;color:#FFD23F">TOI</span> <span id="s5-pl" style="display:inline-block">+</span> <span id="s5-nous" style="display:inline-block;color:#FF6B1A">NOUS</span></div>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+
+      const tl = gsap.timeline({ paused: true });
+      const D = 5.539;
+      const ST = "#s5-ensemble-stage";
+      const whipIn = () => tl.fromTo(ST, { x: 760, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0);
+      const blurOut = () => tl.fromTo(ST, { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", immediateRender: false }, D - 0.18);
+      const pop = (sel, at, from = 0.4) => tl.fromTo(sel, { scale: from, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.7)" }, at);
+
+
+      whipIn();
+      tl.fromTo("#s5-paper", { y: 120, rotation: 6, opacity: 0, svgOrigin: "280 680" }, { y: 0, rotation: 0, opacity: 1, svgOrigin: "280 680", duration: 0.5, ease: "power4.out" }, 0.2);
+      pop("#s5-chip-a", 0.5);
+      tl.fromTo("#s5-sketch", { strokeDashoffset: 2000 }, { strokeDashoffset: 0, duration: 1.4, ease: "power1.inOut" }, 0.6);
+      tl.fromTo(["#s5-toi", "#s5-pl", "#s5-nous"], { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.12 }, 1.0);
+      tl.fromTo("#s5-arrow", { strokeDashoffset: 2000 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 2.4);
+      tl.fromTo("#s5-prod", { scale: 0.3, opacity: 0, rotation: -30, svgOrigin: "800 680" }, { scale: 1, opacity: 1, rotation: 0, svgOrigin: "800 680", duration: 0.6, ease: "back.out(1.5)" }, 2.75);
+      pop("#s5-chip-b", 3.0);
+      blurOut();
+
+      window.__timelines["s5-ensemble"] = tl;
+    })();
+  </script>
+</template>

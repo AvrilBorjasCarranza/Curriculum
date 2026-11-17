@@ -1,0 +1,66 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #2E333B; font-family: "Archivo Black", sans-serif; }
+    #s7-facile-stage { position: absolute; inset: 0; }
+    #s7-facile-ground { position: absolute; inset: 0; background: #FFF3E3; }
+    .s7-facile-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .dash { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+    .chip { position: absolute; font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 999px; padding: 14px 30px 16px; white-space: nowrap; }
+
+  </style>
+  <div id="root" data-composition-id="s7-facile" data-width="1080" data-height="1920">
+    <div id="s7-facile-stage">
+      <div id="s7-facile-ground"></div>
+      <div id="s7-q" style="position:absolute;left:0;top:330px;width:1080px;text-align:center;font-size:520px;line-height:1;color:#1A1410;">?</div>
+      <svg class="s7-facile-svg" viewBox="0 0 1080 1920">
+        <g id="s7-ok"><circle cx="540" cy="620" r="230" fill="#1F8A4C" stroke="#1A1410" stroke-width="10"/>
+          <path id="s7-tick" class="dash" d="M430 625 L515 705 L665 535" fill="none" stroke="#FFF3E3" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <g id="s7-flow">
+          <g id="s7-idea"><path d="M110 520 h300 a30 30 0 0 1 30 30 v170 a30 30 0 0 1 -30 30 h-200 l-60 60 v-60 h-40 a30 30 0 0 1 -30 -30 v-170 a30 30 0 0 1 30 -30 Z" fill="#fff" stroke="#1A1410" stroke-width="8"/>
+            <g transform="translate(260 630) scale(0.75)"><g id="s7-bulb">
+        <circle cx="0" cy="0" r="92" fill="#FFD23F" opacity="0.28"/>
+        <path d="M-46 10 A58 58 0 1 1 46 10 C34 28 26 38 24 58 L-24 58 C-26 38 -34 28 -46 10 Z" fill="#FFD23F" stroke="#1A1410" stroke-width="8" stroke-linejoin="round"/>
+        <rect x="-26" y="58" width="52" height="16" rx="4" fill="#1A1410"/><rect x="-20" y="78" width="40" height="12" rx="4" fill="#1A1410"/>
+        <path d="M-14 28 L-6 -6 L6 -6 L14 28" fill="none" stroke="#1A1410" stroke-width="6" stroke-linejoin="round"/>
+      </g></g></g>
+          <path id="s7-arrow" class="dash" d="M470 650 L600 650" fill="none" stroke="#1A1410" stroke-width="14" stroke-linecap="round"/>
+          <path id="s7-arrowhead" d="M580 615 L620 650 L580 685" fill="none" stroke="#1A1410" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="s7-gift">
+            <rect x="660" y="560" width="300" height="250" rx="18" fill="#FF6B1A" stroke="#1A1410" stroke-width="8"/>
+            <rect x="640" y="520" width="340" height="70" rx="14" fill="#D9500C" stroke="#1A1410" stroke-width="8"/>
+            <rect x="790" y="520" width="40" height="290" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/>
+            <g id="s7-check"><circle cx="930" cy="520" r="54" fill="#1F8A4C" stroke="#1A1410" stroke-width="7"/>
+              <path d="M905 522 L925 542 L958 502" fill="none" stroke="#FFF3E3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g>
+          </g>
+        </g>
+      </svg>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+
+      const tl = gsap.timeline({ paused: true });
+      const D = 5.538;
+      const ST = "#s7-facile-stage";
+
+
+      tl.fromTo(ST, { clipPath: "circle(0px at 300px 672px)" }, { clipPath: "circle(2300px at 300px 672px)", duration: 0.35, ease: "power3.in" }, 0);
+      tl.fromTo("#s7-q", { rotation: -20, scale: 0.6, opacity: 0 }, { rotation: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" }, 0.2);
+      tl.to("#s7-q", { scale: 0.4, opacity: 0, filter: "blur(8px)", duration: 0.16, ease: "power3.in" }, 1.896);
+      tl.fromTo("#s7-ok", { scale: 0.4, opacity: 0, svgOrigin: "540 620" }, { scale: 1, opacity: 1, svgOrigin: "540 620", duration: 0.4, ease: "back.out(1.8)" }, 2.016);
+      tl.fromTo("#s7-tick", { strokeDashoffset: 2000 }, { strokeDashoffset: 1600, duration: 0.01 }, 0);
+      tl.fromTo("#s7-tick", { strokeDashoffset: 1600 }, { strokeDashoffset: 1600 - 400, duration: 0.3, ease: "power2.out", immediateRender: false }, 2.166);
+      tl.to("#s7-ok", { scale: 0.5, opacity: 0, filter: "blur(8px)", svgOrigin: "540 620", duration: 0.16, ease: "power3.in" }, 2.699);
+      tl.set("#s7-flow", { opacity: 0 }, 0);
+      tl.set("#s7-flow", { opacity: 1 }, 2.859);
+      tl.fromTo("#s7-idea", { scale: 0.5, opacity: 0, svgOrigin: "260 640" }, { scale: 1, opacity: 1, svgOrigin: "260 640", duration: 0.45, ease: "back.out(1.7)" }, 2.859);
+      tl.fromTo("#s7-arrow", { strokeDashoffset: 2000 }, { strokeDashoffset: 1870, duration: 0.3, ease: "power2.out" }, 3.826);
+      tl.fromTo("#s7-arrowhead", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 4.076);
+      tl.fromTo("#s7-gift", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.5)" }, 4.126);
+      tl.fromTo("#s7-check", { scale: 0, svgOrigin: "930 520" }, { scale: 1, svgOrigin: "930 520", duration: 0.35, ease: "back.out(2.5)" }, 4.726);
+
+      window.__timelines["s7-facile"] = tl;
+    })();
+  </script>
+</template>

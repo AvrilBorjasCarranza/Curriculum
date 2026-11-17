@@ -1,0 +1,70 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #2E333B; font-family: "Archivo Black", sans-serif; }
+    #s6-exclu-stage { position: absolute; inset: 0; }
+    #s6-exclu-ground { position: absolute; inset: 0; background: #2E333B; }
+    .s6-exclu-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+    .dash { stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+    .chip { position: absolute; font-family: "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; border-radius: 999px; padding: 14px 30px 16px; white-space: nowrap; }
+
+  </style>
+  <div id="root" data-composition-id="s6-exclu" data-width="1080" data-height="1920">
+    <div id="s6-exclu-stage">
+      <div id="s6-exclu-ground"></div>
+      <svg class="s6-exclu-svg" viewBox="0 0 1080 1920">
+        <g id="s6-shop"><g id="s6-shop-in">
+        <rect x="600" y="660" width="400" height="320" fill="#C9C9CF" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="586" y="530" width="428" height="76" fill="#5E6068" stroke="#1A1410" stroke-width="8" rx="10"/>
+        <text x="800.0" y="582" text-anchor="middle" font-family="Archivo Black" font-size="40" fill="#FFF3E3">EN FACE</text>
+        <rect x="600.0" y="600" width="67.2" height="80" fill="#5E6068"/><rect x="666.7" y="600" width="67.2" height="80" fill="#FFF3E3"/><rect x="733.3" y="600" width="67.2" height="80" fill="#5E6068"/><rect x="800.0" y="600" width="67.2" height="80" fill="#FFF3E3"/><rect x="866.7" y="600" width="67.2" height="80" fill="#5E6068"/><rect x="933.3" y="600" width="67.2" height="80" fill="#FFF3E3"/><circle cx="633.3" cy="680" r="33.3" fill="#5E6068" stroke="#1A1410" stroke-width="6"/><circle cx="700.0" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="766.7" cy="680" r="33.3" fill="#5E6068" stroke="#1A1410" stroke-width="6"/><circle cx="833.3" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/><circle cx="900.0" cy="680" r="33.3" fill="#5E6068" stroke="#1A1410" stroke-width="6"/><circle cx="966.7" cy="680" r="33.3" fill="#FFF3E3" stroke="#1A1410" stroke-width="6"/>
+        <rect x="600" y="600" width="400" height="80" fill="none" stroke="#1A1410" stroke-width="8"/>
+        <rect x="630" y="760" width="180" height="160" fill="#BFE3F2" stroke="#1A1410" stroke-width="8" rx="6"/>
+        <rect x="848" y="750" width="112" height="230" fill="#5E6068" stroke="#1A1410" stroke-width="8" rx="4"/>
+        <circle cx="864" cy="870" r="7" fill="#1A1410"/>
+      </g></g>
+        <g id="s6-box">
+          <path d="M150 760 L300 690 L450 760 L300 830 Z" fill="#FF9A5C" stroke="#1A1410" stroke-width="8" stroke-linejoin="round"/>
+          <path d="M150 760 L300 830 L300 1000 L150 930 Z" fill="#FF6B1A" stroke="#1A1410" stroke-width="8" stroke-linejoin="round"/>
+          <path d="M450 760 L300 830 L300 1000 L450 930 Z" fill="#D9500C" stroke="#1A1410" stroke-width="8" stroke-linejoin="round"/>
+        </g>
+        <path id="s6-route" class="dash" d="M440 700 C 500 560, 600 520, 690 560" fill="none" stroke="#FFF3E3" stroke-width="10" stroke-linecap="round"/>
+        <g id="s6-x"><circle cx="570" cy="580" r="62" fill="#E8322F" stroke="#1A1410" stroke-width="8"/>
+          <path d="M540 550 L600 610 M600 550 L540 610" stroke="#FFF3E3" stroke-width="14" stroke-linecap="round"/></g>
+        <g id="s6-lock">
+          <path id="s6-shackle" d="M262 640 L262 590 A38 38 0 0 1 338 590 L338 640" fill="none" stroke="#FFD23F" stroke-width="16" stroke-linecap="round"/>
+          <rect x="240" y="630" width="120" height="96" rx="16" fill="#FFD23F" stroke="#1A1410" stroke-width="7"/>
+          <circle cx="300" cy="672" r="12" fill="#1A1410"/><rect x="295" y="676" width="10" height="26" fill="#1A1410"/>
+        </g>
+      </svg>
+      <div id="s6-stamp" class="chip" style="left:0;top:290px;width:1080px;text-align:center;background:none;color:#FFD23F;font-size:96px;">EXCLUSIF</div>
+      <div id="s6-q" style="position:absolute;left:740px;top:300px;font-size:200px;color:#FFF3E3;">?</div>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+
+      const tl = gsap.timeline({ paused: true });
+      const D = 9.231;
+      const ST = "#s6-exclu-stage";
+      const blurIn = (d = 0.2) => tl.fromTo(ST, { opacity: 0, filter: "blur(10px)", scale: 1.04 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: d, ease: "power2.out" }, 0);
+      const blurOut = () => tl.fromTo(ST, { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in", immediateRender: false }, D - 0.18);
+
+
+      blurIn(0.18);
+      tl.fromTo("#s6-shop", { x: 420, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power4.out" }, 0.1);
+      tl.fromTo("#s6-q", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 0.5);
+      tl.to("#s6-q", { opacity: 0, scale: 0.6, duration: 0.15, ease: "power2.in" }, 1.667);
+      tl.fromTo("#s6-box", { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.4)" }, 1.767);
+      tl.fromTo("#s6-route", { strokeDashoffset: 2000 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 2.467);
+      tl.fromTo("#s6-x", { scale: 0, svgOrigin: "570 580" }, { scale: 1, svgOrigin: "570 580", duration: 0.35, ease: "back.out(2.2)" }, 4.969);
+      tl.fromTo("#s6-stamp", { scale: 2.2, opacity: 0, rotation: -6 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.24, ease: "power4.in" }, 5.219);
+      tl.fromTo("#s6-shop", { filter: "grayscale(0) brightness(1)" }, { filter: "grayscale(1) brightness(0.55)", duration: 0.5, ease: "power2.out" }, 6.276);
+      tl.fromTo("#s6-lock", { y: -200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.6)" }, 6.376);
+      tl.fromTo("#s6-shackle", { y: -26 }, { y: 0, duration: 0.14, ease: "power3.in" }, 7.176);
+      blurOut();
+
+      window.__timelines["s6-exclu"] = tl;
+    })();
+  </script>
+</template>
