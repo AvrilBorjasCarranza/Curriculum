@@ -1,4 +1,4 @@
-<title>Guía de rodaje RenardLab3D</title>
+<title>Guide de tournage RenardLab3D</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap">
@@ -6,13 +6,15 @@
 /* Layout: phone player on the left (sticky), shot sheet on the right; one column on phones. */
 :root {
   --bg: #F6F1EA; --panel: #FFFFFF; --fg: #1F1813; --muted: #6B5F55; --line: #E3D8CC;
-  --brand: #F26A1B; --brand-ink: #FFFFFF; --ink: #1A1410; --cream: #FFF3E3; --good: #1F8A4C; --chip: #FBE3D2;
+  --brand: #F26A1B; --brand-ink: #FFFFFF; --cream: #FFF3E3; --done: #1F7A45; --done-bg: #DDF1E4; --todo: #A1440C; --todo-bg: #FBE3D2;
   --display: "Archivo Black", "Arial Black", Impact, sans-serif;
   --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #17120F; --panel: #221B16; --fg: #F4ECE4; --muted: #B3A497; --line: #3A2F27; --chip: #3A2418; color-scheme: dark } }
-:root[data-theme="dark"] { --bg: #17120F; --panel: #221B16; --fg: #F4ECE4; --muted: #B3A497; --line: #3A2F27; --chip: #3A2418; color-scheme: dark }
+  --bg: #17120F; --panel: #221B16; --fg: #F4ECE4; --muted: #B3A497; --line: #3A2F27;
+  --done: #7FD6A0; --done-bg: #173322; --todo: #FFB27A; --todo-bg: #3A2418; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #17120F; --panel: #221B16; --fg: #F4ECE4; --muted: #B3A497; --line: #3A2F27;
+  --done: #7FD6A0; --done-bg: #173322; --todo: #FFB27A; --todo-bg: #3A2418; color-scheme: dark }
 * { box-sizing: border-box }
 body { background: var(--bg); color: var(--fg); font-family: var(--body); line-height: 1.5;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 40px }
@@ -25,13 +27,14 @@ h1 span { color: var(--brand) }
 .player { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 12px; justify-items: center }
 @media (max-width: 820px) { .player { position: static } }
 .phone { width: 100%; max-width: 340px; aspect-ratio: 9 / 16; border-radius: 34px; background: #0E0B09; padding: 10px; box-shadow: 0 18px 40px rgba(0,0,0,.25) }
-.screen { position: relative; width: 100%; height: 100%; border-radius: 26px; overflow: hidden; background: var(--cream) }
-.screen svg.stage { position: absolute; inset: 0; width: 100%; height: 100% }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 26px; overflow: hidden; background: #1A1410 }
+.screen svg.stage, .screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
 .badge { position: absolute; top: 12px; left: 12px; font: 800 10px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; background: rgba(26,20,16,.82); color: #fff; padding: 6px 8px; border-radius: 6px }
+.badge.real { background: #1F7A45 }
 .hook { position: absolute; left: 0; right: 0; top: 13%; padding: 0 16px; text-align: center; font: 400 26px/1.05 var(--display); color: #fff;
   text-shadow: -3px -3px 0 #1A1410, 3px -3px 0 #1A1410, -3px 3px 0 #1A1410, 3px 3px 0 #1A1410, 0 6px 14px rgba(0,0,0,.4) }
 .hook b { color: #FFD23F; font-weight: 400 }
-.sub { position: absolute; left: 0; right: 0; top: 64%; padding: 0 14px; text-align: center; font: 400 18px/1.15 var(--display); color: #fff; text-transform: uppercase;
+.sub { position: absolute; left: 0; right: 0; top: 66%; padding: 0 14px; text-align: center; font: 400 18px/1.15 var(--display); color: #fff; text-transform: uppercase;
   text-shadow: -2px -2px 0 #1A1410, 2px -2px 0 #1A1410, -2px 2px 0 #1A1410, 2px 2px 0 #1A1410 }
 .controls { width: 100%; max-width: 340px; display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center }
 button.play { appearance: none; border: 0; border-radius: 999px; background: var(--brand); color: var(--brand-ink); font: 800 14px/1 var(--body); padding: 12px 18px; cursor: pointer; min-width: 104px }
@@ -47,12 +50,15 @@ input[type=range] { width: 100%; accent-color: var(--brand) }
 .shot.on { border-color: var(--brand); box-shadow: 0 0 0 2px var(--brand) inset }
 .shot h2 { margin: 0; font: 400 19px/1.15 var(--display); display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap }
 .shot h2 .t { font: 600 12px/1 var(--body); color: var(--muted); font-variant-numeric: tabular-nums }
+.status { justify-self: start; font: 800 11px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px }
+.status.done { color: var(--done); background: var(--done-bg) }
+.status.todo { color: var(--todo); background: var(--todo-bg) }
 .shot .say { margin: 0; font-style: italic; color: var(--muted) }
 .shot dl { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 14px }
 .shot dt { font: 800 11px/1.6 var(--body); text-transform: uppercase; letter-spacing: .07em; color: var(--brand) }
 .shot dd { margin: 0; min-width: 0 }
 @media (max-width: 460px) { .shot dl { grid-template-columns: minmax(0, 1fr) } .shot dd { margin-bottom: 4px } }
-.alt { font-size: 13px; background: var(--chip); border-radius: 10px; padding: 8px 12px; margin: 0 }
+.alt { font-size: 13px; background: var(--todo-bg); border-radius: 10px; padding: 8px 12px; margin: 0 }
 .check { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px }
 .check h2 { margin: 0 0 8px; font: 400 19px/1.15 var(--display) }
 .check ul { margin: 0; padding-left: 20px; display: grid; gap: 6px }
@@ -61,95 +67,32 @@ input[type=range] { width: 100%; accent-color: var(--brand) }
 
 <div class="wrap">
   <header class="top">
-    <h1>Guía de rodaje <span>RenardLab3D</span></h1>
-    <p class="lede">El reel corto (20 s) con tu voz, montado con clips simulados. Cada plano del móvil es un dibujo de lo que tienes que grabar; la ficha de al lado dice cómo grabarlo. Dale a reproducir y mira qué plano se ilumina.</p>
+    <h1>Guide de tournage <span>RenardLab3D</span></h1>
+    <p class="lede">Pour toi qui filmes. Voici le reel court (18 s) avec la voix finale. Les plans en vert utilisent déjà vos vidéos ; les plans dessinés sont ceux à filmer demain. Lance la lecture et regarde quelle fiche s’allume.</p>
   </header>
 
-  <section class="player" aria-label="Reproductor del reel simulado">
+  <section class="player" aria-label="Lecteur du reel">
     <div class="phone"><div class="screen" id="screen">
       <svg class="stage" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#000" stroke-opacity=".05"/></pattern>
-        </defs>
-        <!-- PLAN 1: face -->
-        <g id="p1">
-          <rect width="360" height="640" fill="#E9DDD0"/>
-          <rect x="0" y="380" width="360" height="260" fill="#D8C8B6"/>
-          <g opacity=".35"><rect x="30" y="250" width="110" height="140" rx="6" fill="#8C7C6C"/><rect x="40" y="260" width="90" height="12" fill="#5E5046"/></g>
-          <g id="p1-person">
-            <path d="M70 640 C 80 500, 130 450, 180 450 C 230 450, 280 500, 290 640 Z" fill="#2F2A33"/>
-            <ellipse cx="180" cy="360" rx="70" ry="86" fill="#E9B48F"/>
-            <path d="M108 350 C 100 270, 160 250, 185 262 C 230 250, 268 290, 252 352 C 240 320, 210 300, 180 300 C 150 300, 120 320, 108 350 Z" fill="#3A2A22"/>
-            <g id="p1-eyes"><circle cx="155" cy="360" r="7" fill="#1A1410"/><circle cx="205" cy="360" r="7" fill="#1A1410"/></g>
-            <path id="p1-brow" d="M140 338 L170 342 M190 342 L222 336" stroke="#3A2A22" stroke-width="5" stroke-linecap="round"/>
-            <path d="M162 404 Q 180 414 198 404" stroke="#9C4A3A" stroke-width="5" fill="none" stroke-linecap="round"/>
-          </g>
-          <rect x="60" y="250" width="240" height="300" rx="16" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="8 7" opacity=".8"/>
-          <text x="180" y="572" text-anchor="middle" font-family="Inter" font-weight="800" font-size="12" fill="#fff" opacity=".9">TU CARA AQUÍ · A 40–50 CM</text>
-        </g>
-        <!-- PLAN 2: printer nozzle timelapse -->
-        <g id="p2">
-          <rect width="360" height="640" fill="#24201D"/>
-          <rect width="360" height="640" fill="url(#grid)" opacity=".6"/>
-          <rect x="20" y="360" width="320" height="30" rx="4" fill="#3B3632"/>
-          <rect x="20" y="358" width="320" height="4" fill="#6E655E"/>
-          <g id="p2-obj"></g>
-          <g id="p2-gantry">
-            <rect x="0" y="150" width="360" height="22" fill="#4A4440"/>
-            <g id="p2-head">
-              <rect x="-46" y="120" width="92" height="90" rx="10" fill="#D9D2CB"/>
-              <rect x="-30" y="132" width="60" height="18" rx="4" fill="#F26A1B"/>
-              <path d="M-14 210 L14 210 L6 236 L-6 236 Z" fill="#B98F4C"/>
-              <circle cx="0" cy="238" r="3" fill="#FFB25C"/>
-            </g>
-          </g>
-          <g transform="translate(250 24)"><rect width="96" height="28" rx="6" fill="#F26A1B"/><text id="p2-clock" x="48" y="19" text-anchor="middle" font-family="Inter" font-weight="800" font-size="13" fill="#fff">⏱ 00:00</text></g>
-        </g>
-        <!-- PLAN 3: products -->
-        <g id="p3">
-          <rect width="360" height="640" fill="#F26A1B"/>
-          <rect x="0" y="420" width="360" height="220" fill="#E25E12"/>
-          <g id="p3a">
-            <g id="p3a-fig">
-              <ellipse cx="0" cy="110" rx="70" ry="14" fill="#1A1410" opacity=".35"/>
-              <path d="M-48 100 C -56 40, -40 0, 0 -6 C 40 0, 56 40, 48 100 Z" fill="#FFF3E3" stroke="#1A1410" stroke-width="4"/>
-              <path d="M-44 -40 L-30 -96 L-8 -54 Z M44 -40 L30 -96 L8 -54 Z" fill="#FFF3E3" stroke="#1A1410" stroke-width="4" stroke-linejoin="round"/>
-              <ellipse cx="0" cy="-30" rx="50" ry="44" fill="#FFF3E3" stroke="#1A1410" stroke-width="4"/>
-              <circle cx="-18" cy="-34" r="6" fill="#1A1410"/><circle cx="18" cy="-34" r="6" fill="#1A1410"/>
-            </g>
-            <path d="M210 520 C 240 470, 300 470, 330 500 L 360 520 L 360 640 L 200 640 Z" fill="#E9B48F"/>
-          </g>
-          <g id="p3b">
-            <path d="M180 120 L180 170" stroke="#1A1410" stroke-width="3"/>
-            <path d="M150 90 C 160 60, 200 60, 210 90 L 210 120 L 150 120 Z" fill="#E9B48F"/>
-            <g id="p3b-key">
-              <circle cx="180" cy="190" r="22" fill="none" stroke="#9AA0A6" stroke-width="7"/>
-              <rect x="120" y="212" width="120" height="140" rx="26" fill="#FFF3E3" stroke="#1A1410" stroke-width="4"/>
-              <text x="180" y="290" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="22" fill="#F26A1B">TU</text>
-              <text x="180" y="316" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="22" fill="#F26A1B">LOGO</text>
-            </g>
-          </g>
-          <g id="p3c">
-            <g id="p3c-0"><rect x="40" y="300" width="70" height="110" rx="35" fill="#FFD23F" stroke="#1A1410" stroke-width="4"/><circle cx="62" cy="340" r="6" fill="#1A1410"/><circle cx="88" cy="340" r="6" fill="#1A1410"/></g>
-            <g id="p3c-1"><rect x="145" y="300" width="70" height="110" rx="35" fill="#6FC3E8" stroke="#1A1410" stroke-width="4"/><circle cx="167" cy="340" r="6" fill="#1A1410"/><circle cx="193" cy="340" r="6" fill="#1A1410"/></g>
-            <g id="p3c-2"><rect x="250" y="300" width="70" height="110" rx="35" fill="#9BD86B" stroke="#1A1410" stroke-width="4"/><circle cx="272" cy="340" r="6" fill="#1A1410"/><circle cx="298" cy="340" r="6" fill="#1A1410"/>
-              <path d="M262 240 C 270 210, 300 210, 308 240 L 308 290 L 262 290 Z" fill="#E9B48F"/></g>
-          </g>
-        </g>
-        <!-- PLAN 4: top view box -->
-        <g id="p4">
-          <rect width="360" height="640" fill="#C9A47A"/>
-          <rect width="360" height="640" fill="url(#grid)" opacity=".8"/>
+        <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#000" stroke-opacity=".06"/></pattern></defs>
+        <!-- PLAN 4: top view box (to film) -->
+        <g id="s-p4">
+          <rect width="360" height="640" fill="#C9A47A"/><rect width="360" height="640" fill="url(#grid)"/>
           <rect x="70" y="250" width="220" height="200" fill="#B5814F" stroke="#7A5532" stroke-width="4"/>
           <rect x="84" y="264" width="192" height="172" fill="#8E623A"/>
-          <g id="p4-prod"><path d="M-30 -20 L0 -36 L30 -20 L30 20 L0 36 L-30 20 Z" fill="#F26A1B" stroke="#1A1410" stroke-width="4"/>
-            <path d="M-60 40 C -40 20, -20 20, 0 30 L 10 80 L -70 90 Z" fill="#E9B48F"/></g>
+          <g id="p4-prod">
+            <ellipse cx="0" cy="22" rx="30" ry="8" fill="#000" opacity=".25"/>
+            <path d="M-22 18 C -26 -10, -18 -28, 0 -30 C 18 -28, 26 -10, 22 18 Z" fill="#F4EEE8" stroke="#1A1410" stroke-width="3"/>
+            <path d="M-20 -26 C -18 -48, 18 -48, 20 -26 Z" fill="#D7262B" stroke="#1A1410" stroke-width="3"/>
+            <circle cx="22" cy="-40" r="6" fill="#fff" stroke="#1A1410" stroke-width="2"/>
+            <path d="M-70 40 C -50 20, -30 20, -10 30 L 0 80 L -80 90 Z" fill="#E9B48F"/>
+          </g>
           <g id="p4-lid"><rect x="70" y="250" width="220" height="200" fill="#C99460" stroke="#7A5532" stroke-width="4"/><path d="M70 350 H290" stroke="#7A5532" stroke-width="3"/></g>
           <g id="p4-stamp"><rect x="96" y="320" width="168" height="56" rx="8" fill="none" stroke="#E8322F" stroke-width="6"/>
             <text x="180" y="358" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="26" fill="#E8322F">RÉSERVÉ</text></g>
         </g>
-        <!-- PLAN 5: DM -->
-        <g id="p5">
+        <!-- PLAN 5: DM (to film) -->
+        <g id="s-p5">
           <rect width="360" height="640" fill="#2B2420"/>
           <g transform="translate(70 120)">
             <rect width="220" height="400" rx="26" fill="#111" stroke="#555" stroke-width="3"/>
@@ -159,77 +102,81 @@ input[type=range] { width: 100%; accent-color: var(--brand) }
           </g>
           <g id="p5-finger"><path d="M250 640 C 250 560, 260 520, 280 500 C 300 520, 310 560, 310 640 Z" fill="#E9B48F"/></g>
         </g>
-        <!-- END: logo -->
-        <g id="p6"><rect width="360" height="640" fill="#1A1410"/></g>
+        <g id="s-p6"><rect width="360" height="640" fill="#1A1410"/></g>
       </svg>
+      <video id="v-p1" muted playsinline preload="auto" hidden></video>
+      <video id="v-p2" muted playsinline preload="auto" hidden></video>
+      <video id="v-p3a" muted playsinline preload="auto" hidden></video>
+      <video id="v-p3b" muted playsinline preload="auto" hidden></video>
       <img id="logo" src="logo.png" alt="Logo RenardLab Impression 3D" style="position:absolute;left:22%;top:26%;width:56%;height:auto" hidden>
-      <div class="badge" id="badge">PLAN 1 · SIMULACIÓN</div>
+      <div class="badge" id="badge">PLAN 1</div>
       <div class="hook" id="hook">TON CONCURRENT <b>COPIE</b> TES IDÉES ?</div>
       <div class="sub" id="sub"></div>
     </div></div>
     <div class="controls">
-      <button class="play" id="play" type="button">▶ Reproducir</button>
-      <input type="range" id="seek" min="0" max="19.57" step="0.01" value="0" aria-label="Posición en el reel">
+      <button class="play" id="play" type="button">▶ Lecture</button>
+      <input type="range" id="seek" min="0" max="18.32" step="0.01" value="0" aria-label="Position dans le reel">
       <span class="time" id="time">0,0 s</span>
     </div>
     <div class="chips" id="chips"></div>
-    <p class="note">Con tu voz real ya editada. Los dibujos solo marcan qué va en cada plano.</p>
+    <p class="note">Badge vert : vos vraies vidéos, recadrées en vertical. Badge noir : dessin du plan à filmer.</p>
   </section>
 
-  <section class="shots" id="shots" aria-label="Fichas de rodaje"></section>
+  <section class="shots" id="shots" aria-label="Fiches de tournage"></section>
 </div>
 
 <script>
-const T = 19.57;
+const T = 18.32;
 const PLANS = [
-  { id: "p1", a: 0, b: 2.3, name: "Gancho: tu cara", dur: "2 s en el reel · graba 3–4 tomas de 5 s",
+  { id: "p1", a: 0, b: 2.3, done: true, name: "Accroche : le plateau plein", dur: "2,3 s dans le reel",
     say: "« Le magasin d’en face copie toutes tes idées ? »",
-    what: "Tú mirando a cámara. Empiezas a hablar en el primer segundo, con cara de sospecha y una mirada rápida de reojo hacia un lado (como mirando a la tienda de enfrente).",
-    how: "Móvil en vertical a la altura de tus ojos, a 40–50 cm. Luz de ventana delante de ti, nunca detrás. De fondo, tu taller o la impresora, desenfocada.",
-    why: "Es el plano que decide si se quedan: una cara real y una pregunta directa paran el scroll mucho mejor que un dibujo.",
-    alt: "¿Sin cara? Tu mano dejando de golpe una figurina sobre el mostrador, en primer plano." },
-  { id: "p2", a: 2.3, b: 6.87, name: "La impresora en acción", dur: "4,5 s en el reel · graba un timelapse de 10–20 min",
+    what: "Le plateau couvert de petits chiens de Noël, la main qui entre dans le cadre. Le gros texte « TON CONCURRENT COPIE TES IDÉES ? » s’affiche dès la première image.",
+    how: "Déjà filmé : début de la vidéo du 15/11 (WA0014). Rien à refaire.",
+    why: "Des dizaines de figurines identiques arrêtent le scroll : on se demande tout de suite ce que c’est." },
+  { id: "p2", a: 2.3, b: 6.87, done: true, name: "L’imprimante au travail", dur: "4,6 s dans le reel (timelapse accéléré ×5)",
     say: "« Chez RenardLab3D, on crée des produits personnalisés en impression 3D pour les commerces. »",
-    what: "La boquilla imprimiendo una pieza reconocible (mejor una mascota o un logo), capa a capa, desde la cama vacía hasta la pieza terminada.",
-    how: "Móvil fijo (trípode, o apoyado en libros o una taza) a 10–15 cm de la boquilla, un poco por encima. Modo Cámara rápida / Timelapse. Luz constante, sin sol directo. Limpia la cama antes.",
-    why: "Es lo que nadie más enseña: ver nacer un objeto engancha y explica tu oficio sin palabras.",
-    alt: "Extra útil: 3 s en tiempo real, muy cerca, de la boquilla moviéndose." },
-  { id: "p3", a: 6.87, b: 10.98, name: "Tres productos", dur: "3 × 1,3 s en el reel · graba 4 s de cada uno",
-    say: "« Ta mascotte en figurine ? Ton logo en porte-clés ? Tes propres personnages ? »",
-    what: "a) Tu mano girando despacio una figurina. b) Un llavero con logo colgando de tu dedo, balanceándose. c) 2–3 personajes en fila y tu mano dejando el último.",
-    how: "Fondo liso: una cartulina naranja o blanca. Luz de ventana de lado. Móvil fijo; mueve solo el producto, despacio. Llena el encuadre con el objeto.",
-    why: "Cada pregunta enseña un producto concreto: el comerciante se imagina el suyo." },
-  { id: "p4", a: 10.98, b: 16.12, name: "Exclusividad", dur: "5 s en el reel · graba 8 s",
+    what: "Le timelapse de la série de chiens : d’abord blancs, puis les bonnets rouges apparaissent.",
+    how: "Déjà filmé : vidéo du 16/11 (WA0032), recadrée en vertical. Pour la prochaine fois, filme le timelapse le téléphone à la verticale : on garde toute l’image.",
+    why: "Voir l’objet naître, c’est ce que personne d’autre ne montre." },
+  { id: "p3", a: 6.87, b: 9.73, done: true, name: "Les produits", dur: "2 × 1,4 s dans le reel",
+    say: "« Ta mascotte en figurine ? … Tes propres personnages ? »",
+    what: "a) Gros plan sur un chien avec son bonnet. b) Les rangées de chiens sur le plateau.",
+    how: "Déjà filmé : vidéo du 15/11 (WA0014), à 21 s et à 12 s.",
+    why: "Chaque question montre un vrai produit : le commerçant imagine le sien.",
+    alt: "Bonus avec l’impression de demain : 4 s de la main qui fait tourner la nouvelle pièce lentement, sur un fond uni. Je pourrai l’utiliser pour « Ta mascotte en figurine ? »." },
+  { id: "p4", a: 9.73, b: 14.87, done: false, name: "Exclusivité", dur: "5,1 s dans le reel · filme 8 s",
     say: "« Tu peux nous demander de ne pas vendre tes créations à un concurrent précis. Tes produits, il ne les aura pas chez nous. »",
-    what: "Vista desde arriba: tu mano mete el producto en una caja, la cierra y pega una etiqueta escrita a mano: « RÉSERVÉ ».",
-    how: "Móvil encima, mirando hacia abajo (apoyado en una estantería o con un brazo de trípode). Gestos claros y lentos. Escribe la etiqueta antes, con rotulador grueso.",
-    why: "Convierte la promesa de exclusividad en algo que se ve." },
-  { id: "p5", a: 16.12, b: 17.9, name: "Llamada a la acción", dur: "2 s en el reel · graba 4 s",
+    what: "Vue de dessus : la main pose une figurine dans une boîte, ferme le couvercle et colle une étiquette écrite à la main « RÉSERVÉ ».",
+    how: "Téléphone au-dessus, objectif vers le bas (posé sur une étagère, ou à bout de bras bien stable). Gestes lents et nets. Écris l’étiquette avant, au gros feutre. Une boîte en carton simple suffit.",
+    why: "La promesse d’exclusivité devient une image." },
+  { id: "p5", a: 14.87, b: 16.65, done: false, name: "Appel à l’action", dur: "1,8 s dans le reel · filme 4 s",
     say: "« Écris-nous en DM pour commencer. »",
-    what: "Tu mano sujetando el móvil con la pantalla de mensajes de Instagram de RenardLab3D abierta, y tu dedo tocando « Enviar ».",
-    how: "Baja el brillo de la pantalla para que no se queme en la imagen. Graba con otro móvil, de frente, a 30 cm.",
-    why: "Enseñar el gesto exacto (escribir un DM) hace más fácil que lo hagan.",
-    alt: "Alternativa: tú señalando hacia abajo a la cámara mientras lo dices." },
-  { id: "p6", a: 17.9, b: T, name: "Cierre con tu logo", dur: "1,7 s · no tienes que grabar nada",
-    say: "(música y logo)", what: "Lo pongo yo: tu logo sobre fondo oscuro.", how: "—", why: "Que recuerden el nombre." },
+    what: "Une main tient un téléphone avec la conversation Instagram de RenardLab3D ouverte ; le doigt écrit un court message et appuie sur « Envoyer ».",
+    how: "Baisse la luminosité de l’écran filmé pour qu’il ne soit pas brûlé. Filme avec l’autre téléphone, de face, à 30 cm, téléphone à la verticale.",
+    why: "Montrer le geste exact (écrire un DM) le rend plus facile à faire." },
+  { id: "p6", a: 16.65, b: T, done: true, name: "Fin avec le logo", dur: "1,7 s · rien à filmer",
+    say: "(musique et logo)", what: "Le logo sur fond sombre, ajouté au montage.", how: "—", why: "Qu’on retienne le nom." },
 ];
 const SUBS = [
   [0.15, 0.95, "Le magasin d’en face"], [0.95, 2.15, "copie toutes tes idées ?"],
   [2.3, 3.4, "Chez RenardLab3D,"], [3.4, 5.0, "on crée des produits personnalisés"], [5.0, 6.7, "en impression 3D pour les commerces."],
-  [6.87, 8.25, "Ta mascotte en figurine ?"], [8.37, 9.6, "Ton logo en porte-clés ?"], [9.7, 10.85, "Tes propres personnages ?"],
-  [10.98, 12.6, "Tu peux nous demander de ne pas vendre"], [12.6, 14.05, "tes créations à un concurrent précis."], [14.05, 15.95, "Tes produits, il ne les aura pas chez nous."],
-  [16.12, 17.85, "Écris-nous en DM pour commencer."],
+  [6.87, 8.3, "Ta mascotte en figurine ?"], [8.45, 9.6, "Tes propres personnages ?"],
+  [9.73, 11.35, "Tu peux nous demander de ne pas vendre"], [11.35, 12.8, "tes créations à un concurrent précis."], [12.8, 14.7, "Tes produits, il ne les aura pas chez nous."],
+  [14.87, 16.6, "Écris-nous en DM pour commencer."],
 ];
+// real clips: [video id, file, start on the timeline, end]
+const CLIPS = [["v-p1", "clip-p1.mp4", 0, 2.3], ["v-p2", "clip-p2.mp4", 2.3, 6.87], ["v-p3a", "clip-p3a.mp4", 6.87, 8.45], ["v-p3b", "clip-p3b.mp4", 8.45, 9.73]];
 
 const $ = (id) => document.getElementById(id);
-const shotsEl = $("shots"), chipsEl = $("chips");
 const fmt = (s) => s.toFixed(1).replace(".", ",");
+const shotsEl = $("shots"), chipsEl = $("chips");
 PLANS.forEach((p, i) => {
   const el = document.createElement("article");
   el.className = "shot"; el.id = "card-" + p.id;
   el.innerHTML = `<h2>Plan ${i + 1} · ${p.name} <span class="t">${fmt(p.a)}–${fmt(p.b)} s</span></h2>
+    <span class="status ${p.done ? "done" : "todo"}">${p.done ? (p.id === "p6" ? "Ajouté au montage" : "Déjà filmé") : "À filmer demain"}</span>
     <p class="say">${p.say}</p>
-    <dl><dt>Duración</dt><dd>${p.dur}</dd><dt>Qué grabar</dt><dd>${p.what}</dd><dt>Cómo</dt><dd>${p.how}</dd><dt>Para qué</dt><dd>${p.why}</dd></dl>
+    <dl><dt>Durée</dt><dd>${p.dur}</dd><dt>Quoi</dt><dd>${p.what}</dd><dt>Comment</dt><dd>${p.how}</dd><dt>Pourquoi</dt><dd>${p.why}</dd></dl>
     ${p.alt ? `<p class="alt">${p.alt}</p>` : ""}`;
   shotsEl.appendChild(el);
   const b = document.createElement("button");
@@ -239,73 +186,48 @@ PLANS.forEach((p, i) => {
 });
 const check = document.createElement("section");
 check.className = "check";
-check.innerHTML = `<h2>Antes de grabar</h2><ul>
-  <li>Móvil siempre en <b>vertical</b>, 1080p o 4K a 30 fps.</li>
-  <li>Limpia la lente con la camiseta. Parece una tontería y cambia todo.</li>
-  <li>Mantén pulsado sobre la pantalla para <b>bloquear el enfoque y la exposición</b>.</li>
-  <li>Nada de zoom digital: acércate tú.</li>
-  <li>Graba <b>3 tomas</b> de cada plano y un poco más largas de lo necesario; yo elijo y recorto.</li>
-  <li>Graba sin música. La voz ya la tenemos.</li>
-  <li>Mándame los vídeos originales sin comprimir (por WhatsApp como «Documento», o por Drive).</li></ul>`;
+check.innerHTML = `<h2>Avant de filmer</h2><ul>
+  <li>Téléphone toujours <b>à la verticale</b>, en 1080p ou 4K, 30 images/s.</li>
+  <li>Nettoie l’objectif avec un t-shirt. Ça change tout.</li>
+  <li>Appui long sur l’écran pour <b>bloquer la mise au point et l’exposition</b>.</li>
+  <li>Pas de zoom numérique : rapproche-toi.</li>
+  <li>Fais <b>3 prises</b> de chaque plan, un peu plus longues que nécessaire.</li>
+  <li>Lumière d’une fenêtre, de côté ou de face. Évite le plafonnier jaune.</li>
+  <li>Pas besoin de son : la voix est déjà enregistrée.</li>
+  <li>Envoie les vidéos originales sans compression (WhatsApp en « Document », ou Drive).</li></ul>`;
 shotsEl.appendChild(check);
 
-// ---- simulated frames as a function of time ----
-const LAYERS = [150, 140, 120, 100, 86, 80, 86, 100, 116, 122, 116, 104, 86, 62, 40, 18];
-const obj = $("p2-obj");
-LAYERS.forEach((w, i) => {
-  const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  r.setAttribute("x", 180 - w / 2); r.setAttribute("y", 342 - i * 12); r.setAttribute("width", w); r.setAttribute("height", 12);
-  r.setAttribute("rx", 4); r.setAttribute("fill", "#F26A1B"); r.setAttribute("stroke", "#B24C10"); r.setAttribute("stroke-width", "2");
-  obj.appendChild(r);
-});
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const ease = (x) => 1 - Math.pow(1 - clamp(x, 0, 1), 3);
+let playing = false;
 function render(t) {
   const cur = PLANS.find((p) => t >= p.a && t < p.b) || PLANS[PLANS.length - 1];
   PLANS.forEach((p) => {
-    const g = $(p.id); if (g) g.style.display = p === cur ? "" : "none";
     $("card-" + p.id).classList.toggle("on", p === cur);
     $("chip-" + p.id).classList.toggle("on", p === cur);
+    const g = $("s-" + p.id); if (g) g.style.display = p === cur ? "" : "none";
+  });
+  const clip = CLIPS.find((c) => t >= c[2] && t < c[3]);
+  CLIPS.forEach((c) => {
+    const v = $(c[0]), on = c === clip;
+    v.hidden = !on;
+    if (on) {
+      const want = clamp(t - c[2], 0, Math.max(0, (v.duration || 99) - 0.05));
+      if (!playing) { v.pause(); if (Math.abs(v.currentTime - want) > 0.04) v.currentTime = want; }
+      else { if (v.paused) { v.currentTime = want; v.play().catch(() => {}); } else if (Math.abs(v.currentTime - want) > 0.25) v.currentTime = want; }
+    } else if (!v.paused) v.pause();
   });
   const idx = PLANS.indexOf(cur);
-  $("badge").textContent = cur.id === "p6" ? "CIERRE" : `PLAN ${idx + 1} · SIMULACIÓN`;
+  $("badge").textContent = cur.id === "p6" ? "FIN" : clip ? `PLAN ${idx + 1} · VOTRE VIDÉO` : `PLAN ${idx + 1} · À FILMER`;
+  $("badge").classList.toggle("real", !!clip);
   $("hook").hidden = cur.id !== "p1";
   $("logo").hidden = cur.id !== "p6";
   const s = SUBS.find((x) => t >= x[0] && t < x[1]);
   $("sub").textContent = s ? s[2] : "";
-  const l = t - cur.a, d = cur.b - cur.a;
-  if (cur.id === "p1") {
-    const look = Math.sin(clamp((l - 0.6) / 0.9, 0, 1) * Math.PI) * 9;
-    $("p1-eyes").setAttribute("transform", `translate(${look} 0)`);
-    $("p1-person").setAttribute("transform", `translate(0 ${-6 * ease(l / 0.5)})`);
-  }
-  if (cur.id === "p2") {
-    const prog = clamp(l / (d - 0.4), 0, 1), n = LAYERS.length, layer = Math.min(n - 1, Math.floor(prog * n));
-    [...obj.children].forEach((r, i) => {
-      const w = LAYERS[i], frac = i < layer ? 1 : i === layer ? (prog * n) % 1 : 0;
-      r.setAttribute("width", Math.max(0, w * frac)); r.setAttribute("x", 180 - w / 2);
-    });
-    const w = LAYERS[layer], dir = layer % 2 ? -1 : 1, f = (prog * n) % 1;
-    const hx = 180 + dir * (-w / 2 + w * f);
-    const hy = (342 - layer * 12) - 238;
-    $("p2-head").setAttribute("transform", `translate(${hx} 0)`);
-    $("p2-gantry").setAttribute("transform", `translate(0 ${hy})`);
-    const mins = Math.floor(prog * 18), secs = Math.floor((prog * 18 * 60) % 60);
-    $("p2-clock").textContent = `⏱ ${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-  }
-  if (cur.id === "p3") {
-    const sa = l < 1.5, sb = l >= 1.5 && l < 2.83, sc = l >= 2.83;
-    $("p3a").style.display = sa ? "" : "none"; $("p3b").style.display = sb ? "" : "none"; $("p3c").style.display = sc ? "" : "none";
-    const turn = Math.cos(l * 2.6);
-    $("p3a-fig").setAttribute("transform", `translate(180 320) scale(${0.35 + 0.65 * Math.abs(turn)} 1)`);
-    const sw = Math.sin((l - 1.5) * 6) * 18 * Math.exp(-(l - 1.5) * 1.4);
-    $("p3b-key").setAttribute("transform", `rotate(${sw} 180 170)`);
-    const drop = ease((l - 2.83) / 0.5);
-    $("p3c-2").setAttribute("transform", `translate(0 ${-160 * (1 - drop)})`);
-  }
+  const l = t - cur.a;
   if (cur.id === "p4") {
     const inP = ease(l / 1.6);
-    $("p4-prod").setAttribute("transform", `translate(${180} ${560 - 210 * inP})`);
+    $("p4-prod").setAttribute("transform", `translate(180 ${560 - 210 * inP})`);
     const lid = ease((l - 1.9) / 0.6);
     $("p4-lid").setAttribute("opacity", lid);
     $("p4-prod").style.display = lid > 0.95 ? "none" : "";
@@ -314,23 +236,27 @@ function render(t) {
     $("p4-stamp").setAttribute("transform", `rotate(-8 180 348) translate(180 348) scale(${1.8 - 0.8 * st}) translate(-180 -348)`);
   }
   if (cur.id === "p5") {
-    const m = ease((l - 0.7) / 0.25);
-    $("p5-msg").setAttribute("opacity", m);
+    $("p5-msg").setAttribute("opacity", ease((l - 0.7) / 0.25));
     $("p5-finger").setAttribute("transform", `translate(${-40 * ease(l / 0.6)} ${-120 * ease(l / 0.6) + 20 * ease((l - 0.6) / 0.15)})`);
   }
   $("seek").value = t;
   $("time").textContent = fmt(t) + " s";
 }
 
-// ---- audio (her voice) drives the clock ----
+// media: fetched as blobs so they play inside the viewer
 const audio = new Audio();
-let blobReady = fetch("voix-reel-court.mp3").then((r) => r.blob()).then((b) => { audio.src = URL.createObjectURL(b); }).catch(() => {});
-let raf = 0, playing = false;
+const blob = (f) => fetch(f).then((r) => { if (!r.ok) throw 0; return r.blob(); }).then((b) => URL.createObjectURL(b)).catch(() => f);
+const ready = Promise.all([
+  blob("voix-reel-court.mp3").then((u) => { audio.src = u; }),
+  ...CLIPS.map((c) => blob(c[1]).then((u) => { $(c[0]).src = u; })),
+]).catch(() => {});
+ready.then(() => render(parseFloat($("seek").value) || 0.6));
+let raf = 0;
 function tick() { render(Math.min(T, audio.currentTime)); if (playing) raf = requestAnimationFrame(tick); }
-function setBtn() { $("play").textContent = playing ? "❚❚ Pausa" : "▶ Reproducir"; }
+function setBtn() { $("play").textContent = playing ? "❚❚ Pause" : "▶ Lecture"; }
 $("play").addEventListener("click", async () => {
-  await blobReady;
-  if (playing) { audio.pause(); playing = false; cancelAnimationFrame(raf); setBtn(); return; }
+  await ready;
+  if (playing) { audio.pause(); playing = false; cancelAnimationFrame(raf); setBtn(); render(audio.currentTime); return; }
   if (audio.currentTime >= T - 0.05) audio.currentTime = 0;
   try { await audio.play(); playing = true; setBtn(); tick(); } catch (e) { playing = false; setBtn(); }
 });
