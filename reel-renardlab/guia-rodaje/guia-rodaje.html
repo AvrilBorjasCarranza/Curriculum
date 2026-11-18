@@ -68,46 +68,85 @@ input[type=range] { width: 100%; accent-color: var(--brand) }
 <div class="wrap">
   <header class="top">
     <h1>Guide de tournage <span>RenardLab3D</span></h1>
-    <p class="lede">Pour toi qui filmes. Voici le reel court (18 s) avec la voix finale. Les plans en vert utilisent déjà vos vidéos ; les plans dessinés sont ceux à filmer demain. Lance la lecture et regarde quelle fiche s’allume.</p>
+    <p class="lede">Pour toi qui filmes. Voici le reel court (18 s) avec la voix finale : un clip différent pour chaque plan. Les plans en vert utilisent déjà vos vidéos ; les plans dessinés sont à filmer demain, pendant et après la nouvelle impression. Lance la lecture et regarde quelle fiche s’allume.</p>
   </header>
 
   <section class="player" aria-label="Lecteur du reel">
     <div class="phone"><div class="screen" id="screen">
       <svg class="stage" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#000" stroke-opacity=".06"/></pattern></defs>
-        <!-- PLAN 4: top view box (to film) -->
+        <defs>
+          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#000" stroke-opacity=".06"/></pattern>
+          <g id="bear">
+            <ellipse cx="0" cy="34" rx="34" ry="30" fill="#F7F3EE" stroke="#1A1410" stroke-width="3"/>
+            <circle cx="-22" cy="-30" r="9" fill="#F7F3EE" stroke="#1A1410" stroke-width="3"/>
+            <circle cx="22" cy="-30" r="9" fill="#F7F3EE" stroke="#1A1410" stroke-width="3"/>
+            <circle cx="0" cy="-8" r="28" fill="#F7F3EE" stroke="#1A1410" stroke-width="3"/>
+            <path d="M-26 -18 C -24 -52, 22 -56, 28 -20 Z" fill="#D7262B" stroke="#1A1410" stroke-width="3"/>
+            <rect x="-28" y="-22" width="56" height="9" rx="4" fill="#fff" stroke="#1A1410" stroke-width="2"/>
+            <circle cx="30" cy="-46" r="7" fill="#fff" stroke="#1A1410" stroke-width="2"/>
+            <circle cx="-10" cy="-4" r="3.5" fill="#1A1410"/><circle cx="10" cy="-4" r="3.5" fill="#1A1410"/>
+            <ellipse cx="0" cy="6" rx="6" ry="4" fill="#1A1410"/>
+          </g>
+        </defs>
+        <!-- P3 nozzle close-up -->
+        <g id="s-p3">
+          <rect width="360" height="640" fill="#1E1B19"/>
+          <g transform="translate(0 -120)"><rect x="0" y="430" width="360" height="330" fill="#2E2A27"/>
+          <g id="p3-lines"></g>
+          <g id="p3-nozzle">
+            <rect x="-70" y="120" width="140" height="150" rx="14" fill="#C9C2BB"/>
+            <rect x="-40" y="140" width="80" height="26" rx="5" fill="#F26A1B"/>
+            <path d="M-34 270 L34 270 L14 340 L-14 340 Z" fill="#B98F4C" stroke="#7A5C2C" stroke-width="3"/>
+            <circle cx="0" cy="344" r="5" fill="#FFB25C"/>
+          </g></g>
+        </g>
+        <!-- P4 pop off the plate -->
         <g id="s-p4">
+          <rect width="360" height="640" fill="#2B2724"/>
+          <g transform="translate(0 -130)"><path id="p4-plate" d="" fill="#4A4542" stroke="#8C8580" stroke-width="3"/>
+          <g id="p4-bear"><use href="#bear"/></g>
+          <path id="p4-hl" d="M10 470 C 40 430, 60 420, 70 440 L 60 520 L 0 520 Z" fill="#E9B48F"/>
+          <path id="p4-hr" d="M350 470 C 320 430, 300 420, 290 440 L 300 520 L 360 520 Z" fill="#E9B48F"/></g>
+        </g>
+        <!-- P5 support removal -->
+        <g id="s-p5">
+          <rect width="360" height="640" fill="#EDE6DE"/>
+          <g transform="translate(180 330) scale(2.2)"><use href="#bear"/></g>
+          <g id="p5-support"><g stroke="#9A948F" stroke-width="4">
+            <path d="M240 350 V470 M256 350 V470 M272 350 V470 M288 350 V470"/><path d="M234 360 H294 M234 400 H294 M234 440 H294" stroke-width="3"/></g></g>
+          <g id="p5-pliers"><path d="M300 420 L360 380 M300 440 L360 470" stroke="#C0392B" stroke-width="10" stroke-linecap="round"/><circle cx="296" cy="430" r="8" fill="#555"/></g>
+        </g>
+        <!-- P6 piece in hand, plain background -->
+        <g id="s-p6">
+          <rect width="360" height="640" fill="#F26A1B"/>
+          <g id="p6-bear" transform="translate(180 300)"><use href="#bear" transform="scale(2.2)"/></g>
+          <path d="M80 640 C 90 480, 140 430, 180 440 C 220 430, 270 480, 280 640 Z" fill="#E9B48F"/>
+        </g>
+        <!-- P7 box RÉSERVÉ -->
+        <g id="s-p7">
           <rect width="360" height="640" fill="#C9A47A"/><rect width="360" height="640" fill="url(#grid)"/>
           <rect x="70" y="250" width="220" height="200" fill="#B5814F" stroke="#7A5532" stroke-width="4"/>
           <rect x="84" y="264" width="192" height="172" fill="#8E623A"/>
-          <g id="p4-prod">
-            <ellipse cx="0" cy="22" rx="30" ry="8" fill="#000" opacity=".25"/>
-            <path d="M-22 18 C -26 -10, -18 -28, 0 -30 C 18 -28, 26 -10, 22 18 Z" fill="#F4EEE8" stroke="#1A1410" stroke-width="3"/>
-            <path d="M-20 -26 C -18 -48, 18 -48, 20 -26 Z" fill="#D7262B" stroke="#1A1410" stroke-width="3"/>
-            <circle cx="22" cy="-40" r="6" fill="#fff" stroke="#1A1410" stroke-width="2"/>
-            <path d="M-70 40 C -50 20, -30 20, -10 30 L 0 80 L -80 90 Z" fill="#E9B48F"/>
-          </g>
-          <g id="p4-lid"><rect x="70" y="250" width="220" height="200" fill="#C99460" stroke="#7A5532" stroke-width="4"/><path d="M70 350 H290" stroke="#7A5532" stroke-width="3"/></g>
-          <g id="p4-stamp"><rect x="96" y="320" width="168" height="56" rx="8" fill="none" stroke="#E8322F" stroke-width="6"/>
+          <g id="p7-prod"><use href="#bear" transform="scale(1.1)"/></g>
+          <g id="p7-lid"><rect x="70" y="250" width="220" height="200" fill="#C99460" stroke="#7A5532" stroke-width="4"/><path d="M70 350 H290" stroke="#7A5532" stroke-width="3"/></g>
+          <g id="p7-stamp"><rect x="96" y="320" width="168" height="56" rx="8" fill="none" stroke="#E8322F" stroke-width="6"/>
             <text x="180" y="358" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="26" fill="#E8322F">RÉSERVÉ</text></g>
         </g>
-        <!-- PLAN 5: DM (to film) -->
-        <g id="s-p5">
+        <!-- P8 DM -->
+        <g id="s-p8">
           <rect width="360" height="640" fill="#2B2420"/>
           <g transform="translate(70 120)">
             <rect width="220" height="400" rx="26" fill="#111" stroke="#555" stroke-width="3"/>
             <rect x="10" y="12" width="200" height="376" rx="18" fill="#FFF3E3"/>
             <circle cx="40" cy="44" r="16" fill="#F26A1B"/><text x="64" y="49" font-family="Inter" font-weight="800" font-size="12" fill="#1A1410">renardlab3d</text>
-            <g id="p5-msg"><rect x="50" y="200" width="148" height="44" rx="18" fill="#F26A1B"/><text x="124" y="227" text-anchor="middle" font-family="Inter" font-weight="800" font-size="11" fill="#fff">Bonjour ! J’ai une idée…</text></g>
+            <g id="p8-msg"><rect x="50" y="200" width="148" height="44" rx="18" fill="#F26A1B"/><text x="124" y="227" text-anchor="middle" font-family="Inter" font-weight="800" font-size="11" fill="#fff">Bonjour ! J’ai une idée…</text></g>
           </g>
-          <g id="p5-finger"><path d="M250 640 C 250 560, 260 520, 280 500 C 300 520, 310 560, 310 640 Z" fill="#E9B48F"/></g>
+          <g id="p8-finger"><path d="M250 640 C 250 560, 260 520, 280 500 C 300 520, 310 560, 310 640 Z" fill="#E9B48F"/></g>
         </g>
-        <g id="s-p6"><rect width="360" height="640" fill="#1A1410"/></g>
+        <g id="s-p9"><rect width="360" height="640" fill="#1A1410"/></g>
       </svg>
       <video id="v-p1" muted playsinline preload="auto" hidden></video>
       <video id="v-p2" muted playsinline preload="auto" hidden></video>
-      <video id="v-p3a" muted playsinline preload="auto" hidden></video>
-      <video id="v-p3b" muted playsinline preload="auto" hidden></video>
       <img id="logo" src="logo.png" alt="Logo RenardLab Impression 3D" style="position:absolute;left:22%;top:26%;width:56%;height:auto" hidden>
       <div class="badge" id="badge">PLAN 1</div>
       <div class="hook" id="hook">TON CONCURRENT <b>COPIE</b> TES IDÉES ?</div>
@@ -128,33 +167,47 @@ input[type=range] { width: 100%; accent-color: var(--brand) }
 <script>
 const T = 18.32;
 const PLANS = [
-  { id: "p1", a: 0, b: 2.3, done: true, name: "Accroche : le plateau plein", dur: "2,3 s dans le reel",
+  { id: "p1", a: 0, b: 2.3, done: true, name: "Accroche : le plateau plein", dur: "2,3 s",
     say: "« Le magasin d’en face copie toutes tes idées ? »",
-    what: "Le plateau couvert de petits ours polaires de Noël, la main qui entre dans le cadre. Le gros texte « TON CONCURRENT COPIE TES IDÉES ? » s’affiche dès la première image.",
-    how: "Déjà filmé : début de la vidéo du 15/11 (WA0014). Rien à refaire.",
-    why: "Des dizaines de figurines identiques arrêtent le scroll : on se demande tout de suite ce que c’est." },
-  { id: "p2", a: 2.3, b: 6.87, done: true, name: "L’imprimante au travail", dur: "4,6 s dans le reel (timelapse accéléré ×5)",
-    say: "« Chez RenardLab3D, on crée des produits personnalisés en impression 3D pour les commerces. »",
-    what: "Le timelapse de la série d’ours polaires : d’abord blancs, puis les bonnets rouges apparaissent.",
-    how: "Déjà filmé : vidéo du 16/11 (WA0032), recadrée en vertical. Pour la prochaine fois, filme le timelapse le téléphone à la verticale : on garde toute l’image.",
-    why: "Voir l’objet naître, c’est ce que personne d’autre ne montre." },
-  { id: "p3", a: 6.87, b: 9.73, done: true, name: "Les produits", dur: "2 × 1,4 s dans le reel",
-    say: "« Ta mascotte en figurine ? … Tes propres personnages ? »",
-    what: "a) Gros plan sur un ours polaire avec son bonnet. b) Les rangées d’ours sur le plateau.",
-    how: "Déjà filmé : vidéo du 15/11 (WA0014), à 21 s et à 12 s.",
-    why: "Chaque question montre un vrai produit : le commerçant imagine le sien.",
-    alt: "Bonus avec l’impression de demain : 4 s de la main qui fait tourner la nouvelle pièce lentement, sur un fond uni. Je pourrai l’utiliser pour « Ta mascotte en figurine ? »." },
-  { id: "p4", a: 9.73, b: 14.87, done: false, name: "Exclusivité", dur: "5,1 s dans le reel · filme 8 s",
-    say: "« Tu peux nous demander de ne pas vendre tes créations à un concurrent précis. Tes produits, il ne les aura pas chez nous. »",
-    what: "Vue de dessus : la main pose une figurine dans une boîte, ferme le couvercle et colle une étiquette écrite à la main « RÉSERVÉ ».",
-    how: "Téléphone au-dessus, objectif vers le bas (posé sur une étagère, ou à bout de bras bien stable). Gestes lents et nets. Écris l’étiquette avant, au gros feutre. Une boîte en carton simple suffit.",
+    what: "Le plateau couvert d’ours polaires de Noël, la main qui entre dans le cadre. Le gros texte « TON CONCURRENT COPIE TES IDÉES ? » s’affiche dès la première image.",
+    how: "Déjà filmé : début de la vidéo du 15/11 (WA0014). C’est le seul plan qui utilise cette vidéo.",
+    why: "Des dizaines de figurines identiques arrêtent le scroll." },
+  { id: "p2", a: 2.3, b: 4.6, done: true, name: "Timelapse de la série", dur: "2,3 s (accéléré ×10)",
+    say: "« Chez RenardLab3D, on crée des produits personnalisés… »",
+    what: "Les ours d’abord blancs, puis les bonnets rouges qui apparaissent.",
+    how: "Déjà filmé : vidéo du 16/11 (WA0032), recadrée en vertical. La prochaine fois, filme le timelapse téléphone à la verticale.",
+    why: "On voit l’objet naître : personne d’autre ne montre ça." },
+  { id: "p3", a: 4.6, b: 6.87, done: false, name: "La buse en gros plan", dur: "2,3 s · filme 10 s",
+    say: "« …en impression 3D pour les commerces. »",
+    what: "La buse tout près, en temps réel, qui dépose le filament. Idéal : les premières couches, ou un changement de couleur.",
+    how: "Téléphone fixe à 8–10 cm de la buse, posé sur un support. Appui long sur la buse pour bloquer la mise au point. Pas de timelapse ici : vitesse réelle.",
+    why: "Le détail hypnotique qui fait rester." },
+  { id: "p4", a: 6.87, b: 8.45, done: false, name: "Décoller la pièce du plateau", dur: "1,6 s · filme 3 prises de 5 s",
+    say: "« Ta mascotte en figurine ? »",
+    what: "On plie doucement le plateau flexible et la pièce se décolle d’un coup.",
+    how: "Téléphone fixe à hauteur du plateau, de côté, à 30 cm. Les deux mains plient le plateau lentement. Garde la pièce au centre de l’image.",
+    why: "Geste très « satisfaisant » : c’est ce que les gens regardent en boucle." },
+  { id: "p5", a: 8.45, b: 9.73, done: false, name: "Retirer les supports", dur: "1,3 s · filme 5–8 s",
+    say: "« Tes propres personnages ? »",
+    what: "Une main tire lentement un gros support (doigts ou pince) et la pièce propre apparaît.",
+    how: "Tout près, sur un fond uni (carton clair ou feuille blanche). Lumière de fenêtre de côté. Tire doucement pour qu’on voie le support se détacher.",
+    why: "Le « avant/après » en une seconde." },
+  { id: "p6", a: 9.73, b: 12.3, done: false, name: "La pièce finie en main", dur: "2,6 s · filme 5 s",
+    say: "« Tu peux nous demander de ne pas vendre tes créations… »",
+    what: "La main fait tourner lentement la nouvelle pièce, sur un fond uni (carton orange ou blanc).",
+    how: "Téléphone fixe à 25–30 cm, la pièce remplit l’image. Tourne-la d’un demi-tour, lentement, sans sortir du cadre.",
+    why: "Le produit fini, net et propre : ce que le commerçant va vendre." },
+  { id: "p7", a: 12.3, b: 14.87, done: false, name: "La boîte « RÉSERVÉ »", dur: "2,6 s · filme 6 s",
+    say: "« …à un concurrent précis. Tes produits, il ne les aura pas chez nous. »",
+    what: "Vue de dessus : la pièce entre dans une boîte, le couvercle se ferme, on colle une étiquette écrite à la main « RÉSERVÉ ».",
+    how: "Téléphone au-dessus, objectif vers le bas, bien stable. Gestes lents et nets. Écris l’étiquette avant, au gros feutre.",
     why: "La promesse d’exclusivité devient une image." },
-  { id: "p5", a: 14.87, b: 16.65, done: false, name: "Appel à l’action", dur: "1,8 s dans le reel · filme 4 s",
+  { id: "p8", a: 14.87, b: 16.65, done: false, name: "Le message en DM", dur: "1,8 s · filme 4 s",
     say: "« Écris-nous en DM pour commencer. »",
     what: "Une main tient un téléphone avec la conversation Instagram de RenardLab3D ouverte ; le doigt écrit un court message et appuie sur « Envoyer ».",
-    how: "Baisse la luminosité de l’écran filmé pour qu’il ne soit pas brûlé. Filme avec l’autre téléphone, de face, à 30 cm, téléphone à la verticale.",
-    why: "Montrer le geste exact (écrire un DM) le rend plus facile à faire." },
-  { id: "p6", a: 16.65, b: T, done: true, name: "Fin avec le logo", dur: "1,7 s · rien à filmer",
+    how: "Baisse la luminosité de l’écran filmé. Filme avec l’autre téléphone, de face, à 30 cm, à la verticale.",
+    why: "Montrer le geste exact le rend plus facile à faire." },
+  { id: "p9", a: 16.65, b: T, done: true, name: "Fin avec le logo", dur: "1,7 s · rien à filmer",
     say: "(musique et logo)", what: "Le logo sur fond sombre, ajouté au montage.", how: "—", why: "Qu’on retienne le nom." },
 ];
 const SUBS = [
@@ -164,8 +217,7 @@ const SUBS = [
   [9.73, 11.35, "Tu peux nous demander de ne pas vendre"], [11.35, 12.8, "tes créations à un concurrent précis."], [12.8, 14.7, "Tes produits, il ne les aura pas chez nous."],
   [14.87, 16.6, "Écris-nous en DM pour commencer."],
 ];
-// real clips: [video id, file, start on the timeline, end]
-const CLIPS = [["v-p1", "clip-p1.mp4", 0, 2.3], ["v-p2", "clip-p2.mp4", 2.3, 6.87], ["v-p3a", "clip-p3a.mp4", 6.87, 8.45], ["v-p3b", "clip-p3b.mp4", 8.45, 9.73]];
+const CLIPS = [["v-p1", "clip-p1.mp4", 0, 2.3], ["v-p2", "clip-p2.mp4", 2.3, 4.6]];
 
 const $ = (id) => document.getElementById(id);
 const fmt = (s) => s.toFixed(1).replace(".", ",");
@@ -174,10 +226,9 @@ PLANS.forEach((p, i) => {
   const el = document.createElement("article");
   el.className = "shot"; el.id = "card-" + p.id;
   el.innerHTML = `<h2>Plan ${i + 1} · ${p.name} <span class="t">${fmt(p.a)}–${fmt(p.b)} s</span></h2>
-    <span class="status ${p.done ? "done" : "todo"}">${p.done ? (p.id === "p6" ? "Ajouté au montage" : "Déjà filmé") : "À filmer demain"}</span>
+    <span class="status ${p.done ? "done" : "todo"}">${p.done ? (p.id === "p9" ? "Ajouté au montage" : "Déjà filmé") : "À filmer demain"}</span>
     <p class="say">${p.say}</p>
-    <dl><dt>Durée</dt><dd>${p.dur}</dd><dt>Quoi</dt><dd>${p.what}</dd><dt>Comment</dt><dd>${p.how}</dd><dt>Pourquoi</dt><dd>${p.why}</dd></dl>
-    ${p.alt ? `<p class="alt">${p.alt}</p>` : ""}`;
+    <dl><dt>Durée</dt><dd>${p.dur}</dd><dt>Quoi</dt><dd>${p.what}</dd><dt>Comment</dt><dd>${p.how}</dd><dt>Pourquoi</dt><dd>${p.why}</dd></dl>`;
   shotsEl.appendChild(el);
   const b = document.createElement("button");
   b.type = "button"; b.textContent = "Plan " + (i + 1); b.id = "chip-" + p.id;
@@ -186,9 +237,14 @@ PLANS.forEach((p, i) => {
 });
 const check = document.createElement("section");
 check.className = "check";
-check.innerHTML = `<h2>Avant de filmer</h2><ul>
+check.innerHTML = `<h2>Demain, dans l’ordre</h2><ul>
+  <li><b>Pendant l’impression :</b> plan 3, la buse en gros plan (et un timelapse vertical si vous voulez).</li>
+  <li><b>À la fin de l’impression :</b> plan 4 (décoller la pièce), puis plan 5 (retirer les supports).</li>
+  <li><b>Pièce propre :</b> plan 6 (en main, fond uni), puis plan 7 (la boîte « RÉSERVÉ »).</li>
+  <li><b>N’importe quand :</b> plan 8, le DM.</li></ul>
+  <h2 style="margin-top:14px">Avant de filmer</h2><ul>
   <li>Téléphone toujours <b>à la verticale</b>, en 1080p ou 4K, 30 images/s.</li>
-  <li>Nettoie l’objectif avec un t-shirt. Ça change tout.</li>
+  <li>Nettoie l’objectif avec un t-shirt.</li>
   <li>Appui long sur l’écran pour <b>bloquer la mise au point et l’exposition</b>.</li>
   <li>Pas de zoom numérique : rapproche-toi.</li>
   <li>Fais <b>3 prises</b> de chaque plan, un peu plus longues que nécessaire.</li>
@@ -199,6 +255,9 @@ shotsEl.appendChild(check);
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const ease = (x) => 1 - Math.pow(1 - clamp(x, 0, 1), 3);
+const NS = "http://www.w3.org/2000/svg";
+const lines = $("p3-lines");
+for (let i = 0; i < 6; i++) { const r = document.createElementNS(NS, "rect"); r.setAttribute("x", 30); r.setAttribute("y", 418 - i * 12); r.setAttribute("height", 11); r.setAttribute("rx", 5); r.setAttribute("fill", i === 5 ? "#D7262B" : "#F7F3EE"); r.setAttribute("stroke", "#1A1410"); r.setAttribute("stroke-width", "1.5"); lines.appendChild(r); }
 let playing = false;
 function render(t) {
   const cur = PLANS.find((p) => t >= p.a && t < p.b) || PLANS[PLANS.length - 1];
@@ -218,32 +277,54 @@ function render(t) {
     } else if (!v.paused) v.pause();
   });
   const idx = PLANS.indexOf(cur);
-  $("badge").textContent = cur.id === "p6" ? "FIN" : clip ? `PLAN ${idx + 1} · VOTRE VIDÉO` : `PLAN ${idx + 1} · À FILMER`;
+  $("badge").textContent = cur.id === "p9" ? "FIN" : clip ? `PLAN ${idx + 1} · VOTRE VIDÉO` : `PLAN ${idx + 1} · À FILMER`;
   $("badge").classList.toggle("real", !!clip);
   $("hook").hidden = cur.id !== "p1";
-  $("logo").hidden = cur.id !== "p6";
+  $("logo").hidden = cur.id !== "p9";
   const s = SUBS.find((x) => t >= x[0] && t < x[1]);
   $("sub").textContent = s ? s[2] : "";
-  const l = t - cur.a;
+  const l = t - cur.a, d = cur.b - cur.a;
+  if (cur.id === "p3") {
+    const f = clamp(l / d, 0, 1), done = Math.floor(f * 6), part = (f * 6) % 1;
+    [...lines.children].forEach((r, i) => r.setAttribute("width", i < done ? 300 : i === done ? 300 * part : 0));
+    const x = 30 + 300 * part, y = 418 - done * 12 - 344 + 6;
+    $("p3-nozzle").setAttribute("transform", `translate(${x} ${y})`);
+  }
   if (cur.id === "p4") {
-    const inP = ease(l / 1.6);
-    $("p4-prod").setAttribute("transform", `translate(180 ${560 - 210 * inP})`);
-    const lid = ease((l - 1.9) / 0.6);
-    $("p4-lid").setAttribute("opacity", lid);
-    $("p4-prod").style.display = lid > 0.95 ? "none" : "";
-    const st = ease((l - 2.8) / 0.25);
-    $("p4-stamp").setAttribute("opacity", st);
-    $("p4-stamp").setAttribute("transform", `rotate(-8 180 348) translate(180 348) scale(${1.8 - 0.8 * st}) translate(-180 -348)`);
+    const bend = Math.sin(clamp(l / 0.9, 0, 1) * Math.PI / 2), mid = 470 + 60 * bend;
+    $("p4-plate").setAttribute("d", `M20 470 Q 180 ${mid + 40 * bend} 340 470 L 340 482 Q 180 ${mid + 52 * bend} 20 482 Z`);
+    const pop = ease((l - 0.75) / 0.35), fall = ease((l - 1.1) / 0.4);
+    $("p4-bear").setAttribute("transform", `translate(180 ${mid + 40 * bend * 0.5 - 70 - 90 * pop + 60 * fall}) rotate(${-25 * pop + 25 * fall})`);
+    $("p4-hl").setAttribute("transform", `rotate(${-10 * bend} 40 470)`); $("p4-hr").setAttribute("transform", `rotate(${10 * bend} 320 470)`);
   }
   if (cur.id === "p5") {
-    $("p5-msg").setAttribute("opacity", ease((l - 0.7) / 0.25));
-    $("p5-finger").setAttribute("transform", `translate(${-40 * ease(l / 0.6)} ${-120 * ease(l / 0.6) + 20 * ease((l - 0.6) / 0.15)})`);
+    const pull = ease((l - 0.2) / 0.8);
+    $("p5-support").setAttribute("transform", `translate(${130 * pull} ${-40 * pull}) rotate(${20 * pull} 264 410)`);
+    $("p5-support").setAttribute("opacity", 1 - 0.6 * pull);
+    $("p5-pliers").setAttribute("transform", `translate(${130 * pull} ${-40 * pull})`);
+  }
+  if (cur.id === "p6") {
+    const turn = Math.cos(l * 1.6);
+    $("p6-bear").setAttribute("transform", `translate(180 300) scale(${0.4 + 0.6 * Math.abs(turn)} 1)`);
+  }
+  if (cur.id === "p7") {
+    const inP = ease(l / 0.9);
+    $("p7-prod").setAttribute("transform", `translate(180 ${560 - 200 * inP})`);
+    const lid = ease((l - 1.0) / 0.45);
+    $("p7-lid").setAttribute("opacity", lid);
+    $("p7-prod").style.display = lid > 0.95 ? "none" : "";
+    const st = ease((l - 1.6) / 0.25);
+    $("p7-stamp").setAttribute("opacity", st);
+    $("p7-stamp").setAttribute("transform", `rotate(-8 180 348) translate(180 348) scale(${1.8 - 0.8 * st}) translate(-180 -348)`);
+  }
+  if (cur.id === "p8") {
+    $("p8-msg").setAttribute("opacity", ease((l - 0.7) / 0.25));
+    $("p8-finger").setAttribute("transform", `translate(${-40 * ease(l / 0.6)} ${-120 * ease(l / 0.6) + 20 * ease((l - 0.6) / 0.15)})`);
   }
   $("seek").value = t;
   $("time").textContent = fmt(t) + " s";
 }
 
-// media: fetched as blobs so they play inside the viewer
 const audio = new Audio();
 const blob = (f) => fetch(f).then((r) => { if (!r.ok) throw 0; return r.blob(); }).then((b) => URL.createObjectURL(b)).catch(() => f);
 const ready = Promise.all([
