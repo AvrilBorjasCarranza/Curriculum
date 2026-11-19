@@ -13,7 +13,7 @@ BEATS = [
     ("b1", "c1-ours-plateau.mp4", 0.0, 2.3),
     ("b2", "c2-ours-timelapse.mp4", 2.3, 4.6),
     ("b3", "c3-impression.mp4", 4.6, 6.87),
-    ("b4", "c4-mascotte-main.mp4", 6.87, 8.45),
+    ("b4", None, 6.87, 8.45),
     ("b5", "c5-personnages.mp4", 8.45, 9.73),
     ("b6", "c6-exclusif.mp4", 9.73, 14.87),
     ("b7", None, 14.87, T),
@@ -128,6 +128,10 @@ overlays = f'''      <div id="hook" class="clip" data-start="0" data-duration="2
         <div id="excl-t" class="excl"><span>EXCLUSIF</span></div>
         <div id="excl-s" class="excl-s">RÉSERVÉ À TA BOUTIQUE</div>
       </div>
+      <div id="b4" class="clip" data-start="6.87" data-duration="1.58" data-track-index="0" style="z-index:5">
+        <div class="pv-bg"></div>
+        <div id="pv-card" class="pv-card"><img src="assets/pieuvre-blender.png" alt="Pieuvre modélisée dans Blender" /><span>MODÈLE 3D · CRÉÉ POUR TOI</span></div>
+      </div>
       <div id="end" class="clip" data-start="{b7a}" data-duration="{round(T - b7a, 3)}" data-track-index="0" style="z-index:15">
         <div class="end-bg"></div>
         <img id="end-logo" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" />
@@ -135,6 +139,7 @@ overlays = f'''      <div id="hook" class="clip" data-start="0" data-duration="2
         <div id="end-cta" class="end-cta"><span>ÉCRIS-NOUS EN DM</span></div>
       </div>'''
 tweens += [
+    'tl.fromTo("#pv-card", { scale: 0.86, rotation: -4, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.4, ease: "back.out(1.6)" }, 6.87);',
     'tl.fromTo("#hook-t", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.02);',
     f'tl.fromTo("#excl-t", {{ scale: 2.2, opacity: 0, rotation: -12 }}, {{ scale: 1, opacity: 1, rotation: -6, duration: 0.25, ease: "power4.in" }}, {b6a + 0.3});',
     f'tl.fromTo("#excl-s", {{ opacity: 0, y: 30 }}, {{ opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }}, {b6a + 0.7});',
@@ -165,6 +170,10 @@ index = f"""<!doctype html>
       .excl span {{ display: inline-block; font: 400 130px/1 "Archivo Black", sans-serif; color: {RED}; border: 14px solid {RED}; padding: 18px 40px 26px; border-radius: 20px; background: {CREAM}; }}
       .excl-s {{ position: absolute; left: 0; top: 640px; width: 1080px; text-align: center; font: 400 56px/1.1 "Archivo Black", sans-serif; color: #fff;
         text-shadow: -5px -5px 0 {INK}, 5px -5px 0 {INK}, -5px 5px 0 {INK}, 5px 5px 0 {INK}; }}
+      .pv-bg {{ position: absolute; inset: 0; background: radial-gradient(circle at 50% 35%, #3B3634 0%, #1A1410 70%); }}
+      .pv-card {{ position: absolute; left: 70px; top: 330px; width: 940px; background: {CREAM}; border-radius: 34px; padding: 22px 22px 26px; box-shadow: 0 30px 60px rgba(0,0,0,.5); text-align: center; }}
+      .pv-card img {{ display: block; width: 896px; height: 669px; border-radius: 20px; object-fit: cover; }}
+      .pv-card span {{ display: inline-block; margin-top: 20px; font: 400 40px/1 "Archivo Black", sans-serif; color: {INK}; letter-spacing: .02em; }}
       .end-bg {{ position: absolute; inset: 0; background: {INK}; }}
       #end-logo {{ position: absolute; left: 290px; top: 300px; width: 500px; height: 500px; }}
       .end-sub {{ position: absolute; left: 0; top: 830px; width: 1080px; text-align: center; font: 900 40px/1.2 Inter, sans-serif; letter-spacing: .1em; color: {CREAM}; opacity: .85; }}

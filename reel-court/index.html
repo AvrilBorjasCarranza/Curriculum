@@ -17,6 +17,10 @@
       .excl span { display: inline-block; font: 400 130px/1 "Archivo Black", sans-serif; color: #C41E1B; border: 14px solid #C41E1B; padding: 18px 40px 26px; border-radius: 20px; background: #FFF3E3; }
       .excl-s { position: absolute; left: 0; top: 640px; width: 1080px; text-align: center; font: 400 56px/1.1 "Archivo Black", sans-serif; color: #fff;
         text-shadow: -5px -5px 0 #1A1410, 5px -5px 0 #1A1410, -5px 5px 0 #1A1410, 5px 5px 0 #1A1410; }
+      .pv-bg { position: absolute; inset: 0; background: radial-gradient(circle at 50% 35%, #3B3634 0%, #1A1410 70%); }
+      .pv-card { position: absolute; left: 70px; top: 330px; width: 940px; background: #FFF3E3; border-radius: 34px; padding: 22px 22px 26px; box-shadow: 0 30px 60px rgba(0,0,0,.5); text-align: center; }
+      .pv-card img { display: block; width: 896px; height: 669px; border-radius: 20px; object-fit: cover; }
+      .pv-card span { display: inline-block; margin-top: 20px; font: 400 40px/1 "Archivo Black", sans-serif; color: #1A1410; letter-spacing: .02em; }
       .end-bg { position: absolute; inset: 0; background: #1A1410; }
       #end-logo { position: absolute; left: 290px; top: 300px; width: 500px; height: 500px; }
       .end-sub { position: absolute; left: 0; top: 830px; width: 1080px; text-align: center; font: 900 40px/1.2 Inter, sans-serif; letter-spacing: .1em; color: #FFF3E3; opacity: .85; }
@@ -35,9 +39,6 @@
       <div id="b3-wrap" class="wrap" style="z-index:3">
         <video id="b3" class="clip" src="assets/clips/c3-impression.mp4" data-start="4.6" data-duration="2.27" data-track-index="0" muted playsinline></video>
       </div>
-      <div id="b4-wrap" class="wrap" style="z-index:4">
-        <video id="b4" class="clip" src="assets/clips/c4-mascotte-main.mp4" data-start="6.87" data-duration="1.58" data-track-index="0" muted playsinline></video>
-      </div>
       <div id="b5-wrap" class="wrap" style="z-index:5">
         <video id="b5" class="clip" src="assets/clips/c5-personnages.mp4" data-start="8.45" data-duration="1.28" data-track-index="0" muted playsinline></video>
       </div>
@@ -50,6 +51,10 @@
       <div id="excl" class="clip" data-start="9.73" data-duration="5.14" data-track-index="2" style="z-index:20">
         <div id="excl-t" class="excl"><span>EXCLUSIF</span></div>
         <div id="excl-s" class="excl-s">RÉSERVÉ À TA BOUTIQUE</div>
+      </div>
+      <div id="b4" class="clip" data-start="6.87" data-duration="1.58" data-track-index="0" style="z-index:5">
+        <div class="pv-bg"></div>
+        <div id="pv-card" class="pv-card"><img src="assets/pieuvre-blender.png" alt="Pieuvre modélisée dans Blender" /><span>MODÈLE 3D · CRÉÉ POUR TOI</span></div>
       </div>
       <div id="end" class="clip" data-start="14.87" data-duration="3.45" data-track-index="0" style="z-index:15">
         <div class="end-bg"></div>
@@ -65,7 +70,7 @@
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
       
-tl.fromTo("#b1-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 0.0);      tl.fromTo("#b2-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 2.3);      tl.fromTo("#b3-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 4.6);      tl.fromTo("#b4-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 6.87);      tl.fromTo("#b5-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 8.45);      tl.fromTo("#b6-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 9.73);      tl.fromTo("#hook-t", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.02);      tl.fromTo("#excl-t", { scale: 2.2, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.25, ease: "power4.in" }, 10.030000000000001);      tl.fromTo("#excl-s", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.43);      tl.fromTo("#end-logo", { scale: 0.5, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.55, ease: "back.out(1.6)" }, 14.92);      tl.fromTo("#end-sub", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 15.27);      tl.fromTo("#end-cta", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 15.42);
+tl.fromTo("#b1-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 0.0);      tl.fromTo("#b2-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 2.3);      tl.fromTo("#b3-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 4.6);      tl.fromTo("#b5-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 8.45);      tl.fromTo("#b6-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 9.73);      tl.fromTo("#pv-card", { scale: 0.86, rotation: -4, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.4, ease: "back.out(1.6)" }, 6.87);      tl.fromTo("#hook-t", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.02);      tl.fromTo("#excl-t", { scale: 2.2, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.25, ease: "power4.in" }, 10.030000000000001);      tl.fromTo("#excl-s", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.43);      tl.fromTo("#end-logo", { scale: 0.5, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.55, ease: "back.out(1.6)" }, 14.92);      tl.fromTo("#end-sub", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 15.27);      tl.fromTo("#end-cta", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 15.42);
       window.__timelines["main"] = tl;
     </script>
   </body>
