@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #1A1410; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      .wrap { position: absolute; inset: 0; }
+      .wrap video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      .txt { position: absolute; left: 60px; width: 960px; text-align: center; font: 400 84px/1.06 "Archivo Black", sans-serif; color: #fff;
+        text-shadow: -7px -7px 0 #1A1410, 7px -7px 0 #1A1410, -7px 7px 0 #1A1410, 7px 7px 0 #1A1410, 0 14px 30px rgba(0,0,0,.5); }
+      .txt b { color: #FFD23F; font-weight: 400; }
+      .end-bg { position: absolute; inset: 0; background: #1A1410; }
+      #end-logo { position: absolute; left: 270px; top: 420px; width: 540px; height: 540px; }
+      .end-cta { position: absolute; left: 0; top: 1040px; width: 1080px; text-align: center; }
+      .end-cta span { display: inline-block; background: #D9500C; color: #fff; font: 400 54px/1 "Archivo Black", sans-serif; padding: 26px 48px 30px; border-radius: 999px; border: 6px solid #FFF3E3; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="6.5" data-width="1080" data-height="1920">
+      <div id="w0" class="wrap" style="z-index:1">
+        <video id="v0" class="clip" src="assets/clips/a1-timelapse.mp4" data-start="0" data-duration="4.3" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="w1" class="wrap" style="z-index:2">
+        <video id="v1" class="clip" src="assets/clips/a2-plateau.mp4" data-start="4.3" data-duration="2.2" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="t0" class="clip" data-start="0.0" data-duration="2.5" data-track-index="1" style="z-index:20">
+        <div id="t0-in" class="txt" style="top:300px">REGARDE LES<br><b>BONNETS</b> APPARAÎTRE</div>
+      </div>
+      <div id="t1" class="clip" data-start="2.5" data-duration="1.8" data-track-index="1" style="z-index:20">
+        <div id="t1-in" class="txt" style="top:300px">IMPRIMÉ EN 3D<br>À <b>METZ</b></div>
+      </div>
+      <div id="t2" class="clip" data-start="4.3" data-duration="2.2" data-track-index="1" style="z-index:20">
+        <div id="t2-in" class="txt" style="top:300px">ET TOI, TU METTRAIS<br>QUOI EN <b>FIGURINE</b>&nbsp;?</div>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#w0", { scale: 1.08 }, { scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+      tl.fromTo("#w1", { scale: 1.08 }, { scale: 1, duration: 0.5, ease: "power3.out" }, 4.3);
+      tl.fromTo("#t0-in", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.02);
+      tl.fromTo("#t1-in", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 2.52);
+      tl.fromTo("#t2-in", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 4.319999999999999);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
