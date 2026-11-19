@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #1A1410; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      .wrap { position: absolute; inset: 0; }
+      .wrap video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      .hook { position: absolute; left: 60px; top: 330px; width: 960px; text-align: center; font: 400 80px/1.06 "Archivo Black", sans-serif; color: #fff;
+        text-shadow: -7px -7px 0 #1A1410, 7px -7px 0 #1A1410, -7px 7px 0 #1A1410, 7px 7px 0 #1A1410, 0 14px 30px rgba(0,0,0,.5); }
+      .hook b { color: #FFD23F; font-weight: 400; }
+      .excl { position: absolute; left: 0; top: 380px; width: 1080px; text-align: center; }
+      .excl span { display: inline-block; font: 400 130px/1 "Archivo Black", sans-serif; color: #C41E1B; border: 14px solid #C41E1B; padding: 18px 40px 26px; border-radius: 20px; background: #FFF3E3; }
+      .excl-s { position: absolute; left: 0; top: 640px; width: 1080px; text-align: center; font: 400 56px/1.1 "Archivo Black", sans-serif; color: #fff;
+        text-shadow: -5px -5px 0 #1A1410, 5px -5px 0 #1A1410, -5px 5px 0 #1A1410, 5px 5px 0 #1A1410; }
+      .end-bg { position: absolute; inset: 0; background: #1A1410; }
+      #end-logo { position: absolute; left: 290px; top: 300px; width: 500px; height: 500px; }
+      .end-sub { position: absolute; left: 0; top: 830px; width: 1080px; text-align: center; font: 900 40px/1.2 Inter, sans-serif; letter-spacing: .1em; color: #FFF3E3; opacity: .85; }
+      .end-cta { position: absolute; left: 0; top: 920px; width: 1080px; text-align: center; }
+      .end-cta span { display: inline-block; background: #D9500C; color: #fff; font: 400 62px/1 "Archivo Black", sans-serif; padding: 26px 56px 30px; border-radius: 999px; border: 6px solid #FFF3E3; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18.32" data-width="1080" data-height="1920">
+      <div id="b1-wrap" class="wrap" style="z-index:1">
+        <video id="b1" class="clip" src="assets/clips/c1-ours-plateau.mp4" data-start="0.0" data-duration="2.3" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="b2-wrap" class="wrap" style="z-index:2">
+        <video id="b2" class="clip" src="assets/clips/c2-ours-timelapse.mp4" data-start="2.3" data-duration="2.3" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="b3-wrap" class="wrap" style="z-index:3">
+        <video id="b3" class="clip" src="assets/clips/c3-impression.mp4" data-start="4.6" data-duration="2.27" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="b4-wrap" class="wrap" style="z-index:4">
+        <video id="b4" class="clip" src="assets/clips/c4-mascotte-main.mp4" data-start="6.87" data-duration="1.58" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="b5-wrap" class="wrap" style="z-index:5">
+        <video id="b5" class="clip" src="assets/clips/c5-personnages.mp4" data-start="8.45" data-duration="1.28" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="b6-wrap" class="wrap" style="z-index:6">
+        <video id="b6" class="clip" src="assets/clips/c6-exclusif.mp4" data-start="9.73" data-duration="5.14" data-track-index="0" muted playsinline></video>
+      </div>
+      <div id="hook" class="clip" data-start="0" data-duration="2.3" data-track-index="2" style="z-index:20">
+        <div id="hook-t" class="hook">TON CONCURRENT<br><b>COPIE</b> TES&nbsp;IDÉES&nbsp;?</div>
+      </div>
+      <div id="excl" class="clip" data-start="9.73" data-duration="5.14" data-track-index="2" style="z-index:20">
+        <div id="excl-t" class="excl"><span>EXCLUSIF</span></div>
+        <div id="excl-s" class="excl-s">RÉSERVÉ À TA BOUTIQUE</div>
+      </div>
+      <div id="end" class="clip" data-start="14.87" data-duration="3.45" data-track-index="0" style="z-index:15">
+        <div class="end-bg"></div>
+        <img id="end-logo" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" />
+        <div id="end-sub" class="end-sub">IMPRESSION 3D PERSONNALISÉE · METZ</div>
+        <div id="end-cta" class="end-cta"><span>ÉCRIS-NOUS EN DM</span></div>
+      </div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="18.32" data-track-index="3" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:30"></div>
+      <audio id="voice" class="clip" src="assets/voice/voix-reel-court.mp3" data-start="0" data-duration="18.32" data-track-index="5" data-volume="1"></audio>
+      <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="18.32" data-track-index="6" data-volume="0.18"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      
+tl.fromTo("#b1-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 0.0);      tl.fromTo("#b2-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 2.3);      tl.fromTo("#b3-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 4.6);      tl.fromTo("#b4-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 6.87);      tl.fromTo("#b5-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 8.45);      tl.fromTo("#b6-wrap", { scale: 1.1 }, { scale: 1, duration: 0.45, ease: "power3.out" }, 9.73);      tl.fromTo("#hook-t", { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(2)" }, 0.02);      tl.fromTo("#excl-t", { scale: 2.2, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.25, ease: "power4.in" }, 10.030000000000001);      tl.fromTo("#excl-s", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.43);      tl.fromTo("#end-logo", { scale: 0.5, opacity: 0, rotation: -20 }, { scale: 1, opacity: 1, rotation: 0, duration: 0.55, ease: "back.out(1.6)" }, 14.92);      tl.fromTo("#end-sub", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 15.27);      tl.fromTo("#end-cta", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 15.42);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
