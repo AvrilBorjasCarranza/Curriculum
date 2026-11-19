@@ -1,0 +1,15 @@
+# graphify: only the two reel projects' code and docs
+.claude/
+.hiring-panel/
+video/
+graphify-out/
+CLAUDE.md
+*.mp3
+*.wav
+*.mp4
+*.mkv
+*.png
+*.jpg
+*.webp
+*.svg
+*.pdf

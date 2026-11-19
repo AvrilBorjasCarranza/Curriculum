@@ -1,0 +1,254 @@
+{
+  "reel-court/assets/voice/marks.json": {
+    "mtime": 1795046814.8772929,
+    "seen": 1795113905.898711,
+    "ast_hash": "47039c65ce7c0dffbc68273abb3cf029",
+    "semantic_hash": "47039c65ce7c0dffbc68273abb3cf029"
+  },
+  "reel-court/hyperframes.json": {
+    "mtime": 1795046814.8106241,
+    "seen": 1795113905.898717,
+    "ast_hash": "7b33c6cb9ecfe380a4657c509ff8af33",
+    "semantic_hash": "7b33c6cb9ecfe380a4657c509ff8af33"
+  },
+  "reel-court/meta.json": {
+    "mtime": 1795046814.8070838,
+    "seen": 1795113905.8987226,
+    "ast_hash": "c2302e87ce036868da311ec19bf0994f",
+    "semantic_hash": "c2302e87ce036868da311ec19bf0994f"
+  },
+  "reel-court/package.json": {
+    "mtime": 1795046814.8166463,
+    "seen": 1795113905.898724,
+    "ast_hash": "fd9a7f590ceb1c06dc106ed5750db14d",
+    "semantic_hash": "fd9a7f590ceb1c06dc106ed5750db14d"
+  },
+  "reel-court/tools/gen_short.py": {
+    "mtime": 1795047936.6723795,
+    "seen": 1795113905.898725,
+    "ast_hash": "53ab2ee4b143aeb9e5b679f91568d5f2",
+    "semantic_hash": "53ab2ee4b143aeb9e5b679f91568d5f2"
+  },
+  "reel-renardlab/assets/voice-avril/edit_report.json": {
+    "mtime": 1794894027.1317883,
+    "seen": 1795113905.8987262,
+    "ast_hash": "89f09773fd1d7ff8dc53aaca619fd520",
+    "semantic_hash": "89f09773fd1d7ff8dc53aaca619fd520"
+  },
+  "reel-renardlab/assets/voice/words.json": {
+    "mtime": 1794894291.6024733,
+    "seen": 1795113905.8987272,
+    "ast_hash": "f491c83b20e395235944365ece966c60",
+    "semantic_hash": "f491c83b20e395235944365ece966c60"
+  },
+  "reel-renardlab/docs/cues.json": {
+    "mtime": 1794894818.3327348,
+    "seen": 1795113905.8987281,
+    "ast_hash": "f5372f1a3e2b3a7ca55ba8aa7589caa5",
+    "semantic_hash": "f5372f1a3e2b3a7ca55ba8aa7589caa5"
+  },
+  "reel-renardlab/docs/real-sfx-cues.json": {
+    "mtime": 1794894556.3347123,
+    "seen": 1795113905.8987288,
+    "ast_hash": "c7a677068a12276dc5d756381c2b6d8f",
+    "semantic_hash": "c7a677068a12276dc5d756381c2b6d8f"
+  },
+  "reel-renardlab/guia-rodaje/marks.json": {
+    "mtime": 1794968208.731307,
+    "seen": 1795113905.89873,
+    "ast_hash": "47039c65ce7c0dffbc68273abb3cf029",
+    "semantic_hash": "47039c65ce7c0dffbc68273abb3cf029"
+  },
+  "reel-renardlab/hyperframes.json": {
+    "mtime": 1794886429.6931672,
+    "seen": 1795113905.8987308,
+    "ast_hash": "b1970bbc25886631fac955217068f8dc",
+    "semantic_hash": "b1970bbc25886631fac955217068f8dc"
+  },
+  "reel-renardlab/hyperframes.lock.json": {
+    "mtime": 1794886429.689167,
+    "seen": 1795113905.8987317,
+    "ast_hash": "4d0c98fd9bd53c5a0e0ebd4b47eaf1b4",
+    "semantic_hash": "4d0c98fd9bd53c5a0e0ebd4b47eaf1b4"
+  },
+  "reel-renardlab/meta.json": {
+    "mtime": 1794886422.6255004,
+    "seen": 1795113905.8987322,
+    "ast_hash": "cfaa1a0555fb1cccbd50449bcfb9f069",
+    "semantic_hash": "cfaa1a0555fb1cccbd50449bcfb9f069"
+  },
+  "reel-renardlab/package.json": {
+    "mtime": 1794886422.6306984,
+    "seen": 1795113905.8987331,
+    "ast_hash": "bcc706b22b83e4039abd6a0319302c9c",
+    "semantic_hash": "bcc706b22b83e4039abd6a0319302c9c"
+  },
+  "reel-renardlab/tools/edit_voice.py": {
+    "mtime": 1794893982.6928434,
+    "seen": 1795113905.898734,
+    "ast_hash": "88c6adeee24253413559e79c21769175",
+    "semantic_hash": "88c6adeee24253413559e79c21769175"
+  },
+  "reel-renardlab/tools/gen_reel.py": {
+    "mtime": 1794894322.7275631,
+    "seen": 1795113905.898735,
+    "ast_hash": "2189231d1148530f2989c5987507a834",
+    "semantic_hash": "2189231d1148530f2989c5987507a834"
+  },
+  "reel-court/AGENTS.md": {
+    "mtime": 1795046814.8180127,
+    "seen": 1795113905.8987362,
+    "ast_hash": "363a865d078ba5e928a962eef7fe4a3f",
+    "semantic_hash": "363a865d078ba5e928a962eef7fe4a3f"
+  },
+  "reel-court/compositions/captions.html": {
+    "mtime": 1795048103.9563363,
+    "seen": 1795113905.8987372,
+    "ast_hash": "cae8b4d273addb75082117c1d35c9519",
+    "semantic_hash": "cae8b4d273addb75082117c1d35c9519"
+  },
+  "reel-court/index.html": {
+    "mtime": 1795048103.9567747,
+    "seen": 1795113905.898738,
+    "ast_hash": "51987c73075c82af5d9f51604cd35ae8",
+    "semantic_hash": "51987c73075c82af5d9f51604cd35ae8"
+  },
+  "reel-renardlab/AGENTS.md": {
+    "mtime": 1794886422.631225,
+    "seen": 1795113905.8987386,
+    "ast_hash": "363a865d078ba5e928a962eef7fe4a3f",
+    "semantic_hash": "363a865d078ba5e928a962eef7fe4a3f"
+  },
+  "reel-renardlab/CREDITS.md": {
+    "mtime": 1794894842.4447346,
+    "seen": 1795113905.8987393,
+    "ast_hash": "a6d1983670c890ba941ef2cbe3f1969a",
+    "semantic_hash": "a6d1983670c890ba941ef2cbe3f1969a"
+  },
+  "reel-renardlab/compositions/captions.html": {
+    "mtime": 1794894818.3319716,
+    "seen": 1795113905.8987403,
+    "ast_hash": "d56dd3e195fea86567e495c3eed20590",
+    "semantic_hash": "d56dd3e195fea86567e495c3eed20590"
+  },
+  "reel-renardlab/compositions/components/caption-highlight.html": {
+    "mtime": 1794886427.509167,
+    "seen": 1795113905.8987417,
+    "ast_hash": "91f76b54608ef0aae15ccf18c1a6676b",
+    "semantic_hash": "91f76b54608ef0aae15ccf18c1a6676b"
+  },
+  "reel-renardlab/compositions/components/whip-pan-cut.html": {
+    "mtime": 1794886429.6811671,
+    "seen": 1795113905.8987424,
+    "ast_hash": "d6cbc963940fd85c1d93bfc22d0f5f3f",
+    "semantic_hash": "d6cbc963940fd85c1d93bfc22d0f5f3f"
+  },
+  "reel-renardlab/compositions/s1-hook.html": {
+    "mtime": 1794894818.3296235,
+    "seen": 1795113905.8987434,
+    "ast_hash": "b28ab7a23580c0e3f8f2531fff6b89c4",
+    "semantic_hash": "b28ab7a23580c0e3f8f2531fff6b89c4"
+  },
+  "reel-renardlab/compositions/s10-dm.html": {
+    "mtime": 1794894818.3314433,
+    "seen": 1795113905.898744,
+    "ast_hash": "113f1f4ee2405ebf2d642afe8eff4bbe",
+    "semantic_hash": "113f1f4ee2405ebf2d642afe8eff4bbe"
+  },
+  "reel-renardlab/compositions/s11-partage.html": {
+    "mtime": 1794894818.3315609,
+    "seen": 1795113905.8987448,
+    "ast_hash": "3bbad46ec35b35b99e77684a33084f8d",
+    "semantic_hash": "3bbad46ec35b35b99e77684a33084f8d"
+  },
+  "reel-renardlab/compositions/s2-reste.html": {
+    "mtime": 1794894818.3299074,
+    "seen": 1795113905.8987458,
+    "ast_hash": "87bc65353b0801742718358eaf05c5c2",
+    "semantic_hash": "87bc65353b0801742718358eaf05c5c2"
+  },
+  "reel-renardlab/compositions/s3-marque.html": {
+    "mtime": 1794894818.330146,
+    "seen": 1795113905.8987467,
+    "ast_hash": "9cd49e855fe09711cdbacd20b1ff9725",
+    "semantic_hash": "9cd49e855fe09711cdbacd20b1ff9725"
+  },
+  "reel-renardlab/compositions/s4-produits.html": {
+    "mtime": 1794894818.3303423,
+    "seen": 1795113905.8987474,
+    "ast_hash": "074aa7413aac06ffb5755f200df04760",
+    "semantic_hash": "074aa7413aac06ffb5755f200df04760"
+  },
+  "reel-renardlab/compositions/s5-ensemble.html": {
+    "mtime": 1794894818.3306286,
+    "seen": 1795113905.8987482,
+    "ast_hash": "f65e1544998f3242e2333f5a75ce7b8f",
+    "semantic_hash": "f65e1544998f3242e2333f5a75ce7b8f"
+  },
+  "reel-renardlab/compositions/s6-exclu.html": {
+    "mtime": 1794894818.3308587,
+    "seen": 1795113905.8987489,
+    "ast_hash": "df64dfbba7627d980259a61095b2047c",
+    "semantic_hash": "df64dfbba7627d980259a61095b2047c"
+  },
+  "reel-renardlab/compositions/s7-facile.html": {
+    "mtime": 1794894818.3310056,
+    "seen": 1795113905.8987503,
+    "ast_hash": "9916c9aed661ad1de79937a0a5672ed3",
+    "semantic_hash": "9916c9aed661ad1de79937a0a5672ed3"
+  },
+  "reel-renardlab/compositions/s8-noel.html": {
+    "mtime": 1794894818.331171,
+    "seen": 1795113905.898751,
+    "ast_hash": "2193e70c12d9260336477dd41d73d60d",
+    "semantic_hash": "2193e70c12d9260336477dd41d73d60d"
+  },
+  "reel-renardlab/compositions/s9-france.html": {
+    "mtime": 1794894818.331304,
+    "seen": 1795113905.8987517,
+    "ast_hash": "cc0c3fc751f0aaa9a1b3e19453b2ccb4",
+    "semantic_hash": "cc0c3fc751f0aaa9a1b3e19453b2ccb4"
+  },
+  "reel-renardlab/compositions/snow.html": {
+    "mtime": 1794886428.565167,
+    "seen": 1795113905.8987525,
+    "ast_hash": "90bdfeaf48a07891b18adebe47c3f2a1",
+    "semantic_hash": "90bdfeaf48a07891b18adebe47c3f2a1"
+  },
+  "reel-renardlab/docs/earshot-critique.txt": {
+    "mtime": 1794890148.7293398,
+    "seen": 1795113905.8987532,
+    "ast_hash": "0686036c5f2f53225e6be02abe4a1bfc",
+    "semantic_hash": "0686036c5f2f53225e6be02abe4a1bfc"
+  },
+  "reel-renardlab/docs/real-sfx-critique.md": {
+    "mtime": 1794894556.3366668,
+    "seen": 1795113905.8987541,
+    "ast_hash": "24c2e23834d1e31369247fd872cca776",
+    "semantic_hash": "24c2e23834d1e31369247fd872cca776"
+  },
+  "reel-renardlab/guia-rodaje/guia-rodaje.html": {
+    "mtime": 1794974995.0673027,
+    "seen": 1795113905.8987548,
+    "ast_hash": "7991a80ecb4a4accc88933e94c10952e",
+    "semantic_hash": "7991a80ecb4a4accc88933e94c10952e"
+  },
+  "reel-renardlab/index.html": {
+    "mtime": 1794894818.332208,
+    "seen": 1795113905.8987556,
+    "ast_hash": "0dd6cec0113bb39072e697d77f448e63",
+    "semantic_hash": "0dd6cec0113bb39072e697d77f448e63"
+  },
+  "reel-renardlab/sfx-library-earshot/CREDITS.md": {
+    "mtime": 1794889046.026104,
+    "seen": 1795113905.8987563,
+    "ast_hash": "c1beeb4a8a8aa4f52b552e0ca3e2dd0c",
+    "semantic_hash": "c1beeb4a8a8aa4f52b552e0ca3e2dd0c"
+  },
+  "reel-renardlab/sfx-library/CREDITS.md": {
+    "mtime": 1794888738.242017,
+    "seen": 1795113905.8987575,
+    "ast_hash": "eb87faf942e0fe732af6e3c75a232ea0",
+    "semantic_hash": "eb87faf942e0fe732af6e3c75a232ea0"
+  }
+}
