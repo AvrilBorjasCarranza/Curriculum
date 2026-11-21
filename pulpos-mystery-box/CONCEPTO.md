@@ -72,3 +72,7 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Preventa por Instagram.
 - Pendiente de ella: renders en PNG transparente de Blender (alta resolución) de cada pulpo, y las medidas reales tras la prueba de impresión del 22/11.
 - Bocetos hechos: `diseno/envoltorio-plano.png`, `diseno/comparacion-nombres.png`, `diseno/personajes.png` (pulpos provisionales dibujados con código, generados por `diseno/gen_envoltorio.py`).
+
+## Fondo
+- **Azul liso y plano** (`#BAE6FD`): sin burbujas, degradados ni sombras en el fondo (decidido el 21/11/2026).
+- Los renders reales de los pulpos se guardan en `diseno/pulpos/` (`rosa.png`, `rojo.png`, `amarillo.png`, `azul.png`, `verde.png`, `arcoiris.png`, PNG con fondo transparente). `gen_envoltorio.py` los usa en lugar de los dibujos provisionales.

@@ -26,7 +26,7 @@ def octo(hi, mid, lo, face="normal", rainbow=False, silhouette=False):
     if rainbow:  # cúpula con franjas
         defs += '<linearGradient id="rb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6F91"/><stop offset=".25" stop-color="#FFB347"/><stop offset=".5" stop-color="#FFE27A"/><stop offset=".75" stop-color="#7EDC8A"/><stop offset="1" stop-color="#6EC1FF"/></linearGradient>'
         parts["dome"] = "url(#rb)"
-    s = f'<ellipse cx="262" cy="426" rx="205" ry="14" fill="#000" opacity=".13"/>'
+    s = ''
     s += f'<circle cx="115" cy="328" r="58" fill="{parts["side"]}"/><circle cx="410" cy="328" r="58" fill="{parts["side"]}"/>'
     if rainbow:  # brazo saludando
         for x, y, r in [(440, 250, 40), (462, 190, 36), (470, 135, 32), (462, 85, 30)]:
@@ -70,6 +70,13 @@ GREEN  = octo("#C9F59A", "#7FD05A", "#3C9A33", "sick")
 RAIN   = octo("", "", "", "wave", rainbow=True)
 SIL    = octo("", "", "", silhouette=True)
 
+def pulpo(name, vector):
+    """Usa pulpos/<name>.png (render real, fondo transparente) si existe; si no, el dibujo provisional."""
+    return f'<img src="pulpos/{name}.png" alt="{name}">' if os.path.exists(os.path.join(OUT, "pulpos", name + ".png")) else vector
+
+PINKO, RED, YELLOW, BLUE_O, GREEN, RAIN = (pulpo(n, v) for n, v in
+    [("rosa", PINKO), ("rojo", RED), ("amarillo", YELLOW), ("azul", BLUE_O), ("verde", GREEN), ("arcoiris", RAIN)])
+
 def title(name, size=17):
     return f'<div class="title" style="font-size:{size}mm">{name}</div>'
 
@@ -83,7 +90,7 @@ body {{ font-family: Inter, sans-serif; background: #fff; }}
 .title {{ font-family: 'Titan One', sans-serif; color: {INK}; -webkit-text-stroke: 1.3mm {CREAM}; paint-order: stroke fill; letter-spacing: .3mm; line-height: 1; white-space: nowrap; text-align: center; }}
 .small {{ font-family: 'Titan One', sans-serif; color: {INK}; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
 .note {{ font-size: 3.1mm; color: #6b6b6b; }}
-.panel svg {{ width: 100%; height: 100%; display: block; }}
+.panel svg, .panel img {{ width: 100%; height: 100%; display: block; object-fit: contain; }}
 .fold {{ border-top: .3mm dashed #3b82c4; }}
 .foldv {{ border-left: .3mm dashed #3b82c4; }}
 .bubble {{ position: absolute; border-radius: 50%; border: .5mm solid rgba(255,255,255,.9); background: rgba(255,255,255,.35); }}
@@ -104,7 +111,6 @@ def flat(name):
     h = f'<div class="page"><style>{CSS}</style>'
     h += f'<div class="a" style="left:{X0}mm;top:{Y0}mm;width:235mm;height:170mm;background:{BLUE}"></div>'
     h += f'<div class="a" style="left:{X0+220}mm;top:{Y0+45}mm;width:15mm;height:80mm;background:repeating-linear-gradient(135deg,#e7f6ff 0 2mm,#d3eefd 2mm 4mm)"></div>'
-    h += bubbles(X0, Y0, 220, 45, 1) + bubbles(X0, Y0 + 125, 220, 45, 2)
     # frente
     h += f'<div class="a" style="left:{X0}mm;top:{Y0+45}mm;width:110mm;height:80mm"><div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div>'
     h += f'<div class="a" style="left:0;top:2mm;width:110mm">{title(name, 17)}</div>'
