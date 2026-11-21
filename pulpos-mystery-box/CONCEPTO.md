@@ -59,3 +59,16 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - **Un pulpo por semana**, y en todos «preventa abierta».
 - Sin voz: canción + efectos de sonido.
 - Los pulpos aún no tienen nombre.
+
+## Actualización (21/11/2026, tarde)
+- **Nombre de la serie: finalistas OctoMood y OctoPlouf** (decidir; comprobar usuario de Instagram libre y la base de marcas del INPI, ojo con «Octonauts»).
+- Los pulpos **se distinguen solo por color**: rosa, rojo, amarillo, azul, verde y arcoíris (secreto). Sin nombres de personaje.
+- Se mantiene el lema «Quel est ton mood ?».
+- **Envoltorio tipo caramelo**: rectángulo de papel pegado en cilindro, cerrado por arriba y por abajo con las solapas aplastadas y giradas 90° entre sí.
+  - Medidas del boceto (A4 horizontal): rectángulo 235 × 170 mm = cuerpo 80 mm + dos solapas de 45 mm; ancho 220 mm (circunferencia) + 15 mm de pestaña; tubo de ≈ 7 cm de diámetro.
+  - Cabe un pulpo de ≈ 5 cm (≈ 6 cm de ancho). **Un pulpo de 8 cm (≈ 9 cm de ancho) no cabe en una A4.**
+  - Papel de 160–200 g. Hacer primero un prototipo con papel normal.
+- **Probabilidad del secreto**: pendiente. Opciones: 20 unidades con 2 secretos (1 de 10, exacto) o 18 con 2 (1 de 9). La cifra impresa tiene que coincidir con el reparto real.
+- Preventa por Instagram.
+- Pendiente de ella: renders en PNG transparente de Blender (alta resolución) de cada pulpo, y las medidas reales tras la prueba de impresión del 22/11.
+- Bocetos hechos: `diseno/envoltorio-plano.png`, `diseno/comparacion-nombres.png`, `diseno/personajes.png` (pulpos provisionales dibujados con código, generados por `diseno/gen_envoltorio.py`).
