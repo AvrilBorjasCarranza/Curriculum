@@ -114,3 +114,5 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Pendiente: plato real de 6–8 pulpos (mañana), pulpo secreto con filamento multicolor, estatuto de la empresa, coste de la impresora.
 - Tabla en francés: `costes/prix.html` y `costes/prix.png`.
 - Impresora Bambu A1: 339 €. Amortizada en ≈ 3 000 h (estimado) → 0,14 € por pieza. Coste completo ≈ 7,11 €, margen ≈ 7,88 €/pieza, precio mínimo ≈ 6,01 €. Se recupera con ≈ 30 piezas vendidas sin contar el sueldo (≈ 43 contándolo).
+- Respuestas de Enzo (21/11): plato de 6–8 lo hará otro día; preparación 30 min por plato; montaje «≈ 40 min» (Avril dijo 10: por aclarar); tarifa 14 €/h (SMIC luxemburgués); sin estatuto ni empresa; venta en Vinted o Leboncoin; envío a cargo del comprador; A1 de Bambu Lab, kWh ≈ 0,20 €; pulpo secreto = filamento especial más caro; barra de pegamento: >20 platos sin acabarla; fallos 10 %.
+- Cálculo con 14 €/h, montaje 10 min, sin cotizaciones: coste completo ≈ 5,85 €, margen ≈ 9,14 €/pieza (≈ 183 € con 20 cajas); con montaje de 40 min el margen baja a ≈ 2,14 €.
