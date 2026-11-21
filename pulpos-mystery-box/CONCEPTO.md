@@ -104,3 +104,12 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 ## Renders reales y siluetas (21/11/2026)
 - `diseno/pulpos/rosa.png` ya es el render real de Blender (PNG transparente 2000 px, recortado). El color rosa del render se mantiene.
 - En la contraportada, los pulpos **sin render real** se muestran como **silueta azul clara con «?» azul**; el secreto sigue en negro con «?» amarillo. Al guardar `rojo.png`, `amarillo.png`, `azul.png` o `verde.png` en `diseno/pulpos/`, la silueta se sustituye sola.
+
+## Costes por pieza (21/11/2026, provisional)
+- Datos del programa (1 pulpo, colores de prueba): 23,80 g (modelo 21,31 + soportes 1,71 + purga 0,78), 1 h 21 min, 2 cambios de filamento. Aviso: 9 zonas de voladizo sin soporte en CuerpoNormal.stl.
+- Filamento: cuerpo 18,99 €/kg, ojos 20 €/kg, boca 18,98 €/kg → 0,45 €. Anilla 0,10 € (10 € / 100). Envoltorio 1,00 € (1 A4 = 1 envoltorio; 2 por hoja solo con tubo más pequeño). Pegamento ≈ 0,05 € (estimado).
+- Trabajo a 12 €/h: diseño 45 min / 20 = 2,25 min; preparación 30 min por plato de 6 = 5 min; montaje de la caja 10 min → 3,45 €.
+- Pérdida 10 %: 0,05 €. Cotizaciones ≈ 12,3 % (a verificar; aún no hay estatuto confirmado): 1,84 €. Pago por Revolut sin comisión; envío a cargo del comprador.
+- Coste completo ≈ 6,97 €; precio mínimo ≈ 5,85 €; margen con 14,99 € ≈ 8,02 € por pieza (≈ 160 € con 20 cajas).
+- Pendiente: plato real de 6–8 pulpos (mañana), pulpo secreto con filamento multicolor, estatuto de la empresa, coste de la impresora.
+- Tabla en francés: `costes/prix.html` y `costes/prix.png`.
