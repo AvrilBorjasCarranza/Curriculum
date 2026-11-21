@@ -3,6 +3,9 @@
 import sys, os
 OUT = sys.argv[1]
 BLUE, PINK, CREAM, INK = "#BAE6FD", "#FA96CD", "#FEF3C9", "#141414"
+DEEP, SHADE = "#2A6FAE", "#7FC2EC"   # azul profundo para textos y azul medio para el volumen: nada de negro en el envoltorio
+FONT = os.environ.get("FONT", "Bagel Fat One")
+SIZES = {"Modak": 22, "Bagel Fat One": 16, "DynaPuff": 15.5, "Titan One": 16.5}
 _n = [0]
 
 def grad(hi, mid, lo):
@@ -81,20 +84,20 @@ def title(name, size=17):
     return f'<div class="title" style="font-size:{size}mm">{name}</div>'
 
 CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Titan+One&family=Inter:wght@500;700&display=swap');
-:root {{ --mm: 4px; }}
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&family=Modak&family=Bagel+Fat+One&family=DynaPuff:wght@600;700&family=Inter:wght@500;700&display=swap');
+:root {{ --mm: 4px; --f: '{FONT}'; }}
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
 body {{ font-family: Inter, sans-serif; background: #fff; }}
 .page {{ position: relative; width: 297mm; height: 210mm; background: #fff; overflow: hidden; }}
 .a {{ position: absolute; }}
-.title {{ font-family: 'Titan One', sans-serif; color: {INK}; -webkit-text-stroke: 1.3mm {CREAM}; paint-order: stroke fill; letter-spacing: .3mm; line-height: 1; white-space: nowrap; text-align: center; }}
-.small {{ font-family: 'Titan One', sans-serif; color: {INK}; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
+.title {{ font-family: var(--f), sans-serif; color: {PINK}; -webkit-text-stroke: 1.5mm {CREAM}; paint-order: stroke fill; filter: drop-shadow(0 1.3mm 0 {SHADE}); letter-spacing: .3mm; line-height: 1; white-space: nowrap; display: flex; align-items: center; justify-content: center; height: 24mm; }}
+.small {{ font-family: var(--f), sans-serif; color: {DEEP}; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
 .note {{ font-size: 3.1mm; color: #6b6b6b; }}
 .panel svg, .panel img {{ width: 100%; height: 100%; display: block; object-fit: contain; }}
 .fold {{ border-top: .3mm dashed #3b82c4; }}
 .foldv {{ border-left: .3mm dashed #3b82c4; }}
 .bubble {{ position: absolute; border-radius: 50%; border: .5mm solid rgba(255,255,255,.9); background: rgba(255,255,255,.35); }}
-.pill {{ background: {PINK}; color: {INK}; font-family: 'Titan One'; font-size: 3.4mm; padding: 1mm 3mm; border-radius: 3mm; }}
+.pill {{ background: {CREAM}; color: {DEEP}; font-family: var(--f); font-size: 3.4mm; padding: 1mm 3mm; border-radius: 3mm; }}
 """
 
 def bubbles(x0, y0, w, h, seed):
@@ -113,8 +116,8 @@ def flat(name):
     h += f'<div class="a" style="left:{X0+220}mm;top:{Y0+45}mm;width:15mm;height:80mm;background:repeating-linear-gradient(135deg,#e7f6ff 0 2mm,#d3eefd 2mm 4mm)"></div>'
     # frente
     h += f'<div class="a" style="left:{X0}mm;top:{Y0+45}mm;width:110mm;height:80mm"><div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div>'
-    h += f'<div class="a" style="left:0;top:2mm;width:110mm">{title(name, 17)}</div>'
-    h += f'<div class="a panel" style="left:27mm;top:22mm;width:56mm;height:56mm">{PINKO}</div></div>'
+    h += f'<div class="a" style="left:0;top:2mm;width:110mm">{title(name, SIZES[FONT])}</div>'
+    h += f'<div class="a panel" style="left:28mm;top:25mm;width:53mm;height:53mm">{PINKO}</div></div>'
     # dorso
     bx = X0 + 110
     h += f'<div class="a" style="left:{bx}mm;top:{Y0+45}mm;width:110mm;height:80mm">'
@@ -135,17 +138,20 @@ def flat(name):
     h += f'<div class="a note" style="left:{X0+2}mm;top:{Y0+172}mm">Solapa superior 45 mm · cuerpo 80 mm · solapa inferior 45 mm · los pulpos son bocetos provisionales</div>'
     return h + '</div>'
 
-def front(name, label):
-    return (f'<div style="position:relative;width:110mm;height:80mm;background:{BLUE};overflow:hidden">'
-            f'<div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div><div class="a" style="left:0;top:2mm;width:110mm">{title(name, 17)}</div>'
-            f'<div class="a panel" style="left:27mm;top:22mm;width:56mm;height:56mm">{PINKO}</div></div>'
-            f'<div class="note" style="margin-top:2mm;font-size:4mm;font-weight:700">{label}</div>')
+def front(name, label, font):
+    return (f'<div style="--f:\'{font}\';position:relative;width:110mm;height:80mm;background:{BLUE};overflow:hidden">'
+            f'<div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div><div class="a" style="left:0;top:1mm;width:110mm">{title(name, SIZES[font])}</div>'
+            f'<div class="a panel" style="left:28mm;top:25mm;width:53mm;height:53mm">{PINKO}</div></div>'
+            f'<div class="note" style="margin-top:1.5mm;font-size:3.8mm;font-weight:700">{label}</div>')
 
 def compare():
-    return (f'<div class="page"><style>{CSS}</style><div class="a" style="left:20mm;top:30mm">{front("OctoMood", "A · OctoMood")}</div>'
-            f'<div class="a" style="left:167mm;top:30mm">{front("OctoPlouf", "B · OctoPlouf")}</div>'
-            f'<div class="a note" style="left:20mm;top:14mm">Cara frontal del envoltorio con las dos opciones de nombre (fondo azul liso, pulpo rosa en el centro).</div>'
-            f'<div class="a note" style="left:20mm;top:130mm;width:250mm;font-size:3.4mm">Por ahora, boceto: el pulpo es un dibujo provisional. Con tu render de Blender en PNG transparente lo sustituyo para ver el resultado real.</div></div>')
+    cells = [("Modak", "1 · Modak (globo, la más inflada)"), ("Bagel Fat One", "2 · Bagel Fat One (gordita y redonda)"),
+             ("DynaPuff", "3 · DynaPuff (mullida)"), ("Titan One", "4 · Titan One (la anterior)")]
+    out = f'<div class="page"><style>{CSS}</style>'
+    for k, (fnt, lab) in enumerate(cells):
+        x, y = 20 + (k % 2) * 147, 14 + (k // 2) * 98
+        out += f'<div class="a" style="left:{x}mm;top:{y}mm">{front("OctoMood", lab, fnt)}</div>'
+    return out + '</div>'
 
 open(os.path.join(OUT, "envoltorio-plano.html"), "w").write(f'<!doctype html><meta charset="utf-8">{flat("OctoMood")}')
 open(os.path.join(OUT, "comparacion-nombres.html"), "w").write(f'<!doctype html><meta charset="utf-8">{compare()}')

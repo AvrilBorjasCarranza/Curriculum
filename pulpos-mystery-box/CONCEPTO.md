@@ -76,3 +76,9 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 ## Fondo
 - **Azul liso y plano** (`#BAE6FD`): sin burbujas, degradados ni sombras en el fondo (decidido el 21/11/2026).
 - Los renders reales de los pulpos se guardan en `diseno/pulpos/` (`rosa.png`, `rojo.png`, `amarillo.png`, `azul.png`, `verde.png`, `arcoiris.png`, PNG con fondo transparente). `gen_envoltorio.py` los usa en lugar de los dibujos provisionales.
+
+## Colores y tipografía del envoltorio (21/11/2026)
+- **Sin negro en el envoltorio**, salvo la silueta del pulpo secreto. Textos en azul profundo `#2A6FAE`; título en rosa `#FA96CD` con borde crema `#FEF3C9` y volumen en azul medio `#7FC2EC`.
+- **Tipografía más «burbuja»**, una sola en la caja. Candidatas libres (Google Fonts, licencia OFL, uso comercial permitido): Modak, Bagel Fat One, DynaPuff y Titan One. Por defecto: **Bagel Fat One** (legible en tamaño pequeño). `FONT=Modak python3 gen_envoltorio.py .` cambia la fuente.
+- Las fuentes del buscador de fuentes que enseñó (Bubble Bobble, Bubble Bash, Fluff Plush, Super Bubble…) suelen ser «solo uso personal»: antes de usar una para vender hay que comprobar la licencia.
+- Pendiente: renders en PNG transparente y vídeo del giro de 360°.
