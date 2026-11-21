@@ -101,6 +101,8 @@ body {{ font-family: Inter, sans-serif; background: #fff; }}
 .small {{ font-family: var(--f), sans-serif; color: {TX}; -webkit-text-stroke: .6mm #FFFFFF; paint-order: stroke fill; letter-spacing: .15mm; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
 .note {{ font-size: 3.1mm; color: #6b6b6b; }}
 .panel svg, .panel img {{ width: 100%; height: 100%; display: block; object-fit: contain; }}
+.panel img {{ transform: scale(1.4); transform-origin: 50% 55%; }}  /* los renders comparten recorte (con margen): se amplían para igualar a las siluetas */
+.panel.mini img {{ transform: scale(1.12); transform-origin: 50% 62%; }}
 .fold {{ border-top: .3mm dashed #8a8a8a; }}
 .foldv {{ border-left: .3mm dashed #8a8a8a; }}
 .bubble {{ position: absolute; border-radius: 50%; border: .5mm solid rgba(255,255,255,.9); background: rgba(255,255,255,.35); }}
@@ -132,7 +134,7 @@ def flat(name):
     def rev(n, o): return o if os.path.exists(os.path.join(OUT, "pulpos", n + ".png")) else SILQ  # sin render real = silueta
     row = [rev("rojo", RED), rev("amarillo", YELLOW), rev("azul", BLUE_O), rev("verde", GREEN), SIL]
     for i, o in enumerate(row):
-        h += f'<div class="a panel" style="left:{3+i*20.5}mm;top:14mm;width:20mm;height:20mm">{o}</div>'
+        h += f'<div class="a panel mini" style="left:{3+i*20.5}mm;top:14mm;width:20mm;height:20mm">{o}</div>'
     h += f'<div class="a panel" style="left:30mm;top:36mm;width:0;height:0"></div>'
     h += f'<div class="a small" style="left:6mm;top:40mm;width:98mm;font-size:4mm">1 PORTE-CLÉS MYSTÈRE PAR BOÎTE</div>'
     h += f'<div class="a small" style="left:6mm;top:49mm;width:98mm;font-size:3.6mm">5 COULEURS + 1 SECRET · SECRET : 1 CHANCE SUR 10</div>'

@@ -9,6 +9,8 @@ body { font-family: Inter, sans-serif; background: #fff; }
 .small { font-family: var(--f), sans-serif; color: #1F5F93; -webkit-text-stroke: .6mm #FFFFFF; paint-order: stroke fill; letter-spacing: .15mm; font-size: 4.4mm; line-height: 1.2; text-align: center; }
 .note { font-size: 3.1mm; color: #6b6b6b; }
 .panel svg, .panel img { width: 100%; height: 100%; display: block; object-fit: contain; }
+.panel img { transform: scale(1.4); transform-origin: 50% 55%; }  /* los renders comparten recorte (con margen): se amplían para igualar a las siluetas */
+.panel.mini img { transform: scale(1.12); transform-origin: 50% 62%; }
 .fold { border-top: .3mm dashed #8a8a8a; }
 .foldv { border-left: .3mm dashed #8a8a8a; }
 .bubble { position: absolute; border-radius: 50%; border: .5mm solid rgba(255,255,255,.9); background: rgba(255,255,255,.35); }
