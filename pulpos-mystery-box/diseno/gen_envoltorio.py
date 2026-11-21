@@ -4,7 +4,7 @@ import sys, os
 OUT = sys.argv[1]
 BLUE, PINK, CREAM, INK = "#BAE6FD", "#FA96CD", "#FEF3C9", "#141414"
 DEEP, SHADE = "#2A6FAE", "#7FC2EC"   # azul profundo para textos y azul medio para el volumen: nada de negro en el envoltorio
-FONT = os.environ.get("FONT", "Bagel Fat One")
+FONT = "Bagel Fat One"   # texto pequeño; el título usa Modak
 SIZES = {"Modak": 22, "Bagel Fat One": 16, "DynaPuff": 15.5, "Titan One": 16.5}
 _n = [0]
 
@@ -17,7 +17,7 @@ def octo(hi, mid, lo, face="normal", rainbow=False, silhouette=False):
     defs, fill = "", {}
     if silhouette:
         body = '<g fill="#161616">' + ''.join(f'<circle cx="{x}" cy="{y}" r="{r}"/>' for x, y, r in [(115, 328, 58), (410, 328, 58), (262, 195, 180), (196, 358, 66), (330, 358, 66)]) + '</g>'
-        q = '<text x="262" y="262" text-anchor="middle" font-family="Titan One" font-size="170" fill="#FEF3C9">?</text>'
+        q = '<text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="#FEF3C9">?</text>'
         return f'<svg viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg">{body}{q}</svg>'
     parts = {}
     for k in ("side", "dome", "front"):
@@ -90,14 +90,14 @@ CSS = f"""
 body {{ font-family: Inter, sans-serif; background: #fff; }}
 .page {{ position: relative; width: 297mm; height: 210mm; background: #fff; overflow: hidden; }}
 .a {{ position: absolute; }}
-.title {{ font-family: var(--f), sans-serif; color: {PINK}; -webkit-text-stroke: 1.5mm {CREAM}; paint-order: stroke fill; filter: drop-shadow(0 1.3mm 0 {SHADE}); letter-spacing: .3mm; line-height: 1; white-space: nowrap; display: flex; align-items: center; justify-content: center; height: 24mm; }}
-.small {{ font-family: var(--f), sans-serif; color: {DEEP}; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
+.title {{ font-family: 'Modak', var(--f), sans-serif; color: {CREAM}; -webkit-text-stroke: 1.8mm {DEEP}; paint-order: stroke fill; filter: drop-shadow(0 1.3mm 0 {PINK}); letter-spacing: .3mm; line-height: 1; white-space: nowrap; display: flex; align-items: center; justify-content: center; height: 24mm; }}
+.small {{ font-family: var(--f), sans-serif; color: {CREAM}; -webkit-text-stroke: .7mm {DEEP}; paint-order: stroke fill; letter-spacing: .15mm; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
 .note {{ font-size: 3.1mm; color: #6b6b6b; }}
 .panel svg, .panel img {{ width: 100%; height: 100%; display: block; object-fit: contain; }}
 .fold {{ border-top: .3mm dashed #3b82c4; }}
 .foldv {{ border-left: .3mm dashed #3b82c4; }}
 .bubble {{ position: absolute; border-radius: 50%; border: .5mm solid rgba(255,255,255,.9); background: rgba(255,255,255,.35); }}
-.pill {{ background: {CREAM}; color: {DEEP}; font-family: var(--f); font-size: 3.4mm; padding: 1mm 3mm; border-radius: 3mm; }}
+.pill {{ background: {PINK}; color: {CREAM}; -webkit-text-stroke: .6mm {DEEP}; paint-order: stroke fill; font-family: var(--f); font-size: 3.6mm; padding: 1mm 3mm; border-radius: 3mm; }}
 """
 
 def bubbles(x0, y0, w, h, seed):
@@ -116,7 +116,7 @@ def flat(name):
     h += f'<div class="a" style="left:{X0+220}mm;top:{Y0+45}mm;width:15mm;height:80mm;background:repeating-linear-gradient(135deg,#e7f6ff 0 2mm,#d3eefd 2mm 4mm)"></div>'
     # frente
     h += f'<div class="a" style="left:{X0}mm;top:{Y0+45}mm;width:110mm;height:80mm"><div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div>'
-    h += f'<div class="a" style="left:0;top:2mm;width:110mm">{title(name, SIZES[FONT])}</div>'
+    h += f'<div class="a" style="left:0;top:2mm;width:110mm">{title(name, 21)}</div>'
     h += f'<div class="a panel" style="left:28mm;top:25mm;width:53mm;height:53mm">{PINKO}</div></div>'
     # dorso
     bx = X0 + 110
@@ -127,9 +127,9 @@ def flat(name):
         h += f'<div class="a panel" style="left:{3+i*20.5}mm;top:14mm;width:20mm;height:20mm">{o}</div>'
     h += f'<div class="a panel" style="left:30mm;top:36mm;width:0;height:0"></div>'
     h += f'<div class="a small" style="left:6mm;top:40mm;width:98mm;font-size:4mm">1 PORTE-CLÉS MYSTÈRE PAR BOÎTE</div>'
-    h += f'<div class="a small" style="left:6mm;top:49mm;width:98mm;font-size:3.6mm;color:#1f5f93">5 COULEURS + 1 SECRET · SECRET : 1 CHANCE SUR 10</div>'
+    h += f'<div class="a small" style="left:6mm;top:49mm;width:98mm;font-size:3.6mm">5 COULEURS + 1 SECRET · SECRET : 1 CHANCE SUR 10</div>'
     h += f'<div class="a small" style="left:6mm;top:62mm;width:98mm;font-size:3.6mm">RenardLab3D · Metz</div>'
-    h += f'<div class="a small" style="left:6mm;top:68mm;width:98mm;font-size:3mm;opacity:.7">@renardlab3d · impression 3D · ~5 cm</div></div>'
+    h += f'<div class="a small" style="left:6mm;top:68mm;width:98mm;font-size:3.2mm">@renardlab3d · impression 3D · ~5 cm</div></div>'
     # dobleces
     h += f'<div class="a fold" style="left:{X0-6}mm;top:{Y0+45}mm;width:247mm"></div><div class="a fold" style="left:{X0-6}mm;top:{Y0+125}mm;width:247mm"></div>'
     h += f'<div class="a foldv" style="left:{X0+110}mm;top:{Y0+45}mm;height:80mm"></div><div class="a foldv" style="left:{X0+220}mm;top:{Y0+45}mm;height:80mm"></div>'
@@ -138,20 +138,16 @@ def flat(name):
     h += f'<div class="a note" style="left:{X0+2}mm;top:{Y0+172}mm">Solapa superior 45 mm · cuerpo 80 mm · solapa inferior 45 mm · los pulpos son bocetos provisionales</div>'
     return h + '</div>'
 
-def front(name, label, font):
-    return (f'<div style="--f:\'{font}\';position:relative;width:110mm;height:80mm;background:{BLUE};overflow:hidden">'
-            f'<div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div><div class="a" style="left:0;top:1mm;width:110mm">{title(name, SIZES[font])}</div>'
+def front(name, label):
+    return (f'<div style="position:relative;width:110mm;height:80mm;background:{BLUE};overflow:hidden">'
+            f'<div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div><div class="a" style="left:0;top:1mm;width:110mm">{title(name, 21)}</div>'
             f'<div class="a panel" style="left:28mm;top:25mm;width:53mm;height:53mm">{PINKO}</div></div>'
             f'<div class="note" style="margin-top:1.5mm;font-size:3.8mm;font-weight:700">{label}</div>')
 
 def compare():
-    cells = [("Modak", "1 · Modak (globo, la más inflada)"), ("Bagel Fat One", "2 · Bagel Fat One (gordita y redonda)"),
-             ("DynaPuff", "3 · DynaPuff (mullida)"), ("Titan One", "4 · Titan One (la anterior)")]
-    out = f'<div class="page"><style>{CSS}</style>'
-    for k, (fnt, lab) in enumerate(cells):
-        x, y = 20 + (k % 2) * 147, 14 + (k // 2) * 98
-        out += f'<div class="a" style="left:{x}mm;top:{y}mm">{front("OctoMood", lab, fnt)}</div>'
-    return out + '</div>'
+    return (f'<div class="page"><style>{CSS}</style><div class="a" style="left:20mm;top:30mm">{front("OctoMood", "A · OctoMood")}</div>'
+            f'<div class="a" style="left:167mm;top:30mm">{front("OctoPlouf", "B · OctoPlouf")}</div>'
+            f'<div class="a note" style="left:20mm;top:14mm">Cara frontal: título en Modak, resto en Bagel Fat One, letras en amarillo #FEF3C9 con borde azul.</div></div>')
 
 open(os.path.join(OUT, "envoltorio-plano.html"), "w").write(f'<!doctype html><meta charset="utf-8">{flat("OctoMood")}')
 open(os.path.join(OUT, "comparacion-nombres.html"), "w").write(f'<!doctype html><meta charset="utf-8">{compare()}')

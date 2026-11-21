@@ -82,3 +82,8 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - **Tipografía más «burbuja»**, una sola en la caja. Candidatas libres (Google Fonts, licencia OFL, uso comercial permitido): Modak, Bagel Fat One, DynaPuff y Titan One. Por defecto: **Bagel Fat One** (legible en tamaño pequeño). `FONT=Modak python3 gen_envoltorio.py .` cambia la fuente.
 - Las fuentes del buscador de fuentes que enseñó (Bubble Bobble, Bubble Bash, Fluff Plush, Super Bubble…) suelen ser «solo uso personal»: antes de usar una para vender hay que comprobar la licencia.
 - Pendiente: renders en PNG transparente y vídeo del giro de 360°.
+
+## Tipografía y color de las letras (decisión final, 21/11/2026)
+- **Título: Modak.** **Todo lo demás: Bagel Fat One.** Ambas libres (Google Fonts, OFL).
+- **Todas las letras en amarillo `#FEF3C9`** con borde azul profundo `#2A6FAE` para que se lean sobre el azul `#BAE6FD`. El título lleva además una sombra rosa `#FA96CD`.
+- Sigue sin haber negro en el envoltorio, salvo la silueta del pulpo secreto.
