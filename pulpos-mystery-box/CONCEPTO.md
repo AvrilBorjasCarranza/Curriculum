@@ -113,3 +113,4 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Coste completo ≈ 6,97 €; precio mínimo ≈ 5,85 €; margen con 14,99 € ≈ 8,02 € por pieza (≈ 160 € con 20 cajas).
 - Pendiente: plato real de 6–8 pulpos (mañana), pulpo secreto con filamento multicolor, estatuto de la empresa, coste de la impresora.
 - Tabla en francés: `costes/prix.html` y `costes/prix.png`.
+- Impresora Bambu A1: 339 €. Amortizada en ≈ 3 000 h (estimado) → 0,14 € por pieza. Coste completo ≈ 7,11 €, margen ≈ 7,88 €/pieza, precio mínimo ≈ 6,01 €. Se recupera con ≈ 30 piezas vendidas sin contar el sueldo (≈ 43 contándolo).
