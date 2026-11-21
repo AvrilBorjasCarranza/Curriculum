@@ -94,9 +94,9 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Prueba comparativa: `diseno/prueba-letras.png` (A fino, B más fino, C amarillo más intenso `#FFD84D`, D azul un poco más profundo `#7CCBF4`). **Recomendada: C.**
 - Pendiente: que elija una opción para aplicarla a toda la hoja.
 
-## Colores finales del envoltorio (21/11/2026, decididos «de forma óptima»)
-- **Fondo azul liso `#2E8FD8`** (más profundo que el pastel `#BAE6FD`, que no daba contraste suficiente).
-- **Letras amarillo `#FFD84D` con relieve blanco** (título: Modak; resto: Bagel Fat One). Etiqueta «SÉRIE 1»: rosa `#FA96CD` con letras amarillas.
-- Pulpo rosa en el centro (resalta sobre el azul). Sin negro, salvo la silueta del secreto (con el «?» en amarillo).
-- Se genera con `diseno/gen_envoltorio.py`. Variables: `BG` (fondo) y `YEL` (amarillo de las letras).
-- Aviso de impresión: un fondo azul sólido gasta bastante tinta (≈ 64 % de la A4 por hoja) y puede salir con bandas en una impresora doméstica. Probar con papel mate de 160–200 g y calidad alta antes de la tirada.
+## Colores finales del envoltorio (21/11/2026, versión vigente)
+- Pedido: **fondo claro, letras más oscuras y los 3 colores presentes** (rosa, azul, amarillo). El azul profundo `#2E8FD8` anterior se descartó.
+- **Fondo amarillo liso `#FEF3C9`**; **título rosa oscuro `#C2377F`** (Modak); **resto del texto azul `#1F5F93`** (Bagel Fat One); etiqueta «SÉRIE 1» en **azul claro `#BAE6FD`**; pulpo central rosa `#FA96CD`.
+- **Relieve solo blanco**, plano (sin burbujas ni degradados de fondo). Sin negro salvo la silueta del secreto (con «?» amarillo).
+- Alternativas: B = fondo azul claro + etiqueta amarilla `#FFD84D`; C = fondo amarillo + título azul + etiqueta rosa. Variables: `BG`, `TT`, `TX`, `PILL`, `PILLTX`.
+- Un fondo claro gasta mucha menos tinta que el azul sólido.

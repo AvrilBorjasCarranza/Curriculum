@@ -3,8 +3,12 @@
 import sys, os
 OUT = sys.argv[1]
 BLUE, PINK, CREAM, INK = "#BAE6FD", "#FA96CD", "#FEF3C9", "#141414"
-BLUE = os.environ.get("BG", "#2E8FD8")        # azul liso (más profundo para que se lea)
-YEL = os.environ.get("YEL", "#FFD84D")        # amarillo de las letras
+BLUE = os.environ.get("BG", "#FEF3C9")        # azul liso y claro
+YEL = os.environ.get("YEL", "#FFD84D")        # amarillo (solo el «?» del secreto)
+TT = os.environ.get("TT", "#C2377F")          # color del título (más oscuro)
+TX = os.environ.get("TX", "#1F5F93")          # color del resto del texto (más oscuro)
+PILL = os.environ.get("PILL", "#BAE6FD")      # color de la etiqueta SÉRIE 1
+PILLTX = os.environ.get("PILLTX", "#1F5F93")  # color del texto de la etiqueta
 DEEP, SHADE = "#2A6FAE", "#7FC2EC"   # azul profundo para textos y azul medio para el volumen: nada de negro en el envoltorio
 FONT = "Bagel Fat One"   # texto pequeño; el título usa Modak
 SIZES = {"Modak": 22, "Bagel Fat One": 16, "DynaPuff": 15.5, "Titan One": 16.5}
@@ -92,14 +96,14 @@ CSS = f"""
 body {{ font-family: Inter, sans-serif; background: #fff; }}
 .page {{ position: relative; width: 297mm; height: 210mm; background: #fff; overflow: hidden; }}
 .a {{ position: absolute; }}
-.title {{ font-family: 'Modak', var(--f), sans-serif; color: {YEL}; -webkit-text-stroke: 1.8mm #FFFFFF; paint-order: stroke fill; filter: drop-shadow(0 1.2mm 0 #FFFFFF); letter-spacing: .3mm; line-height: 1; white-space: nowrap; display: flex; align-items: center; justify-content: center; height: 24mm; }}
-.small {{ font-family: var(--f), sans-serif; color: {YEL}; -webkit-text-stroke: .7mm #FFFFFF; paint-order: stroke fill; letter-spacing: .15mm; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
+.title {{ font-family: 'Modak', var(--f), sans-serif; color: {TT}; -webkit-text-stroke: 1.6mm #FFFFFF; paint-order: stroke fill; filter: drop-shadow(0 1mm 0 #FFFFFF); letter-spacing: .3mm; line-height: 1; white-space: nowrap; display: flex; align-items: center; justify-content: center; height: 24mm; }}
+.small {{ font-family: var(--f), sans-serif; color: {TX}; -webkit-text-stroke: .6mm #FFFFFF; paint-order: stroke fill; letter-spacing: .15mm; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
 .note {{ font-size: 3.1mm; color: #6b6b6b; }}
 .panel svg, .panel img {{ width: 100%; height: 100%; display: block; object-fit: contain; }}
 .fold {{ border-top: .3mm dashed #8a8a8a; }}
 .foldv {{ border-left: .3mm dashed #8a8a8a; }}
 .bubble {{ position: absolute; border-radius: 50%; border: .5mm solid rgba(255,255,255,.9); background: rgba(255,255,255,.35); }}
-.pill {{ background: {PINK}; color: {YEL}; -webkit-text-stroke: .6mm #FFFFFF; paint-order: stroke fill; font-family: var(--f); font-size: 3.6mm; padding: 1mm 3mm; border-radius: 3mm; }}
+.pill {{ background: {PILL}; color: {PILLTX}; -webkit-text-stroke: .5mm #FFFFFF; paint-order: stroke fill; font-family: var(--f); font-size: 3.6mm; padding: 1mm 3mm; border-radius: 3mm; }}
 """
 
 def bubbles(x0, y0, w, h, seed):
