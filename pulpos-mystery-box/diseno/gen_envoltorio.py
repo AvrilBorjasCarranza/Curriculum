@@ -18,12 +18,12 @@ def grad(hi, mid, lo):
     _n[0] += 1; gid = f"g{_n[0]}"
     return gid, f'<radialGradient id="{gid}" cx="40%" cy="35%" r="72%" fx="34%" fy="26%"><stop offset="0" stop-color="{hi}"/><stop offset=".55" stop-color="{mid}"/><stop offset="1" stop-color="{lo}"/></radialGradient>'
 
-def octo(hi, mid, lo, face="normal", rainbow=False, silhouette=False):
+def octo(hi, mid, lo, face="normal", rainbow=False, silhouette=False, sil="#161616", q=None):
     """Pulpo provisional; coordenadas del render original, viewBox 40 8 440 440."""
     defs, fill = "", {}
     if silhouette:
-        body = '<g fill="#161616">' + ''.join(f'<circle cx="{x}" cy="{y}" r="{r}"/>' for x, y, r in [(115, 328, 58), (410, 328, 58), (262, 195, 180), (196, 358, 66), (330, 358, 66)]) + '</g>'
-        q = f'<text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="{YEL}">?</text>'
+        body = f'<g fill="{sil}">' + ''.join(f'<circle cx="{x}" cy="{y}" r="{r}"/>' for x, y, r in [(115, 328, 58), (410, 328, 58), (262, 195, 180), (196, 358, 66), (330, 358, 66)]) + '</g>'
+        q = f'<text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="{q or YEL}">?</text>'
         return f'<svg viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg">{body}{q}</svg>'
     parts = {}
     for k in ("side", "dome", "front"):
@@ -78,6 +78,7 @@ BLUE_O = octo("#B8E6FF", "#5EB6F2", "#2C7DBB", "sad")
 GREEN  = octo("#C9F59A", "#7FD05A", "#3C9A33", "sick")
 RAIN   = octo("", "", "", "wave", rainbow=True)
 SIL    = octo("", "", "", silhouette=True)
+SILQ   = octo("", "", "", silhouette=True, sil="#BAE6FD", q="#1F5F93")  # aún no revelado: silueta azul clara con «?»
 
 def pulpo(name, vector):
     """Usa pulpos/<name>.png (render real, fondo transparente) si existe; si no, el dibujo provisional."""
@@ -128,7 +129,8 @@ def flat(name):
     bx = X0 + 110
     h += f'<div class="a" style="left:{bx}mm;top:{Y0+45}mm;width:110mm;height:80mm">'
     h += f'<div class="a small" style="left:0;top:3mm;width:110mm;font-size:5.6mm">QUEL EST TON MOOD ?</div>'
-    row = [RED, YELLOW, BLUE_O, GREEN, SIL]
+    def rev(n, o): return o if os.path.exists(os.path.join(OUT, "pulpos", n + ".png")) else SILQ  # sin render real = silueta
+    row = [rev("rojo", RED), rev("amarillo", YELLOW), rev("azul", BLUE_O), rev("verde", GREEN), SIL]
     for i, o in enumerate(row):
         h += f'<div class="a panel" style="left:{3+i*20.5}mm;top:14mm;width:20mm;height:20mm">{o}</div>'
     h += f'<div class="a panel" style="left:30mm;top:36mm;width:0;height:0"></div>'
@@ -141,7 +143,7 @@ def flat(name):
     h += f'<div class="a foldv" style="left:{X0+110}mm;top:{Y0+45}mm;height:80mm"></div><div class="a foldv" style="left:{X0+220}mm;top:{Y0+45}mm;height:80mm"></div>'
     h += f'<div class="a note" style="left:{X0}mm;top:{Y0-8}mm">Boceto A4 horizontal · envoltorio 235 × 170 mm · tubo de ≈ 7 cm de diámetro · - - - dobleces</div>'
     h += f'<div class="a note" style="left:{X0+220}mm;top:{Y0+127}mm">pestaña de pegamento</div>'
-    h += f'<div class="a note" style="left:{X0+2}mm;top:{Y0+172}mm">Solapa superior 45 mm · cuerpo 80 mm · solapa inferior 45 mm · los pulpos son bocetos provisionales</div>'
+    h += f'<div class="a note" style="left:{X0+2}mm;top:{Y0+172}mm">Solapa superior 45 mm · cuerpo 80 mm · solapa inferior 45 mm · siluetas «?» = pulpos aún no revelados</div>'
     return h + '</div>'
 
 def front(name, label):

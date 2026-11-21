@@ -100,3 +100,7 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - **Relieve solo blanco**, plano (sin burbujas ni degradados de fondo). Sin negro salvo la silueta del secreto (con «?» amarillo).
 - Alternativas: B = fondo azul claro + etiqueta amarilla `#FFD84D`; C = fondo amarillo + título azul + etiqueta rosa. Variables: `BG`, `TT`, `TX`, `PILL`, `PILLTX`.
 - Un fondo claro gasta mucha menos tinta que el azul sólido.
+
+## Renders reales y siluetas (21/11/2026)
+- `diseno/pulpos/rosa.png` ya es el render real de Blender (PNG transparente 2000 px, recortado). El color rosa del render se mantiene.
+- En la contraportada, los pulpos **sin render real** se muestran como **silueta azul clara con «?» azul**; el secreto sigue en negro con «?» amarillo. Al guardar `rojo.png`, `amarillo.png`, `azul.png` o `verde.png` en `diseno/pulpos/`, la silueta se sustituye sola.
