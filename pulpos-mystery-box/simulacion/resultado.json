@@ -1,0 +1,72 @@
+{
+ "14,99 € + envío 4,50 €": {
+  "compradores_de_100": 4.8,
+  "por_segmento": {
+   "Fans de blind boxes / kawaii (18-30)": 3.2,
+   "Adolescentes (13-17), poca paga": 0.0,
+   "Estudiantes con presupuesto justo": 0.0,
+   "Amigos y familia (apoyo)": 0.9,
+   "Aficionados a la impresión 3D": 0.0,
+   "Compradores de regalo (padres, colegas)": 0.1,
+   "Curiosos sin intención de compra": 0.0,
+   "Revendedores / coleccionistas": 0.1,
+   "Comunidad local de Metz (mercadillos)": 0.4
+  }
+ },
+ "14,99 € en mano (Metz)": {
+  "compradores_de_100": 10.8,
+  "por_segmento": {
+   "Fans de blind boxes / kawaii (18-30)": 5.5,
+   "Adolescentes (13-17), poca paga": 0.0,
+   "Estudiantes con presupuesto justo": 0.4,
+   "Amigos y familia (apoyo)": 2.5,
+   "Aficionados a la impresión 3D": 0.0,
+   "Compradores de regalo (padres, colegas)": 0.8,
+   "Curiosos sin intención de compra": 0.0,
+   "Revendedores / coleccionistas": 0.4,
+   "Comunidad local de Metz (mercadillos)": 1.2
+  }
+ },
+ "12,99 € + envío 4,50 €": {
+  "compradores_de_100": 7.1,
+  "por_segmento": {
+   "Fans de blind boxes / kawaii (18-30)": 4.2,
+   "Adolescentes (13-17), poca paga": 0.0,
+   "Estudiantes con presupuesto justo": 0.1,
+   "Amigos y familia (apoyo)": 1.5,
+   "Aficionados a la impresión 3D": 0.0,
+   "Compradores de regalo (padres, colegas)": 0.3,
+   "Curiosos sin intención de compra": 0.0,
+   "Revendedores / coleccionistas": 0.2,
+   "Comunidad local de Metz (mercadillos)": 0.7
+  }
+ },
+ "9,99 € + envío 4,50 €": {
+  "compradores_de_100": 11.7,
+  "por_segmento": {
+   "Fans de blind boxes / kawaii (18-30)": 5.7,
+   "Adolescentes (13-17), poca paga": 0.1,
+   "Estudiantes con presupuesto justo": 0.6,
+   "Amigos y familia (apoyo)": 2.7,
+   "Aficionados a la impresión 3D": 0.0,
+   "Compradores de regalo (padres, colegas)": 1.0,
+   "Curiosos sin intención de compra": 0.0,
+   "Revendedores / coleccionistas": 0.5,
+   "Comunidad local de Metz (mercadillos)": 1.2
+  }
+ },
+ "17,99 € + envío 4,50 €": {
+  "compradores_de_100": 2.3,
+  "por_segmento": {
+   "Fans de blind boxes / kawaii (18-30)": 1.8,
+   "Adolescentes (13-17), poca paga": 0.0,
+   "Estudiantes con presupuesto justo": 0.0,
+   "Amigos y familia (apoyo)": 0.3,
+   "Aficionados a la impresión 3D": 0.0,
+   "Compradores de regalo (padres, colegas)": 0.0,
+   "Curiosos sin intención de compra": 0.0,
+   "Revendedores / coleccionistas": 0.0,
+   "Comunidad local de Metz (mercadillos)": 0.2
+  }
+ }
+}
