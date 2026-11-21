@@ -90,14 +90,14 @@ CSS = f"""
 body {{ font-family: Inter, sans-serif; background: #fff; }}
 .page {{ position: relative; width: 297mm; height: 210mm; background: #fff; overflow: hidden; }}
 .a {{ position: absolute; }}
-.title {{ font-family: 'Modak', var(--f), sans-serif; color: {CREAM}; -webkit-text-stroke: 1.8mm {DEEP}; paint-order: stroke fill; filter: drop-shadow(0 1.3mm 0 {PINK}); letter-spacing: .3mm; line-height: 1; white-space: nowrap; display: flex; align-items: center; justify-content: center; height: 24mm; }}
-.small {{ font-family: var(--f), sans-serif; color: {CREAM}; -webkit-text-stroke: .7mm {DEEP}; paint-order: stroke fill; letter-spacing: .15mm; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
+.title {{ font-family: 'Modak', var(--f), sans-serif; color: {CREAM}; -webkit-text-stroke: 1.8mm #FFFFFF; paint-order: stroke fill; filter: drop-shadow(0 1.2mm 0 #FFFFFF); letter-spacing: .3mm; line-height: 1; white-space: nowrap; display: flex; align-items: center; justify-content: center; height: 24mm; }}
+.small {{ font-family: var(--f), sans-serif; color: {CREAM}; -webkit-text-stroke: .7mm #FFFFFF; paint-order: stroke fill; letter-spacing: .15mm; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
 .note {{ font-size: 3.1mm; color: #6b6b6b; }}
 .panel svg, .panel img {{ width: 100%; height: 100%; display: block; object-fit: contain; }}
 .fold {{ border-top: .3mm dashed #3b82c4; }}
 .foldv {{ border-left: .3mm dashed #3b82c4; }}
 .bubble {{ position: absolute; border-radius: 50%; border: .5mm solid rgba(255,255,255,.9); background: rgba(255,255,255,.35); }}
-.pill {{ background: {PINK}; color: {CREAM}; -webkit-text-stroke: .6mm {DEEP}; paint-order: stroke fill; font-family: var(--f); font-size: 3.6mm; padding: 1mm 3mm; border-radius: 3mm; }}
+.pill {{ background: {PINK}; color: {CREAM}; -webkit-text-stroke: .6mm #FFFFFF; paint-order: stroke fill; font-family: var(--f); font-size: 3.6mm; padding: 1mm 3mm; border-radius: 3mm; }}
 """
 
 def bubbles(x0, y0, w, h, seed):
@@ -147,7 +147,7 @@ def front(name, label):
 def compare():
     return (f'<div class="page"><style>{CSS}</style><div class="a" style="left:20mm;top:30mm">{front("OctoMood", "A · OctoMood")}</div>'
             f'<div class="a" style="left:167mm;top:30mm">{front("OctoPlouf", "B · OctoPlouf")}</div>'
-            f'<div class="a note" style="left:20mm;top:14mm">Cara frontal: título en Modak, resto en Bagel Fat One, letras en amarillo #FEF3C9 con borde azul.</div></div>')
+            f'<div class="a note" style="left:20mm;top:14mm">Cara frontal: título en Modak, resto en Bagel Fat One, letras en amarillo #FEF3C9 con relieve blanco.</div></div>')
 
 open(os.path.join(OUT, "envoltorio-plano.html"), "w").write(f'<!doctype html><meta charset="utf-8">{flat("OctoMood")}')
 open(os.path.join(OUT, "comparacion-nombres.html"), "w").write(f'<!doctype html><meta charset="utf-8">{compare()}')

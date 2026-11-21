@@ -87,3 +87,9 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - **Título: Modak.** **Todo lo demás: Bagel Fat One.** Ambas libres (Google Fonts, OFL).
 - **Todas las letras en amarillo `#FEF3C9`** con borde azul profundo `#2A6FAE` para que se lean sobre el azul `#BAE6FD`. El título lleva además una sombra rosa `#FA96CD`.
 - Sigue sin haber negro en el envoltorio, salvo la silueta del pulpo secreto.
+
+## Relieve de las letras (21/11/2026)
+- Pedido: **solo relieve blanco**, sin azul ni rosa. Aplicado en `diseno/envoltorio-plano.png`.
+- Problema: amarillo `#FEF3C9` + blanco + azul `#BAE6FD` son colores de luminosidad parecida y **el texto se lee muy mal**, sobre todo el pequeño (≈ 4 mm al imprimir).
+- Prueba comparativa: `diseno/prueba-letras.png` (A fino, B más fino, C amarillo más intenso `#FFD84D`, D azul un poco más profundo `#7CCBF4`). **Recomendada: C.**
+- Pendiente: que elija una opción para aplicarla a toda la hoja.
