@@ -96,8 +96,10 @@ FPS = 30
 if ONE is not None:
     apply(float(ONE)); scene.render.filepath = os.path.join(OUTD, f'prueba_{ONE}.png'); bpy.ops.render.render(write_still=True)
     print('listo prueba'); sys.exit(0)
-T_END = 3.5; n = int(T_END * FPS)
-for i in range(n + 1):
+T_END = float(arg('--end', '3.5')); n = int(T_END * FPS); I0 = int(arg('--start', '0'))
+if '--low' in ARGS:   # tras el aterrizaje: solo la zona de abajo y menos muestras
+    scene.render.border_max_y = 0.42; scene.cycles.samples = 32
+for i in range(I0, n + 1):
     apply(i / FPS); scene.render.filepath = os.path.join(OUTD, f'f_{i:04d}.png'); bpy.ops.render.render(write_still=True)
 json.dump(dict(fps=FPS, frames=n + 1), open(os.path.join(OUTD, 'meta.json'), 'w'))
 print('secuencia lista', n + 1)
