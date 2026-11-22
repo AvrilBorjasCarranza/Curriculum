@@ -10,6 +10,8 @@ SKY, SAND, SAND_D, SEA = "#BAE6FD", "#FEF3C9", "#F4DE9A", "#8DD0F7"
 CORAL, MOODBLUE, DBLUE, YEL = "#CD575B", "#8DD0F7", "#1F5F93", "#FFD84D"
 DPINK = CORAL          # el rosa de marca es ahora el coral del pulpo original
 REAL = os.path.exists(os.path.join(OUT, "assets/pieza-real.png"))
+SEQ = os.path.exists(os.path.join(OUT, "assets/pulpo/giro.webm"))   # pulpo 3D real renderizado en Blender (tools/anim_pulpo.py)
+SEQ_T = 3.5
 
 # ----- capas 3D (Blender): fondo alto + siluetas con sombra + sombra del pulpo morado
 META = json.load(open(os.path.join(OUT, "assets/escena/capas.json")))
@@ -20,6 +22,29 @@ def layer(k, extra=""):
 html_sils = "\n".join(layer(k) for k in ("s1", "s2", "s3", "s4", "s5"))
 html_shadow = layer("morado")
 
+if SEQ:
+    octo_markup = (f'        <video id="pulpo" class="clip" src="assets/pulpo/giro.webm" data-start="0" data-duration="{SEQ_T}" data-track-index="3" muted playsinline style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:7"></video>\n'
+                   f'        <img id="pulpo-fin" class="clip" src="assets/pulpo/final.png" alt="" data-start="{SEQ_T}" data-duration="{round(T - SEQ_T, 3)}" data-track-index="3" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:7" />')
+    octo_js = ""
+else:
+    _real = '<img id="octo-real" src="assets/pieza-real.png" alt="" style="position:absolute;left:0;top:0;opacity:0" />' if REAL else ''
+    octo_markup = '        <div id="octo"><img id="octo-3d" src="assets/octo-morado.png" alt="" />' + _real + '</div>'
+    octo_js = None
+
+octo_js_a = '' if SEQ else '''      // ---- 0-2 s: pop + giro (provisional: scaleX; Blender dará los fotogramas reales) rápido al empezar, lento al final
+      const spin = { a: 0 };
+      tl.set("#octo", { y: -710 }, 0);
+      tl.fromTo("#octo", { opacity: 1, scale: 0.6 }, { opacity: 1, scale: 1.5, duration: 0.4, ease: "back.out(2)" }, 0);
+      tl.to(spin, { a: Math.PI * 4, duration: 1.8, ease: "power3.out", onUpdate: () => gsap.set("#octo-3d", { scaleX: Math.cos(spin.a) }) }, 0.1);
+'''
+octo_js_b = '' if SEQ else '''      tl.to("#octo", { y: 0, scale: 1, duration: 0.65, ease: "power2.in" }, 1.9);
+      tl.fromTo("#Lmorado", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out", immediateRender: false }, 2.4);
+      // aterrizaje: aplasta y rebota + onda
+      tl.to("#octo", { scaleY: 0.82, scaleX: 1.12, transformOrigin: "50% 100%", duration: 0.09, ease: "power2.out" }, 2.55);
+      tl.to("#octo", { scaleY: 1, scaleX: 1, duration: 0.35, ease: "elastic.out(1.1, 0.4)" }, 2.64);
+      tl.fromTo("#flash", { opacity: 0.9, scale: 0.4 }, { opacity: 0, scale: 1.5, duration: 0.5, ease: "power2.out", immediateRender: false }, 2.55);
+
+'''
 # ---------------------------------------------------------------- escena
 index = f"""<!doctype html>
 <html lang="fr" data-resolution="portrait">
@@ -67,7 +92,7 @@ index = f"""<!doctype html>
       <div id="front" class="clip" data-start="0" data-duration="{T}" data-track-index="1" style="z-index:5">
 {html_sils}
 {html_shadow}
-        <div id="octo"><img id="octo-3d" src="assets/octo-morado.png" alt="" />{'<img id="octo-real" src="assets/pieza-real.png" alt="" style="position:absolute;left:0;top:0;opacity:0" />' if REAL else ''}</div>
+{octo_markup}
         <div id="flash"></div>
       </div>
       <div id="hook" class="txt hook clip" data-start="0" data-duration="{T}" data-track-index="2" style="z-index:10">Quel est ton mood ?</div>
@@ -102,23 +127,11 @@ index = f"""<!doctype html>
     <script>
       window.__timelines = window.__timelines || {{}};
       const tl = gsap.timeline({{ paused: true }});
-      // ---- 0-2 s: pop + giro (provisional: scaleX; Blender dará los fotogramas reales) rápido al empezar, lento al final
-      const spin = {{ a: 0 }};
-      tl.set("#octo", {{ y: -710 }}, 0);
-      tl.fromTo("#octo", {{ opacity: 1, scale: 0.6 }}, {{ opacity: 1, scale: 1.5, duration: 0.4, ease: "back.out(2)" }}, 0);
-      tl.to(spin, {{ a: Math.PI * 4, duration: 1.8, ease: "power3.out", onUpdate: () => gsap.set("#octo-3d", {{ scaleX: Math.cos(spin.a) }}) }}, 0.1);
-      tl.set("#hook", {{ opacity: 1 }}, 0);
+{octo_js_a}      tl.set("#hook", {{ opacity: 1 }}, 0);
       tl.to("#hook", {{ opacity: 0, duration: 0.2 }}, 3.7);
       // ---- 1,9-2,6 s: cae y la cámara baja a la playa
       tl.to("#bg", {{ y: -780, duration: 0.7, ease: "power2.in" }}, 1.9);
-      tl.to("#octo", {{ y: 0, scale: 1, duration: 0.65, ease: "power2.in" }}, 1.9);
-      tl.fromTo("#Lmorado", {{ opacity: 0, scale: 0.6 }}, {{ opacity: 1, scale: 1, duration: 0.35, ease: "power2.out", immediateRender: false }}, 2.4);
-      // aterrizaje: aplasta y rebota + onda
-      tl.to("#octo", {{ scaleY: 0.82, scaleX: 1.12, transformOrigin: "50% 100%", duration: 0.09, ease: "power2.out" }}, 2.55);
-      tl.to("#octo", {{ scaleY: 1, scaleX: 1, duration: 0.35, ease: "elastic.out(1.1, 0.4)" }}, 2.64);
-      tl.fromTo("#flash", {{ opacity: 0.9, scale: 0.4 }}, {{ opacity: 0, scale: 1.5, duration: 0.5, ease: "power2.out", immediateRender: false }}, 2.55);
-{"      tl.to('#octo-3d', { opacity: 0, duration: 0.15 }, 2.6);\n      tl.to('#octo-real', { opacity: 1, duration: 0.15 }, 2.6);" if REAL else ""}
-      // ---- 2,9-3,7 s: las 5 siluetas aparecen detrás
+{octo_js_b}      // ---- 2,9-3,7 s: las 5 siluetas aparecen detrás
       [["#Ls1", 2.95], ["#Ls2", 3.1], ["#Ls4", 3.25], ["#Ls5", 3.4], ["#Ls3", 3.6]].forEach(([id, t]) => {{
         tl.fromTo(id, {{ opacity: 0, scale: 0.3 }}, {{ opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)", immediateRender: false }}, t);
       }});
