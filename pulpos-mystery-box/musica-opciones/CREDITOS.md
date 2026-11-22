@@ -16,3 +16,6 @@ Las pistas CC BY exigen poner el crédito (título, autor y licencia) en la desc
 - `jingle_A_campanitas_126bpm.mp3` — campanitas «tin tin tirin» + bajo, bombo suave, palmas y shaker; Do mayor, 126 BPM, 10 s, −15,5 LUFS.
 - `jingle_B_ukulele_132bpm.mp3` — rasgueos tipo ukulele + campanitas más rápidas; Do mayor, 132 BPM, 10 s, −15,7 LUFS.
 - Generados con `generar_jingles.py` (numpy, sin dependencias externas). No se han «escuchado»: sólo medidos (volumen y pico).
+- `jingle_C_banda_120bpm.mp3` — banda completa a 120 BPM: campanitas (con doblado de octava), ukulele rasgueado, pad, bajo con ritmo, batería, arpegio de marimba, riser y golpe final; −15,5 LUFS.
+- `jingle_D_silbido_120bpm.mp3` — igual que C, pero con la melodía doblada por un silbido en lugar del doblado de campanitas; −15,6 LUFS.
+- Generados con `generar_jingles_v2.py`.
