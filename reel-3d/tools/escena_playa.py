@@ -112,9 +112,9 @@ def sand_material():
     nt.links.new(ao.outputs['AO'], mao.inputs['Factor']); mao.inputs[6].default_value = hexrgb('#E9D29A'); nt.links.new(cr.outputs['Color'], mao.inputs[7])
     geo = nt.nodes.new('ShaderNodeNewGeometry'); sp = nt.nodes.new('ShaderNodeSeparateXYZ'); wet = nt.nodes.new('ShaderNodeMapRange')
     nt.links.new(geo.outputs['Position'], sp.inputs[0]); nt.links.new(sp.outputs['Y'], wet.inputs['Value'])
-    wet.inputs['From Min'].default_value = SHORE - 2.2; wet.inputs['From Max'].default_value = SHORE; wet.inputs['To Min'].default_value = 0; wet.inputs['To Max'].default_value = 1
+    wet.inputs['From Min'].default_value = SHORE - 5.0; wet.inputs['From Max'].default_value = SHORE + 0.5; wet.inputs['To Min'].default_value = 0; wet.inputs['To Max'].default_value = 1
     mix = nt.nodes.new('ShaderNodeMix'); mix.data_type = 'RGBA'
-    nt.links.new(wet.outputs['Result'], mix.inputs['Factor']); nt.links.new(mao.outputs[2], mix.inputs[6]); mix.inputs[7].default_value = hexrgb('#EAD293')
+    nt.links.new(wet.outputs['Result'], mix.inputs['Factor']); nt.links.new(mao.outputs[2], mix.inputs[6]); mix.inputs[7].default_value = hexrgb('#D9BE7E')
     gsum = nt.nodes.new('ShaderNodeMath'); gsum.operation = 'ADD'
     g2 = nt.nodes.new('ShaderNodeMath'); g2.operation = 'MULTIPLY'; g2.inputs[1].default_value = 0.6
     nt.links.new(n3.outputs['Fac'], g2.inputs[0]); nt.links.new(n2.outputs['Fac'], gsum.inputs[0]); nt.links.new(g2.outputs[0], gsum.inputs[1])
@@ -128,13 +128,22 @@ def sand_material():
 def sea_material():
     m = bpy.data.materials.new('mar'); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
     o = nt.nodes.new('ShaderNodeOutputMaterial'); b = nt.nodes.new('ShaderNodeBsdfPrincipled')
-    geo = nt.nodes.new('ShaderNodeNewGeometry'); sp = nt.nodes.new('ShaderNodeSeparateXYZ'); mr = nt.nodes.new('ShaderNodeMapRange')
-    nt.links.new(geo.outputs['Position'], sp.inputs[0]); nt.links.new(sp.outputs['Y'], mr.inputs['Value'])
+    geo = nt.nodes.new('ShaderNodeNewGeometry'); sp = nt.nodes.new('ShaderNodeSeparateXYZ'); tc = nt.nodes.new('ShaderNodeTexCoord')
+    nt.links.new(geo.outputs['Position'], sp.inputs[0])
+    nz = nt.nodes.new('ShaderNodeTexNoise'); nz.inputs['Scale'].default_value = 0.16; nz.inputs['Detail'].default_value = 3
+    nt.links.new(tc.outputs['Object'], nz.inputs['Vector'])
+    off = nt.nodes.new('ShaderNodeMath'); off.operation = 'MULTIPLY_ADD'; off.inputs[1].default_value = 14.0; off.inputs[2].default_value = -7.0
+    nt.links.new(nz.outputs['Fac'], off.inputs[0])
+    yy = nt.nodes.new('ShaderNodeMath'); yy.operation = 'ADD'; nt.links.new(sp.outputs['Y'], yy.inputs[0]); nt.links.new(off.outputs[0], yy.inputs[1])
+    al = nt.nodes.new('ShaderNodeMapRange'); al.interpolation_type = 'SMOOTHERSTEP'
+    al.inputs['From Min'].default_value = SHORE - 0.5; al.inputs['From Max'].default_value = SHORE + 8.0; al.inputs['To Min'].default_value = 0.0; al.inputs['To Max'].default_value = 1.0
+    nt.links.new(yy.outputs[0], al.inputs['Value']); nt.links.new(al.outputs['Result'], b.inputs['Alpha'])
+    mr = nt.nodes.new('ShaderNodeMapRange'); nt.links.new(sp.outputs['Y'], mr.inputs['Value'])
     mr.inputs['From Min'].default_value = SHORE; mr.inputs['From Max'].default_value = SHORE + 120; mr.inputs['To Min'].default_value = 0; mr.inputs['To Max'].default_value = 1
-    cr = nt.nodes.new('ShaderNodeValToRGB'); cr.color_ramp.elements[0].color = hexrgb('#7CD9E6'); cr.color_ramp.elements[1].color = hexrgb('#2E93E6')
+    cr = nt.nodes.new('ShaderNodeValToRGB'); cr.color_ramp.elements[0].color = hexrgb('#8FE3E0'); cr.color_ramp.elements[1].color = hexrgb('#2E93E6')
     nt.links.new(mr.outputs['Result'], cr.inputs['Fac']); nt.links.new(cr.outputs['Color'], b.inputs['Base Color'])
     b.inputs['Roughness'].default_value = 0.08; b.inputs['Specular IOR Level'].default_value = 0.7
-    tc = nt.nodes.new('ShaderNodeTexCoord'); n = nt.nodes.new('ShaderNodeTexNoise'); n.inputs['Scale'].default_value = 3.0; n.inputs['Detail'].default_value = 6
+    n = nt.nodes.new('ShaderNodeTexNoise'); n.inputs['Scale'].default_value = 3.0; n.inputs['Detail'].default_value = 6
     mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = (1.0, 0.35, 1)
     bump = nt.nodes.new('ShaderNodeBump'); bump.inputs['Strength'].default_value = 0.4; bump.inputs['Distance'].default_value = 0.05
     nt.links.new(tc.outputs['Object'], mp.inputs['Vector']); nt.links.new(mp.outputs['Vector'], n.inputs['Vector'])
@@ -151,7 +160,13 @@ def foam_material():
     mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = (1.2, 6.0, 1)
     cr = nt.nodes.new('ShaderNodeValToRGB'); cr.color_ramp.elements[0].position = 0.35; cr.color_ramp.elements[1].position = 0.55
     nt.links.new(tc.outputs['Object'], mp.inputs['Vector']); nt.links.new(mp.outputs['Vector'], n.inputs['Vector'])
-    nt.links.new(n.outputs['Fac'], cr.inputs['Fac']); nt.links.new(cr.outputs['Color'], mx.inputs['Fac'])
+    nt.links.new(n.outputs['Fac'], cr.inputs['Fac'])
+    geo = nt.nodes.new('ShaderNodeNewGeometry'); sp = nt.nodes.new('ShaderNodeSeparateXYZ'); nt.links.new(geo.outputs['Position'], sp.inputs[0])
+    gm = nt.nodes.new('ShaderNodeMapRange'); gm.interpolation_type = 'SMOOTHSTEP'; gm.inputs['From Min'].default_value = SHORE - 3.5; gm.inputs['From Max'].default_value = SHORE + 1.5
+    nt.links.new(sp.outputs['Y'], gm.inputs['Value'])
+    ml = nt.nodes.new('ShaderNodeMath'); ml.operation = 'MULTIPLY'; ml.inputs[1].default_value = 0.85
+    mg = nt.nodes.new('ShaderNodeMath'); mg.operation = 'MULTIPLY'; nt.links.new(cr.outputs['Color'], mg.inputs[0]); nt.links.new(gm.outputs['Result'], mg.inputs[1])
+    nt.links.new(mg.outputs[0], ml.inputs[0]); nt.links.new(ml.outputs[0], mx.inputs['Fac'])
     nt.links.new(tr.outputs[0], mx.inputs[1]); nt.links.new(b.outputs[0], mx.inputs[2]); nt.links.new(mx.outputs[0], o.inputs[0])
     return m
 
@@ -189,7 +204,7 @@ def height(X, Y):
         h = h * (1 - m) + hc * m
     fade = 1 - np.clip((Y - (SHORE - 7.0)) / 7.0, 0, 1)             # el relieve se aplana hacia la orilla
     h = h * fade
-    base = np.where(Y < SHORE - 1.7, 0.0, np.where(Y < SHORE, -0.04 * (Y - (SHORE - 1.7)) / 1.7, -0.04 - 0.30 * (Y - SHORE)))
+    base = np.where(Y < SHORE - 2.5, 0.0, np.where(Y < SHORE, -0.05 * (Y - (SHORE - 2.5)) / 2.5, -0.05 - 0.10 * (Y - SHORE)))
     return h + base
 
 def build_sand():
@@ -206,7 +221,7 @@ def build_sand():
     return ob, (lambda x, y: float(height(np.array(x), np.array(y))))
 
 # posiciones de los juguetes (antes de construir la arena, para aplanar bajo ellos)
-_SIL_POS = {'s1': (130, 1560, 170), 's2': (275, 1450, 150), 's4': (805, 1450, 150), 's5': (950, 1560, 170), 's3': (540, 1370, 150)}
+_SIL_POS = {'s1': (130, 1560, 140), 's2': (275, 1450, 122), 's4': (805, 1450, 122), 's5': (950, 1560, 140), 's3': (540, 1370, 122)}
 for _k, (_x, _y, _w) in _SIL_POS.items():
     _X, _D = place(_x, _y); FLATS.append((_X, _D, px_to_m(_w, _D) * 0.9))
 _X, _D = place(540, 1700); FLATS.append((_X, _D, px_to_m(360, _D) * 0.8))
@@ -236,8 +251,8 @@ sea = build_sea()
 def build_foam():
     nx, ny = 400, 14
     xs = np.linspace(-30, 30, nx); X = np.tile(xs, (ny, 1))
-    edge = SHORE - 0.25 + 0.55 * perlin(xs / 3.0, np.full(nx, 3.3), 41) + 0.18 * perlin(xs / 1.0, np.full(nx, 1.1), 42)
-    Yf = np.stack([edge - 1.1 * (1 - k / (ny - 1)) ** 0.9 for k in range(ny)])
+    edge = SHORE + 0.2 + 6.0 * perlin(xs / 8.0, np.full(nx, 3.3), 41) + 1.0 * perlin(xs / 2.2, np.full(nx, 1.1), 42)
+    Yf = np.stack([edge - 1.7 + 2.6 * (k / (ny - 1)) for k in range(ny)])
     Z = -0.025 + 0.0 * X
     me = bpy.data.meshes.new('espuma'); me.from_pydata(np.stack([X, Yf, Z], -1).reshape(-1, 3).tolist(), [],
         np.stack([np.arange(nx * ny).reshape(ny, nx)[:-1, :-1], np.arange(nx * ny).reshape(ny, nx)[:-1, 1:], np.arange(nx * ny).reshape(ny, nx)[1:, 1:], np.arange(nx * ny).reshape(ny, nx)[1:, :-1]], -1).reshape(-1, 4).tolist()); me.update()
@@ -285,49 +300,40 @@ for o in bpy.data.objects:
         q = world_to_camera_view(scene, cam, o.location); print('estrella', o.name, tuple(round(v, 2) for v in o.location), 'px', round(q.x * W), round((1 - q.y) * H) - PAN)
 
 # ---------------------------------------------------------------- siluetas 3D (misma forma que el envoltorio)
-from PIL import Image as _Img
-from scipy.ndimage import distance_transform_edt as _edt
-_MASK = np.array(_Img.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'assets', 'sil_mask.png')).convert('L')) > 127
-_MH, _MW = _MASK.shape
-_DIST = _edt(_MASK)
-def inflated_mesh(name, s, T):
-    """Malla inflada (tipo peluche) con el contorno del pulpo real. s = m/píxel de máscara; T = grosor de media pieza (m)."""
-    R = 26.0
-    d = np.clip(_DIST / R, 0, 1); hz = T * np.sqrt(1 - (1 - d) ** 2)
-    ys_, xs_ = np.mgrid[0:_MH, 0:_MW]
-    vid = -np.ones((_MH, _MW), int); idx = np.where(_MASK)
-    vid[idx] = np.arange(len(idx[0]))
-    verts = [((x - _MW / 2) * s, -hz[y, x], (_MH - y) * s) for y, x in zip(*idx)]
-    faces = []
-    for y in range(_MH - 1):
-        for x in range(_MW - 1):
-            a, b, c, e = vid[y, x], vid[y, x + 1], vid[y + 1, x + 1], vid[y + 1, x]
-            if min(a, b, c, e) >= 0: faces.append((a, b, c, e))
-    me = bpy.data.meshes.new(name); me.from_pydata(verts, [], faces); me.update()
-    return me
-
+# ---- pulpo de revolución hecho de «pelotas» que se funden (metaballs), como el modelo original
+# coordenadas en píxeles del recorte del render real (ancho 1216, alto 1409): (x, z desde abajo, profundidad, radio de superficie)
+_MBW, _MBH = 1304.0, 1409.0
+_R8, _r8 = 516.0, 178.0
+_BALLS = [(652, 687, 0, 530)]                                   # cabeza (x, z, profundidad, radio)
+for _k in range(8):                                               # 8 pelotas-tentáculo en anillo bajo la cabeza
+    _a = math.radians(22.5 + 45 * _k)
+    _BALLS.append((652 + _R8 * math.cos(_a), _r8, -_R8 * math.sin(_a), _r8))
 def silueta(name, x_px, base_final_y, w_px, color, qcolor):
-    x, d = place(x_px, base_final_y); Wm = px_to_m(w_px, d); s = Wm / _MW; T = 0.38 * Wm
+    x, d = place(x_px, base_final_y); Wm = px_to_m(w_px, d); s = Wm / _MBW
     gz = ground_h(x, d)
-    me = inflated_mesh(name, s, T)
-    ob = bpy.data.objects.new(name, me); scene.collection.objects.link(ob); ob.location = (x, d, gz - 0.01 * Wm)
-    mod = ob.modifiers.new('espejo', 'MIRROR'); mod.use_axis[0] = False; mod.use_axis[1] = True; mod.use_axis[2] = False; mod.use_mirror_merge = True; mod.merge_threshold = 1e-5
-    sub = ob.modifiers.new('suave', 'SUBSURF'); sub.levels = 1; sub.render_levels = 1
-    for p_ in me.polygons: p_.use_smooth = True
+    mb = bpy.data.metaballs.new(name + '_mb'); mb.threshold = 0.6; mb.resolution = Wm / 140; mb.render_resolution = Wm / 140
+    for bx, bz, by, br in _BALLS:
+        e = mb.elements.new(); e.co = ((bx - _MBW / 2) * s, by * s, bz * s); e.radius = br * s / 0.574 * 0.93; e.stiffness = 2.0
+    ob = bpy.data.objects.new(name, mb); scene.collection.objects.link(ob); ob.location = (x, d, gz)
     ob.data.materials.append(toy(name + '_m', color))
-    cu = bpy.data.curves.new(name + '_q', 'FONT'); cu.body = '?'; cu.size = 0.55 * Wm; cu.extrude = 0.02 * Wm; cu.bevel_depth = 0.006 * Wm
+    # anilla (toro) arriba
+    bpy.ops.mesh.primitive_torus_add(major_radius=93 * s, minor_radius=46 * s, major_segments=64, minor_segments=32, location=(x, d, gz + 1303 * s), rotation=(math.radians(90), 0, 0))
+    ring = bpy.context.object; ring.name = name + '_anilla'; ring.data.materials.append(toy(name + '_a', color))
+    for p_ in ring.data.polygons: p_.use_smooth = True
+    ring.parent = ob; ring.matrix_parent_inverse = ob.matrix_world.inverted()
+    cu = bpy.data.curves.new(name + '_q', 'FONT'); cu.body = '?'; cu.size = 0.62 * Wm; cu.extrude = 0.02 * Wm; cu.bevel_depth = 0.006 * Wm
     cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
     try: cu.font = bpy.data.fonts.load(FONT)
     except Exception as ex: print('fuente:', ex)
     q = bpy.data.objects.new(name + '_q', cu); scene.collection.objects.link(q)
-    q.rotation_euler = (math.radians(90), 0, 0); q.location = (x, d - T * 1.0, gz + (_MH * 0.58) * s)
-    q.data.materials.append(toy(name + '_qm', qcolor))
-    return ob, [ob, q], Wm
+    q.rotation_euler = (math.radians(90), 0, 0); q.location = (x, d - 530 * s * 0.985, gz + 700 * s)
+    q.parent = ob; q.matrix_parent_inverse = ob.matrix_world.inverted(); q.data.materials.append(toy(name + '_qm', qcolor))
+    return ob, [ob, ring, q], Wm
 
 SIL = {
-    's1': (130, 1560, 170, YEL, DBLUE), 's2': (275, 1450, 150, YEL, DBLUE),
-    's4': (805, 1450, 150, YEL, DBLUE), 's5': (950, 1560, 170, YEL, DBLUE),
-    's3': (540, 1370, 150, BLACK, YEL),
+    's1': (130, 1560, 140, YEL, DBLUE), 's2': (275, 1450, 122, YEL, DBLUE),
+    's4': (805, 1450, 122, YEL, DBLUE), 's5': (950, 1560, 140, YEL, DBLUE),
+    's3': (540, 1370, 122, BLACK, YEL),
 }
 objs = {k: silueta(k, *v) for k, v in SIL.items()}
 # proxy invisible para la sombra del pulpo morado (su imagen 2D la pone el montaje)

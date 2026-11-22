@@ -154,3 +154,5 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Todos los pulpos subidos; sombra del morado suavizada (alfa × 0,38 y sol más difuso).
 - Siluetas amarillas y negra = contorno del pulpo real (máscara `reel-3d/assets/sil_mask.png`, inflada en 3D). En el paquete se usan `diseno/pulpos/sil_azul.png` y `sil_negra.png`.
 - Título del paquete = título del vídeo (Octo coral #CD575B + Mood #8DD0F7, Modak, relieve blanco).
+- Siluetas del anuncio rehechas como el modelo original: cuerpo de revolución con «pelotas» que se funden (metaballs): cabeza + 8 pelotitas-brazo en anillo + anilla; más pequeñas. Orilla del mar suavizada (agua transparente en la orilla, arena húmeda, espuma difusa y curva irregular).
+- Música «de burbuja»: `musica-opciones/jingle_E_burbujas_108bpm.mp3` y `jingle_F_burbujas_blops_108bpm.mp3` (generador `generar_burbujas.py`). Pendiente de que Avril elija.
