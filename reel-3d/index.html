@@ -42,15 +42,17 @@
         <img src="assets/escena/fondo.png" alt="" />
       </div>
       <div id="front" class="clip" data-start="0" data-duration="10.0" data-track-index="1" style="z-index:5">
-        <img id="Ls1" class="layer" src="assets/escena/capa_s1.png" alt="" style="left:18px;top:1315px;width:394px;height:257px;transform-origin:112px 240px;" />
-        <img id="Ls2" class="layer" src="assets/escena/capa_s2.png" alt="" style="left:181px;top:1252px;width:329px;height:214px;transform-origin:94px 202px;" />
-        <img id="Ls3" class="layer" src="assets/escena/capa_s3.png" alt="" style="left:453px;top:1181px;width:325px;height:205px;transform-origin:87px 194px;" />
-        <img id="Ls4" class="layer" src="assets/escena/capa_s4.png" alt="" style="left:702px;top:1267px;width:347px;height:216px;transform-origin:103px 203px;" />
-        <img id="Ls5" class="layer" src="assets/escena/capa_s5.png" alt="" style="left:817px;top:1293px;width:263px;height:253px;transform-origin:133px 237px;" />
+        <img id="Ls1" class="layer" src="assets/escena/capa_s1.png" alt="" style="left:18px;top:1311px;width:394px;height:256px;transform-origin:112px 243px;" />
+        <img id="Ls2" class="layer" src="assets/escena/capa_s2.png" alt="" style="left:181px;top:1249px;width:329px;height:214px;transform-origin:94px 205px;" />
+        <img id="Ls3" class="layer" src="assets/escena/capa_s3.png" alt="" style="left:453px;top:1178px;width:325px;height:204px;transform-origin:87px 197px;" />
+        <img id="Ls4" class="layer" src="assets/escena/capa_s4.png" alt="" style="left:702px;top:1263px;width:347px;height:216px;transform-origin:103px 207px;" />
+        <img id="Ls5" class="layer" src="assets/escena/capa_s5.png" alt="" style="left:817px;top:1289px;width:263px;height:253px;transform-origin:133px 241px;" />
         <img id="Lmorado" class="layer" src="assets/escena/capa_morado.png" alt="" style="left:231px;top:1464px;width:849px;height:345px;transform-origin:309px 284px;" />
-        <div id="octo"><img id="octo-3d" src="assets/octo-morado.png" alt="" /></div>
+
         <div id="flash"></div>
       </div>
+        <video id="pulpo" class="clip" src="assets/pulpo/giro.webm" data-start="0" data-duration="3.1" data-track-index="3" muted playsinline style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:7"></video>
+        <img id="pulpo-fin" class="clip" src="assets/pulpo/final.png" alt="" data-start="3.1" data-duration="6.9" data-track-index="3" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:7" />
       <div id="hook" class="txt hook clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:10">Quel est ton mood ?</div>
       <img id="logo" class="clip" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:12" />
       <div id="title" class="txt title clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11"><span class="a">Octo</span><span class="b">Mood</span></div>
@@ -83,22 +85,10 @@
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      // ---- 0-2 s: pop + giro (provisional: scaleX; Blender dará los fotogramas reales) rápido al empezar, lento al final
-      const spin = { a: 0 };
-      tl.set("#octo", { y: -710 }, 0);
-      tl.fromTo("#octo", { opacity: 1, scale: 0.6 }, { opacity: 1, scale: 1.5, duration: 0.4, ease: "back.out(2)" }, 0);
-      tl.to(spin, { a: Math.PI * 4, duration: 1.8, ease: "power3.out", onUpdate: () => gsap.set("#octo-3d", { scaleX: Math.cos(spin.a) }) }, 0.1);
       tl.set("#hook", { opacity: 1 }, 0);
       tl.to("#hook", { opacity: 0, duration: 0.2 }, 3.7);
       // ---- 1,9-2,6 s: cae y la cámara baja a la playa
       tl.to("#bg", { y: -780, duration: 0.7, ease: "power2.in" }, 1.9);
-      tl.to("#octo", { y: 0, scale: 1, duration: 0.65, ease: "power2.in" }, 1.9);
-      tl.fromTo("#Lmorado", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out", immediateRender: false }, 2.4);
-      // aterrizaje: aplasta y rebota + onda
-      tl.to("#octo", { scaleY: 0.82, scaleX: 1.12, transformOrigin: "50% 100%", duration: 0.09, ease: "power2.out" }, 2.55);
-      tl.to("#octo", { scaleY: 1, scaleX: 1, duration: 0.35, ease: "elastic.out(1.1, 0.4)" }, 2.64);
-      tl.fromTo("#flash", { opacity: 0.9, scale: 0.4 }, { opacity: 0, scale: 1.5, duration: 0.5, ease: "power2.out", immediateRender: false }, 2.55);
-
       // ---- 2,9-3,7 s: las 5 siluetas aparecen detrás
       [["#Ls1", 2.95], ["#Ls2", 3.1], ["#Ls4", 3.25], ["#Ls5", 3.4], ["#Ls3", 3.6]].forEach(([id, t]) => {
         tl.fromTo(id, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)", immediateRender: false }, t);

@@ -319,7 +319,7 @@ def silueta(name, x_px, base_final_y, w_px, color, qcolor):
     root.location = (x, d, gz - _STL_ZMIN * K); root.rotation_euler = (0, 0, math.pi); root.scale = (K, K, K)   # de cara a la cámara
     mat = toy(name + '_m', color); parts = [root]
     for k, me in enumerate(_TPL):
-        o = bpy.data.objects.new(f'{name}_{k}', me); scene.collection.objects.link(o); o.parent = root; o.data.materials.clear(); o.data.materials.append(mat); parts.append(o)
+        o = bpy.data.objects.new(f'{name}_{k}', me.copy()); scene.collection.objects.link(o); o.parent = root; o.data.materials.clear(); o.data.materials.append(mat); parts.append(o)
     cu = bpy.data.curves.new(name + '_q', 'FONT'); cu.body = '?'; cu.size = 0.62 * Wm; cu.extrude = 0.02 * Wm; cu.bevel_depth = 0.006 * Wm
     cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
     try: cu.font = bpy.data.fonts.load(FONT)

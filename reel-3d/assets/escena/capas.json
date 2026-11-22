@@ -1,43 +1,43 @@
 {
  "s1": {
   "left": 18,
-  "top": 1315,
+  "top": 1311,
   "width": 394,
-  "height": 257,
+  "height": 256,
   "ox": 112,
-  "oy": 240
+  "oy": 243
  },
  "s2": {
   "left": 181,
-  "top": 1252,
+  "top": 1249,
   "width": 329,
   "height": 214,
   "ox": 94,
-  "oy": 202
+  "oy": 205
  },
  "s4": {
   "left": 702,
-  "top": 1267,
+  "top": 1263,
   "width": 347,
   "height": 216,
   "ox": 103,
-  "oy": 203
+  "oy": 207
  },
  "s5": {
   "left": 817,
-  "top": 1293,
+  "top": 1289,
   "width": 263,
   "height": 253,
   "ox": 133,
-  "oy": 237
+  "oy": 241
  },
  "s3": {
   "left": 453,
-  "top": 1181,
+  "top": 1178,
   "width": 325,
-  "height": 205,
+  "height": 204,
   "ox": 87,
-  "oy": 194
+  "oy": 197
  },
  "morado": {
   "left": 231,

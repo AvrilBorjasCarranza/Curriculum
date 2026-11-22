@@ -158,3 +158,8 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Música «de burbuja»: `musica-opciones/jingle_E_burbujas_108bpm.mp3` y `jingle_F_burbujas_blops_108bpm.mp3` (generador `generar_burbujas.py`). Pendiente de que Avril elija.
 - Música elegida: H1 (marimba) y H3 (ukelele), ambas con pops de burbuja y sin agudos. Vídeos: `reel-3d/renders/octomood-3d-H1.mp4` y `octomood-3d-H3.mp4` (−13,8 y −13,5 LUFS). Pendiente: que Avril elija una.
 - **Música definitiva del anuncio: H3 (ukelele + pops de burbuja, 108 BPM, generada por código, sin licencias ni crédito).** Vídeo: `reel-3d/renders/octomood-3d.mp4`. Pops de burbuja en los textos del final.
+
+## Anuncio con el modelo real (22/11/2026)
+- Modelo STL de Avril (`reel-3d/assets/modelo/OctoSmoot.stl`, 7 piezas: cuerpo, 2 ojos, boca ×2, anilla ×2) colocado en la playa 3D. Giro (rápido→lento), caída, aplastamiento y rebote renderizados en Blender (`tools/anim_pulpo.py`, 94 fotogramas, WebM con alfa) con sombra real. Color del cuerpo calibrado para que el render dé ≈ (131, 99, 216), como la pieza impresa (base en Blender #7051C4).
+- Las 4 siluetas amarillas y la negra usan el mismo STL (cuerpo + anilla) en color plano y «?»; paquete: contorno de frente del STL (`reel-3d/assets/sil_mask.png`).
+- Vídeo final: `reel-3d/renders/octomood-3d.mp4` (música H3, 10 s, −13,6 LUFS).

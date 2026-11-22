@@ -11,7 +11,7 @@ CORAL, MOODBLUE, DBLUE, YEL = "#CD575B", "#8DD0F7", "#1F5F93", "#FFD84D"
 DPINK = CORAL          # el rosa de marca es ahora el coral del pulpo original
 REAL = os.path.exists(os.path.join(OUT, "assets/pieza-real.png"))
 SEQ = os.path.exists(os.path.join(OUT, "assets/pulpo/giro.webm"))   # pulpo 3D real renderizado en Blender (tools/anim_pulpo.py)
-SEQ_T = 3.5
+SEQ_T = 3.1
 
 # ----- capas 3D (Blender): fondo alto + siluetas con sombra + sombra del pulpo morado
 META = json.load(open(os.path.join(OUT, "assets/escena/capas.json")))
@@ -92,9 +92,10 @@ index = f"""<!doctype html>
       <div id="front" class="clip" data-start="0" data-duration="{T}" data-track-index="1" style="z-index:5">
 {html_sils}
 {html_shadow}
-{octo_markup}
+{octo_markup if not SEQ else ''}
         <div id="flash"></div>
       </div>
+{octo_markup if SEQ else ''}
       <div id="hook" class="txt hook clip" data-start="0" data-duration="{T}" data-track-index="2" style="z-index:10">Quel est ton mood ?</div>
       <img id="logo" class="clip" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" data-start="0" data-duration="{T}" data-track-index="2" style="z-index:12" />
       <div id="title" class="txt title clip" data-start="0" data-duration="{T}" data-track-index="2" style="z-index:11"><span class="a">Octo</span><span class="b">Mood</span></div>
