@@ -122,3 +122,5 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Serie actual: **morado**, rojo, amarillo, azul, verde + secreto arcoíris. En el generador, `PURP` sustituye a `PINKO`.
 - Morado y rojo comparten el mismo recorte cuadrado (277,285 → 1711,1719 del render de 2000 px) para conservar la escala entre ellos.
 - Los colores del envoltorio (fondo amarillo, título rosa oscuro, texto azul) no cambian.
+- Color del morado (22/11): objetivo medido en las fotos del pulpo impreso = RGB(131, 99, 216) / #8363D8. Los renders de Blender salían más oscuros (≈ #685AAE) aunque se cambió el Hex y la exposición, así que se corrigió el render por post-proceso (ganancia lineal por canal sólo en el cuerpo, sin tocar ojos ni labios). `pulpos/morado.png` queda en #8362D7; `morado_original_2000.png` guarda el PNG corregido completo.
+- Pendiente en Blender: que la exposición y el color base se apliquen de verdad (comprobar View Transform = Standard, Exposure y el material correcto del cuerpo) para que los demás renders salgan ya bien.
