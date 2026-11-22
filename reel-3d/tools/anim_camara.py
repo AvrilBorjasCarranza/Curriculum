@@ -20,7 +20,7 @@ sun_d.angle = math.radians(22)
 HF = 1920; RES2 = 0.5 if PREV else 1.0
 scene.render.resolution_x = int(1080 * RES2); scene.render.resolution_y = int(HF * RES2); scene.render.resolution_percentage = 100
 cam_d.sensor_height = 36.0 * HF / 2700.0
-scene.cycles.samples = 12 if PREV else 22
+scene.cycles.samples = 12 if PREV else 14
 scene.render.use_persistent_data = True      # reutiliza la escena entre fotogramas (mucho más rápido)
 scene.cycles.use_adaptive_sampling = True
 HR0, HR1 = 930.0, 920.0                 # fila del horizonte al empezar / al final
@@ -112,11 +112,14 @@ if MODE in ('bgA', 'all') and not (RESUME and os.path.exists(os.path.join(OUTD, 
     scene_mode('bg'); apply(0.5, False, False); render(os.path.join(OUTD, 'bgA.png'), False); print('bgA listo')
 if MODE in ('A', 'all'):
     scene_mode('octo')
+    scene.render.use_border = True; scene.render.use_crop_to_border = False       # solo la zona donde está el pulpo (ahorra tiempo)
+    scene.render.border_min_x, scene.render.border_max_x, scene.render.border_min_y, scene.render.border_max_y = 0.08, 0.95, 0.0, 0.72
     for i in range(0, N_A):
         if os.path.exists(os.path.join(OUTD, f'A_{i:04d}.png')) and i < N_A - 1 and os.path.getsize(os.path.join(OUTD, f'A_{i:04d}.png')) > 1000 and RESUME: continue
         apply(i / FPS, False, True); render(os.path.join(OUTD, f'A_{i:04d}.png'), True)
     print('A listo')
 if MODE in ('B', 'all'):
+    scene.render.use_border = False
     scene_mode('full')
     for i in range(N_B0, N_B1 + 1):
         if os.path.exists(os.path.join(OUTD, f'B_{i:04d}.png')) and RESUME: continue
