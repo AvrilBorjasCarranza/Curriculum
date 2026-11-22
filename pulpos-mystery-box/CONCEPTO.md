@@ -137,3 +137,10 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Fondo: escena 3D (cielo + playa con sombras y textura) que renderiza Avril como imagen; la caída del pulpo cambia del render 3D a la foto de la pieza real sobre el mismo fondo.
 - Giro: rápido al empezar y lento al final (`video3d/giro_pulpo.py`, sin probar en Blender; Avril pasa el Outliner mañana).
 - Música: opciones en `musica-opciones/` (las CC BY exigen crédito).
+
+## Borrador del anuncio (22/11/2026) — `reel-3d/`
+- Música elegida: jingle C original (`musica-opciones/jingle_C_banda_120bpm.mp3`, 10 s, 120 BPM).
+- Borrador renderizado: `reel-3d/renders/octomood-borrador.mp4` (10 s, 1080×1920, −13,5 LUFS). Generador: `reel-3d/tools/gen_3d.py`.
+- Piezas provisionales que sustituirá Avril: fondo (cielo + playa) → render de Blender; giro → fotogramas de Blender (ahora es un giro falso con scaleX); «pieza real» → `reel-3d/assets/pieza-real.png` (si existe, el generador cambia el 3D por la foto al aterrizar).
+- Sonidos (del banco local): pop (aparición, siluetas, título, pancarta), whoosh (caída y cambio de plano), impacto grave (aterrizaje), clic (tachado), destello (precio y final).
+- `check` señala contraste bajo en «Mood» (#8DD0F7, 1,3:1): decisión de Avril; se lee por el relieve blanco. Opción más legible: #5BB5EE.

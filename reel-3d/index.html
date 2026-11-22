@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Bagel Fat One"; src: url("assets/fonts/BagelFatOne-latin.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      @font-face { font-family: "Modak"; src: url("assets/fonts/Modak-latin.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #BAE6FD; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #BAE6FD; }
+      /* fondo alto provisional: cielo + mar + arena (lo sustituirá el render de Blender) */
+      #bg { position: absolute; left: 0; top: 0; width: 1080px; height: 2700px; }
+      .sky { position: absolute; left: 0; top: 0; width: 1080px; height: 1740px; background: #BAE6FD; }
+      .sea { position: absolute; left: 0; top: 1740px; width: 1080px; height: 170px; background: #8DD0F7; }
+      .sand { position: absolute; left: 0; top: 1910px; width: 1080px; height: 790px; background: #FEF3C9; }
+      .foam { position: absolute; left: 0; top: 1895px; width: 1080px; height: 30px; background: #fff; opacity: .8; }
+      .cloud { position: absolute; height: 90px; border-radius: 90px; background: #fff; opacity: .85; }
+      .sun { position: absolute; left: 780px; top: 140px; width: 230px; height: 230px; border-radius: 50%; background: #FFE98A; }
+      .shadow { position: absolute; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(120,90,30,.38) 0%, rgba(120,90,30,0) 70%); }
+      #front { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 1400px; }
+      .silwrap { position: absolute; opacity: 0; }
+      .sil { width: 100%; height: 100%; display: block; }
+      #octo { position: absolute; left: 260px; top: 960px; width: 560px; height: 560px; opacity: 0; }
+      #octo img { width: 100%; height: 100%; display: block; }
+      .txt { position: absolute; left: 0; width: 1080px; text-align: center; font-family: "Bagel Fat One", sans-serif; opacity: 0; }
+      .hook { top: 340px; font-size: 84px; line-height: 1; color: #1F5F93; -webkit-text-stroke: 14px #fff; paint-order: stroke fill; }
+      .title { top: 370px; font-family: Modak, "Bagel Fat One", sans-serif; font-size: 190px; line-height: 1.05; -webkit-text-stroke: 24px #fff; paint-order: stroke fill; filter: drop-shadow(0 10px 0 #fff); }
+      .title .a { color: #CC5A64; } .title .b { color: #8DD0F7; }
+      .tag { top: 610px; font-size: 52px; color: #1F5F93; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; }
+      .banner { position: absolute; left: 0; top: 620px; width: 1080px; text-align: center; opacity: 0; }
+      .banner span { display: inline-block; font-family: "Bagel Fat One", sans-serif; font-size: 58px; white-space: nowrap; color: #fff; background: #C2377F; padding: 16px 50px 22px; border-radius: 999px; border: 10px solid #fff; }
+      .old { top: 770px; font-size: 88px; color: #1F5F93; -webkit-text-stroke: 12px #fff; paint-order: stroke fill; }
+      .old span { position: relative; display: inline-block; }
+      #strike { position: absolute; left: -16px; top: 52%; height: 14px; width: 0; background: #C2377F; border-radius: 8px; transform: rotate(-8deg); transform-origin: left center; }
+      .lanc { top: 905px; font-size: 44px; color: #1F5F93; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; letter-spacing: .04em; }
+      .new { top: 945px; font-family: Modak, "Bagel Fat One", sans-serif; font-size: 200px; line-height: 1; color: #C2377F; -webkit-text-stroke: 26px #fff; paint-order: stroke fill; filter: drop-shadow(0 8px 0 #fff); }
+      .until { top: 1170px; font-size: 44px; color: #1F5F93; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; }
+      .cta { position: absolute; left: 0; top: 1255px; width: 1080px; text-align: center; opacity: 0; }
+      .cta span { display: inline-block; font-family: "Bagel Fat One", sans-serif; font-size: 52px; color: #1F5F93; background: #FFD84D; padding: 18px 46px 24px; border-radius: 999px; border: 8px solid #fff; }
+      #logo { position: absolute; left: 45px; top: 170px; width: 160px; height: 160px; opacity: 0; }
+      #flash { position: absolute; left: 340px; top: 1280px; width: 400px; height: 400px; border-radius: 50%; border: 18px solid #fff; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10.0" data-width="1080" data-height="1920">
+      <div id="bg" class="clip" data-start="0" data-duration="10.0" data-track-index="0" style="z-index:1">
+        <div class="sky"></div><div class="sun"></div>
+        <div class="cloud" style="left:90px;top:520px;width:300px"></div><div class="cloud" style="left:620px;top:760px;width:380px"></div>
+        <div class="cloud" style="left:300px;top:1180px;width:260px"></div>
+        <div class="sea"></div><div class="foam"></div><div class="sand"></div>
+      </div>
+      <div id="front" class="clip" data-start="0" data-duration="10.0" data-track-index="1" style="z-index:5">
+      <div id="s1" class="silwrap" style="left:15px;top:1330px;width:160px;height:160px"><svg class="sil " viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg"><g fill="#FFD84D"><circle cx="115" cy="328" r="58"/><circle cx="410" cy="328" r="58"/><circle cx="262" cy="195" r="180"/><circle cx="196" cy="358" r="66"/><circle cx="330" cy="358" r="66"/></g><text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="#1F5F93">?</text></svg></div>
+      <div id="s2" class="silwrap" style="left:140px;top:1330px;width:160px;height:160px"><svg class="sil " viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg"><g fill="#FFD84D"><circle cx="115" cy="328" r="58"/><circle cx="410" cy="328" r="58"/><circle cx="262" cy="195" r="180"/><circle cx="196" cy="358" r="66"/><circle cx="330" cy="358" r="66"/></g><text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="#1F5F93">?</text></svg></div>
+      <div id="s3" class="silwrap" style="left:75px;top:1195px;width:160px;height:160px"><svg class="sil " viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg"><g fill="#FFD84D"><circle cx="115" cy="328" r="58"/><circle cx="410" cy="328" r="58"/><circle cx="262" cy="195" r="180"/><circle cx="196" cy="358" r="66"/><circle cx="330" cy="358" r="66"/></g><text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="#1F5F93">?</text></svg></div>
+      <div id="s4" class="silwrap" style="left:780px;top:1330px;width:160px;height:160px"><svg class="sil " viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg"><g fill="#FFD84D"><circle cx="115" cy="328" r="58"/><circle cx="410" cy="328" r="58"/><circle cx="262" cy="195" r="180"/><circle cx="196" cy="358" r="66"/><circle cx="330" cy="358" r="66"/></g><text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="#1F5F93">?</text></svg></div>
+      <div id="s5" class="silwrap" style="left:920px;top:1330px;width:160px;height:160px"><svg class="sil " viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg"><g fill="#141414"><circle cx="115" cy="328" r="58"/><circle cx="410" cy="328" r="58"/><circle cx="262" cy="195" r="180"/><circle cx="196" cy="358" r="66"/><circle cx="330" cy="358" r="66"/></g><text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="#FFD84D">?</text></svg></div>
+        <div id="shadow" class="shadow" style="left:300px;top:1500px;width:480px;height:110px;opacity:0"></div>
+        <div id="octo"><img id="octo-3d" src="assets/octo-morado.png" alt="" /></div>
+        <div id="flash"></div>
+      </div>
+      <div id="hook" class="txt hook clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:10">Quel est ton mood ?</div>
+      <img id="logo" class="clip" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:12" />
+      <div id="title" class="txt title clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11"><span class="a">Octo</span><span class="b">Mood</span></div>
+      <div id="tag" class="txt tag clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11">5 couleurs + 1 secret</div>
+      <div id="banner" class="banner clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11"><span>PRÉCOMMANDE OUVERTE</span></div>
+      <div id="old" class="txt old clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11"><span>14,99 €<i id="strike"></i></span></div>
+      <div id="lanc" class="txt lanc clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11">PRIX DE LANCEMENT</div>
+      <div id="new" class="txt new clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11">12,99 €</div>
+      <div id="until" class="txt until clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11">Jusqu’au 20 janvier · 20 pièces seulement</div>
+      <div id="cta" class="cta clip" data-start="0" data-duration="10.0" data-track-index="2" style="z-index:11"><span>Écris-nous en DM · @renardlab3d</span></div>
+
+      <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="10.0" data-track-index="5" data-volume="0.72"></audio>
+      <audio id="sfx-pop0" class="clip" src="assets/sfx/pop.mp3" data-start="0.05" data-duration="0.72" data-track-index="6" data-volume="0.9"></audio>
+      <audio id="sfx-fall" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="1.85" data-duration="0.57" data-track-index="6" data-volume="0.8"></audio>
+      <audio id="sfx-land" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="2.5" data-duration="1.2" data-track-index="12" data-volume="0.7"></audio>
+      <audio id="sfx-p1" class="clip" src="assets/sfx/pop.mp3" data-start="2.95" data-duration="0.72" data-track-index="6" data-volume="0.45"></audio>
+      <audio id="sfx-p2" class="clip" src="assets/sfx/pop.mp3" data-start="3.1" data-duration="0.72" data-track-index="7" data-volume="0.45"></audio>
+      <audio id="sfx-p3" class="clip" src="assets/sfx/pop.mp3" data-start="3.25" data-duration="0.72" data-track-index="8" data-volume="0.45"></audio>
+      <audio id="sfx-p4" class="clip" src="assets/sfx/pop.mp3" data-start="3.4" data-duration="0.72" data-track-index="9" data-volume="0.45"></audio>
+      <audio id="sfx-p5" class="clip" src="assets/sfx/pop.mp3" data-start="3.6" data-duration="0.72" data-track-index="10" data-volume="0.6"></audio>
+      <audio id="sfx-title" class="clip" src="assets/sfx/pop.mp3" data-start="4.0" data-duration="0.72" data-track-index="6" data-volume="0.95"></audio>
+      <audio id="sfx-shift" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="5.85" data-duration="0.57" data-track-index="6" data-volume="0.6"></audio>
+      <audio id="sfx-ban" class="clip" src="assets/sfx/pop.mp3" data-start="6.0" data-duration="0.72" data-track-index="7" data-volume="0.8"></audio>
+      <audio id="sfx-old" class="clip" src="assets/sfx/pop.mp3" data-start="6.6" data-duration="0.72" data-track-index="8" data-volume="0.5"></audio>
+      <audio id="sfx-strike" class="clip" src="assets/sfx/click-soft.mp3" data-start="7.1" data-duration="0.37" data-track-index="9" data-volume="0.9"></audio>
+      <audio id="sfx-new" class="clip" src="assets/sfx/sparkle.mp3" data-start="7.45" data-duration="1.8" data-track-index="10" data-volume="0.7"></audio>
+      <audio id="sfx-end" class="clip" src="assets/sfx/sparkle.mp3" data-start="8.0" data-duration="1.8" data-track-index="11" data-volume="0.45"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      // ---- 0-2 s: pop + giro (provisional: scaleX; Blender dará los fotogramas reales) rápido al empezar, lento al final
+      const spin = { a: 0 };
+      tl.set("#octo", { y: -440 }, 0);
+      tl.fromTo("#octo", { opacity: 1, scale: 0.6 }, { opacity: 1, scale: 1.25, duration: 0.4, ease: "back.out(2)" }, 0);
+      tl.to(spin, { a: Math.PI * 4, duration: 1.8, ease: "power3.out", onUpdate: () => gsap.set("#octo-3d", { scaleX: Math.cos(spin.a) }) }, 0.1);
+      tl.set("#hook", { opacity: 1 }, 0);
+      tl.to("#hook", { opacity: 0, duration: 0.2 }, 3.7);
+      // ---- 1,9-2,6 s: cae y la cámara baja a la playa
+      tl.to("#bg", { y: -780, duration: 0.7, ease: "power2.in" }, 1.9);
+      tl.to("#octo", { y: 0, scale: 1, duration: 0.65, ease: "power2.in" }, 1.9);
+      tl.fromTo("#shadow", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out", immediateRender: false }, 2.35);
+      // aterrizaje: aplasta y rebota + onda
+      tl.to("#octo", { scaleY: 0.82, scaleX: 1.12, transformOrigin: "50% 100%", duration: 0.09, ease: "power2.out" }, 2.55);
+      tl.to("#octo", { scaleY: 1, scaleX: 1, duration: 0.35, ease: "elastic.out(1.1, 0.4)" }, 2.64);
+      tl.fromTo("#flash", { opacity: 0.9, scale: 0.4 }, { opacity: 0, scale: 1.5, duration: 0.5, ease: "power2.out", immediateRender: false }, 2.55);
+
+      // ---- 2,9-3,7 s: las 5 siluetas aparecen detrás
+      [["#s1", 2.95], ["#s2", 3.1], ["#s3", 3.25], ["#s4", 3.4], ["#s5", 3.6]].forEach(([id, t]) => {
+        tl.fromTo(id, { opacity: 0, scale: 0.3, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, t);
+      });
+      // ---- 4 s: logo + título
+      tl.fromTo("#logo", { opacity: 0, scale: 0.5, rotation: -20 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(1.7)" }, 4.0);
+      tl.fromTo("#title", { opacity: 0, scale: 0.4, y: -60 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 4.0);
+      tl.fromTo("#tag", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.2);
+      // ---- 5,8 s: el pulpo y las siluetas bajan para dejar sitio al precio
+      tl.to("#front", { y: 310, scale: 0.75, duration: 0.45, ease: "power2.inOut" }, 5.85);
+      tl.to("#tag", { opacity: 0, duration: 0.15 }, 5.85);
+      // ---- 6 s: PRÉCOMMANDE OUVERTE
+      tl.fromTo("#banner", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 6.0);
+      // ---- 6,6-7,5 s: precio viejo, se tacha, precio de lanzamiento
+      tl.fromTo("#old", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.8)" }, 6.6);
+      tl.to("#strike", { width: 290, duration: 0.3, ease: "power2.out" }, 7.1);
+      tl.to("#old", { opacity: 0.55, duration: 0.2 }, 7.45);
+      tl.fromTo("#lanc", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 7.4);
+      tl.fromTo("#new", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2.4)" }, 7.5);
+      // ---- 7,7-7,9 s: fecha, unidades, DM (≥ 2 s en pantalla; el acorde final llega a los 8,0 s)
+      tl.fromTo("#until", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 7.7);
+      tl.fromTo("#cta", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 7.85);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
