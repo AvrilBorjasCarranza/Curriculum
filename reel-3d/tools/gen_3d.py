@@ -1,29 +1,24 @@
 #!/usr/bin/env python3
-"""Anuncio OctoMood (10 s, 1080x1920). Piezas provisionales: fondo plano (Avril lo renderiza en Blender),
-giro falso del pulpo (scaleX), foto real = mismo render hasta que haya foto.
+"""Anuncio OctoMood (10 s, 1080x1920). Fondo, siluetas y sombras renderizados en 3D (tools/escena_playa.py, Blender 5.1.2).
+Piezas provisionales: giro falso del pulpo (scaleX), foto real = mismo render hasta que haya foto.
 Uso: gen_3d.py <carpeta del proyecto>"""
 import os, sys, json
 
 OUT = sys.argv[1]
 T = 10.0
 SKY, SAND, SAND_D, SEA = "#BAE6FD", "#FEF3C9", "#F4DE9A", "#8DD0F7"
-CORAL, MOODBLUE, DPINK, DBLUE, YEL = "#CC5A64", "#8DD0F7", "#C2377F", "#1F5F93", "#FFD84D"
+CORAL, MOODBLUE, DBLUE, YEL = "#CD575B", "#8DD0F7", "#1F5F93", "#FFD84D"
+DPINK = CORAL          # el rosa de marca es ahora el coral del pulpo original
 REAL = os.path.exists(os.path.join(OUT, "assets/pieza-real.png"))
 
-# ----- siluetas: círculos del envoltorio (viewBox 40 8 440 440)
-def sil(fill, qfill, cls):
-    body = "".join(f'<circle cx="{x}" cy="{y}" r="{r}"/>' for x, y, r in [(115, 328, 58), (410, 328, 58), (262, 195, 180), (196, 358, 66), (330, 358, 66)])
-    return (f'<svg class="sil {cls}" viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg"><g fill="{fill}">{body}</g>'
-            f'<text x="262" y="262" text-anchor="middle" font-family="Bagel Fat One" font-size="170" fill="{qfill}">?</text></svg>')
-
-# posición (left, top, ancho) de cada silueta
-SILS = [("s1", 15, 1330, 160, YEL, DBLUE), ("s2", 140, 1330, 160, YEL, DBLUE),
-        ("s3", 75, 1195, 160, YEL, DBLUE), ("s4", 780, 1330, 160, YEL, DBLUE),
-        ("s5", 920, 1330, 160, "#141414", YEL)]
-
-html_sils = "\n".join(
-    f'      <div id="{i}" class="silwrap" style="left:{l}px;top:{t}px;width:{w}px;height:{w}px">{sil(f, q, "")}</div>'
-    for i, l, t, w, f, q in SILS)
+# ----- capas 3D (Blender): fondo alto + siluetas con sombra + sombra del pulpo morado
+META = json.load(open(os.path.join(OUT, "assets/escena/capas.json")))
+def layer(k, extra=""):
+    m = META[k]
+    return (f'        <img id="L{k}" class="layer" src="assets/escena/capa_{k}.png" alt="" '
+            f'style="left:{m["left"]}px;top:{m["top"]}px;width:{m["width"]}px;height:{m["height"]}px;transform-origin:{m["ox"]}px {m["oy"]}px;{extra}" />')
+html_sils = "\n".join(layer(k) for k in ("s1", "s2", "s3", "s4", "s5"))
+html_shadow = layer("morado")
 
 # ---------------------------------------------------------------- escena
 index = f"""<!doctype html>
@@ -38,19 +33,12 @@ index = f"""<!doctype html>
       * {{ margin: 0; padding: 0; box-sizing: border-box; }}
       html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: {SKY}; }}
       #root {{ position: relative; width: 1080px; height: 1920px; overflow: hidden; background: {SKY}; }}
-      /* fondo alto provisional: cielo + mar + arena (lo sustituirá el render de Blender) */
+      /* fondo alto 3D (1080x2700) renderizado en Blender; la cámara baja 780 px durante la caída */
       #bg {{ position: absolute; left: 0; top: 0; width: 1080px; height: 2700px; }}
-      .sky {{ position: absolute; left: 0; top: 0; width: 1080px; height: 1740px; background: {SKY}; }}
-      .sea {{ position: absolute; left: 0; top: 1740px; width: 1080px; height: 170px; background: {SEA}; }}
-      .sand {{ position: absolute; left: 0; top: 1910px; width: 1080px; height: 790px; background: {SAND}; }}
-      .foam {{ position: absolute; left: 0; top: 1895px; width: 1080px; height: 30px; background: #fff; opacity: .8; }}
-      .cloud {{ position: absolute; height: 90px; border-radius: 90px; background: #fff; opacity: .85; }}
-      .sun {{ position: absolute; left: 780px; top: 140px; width: 230px; height: 230px; border-radius: 50%; background: #FFE98A; }}
-      .shadow {{ position: absolute; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(120,90,30,.38) 0%, rgba(120,90,30,0) 70%); }}
-      #front {{ position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 1400px; }}
-      .silwrap {{ position: absolute; opacity: 0; }}
-      .sil {{ width: 100%; height: 100%; display: block; }}
-      #octo {{ position: absolute; left: 260px; top: 960px; width: 560px; height: 560px; opacity: 0; }}
+      #bg img {{ display: block; width: 1080px; height: 2700px; }}
+      #front {{ position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }}
+      .layer {{ position: absolute; display: block; opacity: 0; }}
+      #octo {{ position: absolute; left: 328px; top: 1479px; width: 424px; height: 424px; opacity: 0; }}
       #octo img {{ width: 100%; height: 100%; display: block; }}
       .txt {{ position: absolute; left: 0; width: 1080px; text-align: center; font-family: "Bagel Fat One", sans-serif; opacity: 0; }}
       .hook {{ top: 340px; font-size: 84px; line-height: 1; color: {DBLUE}; -webkit-text-stroke: 14px #fff; paint-order: stroke fill; }}
@@ -68,20 +56,17 @@ index = f"""<!doctype html>
       .cta {{ position: absolute; left: 0; top: 1255px; width: 1080px; text-align: center; opacity: 0; }}
       .cta span {{ display: inline-block; font-family: "Bagel Fat One", sans-serif; font-size: 52px; color: {DBLUE}; background: {YEL}; padding: 18px 46px 24px; border-radius: 999px; border: 8px solid #fff; }}
       #logo {{ position: absolute; left: 45px; top: 170px; width: 160px; height: 160px; opacity: 0; }}
-      #flash {{ position: absolute; left: 340px; top: 1280px; width: 400px; height: 400px; border-radius: 50%; border: 18px solid #fff; opacity: 0; }}
+      #flash {{ position: absolute; left: 340px; top: 1680px; width: 400px; height: 400px; border-radius: 50%; border: 18px solid #fff; opacity: 0; }}
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{T}" data-width="1080" data-height="1920">
       <div id="bg" class="clip" data-start="0" data-duration="{T}" data-track-index="0" style="z-index:1">
-        <div class="sky"></div><div class="sun"></div>
-        <div class="cloud" style="left:90px;top:520px;width:300px"></div><div class="cloud" style="left:620px;top:760px;width:380px"></div>
-        <div class="cloud" style="left:300px;top:1180px;width:260px"></div>
-        <div class="sea"></div><div class="foam"></div><div class="sand"></div>
+        <img src="assets/escena/fondo.png" alt="" />
       </div>
       <div id="front" class="clip" data-start="0" data-duration="{T}" data-track-index="1" style="z-index:5">
 {html_sils}
-        <div id="shadow" class="shadow" style="left:300px;top:1500px;width:480px;height:110px;opacity:0"></div>
+{html_shadow}
         <div id="octo"><img id="octo-3d" src="assets/octo-morado.png" alt="" />{'<img id="octo-real" src="assets/pieza-real.png" alt="" style="position:absolute;left:0;top:0;opacity:0" />' if REAL else ''}</div>
         <div id="flash"></div>
       </div>
@@ -118,30 +103,29 @@ index = f"""<!doctype html>
       const tl = gsap.timeline({{ paused: true }});
       // ---- 0-2 s: pop + giro (provisional: scaleX; Blender dará los fotogramas reales) rápido al empezar, lento al final
       const spin = {{ a: 0 }};
-      tl.set("#octo", {{ y: -440 }}, 0);
-      tl.fromTo("#octo", {{ opacity: 1, scale: 0.6 }}, {{ opacity: 1, scale: 1.25, duration: 0.4, ease: "back.out(2)" }}, 0);
+      tl.set("#octo", {{ y: -871 }}, 0);
+      tl.fromTo("#octo", {{ opacity: 1, scale: 0.6 }}, {{ opacity: 1, scale: 1.5, duration: 0.4, ease: "back.out(2)" }}, 0);
       tl.to(spin, {{ a: Math.PI * 4, duration: 1.8, ease: "power3.out", onUpdate: () => gsap.set("#octo-3d", {{ scaleX: Math.cos(spin.a) }}) }}, 0.1);
       tl.set("#hook", {{ opacity: 1 }}, 0);
       tl.to("#hook", {{ opacity: 0, duration: 0.2 }}, 3.7);
       // ---- 1,9-2,6 s: cae y la cámara baja a la playa
       tl.to("#bg", {{ y: -780, duration: 0.7, ease: "power2.in" }}, 1.9);
       tl.to("#octo", {{ y: 0, scale: 1, duration: 0.65, ease: "power2.in" }}, 1.9);
-      tl.fromTo("#shadow", {{ opacity: 0, scale: 0.4 }}, {{ opacity: 1, scale: 1, duration: 0.3, ease: "power2.out", immediateRender: false }}, 2.35);
+      tl.fromTo("#Lmorado", {{ opacity: 0, scale: 0.6 }}, {{ opacity: 1, scale: 1, duration: 0.35, ease: "power2.out", immediateRender: false }}, 2.4);
       // aterrizaje: aplasta y rebota + onda
       tl.to("#octo", {{ scaleY: 0.82, scaleX: 1.12, transformOrigin: "50% 100%", duration: 0.09, ease: "power2.out" }}, 2.55);
       tl.to("#octo", {{ scaleY: 1, scaleX: 1, duration: 0.35, ease: "elastic.out(1.1, 0.4)" }}, 2.64);
       tl.fromTo("#flash", {{ opacity: 0.9, scale: 0.4 }}, {{ opacity: 0, scale: 1.5, duration: 0.5, ease: "power2.out", immediateRender: false }}, 2.55);
 {"      tl.to('#octo-3d', { opacity: 0, duration: 0.15 }, 2.6);\n      tl.to('#octo-real', { opacity: 1, duration: 0.15 }, 2.6);" if REAL else ""}
       // ---- 2,9-3,7 s: las 5 siluetas aparecen detrás
-      [["#s1", 2.95], ["#s2", 3.1], ["#s3", 3.25], ["#s4", 3.4], ["#s5", 3.6]].forEach(([id, t]) => {{
-        tl.fromTo(id, {{ opacity: 0, scale: 0.3, y: 40 }}, {{ opacity: 1, scale: 1, y: 0, duration: 0.3, ease: "back.out(2)" }}, t);
+      [["#Ls1", 2.95], ["#Ls2", 3.1], ["#Ls4", 3.25], ["#Ls5", 3.4], ["#Ls3", 3.6]].forEach(([id, t]) => {{
+        tl.fromTo(id, {{ opacity: 0, scale: 0.3 }}, {{ opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)", immediateRender: false }}, t);
       }});
       // ---- 4 s: logo + título
       tl.fromTo("#logo", {{ opacity: 0, scale: 0.5, rotation: -20 }}, {{ opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(1.7)" }}, 4.0);
       tl.fromTo("#title", {{ opacity: 0, scale: 0.4, y: -60 }}, {{ opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2)" }}, 4.0);
       tl.fromTo("#tag", {{ opacity: 0, y: 24 }}, {{ opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }}, 4.2);
-      // ---- 5,8 s: el pulpo y las siluetas bajan para dejar sitio al precio
-      tl.to("#front", {{ y: 310, scale: 0.75, duration: 0.45, ease: "power2.inOut" }}, 5.85);
+      // ---- 5,85 s: el rótulo pequeño se va antes de la pancarta
       tl.to("#tag", {{ opacity: 0, duration: 0.15 }}, 5.85);
       // ---- 6 s: PRÉCOMMANDE OUVERTE
       tl.fromTo("#banner", {{ opacity: 0, scale: 0.5 }}, {{ opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }}, 6.0);

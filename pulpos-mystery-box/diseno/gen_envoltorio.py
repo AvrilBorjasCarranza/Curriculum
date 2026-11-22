@@ -2,10 +2,10 @@
 """Boceto del envoltorio tipo caramelo (A4 horizontal) y comparación de nombres. Pulpos = bocetos vectoriales provisionales."""
 import sys, os
 OUT = sys.argv[1]
-BLUE, PINK, CREAM, INK = "#BAE6FD", "#FA96CD", "#FEF3C9", "#141414"
+BLUE, PINK, CREAM, INK = "#BAE6FD", "#CD575B", "#FEF3C9", "#141414"
 BLUE = os.environ.get("BG", "#FEF3C9")        # azul liso y claro
 YEL = os.environ.get("YEL", "#FFD84D")        # amarillo (solo el «?» del secreto)
-TT = os.environ.get("TT", "#C2377F")          # color del título (más oscuro)
+TT = os.environ.get("TT", "#CD575B")          # color del título (más oscuro)
 TX = os.environ.get("TX", "#1F5F93")          # color del resto del texto (más oscuro)
 PILL = os.environ.get("PILL", "#BAE6FD")      # color de la etiqueta SÉRIE 1
 PILLTX = os.environ.get("PILLTX", "#1F5F93")  # color del texto de la etiqueta

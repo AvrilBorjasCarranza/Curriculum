@@ -144,3 +144,7 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Piezas provisionales que sustituirá Avril: fondo (cielo + playa) → render de Blender; giro → fotogramas de Blender (ahora es un giro falso con scaleX); «pieza real» → `reel-3d/assets/pieza-real.png` (si existe, el generador cambia el 3D por la foto al aterrizar).
 - Sonidos (del banco local): pop (aparición, siluetas, título, pancarta), whoosh (caída y cambio de plano), impacto grave (aterrizaje), clic (tachado), destello (precio y final).
 - `check` señala contraste bajo en «Mood» (#8DD0F7, 1,3:1): decisión de Avril; se lee por el relieve blanco. Opción más legible: #5BB5EE.
+
+## Rosa de marca = coral de Octo (22/11/2026)
+- Todo el rosa de la marca pasa a ser el coral del pulpo original: **#CD575B** (título «OctoMood» del envoltorio, pancarta, precio y tachado del vídeo). Se abandonan #C2377F y #FA96CD.
+- Anuncio 3D: fondo (cielo, mar, arena con relieve irregular y sol/nubes), siluetas amarillas 3D y secreto negro se renderizan en Blender 5.1.2 con `reel-3d/tools/escena_playa.py` (módulo `bpy`, CPU, ≈ 5 min a resolución completa) y `tools/pulir_capas.py`. Distribución: morado delante, 2 amarillas a cada lado en forma de triángulo y la negra detrás en la arena. Render: `reel-3d/renders/octomood-3d.mp4`.
