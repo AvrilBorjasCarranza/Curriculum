@@ -77,8 +77,8 @@ YELLOW = octo("#FFF08A", "#FFCE2E", "#D69B00", "cool")
 BLUE_O = octo("#B8E6FF", "#5EB6F2", "#2C7DBB", "sad")
 GREEN  = octo("#C9F59A", "#7FD05A", "#3C9A33", "sick")
 RAIN   = octo("", "", "", "wave", rainbow=True)
-SIL    = '<img src="pulpos/sil_negra.png" alt="secreto">'   # silueta real del pulpo (negra) con «?» amarillo
-SILQ   = '<img src="pulpos/sil_azul.png" alt="?">'          # aún no revelado: silueta real azul clara con «?»
+SIL    = '<img src="pulpos/sil_negra.png" alt="secreto" style="transform:scale(.8);transform-origin:50% 90%">'   # silueta real del pulpo (negra) con «?» amarillo
+SILQ   = '<img src="pulpos/sil_azul.png" alt="?" style="transform:scale(.8);transform-origin:50% 90%">'          # aún no revelado: silueta real azul clara con «?»
 
 def pulpo(name, vector):
     """Usa pulpos/<name>.png (render real, fondo transparente) si existe; si no, el dibujo provisional."""

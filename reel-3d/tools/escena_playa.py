@@ -300,35 +300,34 @@ for o in bpy.data.objects:
         q = world_to_camera_view(scene, cam, o.location); print('estrella', o.name, tuple(round(v, 2) for v in o.location), 'px', round(q.x * W), round((1 - q.y) * H) - PAN)
 
 # ---------------------------------------------------------------- siluetas 3D (misma forma que el envoltorio)
-# ---- pulpo de revolución hecho de «pelotas» que se funden (metaballs), como el modelo original
-# coordenadas en píxeles del recorte del render real (ancho 1216, alto 1409): (x, z desde abajo, profundidad, radio de superficie)
-_MBW, _MBH = 1304.0, 1409.0
-_R8, _r8 = 516.0, 178.0
-_BALLS = [(652, 687, 0, 530)]                                   # cabeza (x, z, profundidad, radio)
-for _k in range(8):                                               # 8 pelotas-tentáculo en anillo bajo la cabeza
-    _a = math.radians(22.5 + 45 * _k)
-    _BALLS.append((652 + _R8 * math.cos(_a), _r8, -_R8 * math.sin(_a), _r8))
+# ---- pulpo real (STL de Avril): cuerpo + anilla en color plano, con «?» sobre la cara
+bpy.ops.wm.stl_import(filepath=os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'assets', 'modelo', 'OctoSmoot.stl'))
+_raw = bpy.context.selected_objects[0]; bpy.context.view_layer.objects.active = _raw
+bpy.ops.object.mode_set(mode='EDIT'); bpy.ops.mesh.separate(type='LOOSE'); bpy.ops.object.mode_set(mode='OBJECT')
+_TPL = []
+for _o in [o for o in bpy.data.objects if o.type == 'MESH' and o.name.startswith('OctoSmoot')]:
+    _v = np.array([list(p_.co) for p_ in _o.data.vertices]); _c = (_v.min(0) + _v.max(0)) / 2
+    if len(_v) > 5000 or _c[2] > 2.0:                    # cuerpo y anilla (los ojos y la boca no van en la silueta)
+        for p_ in _o.data.polygons: p_.use_smooth = True
+        _TPL.append(_o.data)
+    _o.hide_render = True; _o.hide_viewport = True
+_STL_W, _STL_ZMIN, _STL_ZMAX = 2.64, -0.084, 2.6
 def silueta(name, x_px, base_final_y, w_px, color, qcolor):
-    x, d = place(x_px, base_final_y); Wm = px_to_m(w_px, d); s = Wm / _MBW
+    x, d = place(x_px, base_final_y); Wm = px_to_m(w_px, d); K = Wm / _STL_W
     gz = ground_h(x, d)
-    mb = bpy.data.metaballs.new(name + '_mb'); mb.threshold = 0.6; mb.resolution = Wm / 140; mb.render_resolution = Wm / 140
-    for bx, bz, by, br in _BALLS:
-        e = mb.elements.new(); e.co = ((bx - _MBW / 2) * s, by * s, bz * s); e.radius = br * s / 0.574 * 0.93; e.stiffness = 2.0
-    ob = bpy.data.objects.new(name, mb); scene.collection.objects.link(ob); ob.location = (x, d, gz)
-    ob.data.materials.append(toy(name + '_m', color))
-    # anilla (toro) arriba
-    bpy.ops.mesh.primitive_torus_add(major_radius=93 * s, minor_radius=46 * s, major_segments=64, minor_segments=32, location=(x, d, gz + 1303 * s), rotation=(math.radians(90), 0, 0))
-    ring = bpy.context.object; ring.name = name + '_anilla'; ring.data.materials.append(toy(name + '_a', color))
-    for p_ in ring.data.polygons: p_.use_smooth = True
-    ring.parent = ob; ring.matrix_parent_inverse = ob.matrix_world.inverted()
+    root = bpy.data.objects.new(name, None); scene.collection.objects.link(root)
+    root.location = (x, d, gz - _STL_ZMIN * K); root.rotation_euler = (0, 0, math.pi); root.scale = (K, K, K)   # de cara a la cámara
+    mat = toy(name + '_m', color); parts = [root]
+    for k, me in enumerate(_TPL):
+        o = bpy.data.objects.new(f'{name}_{k}', me); scene.collection.objects.link(o); o.parent = root; o.data.materials.clear(); o.data.materials.append(mat); parts.append(o)
     cu = bpy.data.curves.new(name + '_q', 'FONT'); cu.body = '?'; cu.size = 0.62 * Wm; cu.extrude = 0.02 * Wm; cu.bevel_depth = 0.006 * Wm
     cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
     try: cu.font = bpy.data.fonts.load(FONT)
     except Exception as ex: print('fuente:', ex)
     q = bpy.data.objects.new(name + '_q', cu); scene.collection.objects.link(q)
-    q.rotation_euler = (math.radians(90), 0, 0); q.location = (x, d - 530 * s * 0.985, gz + 700 * s)
-    q.parent = ob; q.matrix_parent_inverse = ob.matrix_world.inverted(); q.data.materials.append(toy(name + '_qm', qcolor))
-    return ob, [ob, ring, q], Wm
+    q.rotation_euler = (math.radians(90), 0, 0); q.location = (x, d - 1.32 * K, gz + (1.25 - _STL_ZMIN) * K)
+    q.parent = None; q.data.materials.append(toy(name + '_qm', qcolor)); parts.append(q)
+    return root, parts, Wm
 
 SIL = {
     's1': (130, 1560, 140, YEL, DBLUE), 's2': (275, 1450, 122, YEL, DBLUE),
@@ -383,7 +382,7 @@ if ONLY in ('all', 'capas'):
                     for dz in (0, 0.5):
                         pts.append(Vector((cx + dx * Wm, cy + dy * Wm, ground_h(cx, cy) + dz * Wm)))
         else:
-            root, parts, Wm = objs[k]; cx, cy = root.location.x, root.location.y
+            root, parts, Wm = objs[k]; cx, cy = root.location.x, root.location.y; root.location.z = ground_h(cx, cy) if False else root.location.z
             for dx in (-0.7, 1.9):
                 for dy in (-0.5, 2.4):
                     for dz in (0, 1.35):
