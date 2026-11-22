@@ -15,7 +15,8 @@ W, H = 1080, 2700
 RES = 0.4 if PREVIEW else 1.0
 SAMPLES = 20 if PREVIEW else 72
 F_PX = 35.0 / 36.0 * H            # focal en píxeles (lente 35 mm, sensor vertical 36 mm)
-CAM_H = 1.5                        # altura de la cámara (m)
+CAM_H = 2.4                        # altura de la cámara (m)
+SHORE = 30.0                       # distancia de la orilla (m)
 HORIZ = 1700                       # fila del horizonte en el fondo alto
 PAN = 780                          # el vídeo baja 780 px: fila_fondo = fila_vídeo + PAN
 FONT = '/tmp/claude-0/BagelFatOne.ttf'
@@ -81,7 +82,7 @@ mxs = nt.nodes.new('ShaderNodeMixShader'); nt.links.new(mxr.outputs[0], mxs.inpu
 nt.links.new(bg2.outputs[0], mxs.inputs[1]); nt.links.new(bg.outputs[0], mxs.inputs[2])
 nt.links.new(mxs.outputs[0], out.inputs[0])
 
-sun_d = bpy.data.lights.new('sol', 'SUN'); sun_d.energy = 3.3; sun_d.angle = math.radians(9); sun_d.color = (1.0, 0.95, 0.84)
+sun_d = bpy.data.lights.new('sol', 'SUN'); sun_d.energy = 3.3; sun_d.angle = math.radians(16); sun_d.color = (1.0, 0.95, 0.84)
 sun = bpy.data.objects.new('sol', sun_d); scene.collection.objects.link(sun)
 sun.rotation_euler = Vector((0.5, 0.6, -0.5)).normalized().to_track_quat('-Z', 'Y').to_euler()
 
@@ -111,7 +112,7 @@ def sand_material():
     nt.links.new(ao.outputs['AO'], mao.inputs['Factor']); mao.inputs[6].default_value = hexrgb('#E9D29A'); nt.links.new(cr.outputs['Color'], mao.inputs[7])
     geo = nt.nodes.new('ShaderNodeNewGeometry'); sp = nt.nodes.new('ShaderNodeSeparateXYZ'); wet = nt.nodes.new('ShaderNodeMapRange')
     nt.links.new(geo.outputs['Position'], sp.inputs[0]); nt.links.new(sp.outputs['Y'], wet.inputs['Value'])
-    wet.inputs['From Min'].default_value = 17.6; wet.inputs['From Max'].default_value = 19.6; wet.inputs['To Min'].default_value = 0; wet.inputs['To Max'].default_value = 1
+    wet.inputs['From Min'].default_value = SHORE - 2.2; wet.inputs['From Max'].default_value = SHORE; wet.inputs['To Min'].default_value = 0; wet.inputs['To Max'].default_value = 1
     mix = nt.nodes.new('ShaderNodeMix'); mix.data_type = 'RGBA'
     nt.links.new(wet.outputs['Result'], mix.inputs['Factor']); nt.links.new(mao.outputs[2], mix.inputs[6]); mix.inputs[7].default_value = hexrgb('#EAD293')
     gsum = nt.nodes.new('ShaderNodeMath'); gsum.operation = 'ADD'
@@ -127,14 +128,18 @@ def sand_material():
 def sea_material():
     m = bpy.data.materials.new('mar'); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
     o = nt.nodes.new('ShaderNodeOutputMaterial'); b = nt.nodes.new('ShaderNodeBsdfPrincipled')
-    b.inputs['Base Color'].default_value = hexrgb('#3FA8EE'); b.inputs['Roughness'].default_value = 0.22
-    tc = nt.nodes.new('ShaderNodeTexCoord'); n = nt.nodes.new('ShaderNodeTexNoise'); n.inputs['Scale'].default_value = 2.5; n.inputs['Detail'].default_value = 5
-    mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = (1, 0.15, 1)    # olas alargadas
-    bump = nt.nodes.new('ShaderNodeBump'); bump.inputs['Strength'].default_value = 0.35
+    geo = nt.nodes.new('ShaderNodeNewGeometry'); sp = nt.nodes.new('ShaderNodeSeparateXYZ'); mr = nt.nodes.new('ShaderNodeMapRange')
+    nt.links.new(geo.outputs['Position'], sp.inputs[0]); nt.links.new(sp.outputs['Y'], mr.inputs['Value'])
+    mr.inputs['From Min'].default_value = SHORE; mr.inputs['From Max'].default_value = SHORE + 120; mr.inputs['To Min'].default_value = 0; mr.inputs['To Max'].default_value = 1
+    cr = nt.nodes.new('ShaderNodeValToRGB'); cr.color_ramp.elements[0].color = hexrgb('#7CD9E6'); cr.color_ramp.elements[1].color = hexrgb('#2E93E6')
+    nt.links.new(mr.outputs['Result'], cr.inputs['Fac']); nt.links.new(cr.outputs['Color'], b.inputs['Base Color'])
+    b.inputs['Roughness'].default_value = 0.08; b.inputs['Specular IOR Level'].default_value = 0.7
+    tc = nt.nodes.new('ShaderNodeTexCoord'); n = nt.nodes.new('ShaderNodeTexNoise'); n.inputs['Scale'].default_value = 3.0; n.inputs['Detail'].default_value = 6
+    mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = (1.0, 0.35, 1)
+    bump = nt.nodes.new('ShaderNodeBump'); bump.inputs['Strength'].default_value = 0.4; bump.inputs['Distance'].default_value = 0.05
     nt.links.new(tc.outputs['Object'], mp.inputs['Vector']); nt.links.new(mp.outputs['Vector'], n.inputs['Vector'])
     nt.links.new(n.outputs['Fac'], bump.inputs['Height']); nt.links.new(bump.outputs['Normal'], b.inputs['Normal'])
-    nt.links.new(b.outputs[0], o.inputs[0])
-    return m
+    nt.links.new(b.outputs[0], o.inputs[0]); return m
 
 def foam_material():
     m = bpy.data.materials.new('espuma'); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
@@ -143,8 +148,8 @@ def foam_material():
     b.inputs['Emission Color'].default_value = hexrgb('#FFFFFF'); b.inputs['Emission Strength'].default_value = 0.35
     tr = nt.nodes.new('ShaderNodeBsdfTransparent'); mx = nt.nodes.new('ShaderNodeMixShader')
     tc = nt.nodes.new('ShaderNodeTexCoord'); n = nt.nodes.new('ShaderNodeTexNoise'); n.inputs['Scale'].default_value = 9; n.inputs['Detail'].default_value = 8
-    mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = (0.6, 4.0, 1)
-    cr = nt.nodes.new('ShaderNodeValToRGB'); cr.color_ramp.elements[0].position = 0.45; cr.color_ramp.elements[1].position = 0.62
+    mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = (1.2, 6.0, 1)
+    cr = nt.nodes.new('ShaderNodeValToRGB'); cr.color_ramp.elements[0].position = 0.35; cr.color_ramp.elements[1].position = 0.55
     nt.links.new(tc.outputs['Object'], mp.inputs['Vector']); nt.links.new(mp.outputs['Vector'], n.inputs['Vector'])
     nt.links.new(n.outputs['Fac'], cr.inputs['Fac']); nt.links.new(cr.outputs['Color'], mx.inputs['Fac'])
     nt.links.new(tr.outputs[0], mx.inputs[1]); nt.links.new(b.outputs[0], mx.inputs[2]); nt.links.new(mx.outputs[0], o.inputs[0])
@@ -182,14 +187,14 @@ def height(X, Y):
         hc = float(relief(np.array(fx), np.array(fy)))
         m = np.exp(-((X - fx) ** 2 + (Y - fy) ** 2) / (2 * (fr * 0.6) ** 2))
         h = h * (1 - m) + hc * m
-    fade = 1 - np.clip((Y - 12.0) / 6.5, 0, 1)                      # el relieve se aplana hacia la orilla
+    fade = 1 - np.clip((Y - (SHORE - 7.0)) / 7.0, 0, 1)             # el relieve se aplana hacia la orilla
     h = h * fade
-    base = np.where(Y < 18.0, 0.0, np.where(Y < 19.7, -0.04 * (Y - 18.0) / 1.7, -0.04 - 0.30 * (Y - 19.7)))
+    base = np.where(Y < SHORE - 1.7, 0.0, np.where(Y < SHORE, -0.04 * (Y - (SHORE - 1.7)) / 1.7, -0.04 - 0.30 * (Y - SHORE)))
     return h + base
 
 def build_sand():
-    nx, ny = 421, 640
-    xs = np.linspace(-10, 10, nx); t = np.linspace(0, 1, ny); ys = 0.3 + 21.7 * t ** 1.7        # más densa cerca de la cámara
+    nx, ny = 421, 760
+    xs = np.linspace(-10, 10, nx); t = np.linspace(0, 1, ny); ys = 0.3 + (SHORE + 6.0) * t ** 1.9        # más densa cerca de la cámara
     X, Y = np.meshgrid(xs, ys); Z = height(X, Y)
     verts = np.stack([X, Y, Z], -1).reshape(-1, 3).tolist()
     idx = np.arange(nx * ny).reshape(ny, nx)
@@ -201,17 +206,43 @@ def build_sand():
     return ob, (lambda x, y: float(height(np.array(x), np.array(y))))
 
 # posiciones de los juguetes (antes de construir la arena, para aplanar bajo ellos)
-_SIL_POS = {'s1': (135, 1760, 170), 's2': (270, 1640, 150), 's4': (810, 1640, 150), 's5': (945, 1760, 170), 's3': (540, 1545, 160)}
+_SIL_POS = {'s1': (130, 1560, 170), 's2': (275, 1450, 150), 's4': (805, 1450, 150), 's5': (950, 1560, 170), 's3': (540, 1370, 150)}
 for _k, (_x, _y, _w) in _SIL_POS.items():
     _X, _D = place(_x, _y); FLATS.append((_X, _D, px_to_m(_w, _D) * 0.9))
-_X, _D = place(540, 1900); FLATS.append((_X, _D, px_to_m(360, _D) * 0.8))
+_X, _D = place(540, 1700); FLATS.append((_X, _D, px_to_m(360, _D) * 0.8))
 sand, ground_h = build_sand()
 
-# mar y espuma
-bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 260, -0.04)); sea = bpy.context.object; sea.name = 'mar'; sea.scale = (900, 480, 1)
-sea.data.materials.append(sea_material())
-bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 19.62, -0.035)); foam = bpy.context.object; foam.name = 'espuma'; foam.scale = (60, 0.45, 1)
-foam.data.materials.append(foam_material())
+# mar: malla con oleaje irregular (olas largas + rizado), más densa cerca de la orilla
+def wave_h(X, Y):
+    X = np.asarray(X, float); Y = np.asarray(Y, float)
+    amp = 0.16 + 0.10 * np.clip((Y - SHORE) / 80.0, 0, 1)
+    w1 = np.sin(Y * 1.15 + 0.9 * perlin(X / 6.0, Y / 9.0, 31) * 3.0 + X * 0.05)
+    w2 = np.sin(Y * 2.3 + X * 0.28 + 2.0 * perlin(X / 3.0, Y / 4.0, 32) * 3.0) * 0.55
+    w3 = np.sin(Y * 4.6 - X * 0.45 + 3.0 * perlin(X / 1.6, Y / 2.0, 33) * 3.0) * 0.28
+    return amp * (w1 + w2 + w3) + 0.03 * perlin(X / 0.9, Y / 1.2, 34)
+def build_sea():
+    nx, ny = 361, 520
+    u = np.linspace(-1, 1, nx); xs = np.sign(u) * (np.abs(u) ** 1.9) * 500
+    t = np.linspace(0, 1, ny); ys = (SHORE - 0.8) + 800 * t ** 2.4
+    X, Y = np.meshgrid(xs, ys); Z = -0.05 + wave_h(X, Y)
+    verts = np.stack([X, Y, Z], -1).reshape(-1, 3).tolist(); idx = np.arange(nx * ny).reshape(ny, nx)
+    faces = np.stack([idx[:-1, :-1], idx[:-1, 1:], idx[1:, 1:], idx[1:, :-1]], -1).reshape(-1, 4).tolist()
+    me = bpy.data.meshes.new('mar'); me.from_pydata(verts, [], faces); me.update()
+    ob = bpy.data.objects.new('mar', me); scene.collection.objects.link(ob)
+    for p_ in me.polygons: p_.use_smooth = True
+    ob.data.materials.append(sea_material()); return ob
+sea = build_sea()
+# espuma en la orilla: tira ondulada irregular
+def build_foam():
+    nx, ny = 400, 14
+    xs = np.linspace(-30, 30, nx); X = np.tile(xs, (ny, 1))
+    edge = SHORE - 0.25 + 0.55 * perlin(xs / 3.0, np.full(nx, 3.3), 41) + 0.18 * perlin(xs / 1.0, np.full(nx, 1.1), 42)
+    Yf = np.stack([edge - 1.1 * (1 - k / (ny - 1)) ** 0.9 for k in range(ny)])
+    Z = -0.025 + 0.0 * X
+    me = bpy.data.meshes.new('espuma'); me.from_pydata(np.stack([X, Yf, Z], -1).reshape(-1, 3).tolist(), [],
+        np.stack([np.arange(nx * ny).reshape(ny, nx)[:-1, :-1], np.arange(nx * ny).reshape(ny, nx)[:-1, 1:], np.arange(nx * ny).reshape(ny, nx)[1:, 1:], np.arange(nx * ny).reshape(ny, nx)[1:, :-1]], -1).reshape(-1, 4).tolist()); me.update()
+    ob = bpy.data.objects.new('espuma', me); scene.collection.objects.link(ob); ob.data.materials.append(foam_material()); return ob
+foam = build_foam()
 
 # ---------------------------------------------------------------- sol y nubes en 3D
 def sky_dir(px, row, dist):
@@ -254,34 +285,53 @@ for o in bpy.data.objects:
         q = world_to_camera_view(scene, cam, o.location); print('estrella', o.name, tuple(round(v, 2) for v in o.location), 'px', round(q.x * W), round((1 - q.y) * H) - PAN)
 
 # ---------------------------------------------------------------- siluetas 3D (misma forma que el envoltorio)
-SVG = [(262, 195, 180), (115, 328, 58), (410, 328, 58), (196, 358, 66), (330, 358, 66)]   # cx, cy, r en el dibujo
+from PIL import Image as _Img
+from scipy.ndimage import distance_transform_edt as _edt
+_MASK = np.array(_Img.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'assets', 'sil_mask.png')).convert('L')) > 127
+_MH, _MW = _MASK.shape
+_DIST = _edt(_MASK)
+def inflated_mesh(name, s, T):
+    """Malla inflada (tipo peluche) con el contorno del pulpo real. s = m/píxel de máscara; T = grosor de media pieza (m)."""
+    R = 26.0
+    d = np.clip(_DIST / R, 0, 1); hz = T * np.sqrt(1 - (1 - d) ** 2)
+    ys_, xs_ = np.mgrid[0:_MH, 0:_MW]
+    vid = -np.ones((_MH, _MW), int); idx = np.where(_MASK)
+    vid[idx] = np.arange(len(idx[0]))
+    verts = [((x - _MW / 2) * s, -hz[y, x], (_MH - y) * s) for y, x in zip(*idx)]
+    faces = []
+    for y in range(_MH - 1):
+        for x in range(_MW - 1):
+            a, b, c, e = vid[y, x], vid[y, x + 1], vid[y + 1, x + 1], vid[y + 1, x]
+            if min(a, b, c, e) >= 0: faces.append((a, b, c, e))
+    me = bpy.data.meshes.new(name); me.from_pydata(verts, [], faces); me.update()
+    return me
+
 def silueta(name, x_px, base_final_y, w_px, color, qcolor):
-    x, d = place(x_px, base_final_y); Wm = px_to_m(w_px, d); s = Wm / 411.0
-    root = bpy.data.objects.new(name, None); scene.collection.objects.link(root); root.location = (x, d, ground_h(x, d))
-    mat = toy(name + '_m', color); parts = []
-    for cx, cy, r in SVG:
-        bpy.ops.mesh.primitive_uv_sphere_add(radius=r * s, location=(x + (cx - 262.5) * s, d, root.location.z + (424 - cy) * s), segments=48, ring_count=24)
-        o = bpy.context.object; o.data.materials.append(mat); o.parent = root; o.matrix_parent_inverse = root.matrix_world.inverted()
-        for p in o.data.polygons: p.use_smooth = True
-        parts.append(o)
-    # signo de interrogación en relieve sobre la cabeza
-    cu = bpy.data.curves.new(name + '_q', 'FONT'); cu.body = '?'; cu.size = 0.41 * Wm; cu.extrude = 0.035 * Wm; cu.bevel_depth = 0.006 * Wm
+    x, d = place(x_px, base_final_y); Wm = px_to_m(w_px, d); s = Wm / _MW; T = 0.38 * Wm
+    gz = ground_h(x, d)
+    me = inflated_mesh(name, s, T)
+    ob = bpy.data.objects.new(name, me); scene.collection.objects.link(ob); ob.location = (x, d, gz - 0.01 * Wm)
+    mod = ob.modifiers.new('espejo', 'MIRROR'); mod.use_axis[0] = False; mod.use_axis[1] = True; mod.use_axis[2] = False; mod.use_mirror_merge = True; mod.merge_threshold = 1e-5
+    sub = ob.modifiers.new('suave', 'SUBSURF'); sub.levels = 1; sub.render_levels = 1
+    for p_ in me.polygons: p_.use_smooth = True
+    ob.data.materials.append(toy(name + '_m', color))
+    cu = bpy.data.curves.new(name + '_q', 'FONT'); cu.body = '?'; cu.size = 0.55 * Wm; cu.extrude = 0.02 * Wm; cu.bevel_depth = 0.006 * Wm
     cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
     try: cu.font = bpy.data.fonts.load(FONT)
     except Exception as ex: print('fuente:', ex)
     q = bpy.data.objects.new(name + '_q', cu); scene.collection.objects.link(q)
-    q.rotation_euler = (math.radians(90), 0, 0); q.location = (x, d - 180 * s * 0.965, root.location.z + (424 - 212) * s)
-    q.parent = root; q.matrix_parent_inverse = root.matrix_world.inverted(); q.data.materials.append(toy(name + '_qm', qcolor)); parts.append(q)
-    return root, parts, Wm
+    q.rotation_euler = (math.radians(90), 0, 0); q.location = (x, d - T * 1.0, gz + (_MH * 0.58) * s)
+    q.data.materials.append(toy(name + '_qm', qcolor))
+    return ob, [ob, q], Wm
 
 SIL = {
-    's1': (135, 1760, 170, YEL, DBLUE), 's2': (270, 1640, 150, YEL, DBLUE),
-    's4': (810, 1640, 150, YEL, DBLUE), 's5': (945, 1760, 170, YEL, DBLUE),
-    's3': (540, 1545, 160, BLACK, YEL),
+    's1': (130, 1560, 170, YEL, DBLUE), 's2': (275, 1450, 150, YEL, DBLUE),
+    's4': (805, 1450, 150, YEL, DBLUE), 's5': (950, 1560, 170, YEL, DBLUE),
+    's3': (540, 1370, 150, BLACK, YEL),
 }
 objs = {k: silueta(k, *v) for k, v in SIL.items()}
 # proxy invisible para la sombra del pulpo morado (su imagen 2D la pone el montaje)
-px_, pd_ = place(540, 1900)
+px_, pd_ = place(540, 1700)
 Wp = px_to_m(360, pd_)
 bpy.ops.mesh.primitive_uv_sphere_add(radius=1, location=(px_, pd_, ground_h(px_, pd_) + 0.46 * Wp), segments=48, ring_count=24)
 proxy = bpy.context.object; proxy.name = 'sombra_morado'; proxy.scale = (0.5 * Wp, 0.42 * Wp, 0.5 * Wp)
@@ -329,8 +379,8 @@ if ONLY in ('all', 'capas'):
         else:
             root, parts, Wm = objs[k]; cx, cy = root.location.x, root.location.y
             for dx in (-0.7, 1.9):
-                for dy in (-0.4, 2.2):
-                    for dz in (0, 1.0):
+                for dy in (-0.5, 2.4):
+                    for dz in (0, 1.35):
                         pts.append(Vector((cx + dx * Wm, cy + dy * Wm, root.location.z + dz * Wm)))
         xs = []; ys = []
         for p in pts:

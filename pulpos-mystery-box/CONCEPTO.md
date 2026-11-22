@@ -148,3 +148,9 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 ## Rosa de marca = coral de Octo (22/11/2026)
 - Todo el rosa de la marca pasa a ser el coral del pulpo original: **#CD575B** (título «OctoMood» del envoltorio, pancarta, precio y tachado del vídeo). Se abandonan #C2377F y #FA96CD.
 - Anuncio 3D: fondo (cielo, mar, arena con relieve irregular y sol/nubes), siluetas amarillas 3D y secreto negro se renderizan en Blender 5.1.2 con `reel-3d/tools/escena_playa.py` (módulo `bpy`, CPU, ≈ 5 min a resolución completa) y `tools/pulir_capas.py`. Distribución: morado delante, 2 amarillas a cada lado en forma de triángulo y la negra detrás en la arena. Render: `reel-3d/renders/octomood-3d.mp4`.
+
+## Ajustes del anuncio y del paquete (22/11/2026, 2.ª ronda)
+- Mar 3D con oleaje irregular (malla con olas largas y rizado, color turquesa→azul, espuma ondulada en la orilla); cámara a 2,4 m, orilla a 30 m.
+- Todos los pulpos subidos; sombra del morado suavizada (alfa × 0,38 y sol más difuso).
+- Siluetas amarillas y negra = contorno del pulpo real (máscara `reel-3d/assets/sil_mask.png`, inflada en 3D). En el paquete se usan `diseno/pulpos/sil_azul.png` y `sil_negra.png`.
+- Título del paquete = título del vídeo (Octo coral #CD575B + Mood #8DD0F7, Modak, relieve blanco).

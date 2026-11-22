@@ -77,8 +77,8 @@ YELLOW = octo("#FFF08A", "#FFCE2E", "#D69B00", "cool")
 BLUE_O = octo("#B8E6FF", "#5EB6F2", "#2C7DBB", "sad")
 GREEN  = octo("#C9F59A", "#7FD05A", "#3C9A33", "sick")
 RAIN   = octo("", "", "", "wave", rainbow=True)
-SIL    = octo("", "", "", silhouette=True)
-SILQ   = octo("", "", "", silhouette=True, sil="#BAE6FD", q="#1F5F93")  # aún no revelado: silueta azul clara con «?»
+SIL    = '<img src="pulpos/sil_negra.png" alt="secreto">'   # silueta real del pulpo (negra) con «?» amarillo
+SILQ   = '<img src="pulpos/sil_azul.png" alt="?">'          # aún no revelado: silueta real azul clara con «?»
 
 def pulpo(name, vector):
     """Usa pulpos/<name>.png (render real, fondo transparente) si existe; si no, el dibujo provisional."""
@@ -88,6 +88,8 @@ PURP, RED, YELLOW, BLUE_O, GREEN, RAIN = (pulpo(n, v) for n, v in
     [("morado", PURP), ("rojo", RED), ("amarillo", YELLOW), ("azul", BLUE_O), ("verde", GREEN), ("arcoiris", RAIN)])
 
 def title(name, size=17):
+    if name == "OctoMood":   # mismo título que el anuncio: Octo coral + Mood azul claro, relieve blanco
+        name = '<span style="color:#CD575B">Octo</span><span style="color:#8DD0F7">Mood</span>'
     return f'<div class="title" style="font-size:{size}mm">{name}</div>'
 
 CSS = f"""

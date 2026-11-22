@@ -38,25 +38,25 @@ index = f"""<!doctype html>
       #bg img {{ display: block; width: 1080px; height: 2700px; }}
       #front {{ position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }}
       .layer {{ position: absolute; display: block; opacity: 0; }}
-      #octo {{ position: absolute; left: 328px; top: 1479px; width: 424px; height: 424px; opacity: 0; }}
+      #octo {{ position: absolute; left: 328px; top: 1318px; width: 424px; height: 424px; opacity: 0; }}
       #octo img {{ width: 100%; height: 100%; display: block; }}
       .txt {{ position: absolute; left: 0; width: 1080px; text-align: center; font-family: "Bagel Fat One", sans-serif; opacity: 0; }}
-      .hook {{ top: 340px; font-size: 84px; line-height: 1; color: {DBLUE}; -webkit-text-stroke: 14px #fff; paint-order: stroke fill; }}
-      .title {{ top: 370px; font-family: Modak, "Bagel Fat One", sans-serif; font-size: 190px; line-height: 1.05; -webkit-text-stroke: 24px #fff; paint-order: stroke fill; filter: drop-shadow(0 10px 0 #fff); }}
+      .hook {{ top: 290px; font-size: 84px; line-height: 1; color: {DBLUE}; -webkit-text-stroke: 14px #fff; paint-order: stroke fill; }}
+      .title {{ top: 285px; font-family: Modak, "Bagel Fat One", sans-serif; font-size: 190px; line-height: 1.05; -webkit-text-stroke: 24px #fff; paint-order: stroke fill; filter: drop-shadow(0 10px 0 #fff); }}
       .title .a {{ color: {CORAL}; }} .title .b {{ color: {MOODBLUE}; }}
-      .tag {{ top: 610px; font-size: 52px; color: {DBLUE}; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; }}
-      .banner {{ position: absolute; left: 0; top: 620px; width: 1080px; text-align: center; opacity: 0; }}
+      .tag {{ top: 505px; font-size: 52px; color: {DBLUE}; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; }}
+      .banner {{ position: absolute; left: 0; top: 515px; width: 1080px; text-align: center; opacity: 0; }}
       .banner span {{ display: inline-block; font-family: "Bagel Fat One", sans-serif; font-size: 58px; white-space: nowrap; color: #fff; background: {DPINK}; padding: 16px 50px 22px; border-radius: 999px; border: 10px solid #fff; }}
-      .old {{ top: 770px; font-size: 88px; color: {DBLUE}; -webkit-text-stroke: 12px #fff; paint-order: stroke fill; }}
+      .old {{ top: 655px; font-size: 88px; color: {DBLUE}; -webkit-text-stroke: 12px #fff; paint-order: stroke fill; }}
       .old span {{ position: relative; display: inline-block; }}
       #strike {{ position: absolute; left: -16px; top: 52%; height: 14px; width: 0; background: {DPINK}; border-radius: 8px; transform: rotate(-8deg); transform-origin: left center; }}
-      .lanc {{ top: 905px; font-size: 44px; color: {DBLUE}; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; letter-spacing: .04em; }}
-      .new {{ top: 945px; font-family: Modak, "Bagel Fat One", sans-serif; font-size: 200px; line-height: 1; color: {DPINK}; -webkit-text-stroke: 26px #fff; paint-order: stroke fill; filter: drop-shadow(0 8px 0 #fff); }}
-      .until {{ top: 1170px; font-size: 44px; color: {DBLUE}; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; }}
-      .cta {{ position: absolute; left: 0; top: 1255px; width: 1080px; text-align: center; opacity: 0; }}
+      .lanc {{ top: 790px; font-size: 44px; color: {DBLUE}; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; letter-spacing: .04em; }}
+      .new {{ top: 830px; font-family: Modak, "Bagel Fat One", sans-serif; font-size: 200px; line-height: 1; color: {DPINK}; -webkit-text-stroke: 26px #fff; paint-order: stroke fill; filter: drop-shadow(0 8px 0 #fff); }}
+      .until {{ top: 1040px; font-size: 44px; color: {DBLUE}; -webkit-text-stroke: 10px #fff; paint-order: stroke fill; }}
+      .cta {{ position: absolute; left: 0; top: 1118px; width: 1080px; text-align: center; opacity: 0; }}
       .cta span {{ display: inline-block; font-family: "Bagel Fat One", sans-serif; font-size: 52px; color: {DBLUE}; background: {YEL}; padding: 18px 46px 24px; border-radius: 999px; border: 8px solid #fff; }}
-      #logo {{ position: absolute; left: 45px; top: 170px; width: 160px; height: 160px; opacity: 0; }}
-      #flash {{ position: absolute; left: 340px; top: 1680px; width: 400px; height: 400px; border-radius: 50%; border: 18px solid #fff; opacity: 0; }}
+      #logo {{ position: absolute; left: 45px; top: 110px; width: 160px; height: 160px; opacity: 0; }}
+      #flash {{ position: absolute; left: 340px; top: 1540px; width: 400px; height: 400px; border-radius: 50%; border: 18px solid #fff; opacity: 0; }}
     </style>
   </head>
   <body>
@@ -103,7 +103,7 @@ index = f"""<!doctype html>
       const tl = gsap.timeline({{ paused: true }});
       // ---- 0-2 s: pop + giro (provisional: scaleX; Blender dará los fotogramas reales) rápido al empezar, lento al final
       const spin = {{ a: 0 }};
-      tl.set("#octo", {{ y: -871 }}, 0);
+      tl.set("#octo", {{ y: -710 }}, 0);
       tl.fromTo("#octo", {{ opacity: 1, scale: 0.6 }}, {{ opacity: 1, scale: 1.5, duration: 0.4, ease: "back.out(2)" }}, 0);
       tl.to(spin, {{ a: Math.PI * 4, duration: 1.8, ease: "power3.out", onUpdate: () => gsap.set("#octo-3d", {{ scaleX: Math.cos(spin.a) }}) }}, 0.1);
       tl.set("#hook", {{ opacity: 1 }}, 0);

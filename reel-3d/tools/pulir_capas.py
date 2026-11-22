@@ -10,5 +10,6 @@ for f in sorted(glob.glob(sys.argv[1] + '/capa_*.png')):
     ey = np.minimum(np.arange(h), np.arange(h)[::-1]); ex = np.minimum(np.arange(w), np.arange(w)[::-1])
     m = np.clip(np.minimum(ey[:, None], ex[None, :]) / fade, 0, 1)
     a = a * m
+    if f.endswith('capa_morado.png'): a = a * 0.38      # sombra del pulpo morado: mucho más suave
     im[..., 3] = a * 255
     Image.fromarray(im.astype(np.uint8), 'RGBA').save(f); print('pulida', f)
