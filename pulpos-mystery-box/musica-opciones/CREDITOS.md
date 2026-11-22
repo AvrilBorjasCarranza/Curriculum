@@ -24,3 +24,4 @@ Las pistas CC BY exigen poner el crédito (título, autor y licencia) en la desc
   - `jingle_C2_saltarina_120bpm.mp3` — swing en las corcheas, bajo corto y saltarín, palmas dobladas, marimba y ukulele más presentes.
   - `jingle_C3_playa_120bpm.mp3` — aire de playa: congas, melodía doblada con timbal metálico tipo steel drum, ukulele más fuerte, pad más bajo.
 - Música de burbuja (`generar_burbujas.py`, `generar_burbujas_v2.py`): E (108 BPM, elegida), F (con blops), y variaciones de E: E1 caja de música 118 BPM (melodía una octava arriba, celesta, arpegio), E2 blub suave 100 BPM (burbujas con glissando, swing, bajo más presente), E3 cristal 112 BPM (destellos de cristal y arpegio). Todas ≈ −15 LUFS.
+- Ronda 3 (`generar_burbujas_v3.py`, sin swing, tempo 100–104 BPM; burbujas con subida de tono muy rápida y racimos de burbujitas en los contratiempos): G1 burbujitas (104), G2 melodía tocada con burbujas (104), G3 bajo «blub» (100).
