@@ -108,15 +108,15 @@ index = f"""<!doctype html>
       <div id="cta" class="cta clip" data-start="0" data-duration="{T}" data-track-index="2" style="z-index:11"><span>Écris-nous en DM · @renardlab3d</span></div>
 
       <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="{T}" data-track-index="5" data-volume="0.72"></audio>
-      <audio id="sfx-pop0" class="clip" src="assets/sfx/pop.mp3" data-start="0.05" data-duration="0.72" data-track-index="6" data-volume="0.9"></audio>
-      <audio id="sfx-fall" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="1.85" data-duration="0.57" data-track-index="6" data-volume="0.8"></audio>
-      <audio id="sfx-land" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="2.5" data-duration="1.2" data-track-index="13" data-volume="0.7"></audio>
-      <audio id="sfx-p1" class="clip" src="assets/sfx/pop.mp3" data-start="2.95" data-duration="0.72" data-track-index="6" data-volume="0.45"></audio>
-      <audio id="sfx-p2" class="clip" src="assets/sfx/pop.mp3" data-start="3.1" data-duration="0.72" data-track-index="7" data-volume="0.45"></audio>
-      <audio id="sfx-p3" class="clip" src="assets/sfx/pop.mp3" data-start="3.25" data-duration="0.72" data-track-index="8" data-volume="0.45"></audio>
-      <audio id="sfx-p4" class="clip" src="assets/sfx/pop.mp3" data-start="3.4" data-duration="0.72" data-track-index="9" data-volume="0.45"></audio>
-      <audio id="sfx-p5" class="clip" src="assets/sfx/pop.mp3" data-start="3.6" data-duration="0.72" data-track-index="10" data-volume="0.6"></audio>
-      <audio id="sfx-title" class="clip" src="assets/sfx/pop.mp3" data-start="4.0" data-duration="0.72" data-track-index="6" data-volume="0.95"></audio>
+      <audio id="sfx-pop0" class="clip" src="assets/sfx/burbuja-pop_doble.mp3" data-start="0.05" data-duration="0.65" data-track-index="6" data-volume="0.95"></audio>
+      <audio id="sfx-fall" class="clip" src="assets/sfx/hush-caida.mp3" data-start="1.75" data-duration="0.8" data-track-index="6" data-volume="0.9"></audio>
+      <audio id="sfx-land" class="clip" src="assets/sfx/burbuja-pop_c.mp3" data-start="2.52" data-duration="0.34" data-track-index="13" data-volume="0.7"></audio>
+      <audio id="sfx-p1" class="clip" src="assets/sfx/burbuja-pop_a.mp3" data-start="2.95" data-duration="0.34" data-track-index="6" data-volume="0.8"></audio>
+      <audio id="sfx-p2" class="clip" src="assets/sfx/burbuja-pop_b.mp3" data-start="3.1" data-duration="0.34" data-track-index="7" data-volume="0.8"></audio>
+      <audio id="sfx-p3" class="clip" src="assets/sfx/burbuja-pop_c.mp3" data-start="3.25" data-duration="0.34" data-track-index="8" data-volume="0.8"></audio>
+      <audio id="sfx-p4" class="clip" src="assets/sfx/burbuja-pop_a.mp3" data-start="3.4" data-duration="0.34" data-track-index="9" data-volume="0.8"></audio>
+      <audio id="sfx-p5" class="clip" src="assets/sfx/burbuja-pop_b.mp3" data-start="3.6" data-duration="0.34" data-track-index="10" data-volume="0.95"></audio>
+      <audio id="sfx-title" class="clip" src="assets/sfx/burbuja-pop_doble.mp3" data-start="4.0" data-duration="0.65" data-track-index="6" data-volume="1.0"></audio>
       <audio id="sfx-shift" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="5.85" data-duration="0.57" data-track-index="6" data-volume="0.6"></audio>
       <audio id="sfx-ban" class="clip" src="assets/sfx/burbuja-pop_a.mp3" data-start="6.0" data-duration="0.34" data-track-index="7" data-volume="0.95"></audio>
       <audio id="sfx-old" class="clip" src="assets/sfx/burbuja-pop_c.mp3" data-start="6.6" data-duration="0.34" data-track-index="8" data-volume="0.85"></audio>
