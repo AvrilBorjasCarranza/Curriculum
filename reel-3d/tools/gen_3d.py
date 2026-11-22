@@ -12,6 +12,8 @@ DPINK = CORAL          # el rosa de marca es ahora el coral del pulpo original
 REAL = os.path.exists(os.path.join(OUT, "assets/pieza-real.png"))
 SEQ = os.path.exists(os.path.join(OUT, "assets/pulpo/giro.webm"))   # pulpo 3D real renderizado en Blender (tools/anim_pulpo.py)
 SEQ_T = 3.1
+CAMARA = os.path.exists(os.path.join(OUT, "assets/camara/B.mp4"))   # escena completa con cámara en movimiento (tools/anim_camara.py)
+if CAMARA: SEQ = False
 
 # ----- capas 3D (Blender): fondo alto + siluetas con sombra + sombra del pulpo morado
 META = json.load(open(os.path.join(OUT, "assets/escena/capas.json")))
@@ -45,6 +47,29 @@ octo_js_b = '' if SEQ else '''      tl.to("#octo", { y: 0, scale: 1, duration: 0
       tl.fromTo("#flash", { opacity: 0.9, scale: 0.4 }, { opacity: 0, scale: 1.5, duration: 0.5, ease: "power2.out", immediateRender: false }, 2.55);
 
 '''
+pan_js = '' if CAMARA else '      tl.to("#bg", { y: -780, duration: 0.7, ease: "power2.in" }, 1.9);\n'
+toys_js = '' if CAMARA else '''      [["#Ls1", 2.95], ["#Ls2", 3.1], ["#Ls4", 3.25], ["#Ls5", 3.4], ["#Ls3", 3.6]].forEach(([id, t]) => {
+        tl.fromTo(id, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)", immediateRender: false }, t);
+      });
+'''
+_FULL = 'position:absolute;left:0;top:0;width:1080px;height:1920px;'
+if CAMARA:
+    scene_markup = (f'      <img id="bgA" class="clip" src="assets/camara/bgA.png" alt="" data-start="0" data-duration="1.9" data-track-index="0" style="{_FULL}z-index:1" />\n'
+                    f'      <video id="giroA" class="clip" src="assets/camara/giroA.webm" data-start="0" data-duration="1.9" data-track-index="1" muted playsinline style="{_FULL}z-index:2"></video>\n'
+                    f'      <video id="escB" class="clip" src="assets/camara/B.mp4" data-start="1.9" data-duration="2.1" data-track-index="1" muted playsinline style="{_FULL}z-index:3"></video>\n'
+                    f'      <img id="finC" class="clip" src="assets/camara/final.png" alt="" data-start="4" data-duration="{round(T - 4, 3)}" data-track-index="1" style="{_FULL}z-index:3" />')
+else:
+    scene_markup = f'''      <div id="bg" class="clip" data-start="0" data-duration="{T}" data-track-index="0" style="z-index:1">
+        <img src="assets/escena/fondo.png" alt="" />
+      </div>
+      <div id="front" class="clip" data-start="0" data-duration="{T}" data-track-index="1" style="z-index:5">
+{html_sils}
+{html_shadow}
+{octo_markup if not SEQ else ''}
+        <div id="flash"></div>
+      </div>
+'''
+
 # ---------------------------------------------------------------- escena
 index = f"""<!doctype html>
 <html lang="fr" data-resolution="portrait">
@@ -86,15 +111,7 @@ index = f"""<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{T}" data-width="1080" data-height="1920">
-      <div id="bg" class="clip" data-start="0" data-duration="{T}" data-track-index="0" style="z-index:1">
-        <img src="assets/escena/fondo.png" alt="" />
-      </div>
-      <div id="front" class="clip" data-start="0" data-duration="{T}" data-track-index="1" style="z-index:5">
-{html_sils}
-{html_shadow}
-{octo_markup if not SEQ else ''}
-        <div id="flash"></div>
-      </div>
+{scene_markup}
 {octo_markup if SEQ else ''}
       <div id="hook" class="txt hook clip" data-start="0" data-duration="{T}" data-track-index="2" style="z-index:10">Quel est ton mood ?</div>
       <img id="logo" class="clip" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" data-start="0" data-duration="{T}" data-track-index="2" style="z-index:12" />
@@ -131,12 +148,9 @@ index = f"""<!doctype html>
 {octo_js_a}      tl.set("#hook", {{ opacity: 1 }}, 0);
       tl.to("#hook", {{ opacity: 0, duration: 0.2 }}, 3.7);
       // ---- 1,9-2,6 s: cae y la cámara baja a la playa
-      tl.to("#bg", {{ y: -780, duration: 0.7, ease: "power2.in" }}, 1.9);
+{pan_js}
 {octo_js_b}      // ---- 2,9-3,7 s: las 5 siluetas aparecen detrás
-      [["#Ls1", 2.95], ["#Ls2", 3.1], ["#Ls4", 3.25], ["#Ls5", 3.4], ["#Ls3", 3.6]].forEach(([id, t]) => {{
-        tl.fromTo(id, {{ opacity: 0, scale: 0.3 }}, {{ opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)", immediateRender: false }}, t);
-      }});
-      // ---- 4 s: logo + título
+{toys_js}      // ---- 4 s: logo + título
       tl.fromTo("#logo", {{ opacity: 0, scale: 0.5, rotation: -20 }}, {{ opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(1.7)" }}, 4.0);
       tl.fromTo("#title", {{ opacity: 0, scale: 0.4, y: -60 }}, {{ opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2)" }}, 4.0);
       tl.fromTo("#tag", {{ opacity: 0, y: 24 }}, {{ opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }}, 4.2);
