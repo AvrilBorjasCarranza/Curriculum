@@ -71,7 +71,7 @@ def octo(hi, mid, lo, face="normal", rainbow=False, silhouette=False, sil="#1616
         f = eyes(17, 25) + mouth + '<path d="M150 135 q33 -22 66 0 M300 135 q33 -22 66 0" stroke="#141414" stroke-width="7" fill="none" stroke-linecap="round" opacity=".0"/>'
     return f'<svg viewBox="40 8 530 440" xmlns="http://www.w3.org/2000/svg"><defs>{defs}</defs>{s}{f}</svg>' if rainbow else f'<svg viewBox="40 8 440 440" xmlns="http://www.w3.org/2000/svg"><defs>{defs}</defs>{s}{f}</svg>'
 
-PINKO  = octo("#FF9CA3", "#E8626E", "#B63A4A")
+PURP   = octo("#B58AE0", "#7B3FA8", "#52247A")
 RED    = octo("#FF6F6F", "#D8262E", "#8E0F1C", "angry")
 YELLOW = octo("#FFF08A", "#FFCE2E", "#D69B00", "cool")
 BLUE_O = octo("#B8E6FF", "#5EB6F2", "#2C7DBB", "sad")
@@ -84,8 +84,8 @@ def pulpo(name, vector):
     """Usa pulpos/<name>.png (render real, fondo transparente) si existe; si no, el dibujo provisional."""
     return f'<img src="pulpos/{name}.png" alt="{name}">' if os.path.exists(os.path.join(OUT, "pulpos", name + ".png")) else vector
 
-PINKO, RED, YELLOW, BLUE_O, GREEN, RAIN = (pulpo(n, v) for n, v in
-    [("rosa", PINKO), ("rojo", RED), ("amarillo", YELLOW), ("azul", BLUE_O), ("verde", GREEN), ("arcoiris", RAIN)])
+PURP, RED, YELLOW, BLUE_O, GREEN, RAIN = (pulpo(n, v) for n, v in
+    [("morado", PURP), ("rojo", RED), ("amarillo", YELLOW), ("azul", BLUE_O), ("verde", GREEN), ("arcoiris", RAIN)])
 
 def title(name, size=17):
     return f'<div class="title" style="font-size:{size}mm">{name}</div>'
@@ -101,7 +101,6 @@ body {{ font-family: Inter, sans-serif; background: #fff; }}
 .small {{ font-family: var(--f), sans-serif; color: {TX}; -webkit-text-stroke: .6mm #FFFFFF; paint-order: stroke fill; letter-spacing: .15mm; font-size: 4.4mm; line-height: 1.2; text-align: center; }}
 .note {{ font-size: 3.1mm; color: #6b6b6b; }}
 .panel svg, .panel img {{ width: 100%; height: 100%; display: block; object-fit: contain; }}
-.panel img {{ transform: scale(1.4); transform-origin: 50% 55%; }}  /* los renders comparten recorte (con margen): se amplían para igualar a las siluetas */
 .panel.mini img {{ transform: scale(1.12); transform-origin: 50% 62%; }}
 .fold {{ border-top: .3mm dashed #8a8a8a; }}
 .foldv {{ border-left: .3mm dashed #8a8a8a; }}
@@ -126,7 +125,7 @@ def flat(name):
     # frente
     h += f'<div class="a" style="left:{X0}mm;top:{Y0+45}mm;width:110mm;height:80mm"><div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div>'
     h += f'<div class="a" style="left:0;top:2mm;width:110mm">{title(name, 21)}</div>'
-    h += f'<div class="a panel" style="left:28mm;top:25mm;width:53mm;height:53mm">{PINKO}</div></div>'
+    h += f'<div class="a panel" style="left:30mm;top:27mm;width:50mm;height:50mm">{PURP}</div></div>'
     # dorso
     bx = X0 + 110
     h += f'<div class="a" style="left:{bx}mm;top:{Y0+45}mm;width:110mm;height:80mm">'
@@ -151,7 +150,7 @@ def flat(name):
 def front(name, label):
     return (f'<div style="position:relative;width:110mm;height:80mm;background:{BLUE};overflow:hidden">'
             f'<div class="a pill" style="left:4mm;top:71mm">SÉRIE 1</div><div class="a" style="left:0;top:1mm;width:110mm">{title(name, 21)}</div>'
-            f'<div class="a panel" style="left:28mm;top:25mm;width:53mm;height:53mm">{PINKO}</div></div>'
+            f'<div class="a panel" style="left:30mm;top:27mm;width:50mm;height:50mm">{PURP}</div></div>'
             f'<div class="note" style="margin-top:1.5mm;font-size:3.8mm;font-weight:700">{label}</div>')
 
 def compare():
@@ -161,4 +160,4 @@ def compare():
 
 open(os.path.join(OUT, "envoltorio-plano.html"), "w").write(f'<!doctype html><meta charset="utf-8">{flat("OctoMood")}')
 open(os.path.join(OUT, "comparacion-nombres.html"), "w").write(f'<!doctype html><meta charset="utf-8">{compare()}')
-open(os.path.join(OUT, "personajes.html"), "w").write(f'<!doctype html><meta charset="utf-8"><style>{CSS}</style><div class="page"><div class="a note" style="left:12mm;top:8mm">Los 6 pulpos de la serie: bocetos provisionales para pensar los diseños (solo por color)</div>' + ''.join(f'<div class="a panel" style="left:{10+i*47}mm;top:30mm;width:44mm;height:44mm">{o}</div><div class="a small" style="left:{10+i*47}mm;top:78mm;width:44mm">{t}</div>' for i, (o, t) in enumerate([(PINKO, "ROSA"), (RED, "ROJO"), (YELLOW, "AMARILLO"), (BLUE_O, "AZUL"), (GREEN, "VERDE"), (RAIN, "ARCOÍRIS (SECRETO)")])) + '</div>')
+open(os.path.join(OUT, "personajes.html"), "w").write(f'<!doctype html><meta charset="utf-8"><style>{CSS}</style><div class="page"><div class="a note" style="left:12mm;top:8mm">Los 6 pulpos de la serie: bocetos provisionales para pensar los diseños (solo por color)</div>' + ''.join(f'<div class="a panel" style="left:{10+i*47}mm;top:30mm;width:44mm;height:44mm">{o}</div><div class="a small" style="left:{10+i*47}mm;top:78mm;width:44mm">{t}</div>' for i, (o, t) in enumerate([(PURP, "MORADO"), (RED, "ROJO"), (YELLOW, "AMARILLO"), (BLUE_O, "AZUL"), (GREEN, "VERDE"), (RAIN, "ARCOÍRIS (SECRETO)")])) + '</div>')
