@@ -23,7 +23,8 @@ cam_d.sensor_height = 36.0 * HF / 2700.0
 scene.cycles.samples = 12 if PREV else 14
 scene.render.use_persistent_data = True      # reutiliza la escena entre fotogramas (mucho más rápido)
 scene.cycles.use_adaptive_sampling = True
-HR0, HR1 = 930.0, 920.0                 # fila del horizonte al empezar / al final
+HR0, HR1 = 930.0, 920.0                 # fila del horizonte al aterrizar / al final
+HR_A, R_A = 1980.0, 1300.0              # al empezar: horizonte FUERA de cuadro (solo cielo) y el pulpo en la fila 1300
 CAM_Y0 = 2.4                            # al empezar la cámara está más cerca del pulpo (m)
 def set_cam(y, z, hr):
     cam.location = (0.0, y, z); cam_d.shift_y = (hr - HF / 2) / HF
@@ -75,9 +76,11 @@ def pose(t):
         if t < 2.64: sxy, sz = 1 + (sq[0] - 1) * (1 - (1 - a) ** 2), 1 + (sq[1] - 1) * (1 - (1 - a) ** 2)
         else: sxy, sz = sq[0] + (1 - sq[0]) * b, sq[1] + (1 - sq[1]) * b
         zc = gz + H_HALF * sz
-    cam_z = zc if t < 2.55 else ZL                                         # la cámara baja con el pulpo y se queda a su altura
+    DZ0 = (HR_A - R_A) * (pd_ - CAM_Y0) / F_PX                            # al empezar el pulpo está algo por encima de la cámara (solo cielo en cuadro)
+    u = inout((t - 1.9) / 0.65)                                            # durante la caída el horizonte sube a cuadro y la cámara queda a su altura
+    cam_z = (zc if t < 2.55 else ZL) - DZ0 * (1 - u); hr_a = HR_A + (HR0 - HR_A) * u
     e = inout((t - 2.75) / 1.15)                                           # apertura: atrás y arriba
-    cam_y = CAM_Y0 * (1 - e); cam_z = cam_z + (CAM_H - cam_z) * e; hr = HR0 + (HR1 - HR0) * e
+    cam_y = CAM_Y0 * (1 - e); cam_z = cam_z + (CAM_H - cam_z) * e; hr = hr_a + (HR1 - HR0) * e
     return dict(pop=pop, spin=spin, zc=zc, sxy=sxy, sz=sz, cam=(cam_y, cam_z, hr))
 def apply(t, show_toys=True, show_octo=True):
     st = pose(t); set_cam(*st['cam'])
@@ -113,14 +116,15 @@ if MODE in ('bgA', 'all') and not (RESUME and os.path.exists(os.path.join(OUTD, 
 if MODE in ('A', 'all'):
     scene_mode('octo')
     scene.render.use_border = True; scene.render.use_crop_to_border = False       # solo la zona donde está el pulpo (ahorra tiempo)
-    scene.render.border_min_x, scene.render.border_max_x, scene.render.border_min_y, scene.render.border_max_y = 0.08, 0.95, 0.0, 0.72
+    scene.render.border_min_x, scene.render.border_max_x, scene.render.border_min_y, scene.render.border_max_y = 0.10, 0.90, 0.05, 0.52
+    sand.hide_render = True                                                       # en estas tomas solo se ve cielo
     for i in range(0, N_A):
         if os.path.exists(os.path.join(OUTD, f'A_{i:04d}.png')) and i < N_A - 1 and os.path.getsize(os.path.join(OUTD, f'A_{i:04d}.png')) > 1000 and RESUME: continue
         apply(i / FPS, False, True); render(os.path.join(OUTD, f'A_{i:04d}.png'), True)
     print('A listo')
 if MODE in ('B', 'all'):
     scene.render.use_border = False
-    scene_mode('full')
+    scene_mode('full'); sand.hide_render = False
     for i in range(N_B0, N_B1 + 1):
         if os.path.exists(os.path.join(OUTD, f'B_{i:04d}.png')) and RESUME: continue
         apply(i / FPS, True, True); render(os.path.join(OUTD, f'B_{i:04d}.png'), False)
