@@ -124,3 +124,8 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Los colores del envoltorio (fondo amarillo, título rosa oscuro, texto azul) no cambian.
 - Color del morado (22/11): objetivo medido en las fotos del pulpo impreso = RGB(131, 99, 216) / #8363D8. Los renders de Blender salían más oscuros (≈ #685AAE) aunque se cambió el Hex y la exposición, así que se corrigió el render por post-proceso (ganancia lineal por canal sólo en el cuerpo, sin tocar ojos ni labios). `pulpos/morado.png` queda en #8362D7; `morado_original_2000.png` guarda el PNG corregido completo.
 - Pendiente en Blender: que la exposición y el color base se apliquen de verdad (comprobar View Transform = Standard, Exposure y el material correcto del cuerpo) para que los demás renders salgan ya bien.
+
+## Anuncio 3D (idea, 22/11/2026)
+- Guion: pulpo morado gira sobre cielo azul claro (#BAE6FD) → cae a la playa (arena #FEF3C9) con las 5 siluetas «?» detrás → aparece «OctoMood» (Octo en coral como el pulpo rosa original ≈ #D9606A; Mood en azul, relieve blanco, tipografía Modak) → logo en la esquina de arriba (zona segura). ≈ 6 s.
+- Reparto: Blender sólo renderiza el giro (≈ 36–48 fotogramas, PNG transparente ≈ 1000×1000, CPU con denoise); la caída, siluetas, texto, logo y música se montan en HyperFrames.
+- Contraste: el azul exacto de la paleta (#BAE6FD) no se lee con relieve blanco ni sobre cielo ni sobre arena; comparativa en `video3d/titulo.png`.
