@@ -129,3 +129,11 @@ Fotos de ambiente: arena de playa con agua desenfocada y fondo marino turquesa c
 - Guion: pulpo morado gira sobre cielo azul claro (#BAE6FD) → cae a la playa (arena #FEF3C9) con las 5 siluetas «?» detrás → aparece «OctoMood» (Octo en coral como el pulpo rosa original ≈ #D9606A; Mood en azul, relieve blanco, tipografía Modak) → logo en la esquina de arriba (zona segura). ≈ 6 s.
 - Reparto: Blender sólo renderiza el giro (≈ 36–48 fotogramas, PNG transparente ≈ 1000×1000, CPU con denoise); la caída, siluetas, texto, logo y música se montan en HyperFrames.
 - Contraste: el azul exacto de la paleta (#BAE6FD) no se lee con relieve blanco ni sobre cielo ni sobre arena; comparativa en `video3d/titulo.png`.
+
+## Decisiones del anuncio 3D (22/11/2026)
+- Título: Octo en coral y Mood en azul `#8DD0F7`, relieve blanco, Modak. Logo corregido a «IMPRESSION 3D» (`logo/logo-renardlab-impression.png`, fondo transparente).
+- Precio: 14,99 € tachado con animación → «Prix de lancement 12,99 €». Preventa hasta el 20 de enero (2027), «20 pièces seulement». Pedidos por DM (@renardlab3d). Sin sonido de tendencia ni voz.
+- Siluetas del vídeo: amarillas con «?» (4) y una negra (secreto), para contrastar con cielo y arena.
+- Fondo: escena 3D (cielo + playa con sombras y textura) que renderiza Avril como imagen; la caída del pulpo cambia del render 3D a la foto de la pieza real sobre el mismo fondo.
+- Giro: rápido al empezar y lento al final (`video3d/giro_pulpo.py`, sin probar en Blender; Avril pasa el Outliner mañana).
+- Música: opciones en `musica-opciones/` (las CC BY exigen crédito).
