@@ -11,3 +11,8 @@
 | opcion_power_pop.mp3 | Super Power Pop Rock | Kara Square | CC BY (crédito obligatorio) | pop rock enérgico |
 
 Las pistas CC BY exigen poner el crédito (título, autor y licencia) en la descripción del vídeo. Las CC0 no.
+
+## Jingles propios (sin licencias de terceros)
+- `jingle_A_campanitas_126bpm.mp3` — campanitas «tin tin tirin» + bajo, bombo suave, palmas y shaker; Do mayor, 126 BPM, 10 s, −15,5 LUFS.
+- `jingle_B_ukulele_132bpm.mp3` — rasgueos tipo ukulele + campanitas más rápidas; Do mayor, 132 BPM, 10 s, −15,7 LUFS.
+- Generados con `generar_jingles.py` (numpy, sin dependencias externas). No se han «escuchado»: sólo medidos (volumen y pico).
