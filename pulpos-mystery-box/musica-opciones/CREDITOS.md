@@ -23,3 +23,4 @@ Las pistas CC BY exigen poner el crédito (título, autor y licencia) en la desc
   - `jingle_C1_brillante_120bpm.mp3` — más agudos (destello de campanitas agudas en semicorcheas, hi-hats más claros, menos bajo y bombo, realce de agudos); agudos 17 %.
   - `jingle_C2_saltarina_120bpm.mp3` — swing en las corcheas, bajo corto y saltarín, palmas dobladas, marimba y ukulele más presentes.
   - `jingle_C3_playa_120bpm.mp3` — aire de playa: congas, melodía doblada con timbal metálico tipo steel drum, ukulele más fuerte, pad más bajo.
+- Música de burbuja (`generar_burbujas.py`, `generar_burbujas_v2.py`): E (108 BPM, elegida), F (con blops), y variaciones de E: E1 caja de música 118 BPM (melodía una octava arriba, celesta, arpegio), E2 blub suave 100 BPM (burbujas con glissando, swing, bajo más presente), E3 cristal 112 BPM (destellos de cristal y arpegio). Todas ≈ −15 LUFS.
