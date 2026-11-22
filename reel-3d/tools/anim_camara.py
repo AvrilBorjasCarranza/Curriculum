@@ -9,7 +9,7 @@ SRC = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'escena_play
 ARGS = sys.argv[:]
 OUTD = ARGS[1]; PREV = '--preview' in ARGS
 def arg(n, d=None): return ARGS[ARGS.index(n) + 1] if n in ARGS else d
-BODY = arg('--body', '#7051C4'); MODE = arg('--mode', 'all'); ONE = arg('--frame')
+BODY = arg('--body', '#7051C4'); RESUME = '--resume' in ARGS; MODE = arg('--mode', 'all'); ONE = arg('--frame')
 sys.argv = ['x', '/tmp/claude-0/escena_tmp', '--only', 'none'] + (['--preview'] if PREV else [])
 exec(compile(SRC, 'escena_playa', 'exec'))
 import numpy as np
@@ -20,7 +20,9 @@ sun_d.angle = math.radians(22)
 HF = 1920; RES2 = 0.5 if PREV else 1.0
 scene.render.resolution_x = int(1080 * RES2); scene.render.resolution_y = int(HF * RES2); scene.render.resolution_percentage = 100
 cam_d.sensor_height = 36.0 * HF / 2700.0
-scene.cycles.samples = 12 if PREV else 26
+scene.cycles.samples = 12 if PREV else 22
+scene.render.use_persistent_data = True      # reutiliza la escena entre fotogramas (mucho más rápido)
+scene.cycles.use_adaptive_sampling = True
 HR0, HR1 = 930.0, 920.0                 # fila del horizonte al empezar / al final
 CAM_Y0 = 2.4                            # al empezar la cámara está más cerca del pulpo (m)
 def set_cam(y, z, hr):
@@ -106,16 +108,18 @@ if ONE is not None:
     scene_mode('full'); apply(float(ONE), True, True); render(os.path.join(OUTD, f'prueba_{ONE}.png'), False); print('listo prueba'); sys.exit(0)
 
 FPS = 30; N_A = int(1.9 * FPS); N_B0, N_B1 = N_A, int(4.0 * FPS)
-if MODE in ('bgA', 'all'):
+if MODE in ('bgA', 'all') and not (RESUME and os.path.exists(os.path.join(OUTD, 'bgA.png'))):
     scene_mode('bg'); apply(0.5, False, False); render(os.path.join(OUTD, 'bgA.png'), False); print('bgA listo')
 if MODE in ('A', 'all'):
     scene_mode('octo')
     for i in range(0, N_A):
+        if os.path.exists(os.path.join(OUTD, f'A_{i:04d}.png')) and i < N_A - 1 and os.path.getsize(os.path.join(OUTD, f'A_{i:04d}.png')) > 1000 and RESUME: continue
         apply(i / FPS, False, True); render(os.path.join(OUTD, f'A_{i:04d}.png'), True)
     print('A listo')
 if MODE in ('B', 'all'):
     scene_mode('full')
     for i in range(N_B0, N_B1 + 1):
+        if os.path.exists(os.path.join(OUTD, f'B_{i:04d}.png')) and RESUME: continue
         apply(i / FPS, True, True); render(os.path.join(OUTD, f'B_{i:04d}.png'), False)
     print('B listo')
 json.dump(dict(fps=FPS, nA=N_A, b0=N_B0, b1=N_B1), open(os.path.join(OUTD, 'meta.json'), 'w'))
