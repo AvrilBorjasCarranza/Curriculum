@@ -24,7 +24,8 @@ HF = 1920; RES2 = 0.5 if PREV else 1.0
 scene.render.resolution_x = int(1080 * RES2); scene.render.resolution_y = int(HF * RES2); scene.render.resolution_percentage = 100
 cam_d.sensor_height = 36.0 * HF / 2700.0
 scene.render.film_transparent = True; scene.render.image_settings.color_mode = 'RGBA'
-scene.cycles.samples = 24 if PREV else 40
+scene.cycles.samples = 24 if PREV else 18
+scene.render.use_persistent_data = True
 scene.view_settings.exposure = EXPO
 # solo se renderiza la zona donde ocurre la acción (el resto queda transparente): ahorra ~45 % de tiempo
 scene.render.use_border = True; scene.render.use_crop_to_border = False
@@ -97,7 +98,9 @@ if ONE is not None:
 T_END = float(arg('--end', '3.1')); n = int(T_END * FPS); I0 = int(arg('--start', '0'))
 if '--low' in ARGS:   # tras el aterrizaje: solo la zona de abajo y menos muestras
     scene.render.border_max_y = 0.42; scene.cycles.samples = 32
-for i in range(I0, n + 1):
+STEP = int(arg('--step', '1'))
+for i in range(I0, n + 1, STEP):
+    if os.path.exists(os.path.join(OUTD, f'f_{i:04d}.png')) and '--resume' in ARGS: continue
     apply(i / FPS); scene.render.filepath = os.path.join(OUTD, f'f_{i:04d}.png'); bpy.ops.render.render(write_still=True)
 json.dump(dict(fps=FPS, frames=n + 1), open(os.path.join(OUTD, 'meta.json'), 'w'))
 print('secuencia lista', n + 1)
