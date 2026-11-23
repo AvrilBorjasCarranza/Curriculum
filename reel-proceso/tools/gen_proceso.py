@@ -2,14 +2,14 @@
 """Vídeo «El nacimiento de Octo» (≈ 11 s, 1080x1920): fondo amarillo; las bolas, el cuerpo, ojos, boca, anilla y los colores aparecen con pops.
 Uso: gen_proceso.py <carpeta del proyecto>"""
 import os, sys
-OUT = sys.argv[1]; T = 11.0
+OUT = sys.argv[1]; T = 10.5
 BG, DBLUE, CORAL, YEL = "#FFE9A0", "#1F5F93", "#CD575B", "#FFD84D"
 BX, BY = 0, 0   # las capas son pantalla completa
 FULL = 'position:absolute;left:0;top:0;width:1080px;height:1920px;'
 BALLS = ["cabeza"] + [f"brazo{k}" for k in range(8)]
 # (id, archivo, aparece, desaparece, ease) — cada fase sustituye a la anterior con un pop
 PH = [("cuerpo", "cuerpo.png", 2.05), ("ojos", "ojos.png", 2.8), ("boca", "boca.png", 3.4), ("anilla", "anilla.png", 4.0),
-      ("c1", "col_violeta.png", 4.7), ("c2", "col_rojo.png", 5.9), ("c3", "col_rosa.png", 7.0), ("c4", "col_violeta_rosa.png", 8.1), ("c5", "col_violeta.png", 9.2)]
+      ("c1", "col_violeta.png", 4.7), ("c3", "col_rosa.png", 5.8), ("c4", "col_violeta_rosa.png", 6.9), ("c5", "col_violeta.png", 8.0)]
 els, tw = [], []
 for i, b in enumerate(BALLS):
     t0 = 0.15 + (0 if i == 0 else 0.45 + 0.17 * i); t1 = 2.05
@@ -21,14 +21,14 @@ for j, (pid, f, t0) in enumerate(PH):
     tw.append(f'tl.fromTo("#{pid}", {{ opacity: 0, scale: 0.8 }}, {{ opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2.4)", transformOrigin: "50% 62%" }}, {t0});')
 # textos: (id, html, inicio, fin, top, tamaño)
 TX = [("t0", "8 petites boules.<br>1 pieuvre.", 0.1, 2.0, 300, 88), ("t1", "On les fusionne", 2.05, 2.75, 300, 88), ("t2", "Les yeux…", 2.8, 3.35, 300, 88),
-      ("t3", "La bouche…", 3.4, 3.95, 300, 88), ("t4", "L’anneau !", 4.0, 4.65, 300, 88), ("t5", "Et maintenant,<br>les couleurs", 4.7, 7.0, 300, 88),
-      ("t6", "Violet", 4.7, 5.85, 1450, 110), ("t7", "Rouge", 5.9, 6.95, 1450, 110), ("t8", "Rose", 7.0, 8.05, 1450, 110), ("t9", "Mix", 8.1, 9.15, 1450, 110),
-      ("t10", "Octo<br>violet", 9.2, 11.0, 300, 110)]
+      ("t3", "La bouche…", 3.4, 3.95, 300, 88), ("t4", "L’anneau !", 4.0, 4.65, 300, 88), ("t5", "Et maintenant,<br>les couleurs", 4.7, 6.9, 300, 88),
+      ("t6", "Violet", 4.7, 5.75, 1450, 110), ("t8", "Rose", 5.8, 6.85, 1450, 110), ("t9", "Mix", 6.9, 7.95, 1450, 110),
+      ("t10", "Octo<br>violet", 8.0, 10.5, 300, 110)]
 for tid, h, a, b, top, fs in TX:
     els.append(f'      <div id="{tid}" class="txt clip" data-start="{a}" data-duration="{round(b - a, 2)}" data-track-index="2" style="top:{top}px;font-size:{fs}px;z-index:20">{h}</div>')
     tw.append(f'tl.fromTo("#{tid}", {{ opacity: 0, scale: 0.7 }}, {{ opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }}, {a});')
-els.append(f'      <div id="cta" class="cta clip" data-start="9.5" data-duration="1.5" data-track-index="2" style="z-index:20"><span>Suis-nous pour le 2/6 🐙</span></div>')
-tw.append('tl.fromTo("#cta", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 9.5);')
+els.append(f'      <div id="cta" class="cta clip" data-start="8.6" data-duration="1.9" data-track-index="2" style="z-index:20"><span>Suis-nous pour le 2/6 🐙</span></div>')
+tw.append('tl.fromTo("#cta", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 8.6);')
 tw.append('tl.fromTo("#logo", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 0.2);')
 # sonidos: un pop por aparición (los brazos más suaves)
 sfx = []; n = 0
@@ -36,7 +36,7 @@ def add(t, f, v, d=0.34):
     global n; n += 1; sfx.append(f'      <audio id="s{n}" class="clip" src="assets/sfx/{f}" data-start="{round(t, 2)}" data-duration="{d}" data-track-index="{6 + n % 6}" data-volume="{v}"></audio>')
 add(0.15, "burbuja-pop_a.mp3", 0.9)
 for i in range(1, 9): add(0.15 + 0.45 + 0.17 * i, ["burbuja-pop_b.mp3", "burbuja-pop_c.mp3"][i % 2], 0.5)
-for (pid, f, t0), pf in zip(PH, ["burbuja-pop_doble.mp3", "burbuja-pop_a.mp3", "burbuja-pop_b.mp3", "burbuja-pop_c.mp3", "burbuja-pop_a.mp3", "burbuja-pop_b.mp3", "burbuja-pop_c.mp3", "burbuja-pop_a.mp3", "burbuja-pop_doble.mp3"]):
+for (pid, f, t0), pf in zip(PH, ["burbuja-pop_doble.mp3", "burbuja-pop_a.mp3", "burbuja-pop_b.mp3", "burbuja-pop_c.mp3", "burbuja-pop_a.mp3", "burbuja-pop_b.mp3", "burbuja-pop_c.mp3", "burbuja-pop_doble.mp3"]):
     add(t0, pf, 0.9, 0.65 if "doble" in pf else 0.34)
 html = f"""<!doctype html>
 <html lang="fr" data-resolution="portrait">
