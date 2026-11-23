@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Bagel Fat One"; src: url("assets/fonts/BagelFatOne-latin.woff2") format("woff2"); }
+      @font-face { font-family: "Modak"; src: url("assets/fonts/Modak-latin.woff2") format("woff2"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #BAE6FD; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      .layer { position: absolute; display: block; opacity: 0; }
+      .txt { position: absolute; left: 0; width: 1080px; text-align: center; font-family: "Bagel Fat One", sans-serif; opacity: 0; color: #1F5F93; -webkit-text-stroke: 14px #fff; paint-order: stroke fill; line-height: 1.05; }
+      #h1 { top: 300px; font-size: 92px; }
+      #h2 { top: 300px; font-size: 78px; }
+      #badge { top: 250px; font-family: Modak, "Bagel Fat One", sans-serif; font-size: 230px; color: #CD575B; -webkit-text-stroke: 26px #fff; filter: drop-shadow(0 8px 0 #fff); }
+      #q { top: 330px; font-size: 80px; }
+      #cta { top: 520px; opacity: 0; }
+      #cta span { display: inline-block; font-family: "Bagel Fat One", sans-serif; font-size: 54px; color: #1F5F93; background: #FFD84D; padding: 18px 46px 24px; border-radius: 999px; border: 8px solid #fff; -webkit-text-stroke: 0; }
+      #logo { position: absolute; left: 45px; top: 110px; width: 150px; height: 150px; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="8.0" data-width="1080" data-height="1920">
+      <div id="bg" class="clip" data-start="0" data-duration="8.0" data-track-index="0" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:1;overflow:hidden"><img src="assets/escena/fondo.png" alt="" style="position:absolute;left:0;top:-780px;width:1080px;height:2700px" /></div>
+      <img id="Ls1" class="layer clip" src="assets/escena/capa_s1.png" alt="" data-start="0" data-duration="8.0" data-track-index="2" style="left:18px;top:1311px;width:394px;height:256px;transform-origin:112px 243px;z-index:4" />
+      <img id="Ls2" class="layer clip" src="assets/escena/capa_s2.png" alt="" data-start="0" data-duration="8.0" data-track-index="2" style="left:181px;top:1249px;width:329px;height:214px;transform-origin:94px 205px;z-index:4" />
+      <img id="Ls3" class="layer clip" src="assets/escena/capa_s3.png" alt="" data-start="0" data-duration="8.0" data-track-index="2" style="left:453px;top:1178px;width:325px;height:204px;transform-origin:87px 197px;z-index:4" />
+      <img id="Ls4" class="layer clip" src="assets/escena/capa_s4.png" alt="" data-start="0" data-duration="8.0" data-track-index="2" style="left:702px;top:1263px;width:347px;height:216px;transform-origin:103px 207px;z-index:4" />
+      <img id="Ls5" class="layer clip" src="assets/escena/capa_s5.png" alt="" data-start="0" data-duration="8.0" data-track-index="2" style="left:817px;top:1289px;width:263px;height:253px;transform-origin:133px 241px;z-index:4" />
+      <video id="pulpo" class="clip" src="assets/pulpo/giro.webm" data-start="0" data-duration="3.1" data-track-index="3" muted playsinline style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:7"></video>
+      <img id="pulpo-fin" class="clip" src="assets/pulpo/final.png" alt="" data-start="3.1" data-duration="4.9" data-track-index="3" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:7" />
+      <div id="h1" class="txt clip" data-start="0" data-duration="2.4" data-track-index="4" style="z-index:10">Mood du jour :<br>violet</div>
+      <div id="h2" class="txt clip" data-start="2.4" data-duration="2.0" data-track-index="4" style="z-index:10">Rêveur. Calme.<br>Un peu timide.</div>
+      <div id="badge" class="txt clip" data-start="4.4" data-duration="1.5" data-track-index="4" style="z-index:10">1/6</div>
+      <div id="q" class="txt clip" data-start="5.9" data-duration="2.1" data-track-index="4" style="z-index:10">Quel est TON mood ?</div>
+      <div id="cta" class="txt clip" data-start="6.3" data-duration="1.7" data-track-index="4" style="z-index:10"><span>Suis-nous pour le 2/6 🐙</span></div>
+      <img id="logo" class="clip" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" data-start="0" data-duration="8.0" data-track-index="4" style="z-index:12" />
+      <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="8.0" data-track-index="6" data-volume="0.72"></audio>
+      <audio id="p0" class="clip" src="assets/sfx/burbuja-pop_doble.mp3" data-start="0.05" data-duration="0.65" data-track-index="7" data-volume="0.95"></audio>
+      <audio id="p1" class="clip" src="assets/sfx/burbuja-pop_a.mp3" data-start="2.4" data-duration="0.34" data-track-index="8" data-volume="0.8"></audio>
+      <audio id="p2" class="clip" src="assets/sfx/burbuja-pop_b.mp3" data-start="4.4" data-duration="0.34" data-track-index="9" data-volume="0.85"></audio>
+      <audio id="p3" class="clip" src="assets/sfx/burbuja-pop_doble.mp3" data-start="6.3" data-duration="0.65" data-track-index="10" data-volume="0.9"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#h1", { opacity: 1 }, 0);
+      tl.to("#h1", { opacity: 0, duration: 0.15 }, 2.25);
+      tl.fromTo("#h2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.4);
+      tl.to("#h2", { opacity: 0, duration: 0.15 }, 4.25);
+      [["#Ls1", 4.0], ["#Ls2", 4.1], ["#Ls4", 4.2], ["#Ls5", 4.3], ["#Ls3", 4.45]].forEach(([id, t]) => {
+        tl.fromTo(id, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)", immediateRender: false }, t);
+      });
+      tl.fromTo("#badge", { opacity: 0, scale: 0.4, y: -40 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 4.4);
+      tl.to("#badge", { opacity: 0, duration: 0.15 }, 5.8);
+      tl.fromTo("#q", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.9);
+      tl.fromTo("#cta", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 6.3);
+      tl.fromTo("#logo", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 0.2);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
