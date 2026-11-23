@@ -89,3 +89,12 @@ hide_all(); SPH['cabeza'].hide_render = False; shot('pk_bola')
 hide_all(); show('cuerpo'); shot('pk_cuerpo')
 hide_all(); show('cuerpo', 'ojo'); shot('pk_ojos')
 hide_all(); show('cuerpo', 'ojo', 'boca'); shot('pk_boca')
+
+# 5) estructura en blanco SIN ojos, y 4 colores rápidos SIN ojos (los ojos negros llegan al final)
+setmat(P['cuerpo'], CLAY); setmat(P['anilla'], CLAY); setmat(P['boca'], CLAY)
+hide_all(); show('cuerpo', 'boca'); shot('sb_boca')
+hide_all(); show('cuerpo', 'boca', 'anilla'); shot('sb_anilla')
+NE = {'rosa': ('#F2A0C8', '#D95B94'), 'lavanda': ('#6F7BE6', '#F08FA6'), 'lavanda_mono': ('#6F7BE6', '#6F7BE6'), 'violeta': ('#7051C4', '#CD575B')}
+for nme, (cb, cm) in NE.items():
+    setmat(P['cuerpo'], mat('nb_' + nme, cb)); setmat(P['anilla'], mat('na_' + nme, cb)); setmat(P['boca'], mat('nm_' + nme, cm, 0.4))
+    hide_all(); show('cuerpo', 'boca', 'anilla'); shot('ne_' + nme)

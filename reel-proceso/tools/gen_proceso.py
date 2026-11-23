@@ -6,34 +6,36 @@ OUT = sys.argv[1]; T = 10.0
 BG, DBLUE, CORAL, YEL = "#FFE9A0", "#1F5F93", "#CD575B", "#FFD84D"
 BX, BY = 0, 0   # las capas son pantalla completa
 FULL = 'position:absolute;left:0;top:0;width:1080px;height:1920px;'
-PH = [("bola", "pk_bola.png", 0.15), ("cuerpo", "pk_cuerpo.png", 1.3), ("ojos", "pk_ojos.png", 2.1), ("boca", "pk_boca.png", 2.8), ("anilla", "col_rosa.png", 4.1),
-      ("c2", "col_lavanda.png", 5.2), ("c3", "col_lavanda_mono.png", 6.3), ("c4", "col_violeta.png", 7.4)]
+PH = [("bola", "bola_cabeza.png", 0.15), ("cuerpo", "cuerpo.png", 1.2), ("boca", "sb_boca.png", 2.2), ("anilla", "sb_anilla.png", 3.4),
+      ("k1", "ne_rosa.png", 4.6), ("k2", "ne_lavanda.png", 5.0), ("k3", "ne_lavanda_mono.png", 5.4), ("k4", "ne_violeta.png", 5.8),
+      ("ojos", "col_violeta.png", 6.7)]
 els, tw = [], []
 for j, (pid, f, t0) in enumerate(PH):
     t1 = PH[j + 1][2] if j + 1 < len(PH) else T
     els.append(f'      <img id="{pid}" class="clip" src="assets/capas/{f}" alt="" data-start="{t0}" data-duration="{round(t1 - t0 + 0.05, 2)}" data-track-index="1" style="{FULL}z-index:{4 + j};opacity:0" />')
-    tw.append(f'tl.fromTo("#{pid}", {{ opacity: 0, scale: 0.6 }}, {{ opacity: 1, scale: 1, duration: 0.36, ease: "back.out(2.6)", transformOrigin: "50% 62%" }}, {t0});')
+    sc0, du = (0.9, 0.22) if pid.startswith("k") else (0.6, 0.36)
+    tw.append(f'tl.fromTo("#{pid}", {{ opacity: 0, scale: {sc0} }}, {{ opacity: 1, scale: 1, duration: {du}, ease: "back.out(2.6)", transformOrigin: "50% 62%" }}, {t0});')
 # textos: (id, html, inicio, fin, top, tamaño)
-TX = [("t0", "Tout commence<br>par une boule", 0.1, 1.25, 230, 88), ("t1", "Puis le corps", 1.3, 2.05, 230, 88), ("t2", "Les yeux…", 2.1, 2.75, 230, 88),
-      ("t3", "La bouche…", 2.8, 4.05, 230, 88), ("t4", "Et l’anneau<br>du porte-clés !", 4.1, 5.15, 230, 88), ("t5", "Et maintenant,<br>les couleurs", 5.2, 7.35, 230, 88),
-      ("t7", "Lavande", 5.2, 6.25, 1450, 110), ("t8", "Tout lavande", 6.3, 7.35, 1450, 110), ("t10", "Octo<br>violet", 7.4, 10.0, 230, 110)]
+TX = [("t0", "Tout commence<br>par une boule", 0.1, 1.15, 230, 88), ("t1", "Puis le corps", 1.2, 2.15, 230, 88), ("t3", "La bouche…", 2.2, 3.35, 230, 88),
+      ("t4", "Et l’anneau<br>du porte-clés !", 3.4, 4.55, 230, 88), ("t5", "Quelle couleur ?", 4.6, 6.65, 230, 88),
+      ("t7", "Et enfin…<br>les yeux !", 6.7, 7.7, 230, 88), ("t10", "Octo<br>violet", 7.75, 10.0, 230, 110)]
 for tid, h, a, b, top, fs in TX:
     els.append(f'      <div id="{tid}" class="txt clip" data-start="{a}" data-duration="{round(b - a, 2)}" data-track-index="2" style="top:{top}px;font-size:{fs}px;z-index:20">{h}</div>')
     tw.append(f'tl.fromTo("#{tid}", {{ opacity: 0, scale: 0.7 }}, {{ opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }}, {a});')
-els.append(f'      <div id="cta" class="cta clip" data-start="8.0" data-duration="2.0" data-track-index="2" style="z-index:20"><span>Suis-nous pour le 2/6 🐙</span></div>')
-tw.append('tl.fromTo("#cta", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 8.0);')
+els.append(f'      <div id="cta" class="cta clip" data-start="8.2" data-duration="1.8" data-track-index="2" style="z-index:20"><span>Suis-nous pour le 2/6 🐙</span></div>')
+tw.append('tl.fromTo("#cta", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 8.2);')
 tw.append('tl.fromTo("#logo", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 0.2);')
 # sonidos: un pop por aparición (los brazos más suaves)
 sfx = []; n = 0
 def add(t, f, v, d=0.34):
     global n; n += 1; sfx.append(f'      <audio id="s{n}" class="clip" src="assets/sfx/{f}" data-start="{round(t, 2)}" data-duration="{d}" data-track-index="{6 + n % 6}" data-volume="{v}"></audio>')
-for (pid, f, t0), pf in zip(PH, ["burbuja-pop_a.mp3", "burbuja-pop_doble.mp3", "burbuja-pop_b.mp3", "burbuja-pop_c.mp3", "burbuja-pop_a.mp3", "burbuja-pop_b.mp3", "burbuja-pop_c.mp3", "burbuja-pop_doble.mp3"]):
-    add(t0, pf, 0.9, 0.65 if "doble" in pf else 0.34)
+for (pid, f, t0), pf, vol in zip(PH, ["burbuja-pop_a.mp3", "burbuja-pop_doble.mp3", "burbuja-pop_b.mp3", "burbuja-pop_c.mp3", "burbuja-pop_a.mp3", "burbuja-pop_b.mp3", "burbuja-pop_c.mp3", "burbuja-pop_doble.mp3", "burbuja-pop_doble.mp3"], [0.9, 0.9, 0.9, 0.9, 0.45, 0.45, 0.45, 0.7, 0.95]):
+    add(t0, pf, vol, 0.65 if "doble" in pf else 0.34)
 # ---- gotitas blancas en cada pop: (instante, x, y, nº de gotas, radio de salida)
 import math
 BUR = []
-POS = {"bola": (540, 840, 12, 190), "cuerpo": (540, 900, 12, 200), "ojos": (540, 870, 8, 150), "boca": (540, 970, 8, 130), "anilla": (540, 510, 10, 150),
-       "c2": (540, 900, 12, 200), "c3": (540, 900, 12, 200), "c4": (540, 900, 12, 200)}
+POS = {"bola": (540, 840, 12, 190), "cuerpo": (540, 900, 12, 200), "boca": (540, 970, 8, 130), "anilla": (540, 510, 10, 150),
+       "k1": (540, 900, 6, 150), "k2": (540, 900, 6, 150), "k3": (540, 900, 6, 150), "k4": (540, 900, 10, 190), "ojos": (540, 870, 10, 160)}
 for pid, f, t0 in PH: BUR.append((t0, *POS[pid]))
 dro = []
 for bi, (t, bx, by, nd, rr) in enumerate(BUR):
