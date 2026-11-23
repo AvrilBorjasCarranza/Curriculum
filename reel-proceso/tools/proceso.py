@@ -74,7 +74,7 @@ hide_all(); show('cuerpo', 'ojo'); shot('ojos')
 hide_all(); show('cuerpo', 'ojo', 'boca'); shot('boca')
 hide_all(); show('cuerpo', 'ojo', 'boca', 'anilla'); shot('anilla')
 # 3) colores
-COL = {'violeta': ('#7051C4', '#CD575B'), 'rosa': ('#F28FA8', '#C84A6C'), 'violeta_rosa': ('#7051C4', '#F08FA6')}
+COL = {'violeta': ('#7051C4', '#CD575B'), 'rosa': ('#F2A0C8', '#D95B94'), 'lavanda': ('#6F7BE6', '#F08FA6'), 'lavanda_mono': ('#6F7BE6', '#6F7BE6')}
 for nme, (cb, cm) in COL.items():
     setmat(P['cuerpo'], mat('b_' + nme, cb)); setmat(P['anilla'], mat('a_' + nme, cb)); setmat(P['boca'], mat('m_' + nme, cm, 0.4)); setmat(P['ojo'], mat('o_' + nme, '#101010', 0.25))
     hide_all(); show('cuerpo', 'ojo', 'boca', 'anilla'); shot('col_' + nme)
