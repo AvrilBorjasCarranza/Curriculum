@@ -98,3 +98,13 @@ NE = {'rosa': ('#F2A0C8', '#D95B94'), 'lavanda': ('#6F7BE6', '#F08FA6'), 'lavand
 for nme, (cb, cm) in NE.items():
     setmat(P['cuerpo'], mat('nb_' + nme, cb)); setmat(P['anilla'], mat('na_' + nme, cb)); setmat(P['boca'], mat('nm_' + nme, cm, 0.4))
     hide_all(); show('cuerpo', 'boca', 'anilla'); shot('ne_' + nme)
+
+# 6) el cuerpo prueba colores con la boca blanca; después el cuerpo queda violeta y los labios prueban colores (sin ojos)
+BODY = {'rosa': '#F2A0C8', 'lavanda': '#6F7BE6', 'lila': '#B79CF0', 'violeta': '#7051C4'}
+for nme, cb in BODY.items():
+    setmat(P['cuerpo'], mat('cb_' + nme, cb)); setmat(P['anilla'], mat('ca_' + nme, cb)); setmat(P['boca'], CLAY)
+    hide_all(); show('cuerpo', 'boca', 'anilla'); shot('bc_' + nme)
+LIPS = {'rosa': '#F08FA6', 'lavanda': '#8F96F0', 'peche': '#F6B98F'}
+setmat(P['cuerpo'], mat('lcb', '#7051C4')); setmat(P['anilla'], mat('lca', '#7051C4'))
+for nme, cm in LIPS.items():
+    setmat(P['boca'], mat('lm_' + nme, cm, 0.4)); hide_all(); show('cuerpo', 'boca', 'anilla'); shot('lb_' + nme)
