@@ -78,3 +78,14 @@ COL = {'violeta': ('#7051C4', '#CD575B'), 'rosa': ('#F2A0C8', '#D95B94'), 'lavan
 for nme, (cb, cm) in COL.items():
     setmat(P['cuerpo'], mat('b_' + nme, cb)); setmat(P['anilla'], mat('a_' + nme, cb)); setmat(P['boca'], mat('m_' + nme, cm, 0.4)); setmat(P['ojo'], mat('o_' + nme, '#101010', 0.25))
     hide_all(); show('cuerpo', 'ojo', 'boca', 'anilla'); shot('col_' + nme)
+
+# 4) construcción directamente en color (rosa): bola, cuerpo, ojos, boca; la anilla = col_rosa
+PK = ('#F2A0C8', '#D95B94')
+def pink():
+    setmat(P['cuerpo'], mat('pb', PK[0])); setmat(P['anilla'], mat('pa', PK[0])); setmat(P['boca'], mat('pm', PK[1], 0.4)); setmat(P['ojo'], mat('po', '#101010', 0.25))
+    setmat([SPH['cabeza']], mat('pbola', PK[0]))
+pink()
+hide_all(); SPH['cabeza'].hide_render = False; shot('pk_bola')
+hide_all(); show('cuerpo'); shot('pk_cuerpo')
+hide_all(); show('cuerpo', 'ojo'); shot('pk_ojos')
+hide_all(); show('cuerpo', 'ojo', 'boca'); shot('pk_boca')
