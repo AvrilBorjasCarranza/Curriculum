@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "259ba43a-f8f2-4676-9e28-0bb26ae188b0",
-  "currentRevision": null,
+  "currentRevision": "5b83be78-f37b-475d-a841-cb7f9a28819b",
   "pendingChanges": false,
   "files": {
     "AGENTS.md": {
@@ -57,8 +57,8 @@
       "content": "/root/.cache/hyperframes/history/259ba43a-f8f2-4676-9e28-0bb26ae188b0/blobs/e5/e5ee8d0b0165730b2cd7f6401d42fb7e3839b72fbc7af706ce1abf65a38ab79b"
     },
     "assets/pulpo/giro.webm": {
-      "hash": "b84f13c7c20a22105212aea5235c027fa9357e90ecac1f14da7861420d189856",
-      "content": "/root/.cache/hyperframes/history/259ba43a-f8f2-4676-9e28-0bb26ae188b0/blobs/b8/b84f13c7c20a22105212aea5235c027fa9357e90ecac1f14da7861420d189856"
+      "hash": "bd02a6c805014559355d66c6196d26242644c1306d853de698f4e4830246dc1f",
+      "content": "/root/.cache/hyperframes/history/259ba43a-f8f2-4676-9e28-0bb26ae188b0/blobs/bd/bd02a6c805014559355d66c6196d26242644c1306d853de698f4e4830246dc1f"
     },
     "assets/sfx/burbuja-pop_a.mp3": {
       "hash": "70eecb66246f4da0e7471d0fd8ab02701e94839461c692a9cdc7c292fe6d9cb9",
@@ -97,7 +97,23 @@
       "content": "/root/.cache/hyperframes/history/259ba43a-f8f2-4676-9e28-0bb26ae188b0/blobs/87/8718eb2b97c2c9c017b9d46994b09e466b9225485768b275a8adb005225369ed"
     }
   },
-  "revisions": {},
+  "revisions": {
+    "5b83be78-f37b-475d-a841-cb7f9a28819b": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1795484125453,
+      "endedAt": 1795484125454,
+      "files": {
+        "assets/pulpo/giro.webm": {
+          "before": "/root/.cache/hyperframes/history/259ba43a-f8f2-4676-9e28-0bb26ae188b0/blobs/b8/b84f13c7c20a22105212aea5235c027fa9357e90ecac1f14da7861420d189856",
+          "after": "/root/.cache/hyperframes/history/259ba43a-f8f2-4676-9e28-0bb26ae188b0/blobs/bd/bd02a6c805014559355d66c6196d26242644c1306d853de698f4e4830246dc1f"
+        }
+      }
+    }
+  },
   "checks": {
     "latest": {
       "revision": null,
@@ -293,13 +309,15 @@
   },
   "renders": {
     "latest": {
-      "id": "0c5ef8d2-5af2-403e-bd1c-944aeba6d39c",
-      "completedAt": 1795403606816,
+      "id": "f55027ef-c5bf-4468-ac62-1b54932a1985",
+      "completedAt": 1795484164440,
       "output": "/home/user/Curriculum/reel-serie1/renders/serie-1-violette.mp4",
       "status": "completed",
-      "revision": null
+      "revision": "5b83be78-f37b-475d-a841-cb7f9a28819b"
     },
-    "retainedRevisions": []
+    "retainedRevisions": [
+      "5b83be78-f37b-475d-a841-cb7f9a28819b"
+    ]
   },
   "pendingArtifactCleanup": []
 }
