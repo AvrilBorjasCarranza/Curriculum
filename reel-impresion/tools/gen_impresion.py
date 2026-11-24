@@ -4,12 +4,13 @@ import os, sys
 OUT = sys.argv[1]; T = 9.0
 DBLUE, CORAL, YEL = "#1F5F93", "#CD575B", "#FFD84D"
 FULL = 'position:absolute;left:0;top:0;width:1080px;height:1920px;'
-SPEED = 24.17 / 7.3              # 24 s de clip -> 7,3 s (llena hasta el final)
+IMG = 'position:absolute;left:-977px;top:0;width:2720px;height:1920px;'
+SPEED = 22.8 / 7.3              # 22,8 s de clip -> 7,3 s
 V0 = 0.5                         # el timelapse empieza a los 0,5 s
 def aud(i, f, t, d, tr, v): return f'      <audio id="{i}" class="clip" src="assets/sfx/{f}" data-start="{round(t,2)}" data-duration="{d}" data-track-index="{tr}" data-volume="{v}"></audio>'
 # momentos del timelapse (s de clip) y sus pops: base, bolitas, cabeza, anilla
-EV = [(0.3, "burbuja-pop_a.mp3"), (7.5, "burbuja-pop_b.mp3"), (13.5, "burbuja-pop_c.mp3"), (20.5, "burbuja-pop_a.mp3")]
-sfx = [aud("p0", "burbuja-pop_doble.mp3", 0.02, 0.65, 6, 0.95)] + [aud(f"e{i}", f, V0 + t / SPEED, 0.34, 7 + i, 0.6) for i, (t, f) in enumerate(EV)] + [aud("pend", "burbuja-pop_doble.mp3", V0 + 24 / SPEED - 0.1, 0.65, 12, 0.9)]
+EV = [(0.3, "burbuja-pop_a.mp3"), (7.5, "burbuja-pop_b.mp3"), (13.5, "burbuja-pop_c.mp3"), (19.8, "burbuja-pop_a.mp3")]
+sfx = [aud("p0", "burbuja-pop_doble.mp3", 0.02, 0.65, 6, 0.95)] + [aud(f"e{i}", f, V0 + t / SPEED, 0.34, 7 + i, 0.6) for i, (t, f) in enumerate(EV)] + [aud("pend", "burbuja-pop_doble.mp3", V0 + 22.8 / SPEED - 0.1, 0.65, 12, 0.9)]
 html = f"""<!doctype html>
 <html lang="fr" data-resolution="portrait">
   <head>
@@ -33,14 +34,11 @@ html = f"""<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{T}" data-width="1080" data-height="1920">
-      <!-- 0–0,5 s: el pulpo terminado (3D) -->
-      <img id="ini" class="clip" src="assets/final-3d.png" alt="" data-start="0" data-duration="{V0}" data-track-index="1" style="{FULL}z-index:5;opacity:1" />
-      <div id="bgini" class="clip" data-start="0" data-duration="{V0}" data-track-index="0" style="{FULL}z-index:4;background:#BAE6FD"></div>
-      <!-- 0,5 s en adelante: timelapse acelerado, recortado a vertical -->
-      <video id="v" class="clip" src="assets/impresion-azul.mp4" data-start="{V0}" data-duration="{round(24.17 / SPEED, 2)}" data-track-index="1" data-playback-rate="{SPEED}" muted playsinline style="position:absolute;left:-977px;top:0;width:2720px;height:1920px;z-index:6"></video>
-      <div id="bgv" class="clip" data-start="{round(V0 + 24.17 / SPEED, 2)}" data-duration="{round(T - V0 - 24.17 / SPEED, 2)}" data-track-index="1" style="{FULL}z-index:6;background:#BAE6FD"></div>
-      <img id="fin3d" class="clip" src="assets/final-3d.png" alt="" data-start="{round(V0 + 24.17 / SPEED, 2)}" data-duration="{round(T - V0 - 24.17 / SPEED, 2)}" data-track-index="2" style="{FULL}z-index:7" />
-      <div id="veil" class="veil clip" data-start="{V0}" data-duration="{round(T - V0, 2)}" data-track-index="3"></div>
+      <!-- 0–0,5 s: el último fotograma del timelapse (pulpo impreso terminado) -->
+      <img id="ini" class="clip" src="assets/final-frame.png" alt="" data-start="0" data-duration="{V0}" data-track-index="1" style="{IMG}z-index:5" />
+      <video id="v" class="clip" src="assets/impresion-azul.mp4" data-start="{V0}" data-duration="{round(22.8 / SPEED, 2)}" data-track-index="1" data-playback-rate="{SPEED}" muted playsinline style="position:absolute;left:-977px;top:0;width:2720px;height:1920px;z-index:6"></video>
+      <img id="fin" class="clip" src="assets/final-frame.png" alt="" data-start="{round(V0 + 22.8 / SPEED, 2)}" data-duration="{round(T - V0 - 22.8 / SPEED, 2)}" data-track-index="1" style="{IMG}z-index:6" />
+      <div id="veil" class="veil clip" data-start="0" data-duration="{T}" data-track-index="3"></div>
       <div id="t0" class="txt clip" data-start="{V0}" data-duration="3.2" data-track-index="4" style="top:200px;font-size:88px;z-index:10">Regarde-le<br>naître</div>
       <div id="t1" class="txt clip" data-start="{V0 + 3.4}" data-duration="3.0" data-track-index="4" style="top:230px;font-size:88px;z-index:10">Couche par<br>couche</div>
       <div id="t2" class="txt clip" data-start="{V0 + 6.5}" data-duration="2.0" data-track-index="4" style="top:230px;font-size:88px;z-index:10">1/6 · Violette</div>

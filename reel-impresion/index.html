@@ -21,14 +21,11 @@
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="9.0" data-width="1080" data-height="1920">
-      <!-- 0–0,5 s: el pulpo terminado (3D) -->
-      <img id="ini" class="clip" src="assets/final-3d.png" alt="" data-start="0" data-duration="0.5" data-track-index="1" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:5;opacity:1" />
-      <div id="bgini" class="clip" data-start="0" data-duration="0.5" data-track-index="0" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:4;background:#BAE6FD"></div>
-      <!-- 0,5 s en adelante: timelapse acelerado, recortado a vertical -->
-      <video id="v" class="clip" src="assets/impresion-azul.mp4" data-start="0.5" data-duration="7.3" data-track-index="1" data-playback-rate="3.3109589041095893" muted playsinline style="position:absolute;left:-977px;top:0;width:2720px;height:1920px;z-index:6"></video>
-      <div id="bgv" class="clip" data-start="7.8" data-duration="1.2" data-track-index="1" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:6;background:#BAE6FD"></div>
-      <img id="fin3d" class="clip" src="assets/final-3d.png" alt="" data-start="7.8" data-duration="1.2" data-track-index="2" style="position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:7" />
-      <div id="veil" class="veil clip" data-start="0.5" data-duration="8.5" data-track-index="3"></div>
+      <!-- 0–0,5 s: el último fotograma del timelapse (pulpo impreso terminado) -->
+      <img id="ini" class="clip" src="assets/final-frame.png" alt="" data-start="0" data-duration="0.5" data-track-index="1" style="position:absolute;left:-977px;top:0;width:2720px;height:1920px;z-index:5" />
+      <video id="v" class="clip" src="assets/impresion-azul.mp4" data-start="0.5" data-duration="7.3" data-track-index="1" data-playback-rate="3.1232876712328768" muted playsinline style="position:absolute;left:-977px;top:0;width:2720px;height:1920px;z-index:6"></video>
+      <img id="fin" class="clip" src="assets/final-frame.png" alt="" data-start="7.8" data-duration="1.2" data-track-index="1" style="position:absolute;left:-977px;top:0;width:2720px;height:1920px;z-index:6" />
+      <div id="veil" class="veil clip" data-start="0" data-duration="9.0" data-track-index="3"></div>
       <div id="t0" class="txt clip" data-start="0.5" data-duration="3.2" data-track-index="4" style="top:200px;font-size:88px;z-index:10">Regarde-le<br>naître</div>
       <div id="t1" class="txt clip" data-start="3.9" data-duration="3.0" data-track-index="4" style="top:230px;font-size:88px;z-index:10">Couche par<br>couche</div>
       <div id="t2" class="txt clip" data-start="7.0" data-duration="2.0" data-track-index="4" style="top:230px;font-size:88px;z-index:10">1/6 · Violette</div>
@@ -36,11 +33,11 @@
       <img id="logo" class="clip" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" data-start="0" data-duration="9.0" data-track-index="4" style="z-index:12" />
       <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="9.0" data-track-index="5" data-volume="0.7"></audio>
       <audio id="p0" class="clip" src="assets/sfx/burbuja-pop_doble.mp3" data-start="0.02" data-duration="0.65" data-track-index="6" data-volume="0.95"></audio>
-      <audio id="e0" class="clip" src="assets/sfx/burbuja-pop_a.mp3" data-start="0.59" data-duration="0.34" data-track-index="7" data-volume="0.6"></audio>
-      <audio id="e1" class="clip" src="assets/sfx/burbuja-pop_b.mp3" data-start="2.77" data-duration="0.34" data-track-index="8" data-volume="0.6"></audio>
-      <audio id="e2" class="clip" src="assets/sfx/burbuja-pop_c.mp3" data-start="4.58" data-duration="0.34" data-track-index="9" data-volume="0.6"></audio>
-      <audio id="e3" class="clip" src="assets/sfx/burbuja-pop_a.mp3" data-start="6.69" data-duration="0.34" data-track-index="10" data-volume="0.6"></audio>
-      <audio id="pend" class="clip" src="assets/sfx/burbuja-pop_doble.mp3" data-start="7.65" data-duration="0.65" data-track-index="12" data-volume="0.9"></audio>
+      <audio id="e0" class="clip" src="assets/sfx/burbuja-pop_a.mp3" data-start="0.6" data-duration="0.34" data-track-index="7" data-volume="0.6"></audio>
+      <audio id="e1" class="clip" src="assets/sfx/burbuja-pop_b.mp3" data-start="2.9" data-duration="0.34" data-track-index="8" data-volume="0.6"></audio>
+      <audio id="e2" class="clip" src="assets/sfx/burbuja-pop_c.mp3" data-start="4.82" data-duration="0.34" data-track-index="9" data-volume="0.6"></audio>
+      <audio id="e3" class="clip" src="assets/sfx/burbuja-pop_a.mp3" data-start="6.84" data-duration="0.34" data-track-index="10" data-volume="0.6"></audio>
+      <audio id="pend" class="clip" src="assets/sfx/burbuja-pop_doble.mp3" data-start="7.7" data-duration="0.65" data-track-index="12" data-volume="0.9"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
