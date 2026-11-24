@@ -44,7 +44,6 @@ html = f"""<!doctype html>
       <div id="t2" class="txt clip" data-start="{V0 + 6.5}" data-duration="2.0" data-track-index="4" style="top:230px;font-size:88px;z-index:10">1/6 · Violette</div>
       <div id="cta" class="clip" data-start="{V0 + 7.0}" data-duration="{round(T - V0 - 7.0, 2)}" data-track-index="4" style="z-index:10"><span>Suis-nous pour le 2/6 🐙</span></div>
       <img id="logo" class="clip" src="assets/logo-renardlab.png" alt="RenardLab Impression 3D" data-start="0" data-duration="{T}" data-track-index="4" style="z-index:12" />
-      <audio id="music" class="clip" src="assets/bgm/music.mp3" data-start="0" data-duration="{T}" data-track-index="5" data-volume="0.7"></audio>
 {chr(10).join(sfx)}
     </div>
     <script>

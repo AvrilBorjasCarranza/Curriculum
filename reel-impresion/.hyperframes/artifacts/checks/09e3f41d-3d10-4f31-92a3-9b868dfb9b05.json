@@ -11,7 +11,7 @@
       {
         "code": "timeline_track_too_dense",
         "severity": "warning",
-        "message": "This HTML file has 10 timed elements. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
+        "message": "This HTML file has 8 timed elements. Smaller sub-compositions keep timelines easier to read, iterate on, and diff.",
         "selector": "[data-composition-id]",
         "dataAttributes": {},
         "sourceFile": "/home/user/Curriculum/reel-impresion/index.html",
